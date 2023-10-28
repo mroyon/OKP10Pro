@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="newdemandid" value="AR:  New Demand ID"></resource>
+       <resource culture="ar-kw" name="newdemandidRequired" value="AR: Please provide  New Demand ID"></resource>
+       <resource culture="ar-kw" name="rankid" value="AR:  Rank ID"></resource>
+       <resource culture="ar-kw" name="rankidRequired" value="AR: Please provide  Rank ID"></resource>
+       <resource culture="ar-kw" name="tradeid" value="AR:  Trade ID"></resource>
+       <resource culture="ar-kw" name="tradeidRequired" value="AR: Please provide  Trade ID"></resource>
+       <resource culture="ar-kw" name="groupid" value="AR:  Group ID"></resource>
+       <resource culture="ar-kw" name="groupidRequired" value="AR: Please provide  Group ID"></resource>
+       <resource culture="ar-kw" name="okpid" value="AR:  Okp ID"></resource>
+       <resource culture="ar-kw" name="okpidRequired" value="AR: Please provide  Okp ID"></resource>
+       <resource culture="ar-kw" name="noofvacancies" value="AR:  No Of Vacancies"></resource>
+       <resource culture="ar-kw" name="noofvacanciesRequired" value="AR: Please provide  No Of Vacancies"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="newdemanddetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="newdemanddetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="newdemanddetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="newdemanddetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="newdemandid" value=" New Demand ID"></resource>
+       <resource culture="en-us" name="newdemandidRequired" value="Please provide  New Demand ID"></resource>
+       <resource culture="en-us" name="rankid" value=" Rank ID"></resource>
+       <resource culture="en-us" name="rankidRequired" value="Please provide  Rank ID"></resource>
+       <resource culture="en-us" name="tradeid" value=" Trade ID"></resource>
+       <resource culture="en-us" name="tradeidRequired" value="Please provide  Trade ID"></resource>
+       <resource culture="en-us" name="groupid" value=" Group ID"></resource>
+       <resource culture="en-us" name="groupidRequired" value="Please provide  Group ID"></resource>
+       <resource culture="en-us" name="okpid" value=" Okp ID"></resource>
+       <resource culture="en-us" name="okpidRequired" value="Please provide  Okp ID"></resource>
+       <resource culture="en-us" name="noofvacancies" value=" No Of Vacancies"></resource>
+       <resource culture="en-us" name="noofvacanciesRequired" value="Please provide  No Of Vacancies"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="newdemanddetlList" value="View All"></resource>
+		<resource culture="en-us" name="newdemanddetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="newdemanddetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="newdemanddetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

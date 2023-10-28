@@ -1,0 +1,110 @@
+﻿@model KAF.BusinessDataObjects.hr_documentuploadEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { enctype = "multipart/form-data", @id = "frmDocumentUploadNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_documentupload.documentuploadCreate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.docuploadid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                        @Html.HiddenFor(m => m.hrbasicid)
+                        @Html.HiddenFor(m => m.filepath)
+                        @Html.HiddenFor(m => m.extension)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.doctypeid, htmlAttributes: new { @class = "labelNormal required " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_documenttypeEntity[0].ToString(), selectid = "doctypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_FileType, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                                @Html.ValidationMessageFor(model => model.doctypeid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.docname, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.docname, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.docname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="file" id="fileupload" name="fileupload" class="fileupload" />
+                                <label id="custom-file-label" class="custom-file-label">choose file..</label>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.filedescription, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.filedescription, new { htmlAttributes = new { @class = " form-control" } })
+                                    @Html.ValidationMessageFor(model => model.filedescription, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveHrDocumentUpload" class="btn btn-primary btn-md btnSaveGenDocumentType"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@*<form id="upload" enctype="multipart/form-data" action="@Url.Action("UploadAttachment", "HrDocumentUpload")" method="POST">
+    <input type="file" name="fileUploads" id="fileUploads" size="23" /><br />
+    <button>Upload!</button>
+</form>*@
+
+
+
+<script>
+
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+
+     var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
+
+
+$('.footable').footable({
+	 calculateWidthOverride: function () {
+		 return { width: $(window).width() };
+	 }
+});
+</script>
+
+

@@ -1,0 +1,242 @@
+﻿@model KAF.BusinessDataObjects.BusinessDataObjectsPartials.KAFProcess_ManpoewrStateEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmManpowerStateNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._tran_manpowerstate.manpowerstateCreate
+            @Html.HiddenFor(p => p.ex_nvarchar1)
+            @Html.HiddenFor(p => p.ex_nvarchar2)
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                   
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("OKP", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "OkpID", minimumInputLength = 0, delay = 250, preloaded = ViewBag.pregen_arms, multiple = false, isReadOnly = true, IsRequired = true, isStatic = true, selectedvalue = Model.OkpID });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ManpowerStateDate, htmlAttributes: new { @class = "labelNormal  required " })
+                                <div class='input-group date dateonly' id='' style='width: 100 %; '>
+                                    @Html.EditorFor(model => model.ManpowerStateDate, new { htmlAttributes = new { @Value = DateTime.Now.ToString("dd-MM-yyyy"), @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.ManpowerStateDate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveTranManpowerState" class="btn btn-primary btn-md btnSaveTranManpowerState"><i class="fa fa-save"> </i> Process</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div id="dvManpowerProcessDt">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    //filecontrol addons
+    function testss() {
+
+    }
+
+    $(document).ready(function () {
+
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+       
+
+        $('#btnModalCloseNew').click(  function (event) {
+            try {
+                event.preventDefault();
+                $('#mcTranManpowerState').html('');
+                $('#modalcontainerTranManpowerState').modal('hide');
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        $('#btnSaveTranManpowerState').click( function (event) {
+            try {
+                event.preventDefault();
+                var form = $('#frmManpowerStateNew');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+
+                if (form.valid()) {
+
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrFamilyInfoCreate",
+                        currenturl: window.location.href,
+
+                        //manpowerstateid: $('#manpowerstateid').val(),
+                        OkpID: $('#OkpID').val(),
+                        ManpowerStateDate: GetDateFromTextBox($('#ManpowerStateDate').val()),
+                       
+                        //reviewdate: GetDateFromTextBox($('#reviewdate').val()),
+                        //reviewremarks: $('#reviewremarks').val(),
+                        //isapproved: $('#isapproved').val(),
+                        //approvedate: GetDateFromTextBox($('#approvedate').val()),
+                        //approveby: $('#approveby').val(),
+                        //approveremarks: $('#approveremarks').val(),
+
+                    });
+
+
+                    confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                        if (answer == "true") {
+
+                            $.ajax({
+                                url: baseurl + "TranManpowerState/TranManpowerStateInsert",
+                                data: input,
+                                type: 'POST',
+                                success: function (data) {
+                                    if (data.status != "failed") {
+
+                                        $("#dvManpowerProcessDt").html(data);
+
+                                        $("#dvManpowerProcessDt .clsview").click(function () {
+
+                                            try {
+                                                AddAntiForgeryToken = function (data) {
+                                                    data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                                                    return data;
+                                                };
+                                                var input = AddAntiForgeryToken({
+                                                    token: $(".txtUserSTK").val(),
+                                                    userinfo: $(".txtServerUtilObj").val(),
+                                                    useripaddress: $(".txtuserip").val(),
+                                                    sessionid: $(".txtUserSes").val(),
+                                                    methodname: "TranManpowerStateNew",
+                                                    currenturl: window.location.href,
+
+                                                    ManpowerStateID: $(this).attr('manpowerstateid'),
+                                                    ManpowerStatusID: $(this).attr('manpowerstatusid'),
+                                                });
+
+                                                $.ajax({
+                                                    url: baseurl + "TranManpowerState/GetProcessedDataDetail",
+                                                    type: 'POST',
+                                                    data: input,
+                                                    success: function (response) {
+                                                        $('#mcTranManpowerProcessDetail').html('');
+                                                        $('#mcTranManpowerProcessDetail').html(response);
+                                                        $('#modalcontainerManpowerProcessDetail').modal({ backdrop: 'static', keyboard: false });
+                                                    }
+                                                });
+
+                                            } catch (e) {
+                                                $.alert({
+                                                    title: _getCookieForLanguage("_informationTitle"),
+                                                    content: e.message,
+                                                    type: 'red'
+                                                });
+                                            }
+
+                                        });
+
+                                        //inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        //    if (answer == "true") {
+                                        //        //window.location.href =  baseurl + "TranManpowerState/TranManpowerState";
+                                        //        //$('#mcTranManpowerStateNew').html('');
+                                        //        //$('#modal-container-TranManpowerStateNew').modal('hide');
+                                        //        //GetAllDataTranManpowerState();
+                                        //    }
+                                        //    else {
+                                        //        //$('#mcTranManpowerStateNew').html('');
+                                        //        //$('#modal-container-TranManpowerStateNew').modal('hide');
+                                        //        //GetAllDataTranManpowerState();
+                                        //    }
+                                        //});
+                                    }
+
+                                    else {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+                                                //window.location.href =  baseurl + "TranManpowerState/TranManpowerState";
+                                                //$('#mcTranManpowerStateNew').html('');
+                                                //$('#modal-container-TranManpowerStateNew').modal('hide');
+                                                //GetAllDataTranManpowerState();
+                                            }
+                                            else {
+                                                //$('#mcTranManpowerStateNew').html('');
+                                                //$('#modal-container-TranManpowerStateNew').modal('hide');
+                                                //GetAllDataTranManpowerState();
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    return;
+                }
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+
+        $j('.dateonly').datetimepicker(
+            {
+                // format: 'L'
+                format: 'DD-MM-YYYY'
+            });
+
+
+    });
+</script>
+
+
+
+

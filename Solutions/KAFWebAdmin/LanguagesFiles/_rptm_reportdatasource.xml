@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="reportid" value="AR:  Report ID"></resource>
+       <resource culture="ar-kw" name="reportidRequired" value="AR: Please provide  Report ID"></resource>
+       <resource culture="ar-kw" name="reportdatasourcename" value="AR:  Report Data Source Name"></resource>
+       <resource culture="ar-kw" name="reportdatasourcenameRequired" value="AR: Please provide  Report Data Source Name"></resource>
+       <resource culture="ar-kw" name="reportdatasourcespname" value="AR:  Report Data Source S P Name"></resource>
+       <resource culture="ar-kw" name="reportdatasourcespnameRequired" value="AR: Please provide  Report Data Source S P Name"></resource>
+       <resource culture="ar-kw" name="reportdatasourcedescription" value="AR:  Report Data Source Description"></resource>
+		<resource culture="ar-kw" name="reportdatasourceList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="reportdatasourceCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="reportdatasourceUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="reportdatasourceDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="reportid" value=" Report ID"></resource>
+       <resource culture="en-us" name="reportidRequired" value="Please provide  Report ID"></resource>
+       <resource culture="en-us" name="reportdatasourcename" value=" Report Data Source Name"></resource>
+       <resource culture="en-us" name="reportdatasourcenameRequired" value="Please provide  Report Data Source Name"></resource>
+       <resource culture="en-us" name="reportdatasourcespname" value=" Report Data Source S P Name"></resource>
+       <resource culture="en-us" name="reportdatasourcespnameRequired" value="Please provide  Report Data Source S P Name"></resource>
+       <resource culture="en-us" name="reportdatasourcedescription" value=" Report Data Source Description"></resource>
+        <resource culture="en-us" name="reportdatasourceList" value="View All"></resource>
+		<resource culture="en-us" name="reportdatasourceCreate" value="Create"></resource>
+		<resource culture="en-us" name="reportdatasourceUpdate" value="Update"></resource>
+		<resource culture="en-us" name="reportdatasourceDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

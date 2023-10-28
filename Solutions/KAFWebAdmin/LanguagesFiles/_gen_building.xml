@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="buildingname" value="AR:  Building Name"></resource>
+       <resource culture="ar-kw" name="buildingnameRequired" value="AR: Please provide  Building Name"></resource>
+       <resource culture="ar-kw" name="kwgovid" value="AR:  K W Gov ID"></resource>
+       <resource culture="ar-kw" name="kwgovidRequired" value="AR: Please provide  K W Gov ID"></resource>
+       <resource culture="ar-kw" name="kwareaid" value="AR:  K W Area ID"></resource>
+       <resource culture="ar-kw" name="kwareaidRequired" value="AR: Please provide  K W Area ID"></resource>
+       <resource culture="ar-kw" name="kwblockno" value="AR:  K W Block No"></resource>
+       <resource culture="ar-kw" name="kwblocknoRequired" value="AR: Please provide  K W Block No"></resource>
+       <resource culture="ar-kw" name="kwstreet" value="AR:  K W Street"></resource>
+       <resource culture="ar-kw" name="kwstreetRequired" value="AR: Please provide  K W Street"></resource>
+       <resource culture="ar-kw" name="kwhouseno" value="AR:  K W House No"></resource>
+       <resource culture="ar-kw" name="kwhousenoRequired" value="AR: Please provide  K W House No"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="buildingList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="buildingCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="buildingUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="buildingDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="buildingname" value=" Building Name"></resource>
+       <resource culture="en-us" name="buildingnameRequired" value="Please provide  Building Name"></resource>
+       <resource culture="en-us" name="kwgovid" value=" K W Gov ID"></resource>
+       <resource culture="en-us" name="kwgovidRequired" value="Please provide  K W Gov ID"></resource>
+       <resource culture="en-us" name="kwareaid" value=" K W Area ID"></resource>
+       <resource culture="en-us" name="kwareaidRequired" value="Please provide  K W Area ID"></resource>
+       <resource culture="en-us" name="kwblockno" value=" K W Block No"></resource>
+       <resource culture="en-us" name="kwblocknoRequired" value="Please provide  K W Block No"></resource>
+       <resource culture="en-us" name="kwstreet" value=" K W Street"></resource>
+       <resource culture="en-us" name="kwstreetRequired" value="Please provide  K W Street"></resource>
+       <resource culture="en-us" name="kwhouseno" value=" K W House No"></resource>
+       <resource culture="en-us" name="kwhousenoRequired" value="Please provide  K W House No"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="buildingList" value="View All"></resource>
+		<resource culture="en-us" name="buildingCreate" value="Create"></resource>
+		<resource culture="en-us" name="buildingUpdate" value="Update"></resource>
+		<resource culture="en-us" name="buildingDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,487 @@
+﻿@model KAF.BusinessDataObjects.hr_personalinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_PersonalInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            Personal Information: @KAF.MsgContainer._hr_personalinfo.personalinfoUpdate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                       
+                        @Html.HiddenFor(m => m.hrpersonalinfoid)
+                        @Html.HiddenFor(m => m.hrbasicid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Basic Details
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <button id="btnAttachment" title="Change Profile Image" class="btn btn-primary start btnAttachment" style="background-color: white; width: 200px;height: 150px;" type="button">
+                                                <img id="imgprofile" src="@ViewBag.UserProfilePhoto" style="height:100%;" />
+                                            </button>
+                                            <br />
+                                        </div>
+                                        <div class="row">
+                                            <button type="button" id="btnRemoveImage" class="btn btn-primary btn-xs btnRemoveImage ">Remove <i class="fa fa-trash-o"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @class = "form-control",@readonly="readonly" } })
+                                        @Html.ValidationMessageFor(model => model.militarynokw, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.religionid, htmlAttributes: new { @class = "labelNormal   required " })
+                                        @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_religionEntity[0].ToString(), selectid = "religionid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Religion, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.bloodgroupid, htmlAttributes: new { @class = "labelNormal   required " })
+                                        @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_bloodgroupEntity[0].ToString(), selectid = "bloodgroupid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_BloodGroup, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.maritalstatusid, htmlAttributes: new { @class = "labelNormal   required " })
+                                        @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_maritalstatusEntity[0].ToString(), selectid = "maritalstatusid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_MaritalStatus, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.genderid, htmlAttributes: new { @class = "labelNormal   required " })
+                                        @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_genderEntity[0].ToString(), selectid = "genderid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Gender, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.nationalityid, htmlAttributes: new { @class = "labelNormal   required " })
+                                        @{Html.RenderAction("LoadNationalitySearch", "Common", new { area = "", selectid = "nationalityid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Nationality, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Kuwait Address
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @{Html.RenderAction("LoadGovCityCascadeSearch", "Common", new
+                                        {
+                                            selectidForGov = "kwgovid",
+                                            minimumInputLengthForGov = 0,
+                                            preloadedGovData = ViewBag.preloadedGen_GovCity,
+                                            multipleForGov = false,
+                                            isReadOnlyForGov = false,
+                                            isRequiredForGov = true,
+
+                                            selectidForCity = "kwareaid",
+                                            minimumInputLengthForCity = 0,
+                                            preloadedCityData = ViewBag.preloadedGen_GovArea,
+                                            multipleForCity = false,
+                                            isReadOnlyForCity = false,
+                                            isRequiredForCity = true
+                                        });}
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Block No", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.kwblockno, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.kwblockno, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Street No", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.kwstreet, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.kwstreet, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("House No", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.kwhouseno, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.kwhouseno, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Flat No", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.kwflatno, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.kwflatno, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        @Html.Label("Mobile No", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.kwmobile, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.kwmobile, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Viber No", htmlAttributes: new { @class = "labelNormal required " })
+                                        @Html.EditorFor(model => model.kwviber, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.kwviber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Personal Email", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.personalemail, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.personalemail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Official Email", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.officialemail, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.officialemail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Building Name", htmlAttributes: new { @class = "labelNormal  " })
+                                        @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_buildingEntity[0].ToString(), selectid = "buildingid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Building, multiple = false, isReadOnly = false, IsRequired = false, isStatic = false });}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Bangladesh Current Address
+                        </div>
+                        <div class="panel-body">
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Division", htmlAttributes: new { @class = "labelNormal required " })
+                                        @{Html.RenderAction("LoadDivisionSearch", "Common", new { area = "", selectid = "bdcurdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DivisionCurr, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("District", htmlAttributes: new { @class = "labelNormal required " })
+                                        @{Html.RenderAction("LoadDistrictSearch", "Common", new { area = "", selectid = "bdcurcityid", divisionid = "bdcurdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DistrictCurr, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Thana", htmlAttributes: new { @class = "labelNormal required " })
+                                        @{Html.RenderAction("LoadThanaSearch", "Common", new { area = "", selectid = "bdcurthanaid", districtid= "bdcurcityid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_ThanaCurr, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Post Office", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdcurpostoffice, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdcurpostoffice, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Road No", htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.bdcurroad, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdcurroad, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("House No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdcurhouse, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdcurhouse, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Flat No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdcurflatno, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdcurflatno, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Mobile No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdmob1, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdmob1, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Alternative Mobile No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdmob2, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdmob2, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Home Phone No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdhomephone, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdhomephone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Bangladesh Permanent Address
+                        </div>
+                        <div class="panel-body">
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Division", htmlAttributes: new { @class = "labelNormal required " })
+                                        @{Html.RenderAction("LoadDivisionSearch", "Common", new { area = "", selectid = "bdperdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DivisionPer, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("District", htmlAttributes: new { @class = "labelNormal required " })
+                                        @{Html.RenderAction("LoadDistrictSearch", "Common", new { area = "", selectid = "bdpercityid", divisionid = "bdperdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DistrictPer, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Thana", htmlAttributes: new { @class = "labelNormal required " })
+                                        @{Html.RenderAction("LoadThanaSearch", "Common", new { area = "", selectid = "bdperthanaid", districtid = "bdpercityid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Thanaper, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Post Office", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdperpostoffice, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdperpostoffice, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Road No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdperroad, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdperroad, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("House No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdperhouse, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdperhouse, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Flat No", htmlAttributes: new { @class = "labelNormal " })
+                                        @Html.EditorFor(model => model.bdperflatno, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.bdperflatno, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                        @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                        @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateHrPersonalInfo" class="btn btn-primary btn-md btnUpdateHrPersonalInfo"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="file" id="attachment" name="attachment" style="display:none" />
+}
+
+
+<script>
+//filecontrol addons
+
+    $(document).ready(function () {
+
+        $('#bdcurdivid').change(function (event) {
+            $('#bdcurcityid').val(null).trigger('change');
+        });
+
+        $('#bdcurcityid').change(function (event) {
+            $('#bdcurthanaid').val(null).trigger('change');
+        });
+
+        $('#bdperdivid').change(function (event) {
+            $('#bdpercityid').val(null).trigger('change');
+        });
+
+        $('#bdpercityid').change(function (event) {
+            $('#bdperthanaid').val(null).trigger('change');
+        });
+
+        $('#btnAttachment').click( function (event) {
+            try {
+                event.preventDefault();
+                $("#attachment").trigger("click");
+                return false;
+
+            } catch (e) {
+                alert(e);
+            }
+        });
+        $('#attachment').change( function (event) {
+            try {
+                var $fileElement = $(this);
+                var frmdata = new FormData();
+                var totalFiles = $fileElement[0].files.length;
+                for (var i = 0; i < totalFiles; i++) {
+                    var file = $fileElement[0].files[i];
+                    frmdata.append("attachment", file);
+                    frmdata.append("actualtotalfiles", 1);
+                    frmdata.append("__RequestVerificationToken", $('input[name=__RequestVerificationToken]').val());
+
+                    frmdata.append("token", $(".txtUserSTK").val());
+                    frmdata.append("userinfo", $(".txtServerUtilObj").val());
+                    frmdata.append("useripaddress", $(".txtuserip").val());
+                    frmdata.append("sessionid", $(".txtUserSes").val());
+                    frmdata.append("methodname", "Update_Profile");
+                    frmdata.append("currenturl", window.location.href); 
+                    frmdata.append("militarynokw", $("#militarynokw").val());
+                }
+                $.ajax({
+                    url: baseurl + "HrPersonalInfo/UploadAttachment/",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    data: frmdata,
+                    success: function (response) {
+                        if (response.status == "success") {
+                            $('#imgprofile').attr('src', response.title);
+                          
+                        }
+                    },
+
+                });
+
+            } catch (e) {
+
+            }
+        });
+
+        $('#btnRemoveImage').click(function (event) {
+            try {
+                event.preventDefault();
+
+
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "Role_Delete",
+                    currenturl: window.location.href,
+                    profilephotofilepath: $("#imgprofile").attr("src"),
+
+                });
+
+                confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_deleteConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                    if (answer == "true") {
+                        $.ajax({
+                            url: baseurl + "HrPersonalInfo/DeleteAttachment",
+                            data: input,
+                            type: 'POST',
+                            async: false,
+                            success: function (response) {
+                                if (response.status === "success") {
+                                    inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        $('#imgprofile').attr('src', response.redirectUrl); 
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            } catch (e) {
+                alert(e);
+            }
+           
+        });
+    });
+
+
+</script>
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="userroledetlid" value="AR:  User Role Detl ID"></resource>
+       <resource culture="ar-kw" name="userroledetlidRequired" value="AR: Please provide  User Role Detl ID"></resource>
+       <resource culture="ar-kw" name="userroleid" value="AR:  User Role ID"></resource>
+       <resource culture="ar-kw" name="userroleidRequired" value="AR: Please provide  User Role ID"></resource>
+       <resource culture="ar-kw" name="userid" value="AR:  User ID"></resource>
+       <resource culture="ar-kw" name="useridRequired" value="AR: Please provide  User ID"></resource>
+       <resource culture="ar-kw" name="roleid" value="AR:  Role ID"></resource>
+       <resource culture="ar-kw" name="roleidRequired" value="AR: Please provide  Role ID"></resource>
+       <resource culture="ar-kw" name="entitykey" value="AR:  Entity Key"></resource>
+       <resource culture="ar-kw" name="allchild" value="AR:  All Child"></resource>
+       <resource culture="ar-kw" name="isunitadmin" value="AR:  Is Unit Admin"></resource>
+       <resource culture="ar-kw" name="allunit" value="AR:  All Unit"></resource>
+       <resource culture="ar-kw" name="allprofile" value="AR:  All Profile"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="userroledetlentitymapList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="userroledetlentitymapCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="userroledetlentitymapUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="userroledetlentitymapDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="userroledetlid" value=" User Role Detl ID"></resource>
+       <resource culture="en-us" name="userroledetlidRequired" value="Please provide  User Role Detl ID"></resource>
+       <resource culture="en-us" name="userroleid" value=" User Role ID"></resource>
+       <resource culture="en-us" name="userroleidRequired" value="Please provide  User Role ID"></resource>
+       <resource culture="en-us" name="userid" value=" User ID"></resource>
+       <resource culture="en-us" name="useridRequired" value="Please provide  User ID"></resource>
+       <resource culture="en-us" name="roleid" value=" Role ID"></resource>
+       <resource culture="en-us" name="roleidRequired" value="Please provide  Role ID"></resource>
+       <resource culture="en-us" name="entitykey" value=" Entity Key"></resource>
+       <resource culture="en-us" name="allchild" value=" All Child"></resource>
+       <resource culture="en-us" name="isunitadmin" value=" Is Unit Admin"></resource>
+       <resource culture="en-us" name="allunit" value=" All Unit"></resource>
+       <resource culture="en-us" name="allprofile" value=" All Profile"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="userroledetlentitymapList" value="View All"></resource>
+		<resource culture="en-us" name="userroledetlentitymapCreate" value="Create"></resource>
+		<resource culture="en-us" name="userroledetlentitymapUpdate" value="Update"></resource>
+		<resource culture="en-us" name="userroledetlentitymapDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

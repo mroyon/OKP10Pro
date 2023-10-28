@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = KAF.MsgContainer._useraccountsprof.useraccountsprofList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("UserAccountsProf/UserAccountsProfNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewUserAccountsProf">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="UserAccountsProfDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+							 <th>@KAF.MsgContainer._useraccountsprof.firstname</th>                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-UserAccountsProfNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcUserAccountsProfNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-UserAccountsProfEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcUserAccountsProfEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-UserAccountsProfDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcUserAccountsProfDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/UserAccountsProf/LandingUserAccountsProf.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/UserAccountsProf/NewUserAccountsProf.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/UserAccountsProf/EditUserAccountsProf.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/UserAccountsProf/DetailUserAccountsProf.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

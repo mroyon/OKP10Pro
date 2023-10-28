@@ -1,0 +1,84 @@
+﻿
+@{ string minchar = ViewBag.minchar;
+    string maxlength = ViewBag.maxlength;
+    string hintText = ViewBag.hintText;
+    String txtid = ViewBag.txtid;
+
+    @*<div class="row">
+        <div class="col-md-12">
+            <div class="form-group">*@
+                @*@Html.Label("User", htmlAttributes: new { @class = "labelNormal   required " })*@
+                @Html.Editor(txtid, new { htmlAttributes = new { @class = "form-control" } })
+            @*</div>
+        </div>
+    </div>*@
+}
+
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="@BundleTable.Bundles.ResolveBundleUrl("~/Bundles/js")">\x3C/script>');
+    }
+</script>
+<script>
+    function ETST() {
+
+    }
+    $(document).ready(function () {
+
+        var path = $('#txtBaseUrl').val() + '/Common/SearchUser';
+        $("#@txtid").tokenInput(path,
+            { preventDuplicates: true, hintText: '@hintText', minChars: @minchar, tokenLimit: @maxlength});
+
+        var data = JSON.parse('@ViewBag.preloaded');
+
+           if (data != null) {
+              var i;
+              for (i = 0; i < data.length; i+=2) {
+                  $("#@txtid").tokenInput("add", { id: data[i], name: data[i+1] });
+              }
+        }
+        $(".token-input-dropdown").css("z-index", "9999");
+
+        @*var data = "";
+        var headerauth = $("#txtwebapitoken").val();
+        var apiUrl = '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+        $("#@txtid").tokenInput(
+            $.ajax({
+                url: apiUrl + "api/User/SearchUserList",
+                type: 'POST',
+                dataType: 'json',
+                data: "=" + $("#token-input-txtUser").val(),
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                headers: {
+                    'Authorization': headerauth
+                },
+                success: function (response) {
+                    data = response;
+                }
+            }),
+            {
+                method: 'POST',
+                queryParam: 'q',
+                preventDuplicates: true,
+                hintText: '@hintText',
+                minChars: @minchar,
+                tokenLimit: @maxlength,
+                method: "POST"
+            });
+
+          if (data != null) {
+              var i;
+              for (i = 0; i < data.length; i+=2) {
+                  $("#@txtid").tokenInput("add", { id: data[i], name: data[i+1] });
+              }
+
+            }
+        $(".token-input-dropdown").css("z-index", "9999");*@
+    });
+
+
+
+</script>
+
+
+

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="replacementid" value="AR:  Replacement ID"></resource>
+       <resource culture="ar-kw" name="replacementidRequired" value="AR: Please provide  Replacement ID"></resource>
+       <resource culture="ar-kw" name="passportrecvdate" value="AR:  Passport Recv Date"></resource>
+       <resource culture="ar-kw" name="passportrecvdateRequired" value="AR: Please provide  Passport Recv Date"></resource>
+       <resource culture="ar-kw" name="passportletterdate" value="AR:  Passport Letter Date"></resource>
+       <resource culture="ar-kw" name="passportletterdateRequired" value="AR: Please provide  Passport Letter Date"></resource>
+       <resource culture="ar-kw" name="passportletterno" value="AR:  Passport Letter No"></resource>
+       <resource culture="ar-kw" name="passportletternoRequired" value="AR: Please provide  Passport Letter No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="reppassportinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="reppassportinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="reppassportinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="reppassportinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="replacementid" value=" Replacement ID"></resource>
+       <resource culture="en-us" name="replacementidRequired" value="Please provide  Replacement ID"></resource>
+       <resource culture="en-us" name="passportrecvdate" value=" Passport Recv Date"></resource>
+       <resource culture="en-us" name="passportrecvdateRequired" value="Please provide  Passport Recv Date"></resource>
+       <resource culture="en-us" name="passportletterdate" value=" Passport Letter Date"></resource>
+       <resource culture="en-us" name="passportletterdateRequired" value="Please provide  Passport Letter Date"></resource>
+       <resource culture="en-us" name="passportletterno" value=" Passport Letter No"></resource>
+       <resource culture="en-us" name="passportletternoRequired" value="Please provide  Passport Letter No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="reppassportinfoList" value="View All"></resource>
+		<resource culture="en-us" name="reppassportinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="reppassportinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="reppassportinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

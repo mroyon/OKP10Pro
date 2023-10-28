@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="servicestatusname" value="AR:  Service Status Name"></resource>
+       <resource culture="ar-kw" name="servicestatusnameRequired" value="AR: Please provide  Service Status Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="servicestatusList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="servicestatusCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="servicestatusUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="servicestatusDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="servicestatusname" value=" Service Status Name"></resource>
+       <resource culture="en-us" name="servicestatusnameRequired" value="Please provide  Service Status Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="servicestatusList" value="View All"></resource>
+		<resource culture="en-us" name="servicestatusCreate" value="Create"></resource>
+		<resource culture="en-us" name="servicestatusUpdate" value="Update"></resource>
+		<resource culture="en-us" name="servicestatusDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

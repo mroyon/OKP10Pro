@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="forceid" value="AR:  Force ID"></resource>
+       <resource culture="ar-kw" name="countryid" value="AR:  Country ID"></resource>
+       <resource culture="ar-kw" name="tradename" value="AR:  Trade Name"></resource>
+       <resource culture="ar-kw" name="tradenameRequired" value="AR: Please provide  Trade Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="tradeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="tradeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="tradeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="tradeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="forceid" value=" Force ID"></resource>
+       <resource culture="en-us" name="countryid" value=" Country ID"></resource>
+       <resource culture="en-us" name="tradename" value=" Trade Name"></resource>
+       <resource culture="en-us" name="tradenameRequired" value="Please provide  Trade Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="tradeList" value="View All"></resource>
+		<resource culture="en-us" name="tradeCreate" value="Create"></resource>
+		<resource culture="en-us" name="tradeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="tradeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

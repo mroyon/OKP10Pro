@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="reportrolename" value="AR:  Report Role Name"></resource>
+       <resource culture="ar-kw" name="reportrolenameRequired" value="AR: Please provide  Report Role Name"></resource>
+       <resource culture="ar-kw" name="description" value="AR:  Description"></resource>
+		<resource culture="ar-kw" name="reportroleList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="reportroleCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="reportroleUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="reportroleDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="reportrolename" value=" Report Role Name"></resource>
+       <resource culture="en-us" name="reportrolenameRequired" value="Please provide  Report Role Name"></resource>
+       <resource culture="en-us" name="description" value=" Description"></resource>
+        <resource culture="en-us" name="reportroleList" value="View All"></resource>
+		<resource culture="en-us" name="reportroleCreate" value="Create"></resource>
+		<resource culture="en-us" name="reportroleUpdate" value="Update"></resource>
+		<resource culture="en-us" name="reportroleDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="passportno" value="AR:  Passport No"></resource>
+       <resource culture="ar-kw" name="passportnoRequired" value="AR: Please provide  Passport No"></resource>
+       <resource culture="ar-kw" name="passportissuedate" value="AR:  Passport Issue Date"></resource>
+       <resource culture="ar-kw" name="passportexpirydate" value="AR:  Passport Expiry Date"></resource>
+       <resource culture="ar-kw" name="passportissuecountryid" value="AR:  Passport Issue Country ID"></resource>
+       <resource culture="ar-kw" name="isfamilypassport" value="AR:  Is Family Passport"></resource>
+       <resource culture="ar-kw" name="passportfiledescription" value="AR:  Passport File Description"></resource>
+       <resource culture="ar-kw" name="passportfilepath" value="AR:  Passport File Path"></resource>
+       <resource culture="ar-kw" name="passportfilename" value="AR:  Passport File Name"></resource>
+       <resource culture="ar-kw" name="passportfiletype" value="AR:  Passport File Type"></resource>
+       <resource culture="ar-kw" name="passportextension" value="AR:  Passport Extension"></resource>
+       <resource culture="ar-kw" name="passportfileid" value="AR:  Passport File ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+       <resource culture="ar-kw" name="iscurrent" value="AR:  Is Current"></resource>
+		<resource culture="ar-kw" name="passportinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="passportinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="passportinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="passportinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="passportno" value=" Passport No"></resource>
+       <resource culture="en-us" name="passportnoRequired" value="Please provide  Passport No"></resource>
+       <resource culture="en-us" name="passportissuedate" value=" Passport Issue Date"></resource>
+       <resource culture="en-us" name="passportexpirydate" value=" Passport Expiry Date"></resource>
+       <resource culture="en-us" name="passportissuecountryid" value=" Passport Issue Country ID"></resource>
+       <resource culture="en-us" name="isfamilypassport" value=" Is Family Passport"></resource>
+       <resource culture="en-us" name="passportfiledescription" value=" Passport File Description"></resource>
+       <resource culture="en-us" name="passportfilepath" value=" Passport File Path"></resource>
+       <resource culture="en-us" name="passportfilename" value=" Passport File Name"></resource>
+       <resource culture="en-us" name="passportfiletype" value=" Passport File Type"></resource>
+       <resource culture="en-us" name="passportextension" value=" Passport Extension"></resource>
+       <resource culture="en-us" name="passportfileid" value=" Passport File ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+       <resource culture="en-us" name="iscurrent" value=" Is Current"></resource>
+        <resource culture="en-us" name="passportinfoList" value="View All"></resource>
+		<resource culture="en-us" name="passportinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="passportinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="passportinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="visaissueid" value="AR:  Visa Issue ID"></resource>
+       <resource culture="ar-kw" name="visaissueidRequired" value="AR: Please provide  Visa Issue ID"></resource>
+       <resource culture="ar-kw" name="visasentdate" value="AR:  Visa Sent Date"></resource>
+       <resource culture="ar-kw" name="visasentdateRequired" value="AR: Please provide  Visa Sent Date"></resource>
+       <resource culture="ar-kw" name="visasentletterdate" value="AR:  Visa Sent Letter Date"></resource>
+       <resource culture="ar-kw" name="visasentletterdateRequired" value="AR: Please provide  Visa Sent Letter Date"></resource>
+       <resource culture="ar-kw" name="visasentletterno" value="AR:  Visa Sent Letter No"></resource>
+       <resource culture="ar-kw" name="visasentletternoRequired" value="AR: Please provide  Visa Sent Letter No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="visasentinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="visasentinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="visasentinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="visasentinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="visaissueid" value=" Visa Issue ID"></resource>
+       <resource culture="en-us" name="visaissueidRequired" value="Please provide  Visa Issue ID"></resource>
+       <resource culture="en-us" name="visasentdate" value=" Visa Sent Date"></resource>
+       <resource culture="en-us" name="visasentdateRequired" value="Please provide  Visa Sent Date"></resource>
+       <resource culture="en-us" name="visasentletterdate" value=" Visa Sent Letter Date"></resource>
+       <resource culture="en-us" name="visasentletterdateRequired" value="Please provide  Visa Sent Letter Date"></resource>
+       <resource culture="en-us" name="visasentletterno" value=" Visa Sent Letter No"></resource>
+       <resource culture="en-us" name="visasentletternoRequired" value="Please provide  Visa Sent Letter No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="visasentinfoList" value="View All"></resource>
+		<resource culture="en-us" name="visasentinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="visasentinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="visasentinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

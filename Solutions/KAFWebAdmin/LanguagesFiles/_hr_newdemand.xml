@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="demandletterno" value="AR:  Demand Letter No"></resource>
+       <resource culture="ar-kw" name="demandletternoRequired" value="AR: Please provide  Demand Letter No"></resource>
+       <resource culture="ar-kw" name="demandletterdate" value="AR:  Demand Letter Date"></resource>
+       <resource culture="ar-kw" name="demandletterdateRequired" value="AR: Please provide  Demand Letter Date"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="newdemandList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="newdemandCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="newdemandUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="newdemandDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="demandletterno" value=" Demand Letter No"></resource>
+       <resource culture="en-us" name="demandletternoRequired" value="Please provide  Demand Letter No"></resource>
+       <resource culture="en-us" name="demandletterdate" value=" Demand Letter Date"></resource>
+       <resource culture="en-us" name="demandletterdateRequired" value="Please provide  Demand Letter Date"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="newdemandList" value="View All"></resource>
+		<resource culture="en-us" name="newdemandCreate" value="Create"></resource>
+		<resource culture="en-us" name="newdemandUpdate" value="Update"></resource>
+		<resource culture="en-us" name="newdemandDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

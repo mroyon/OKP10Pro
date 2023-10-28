@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Country";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">Country</h1>
+                <button type="submit" class="btn btn-default btn-md" data-url="@PageData["baseUrl"]@Url.Action("Country_Create", "Country")" id="btnCreateCountry">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Add Country
+                </button>
+            </div>
+            <div class="panel-body">
+                <table id="Countrysdt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>CountryNameAr</th>
+                             <th>@KAF.MsgContainer._CommonHtml._listAction</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="modal fade" id="createCountryModal" tabindex="-1" Country="dialog" aria-labelledby="CreateCountryModal" aria-hidden="true" data-backdrop="static">*@
+<div id="createCountryContainer">
+</div>
+@*</div>*@
+
+<div class="modal fade" id="editCountryModal" tabindex="-1" Country="dialog" aria-labelledby="EditCountryModal" aria-hidden="true" data-backdrop="static">
+    <div id="editCountryContainer">
+    </div>
+</div>
+
+<div class="modal fade" id="detailsCountryModal" tabindex="-1" Country="dialog" aria-labelledby="DetailsCountryModal" aria-hidden="true" data-backdrop="static">
+    <div id="detailsCountryContainer">
+    </div>
+</div>
+
+<div class="modal fade" id="deleteCountryModal" tabindex="-1" Country="dialog" aria-labelledby="DeleteCountryModal" aria-hidden="true" data-backdrop="static">
+    <div id="deleteCountryContainer">
+    </div>
+</div>
+
+<input type="hidden" value="@PageData["baseUrl"]" id="txtBaseUrl" />
+
+@*@Html.Action("AdvancedSearch")*@
+
+<script type="text/javascript" src="~/DesignsAndScripts/PageWise/Country/Country.js"></script>

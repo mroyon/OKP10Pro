@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="deathinfoid" value="AR:  Death Info I D"></resource>
+       <resource culture="ar-kw" name="deathinfoidRequired" value="AR: Please provide  Death Info I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  H R Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  H R Basic I D"></resource>
+       <resource culture="ar-kw" name="deathdate" value="AR:  Death Date"></resource>
+       <resource culture="ar-kw" name="deathdateRequired" value="AR: Please provide  Death Date"></resource>
+       <resource culture="ar-kw" name="deathreason" value="AR:  Death Reason"></resource>
+       <resource culture="ar-kw" name="deathreasonRequired" value="AR: Please provide  Death Reason"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="deathinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="deathinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="deathinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="deathinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="deathinfoid" value=" Death Info I D"></resource>
+       <resource culture="en-us" name="deathinfoidRequired" value="Please provide  Death Info I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" H R Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  H R Basic I D"></resource>
+       <resource culture="en-us" name="deathdate" value=" Death Date"></resource>
+       <resource culture="en-us" name="deathdateRequired" value="Please provide  Death Date"></resource>
+       <resource culture="en-us" name="deathreason" value=" Death Reason"></resource>
+       <resource culture="en-us" name="deathreasonRequired" value="Please provide  Death Reason"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="deathinfoList" value="View All"></resource>
+		<resource culture="en-us" name="deathinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="deathinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="deathinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

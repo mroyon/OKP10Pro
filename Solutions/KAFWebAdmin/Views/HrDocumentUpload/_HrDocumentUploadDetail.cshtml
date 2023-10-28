@@ -1,0 +1,91 @@
+﻿@model KAF.BusinessDataObjects.hr_documentuploadEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmDocumentUploadDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_documentupload.documentuploadDetails
+        </div>
+        
+        <div class="modal-body">
+            <div class="form-horizontal container">
+                <div class="row">
+                    @Html.HiddenFor(m => m.docuploadid)
+                    @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    @Html.HiddenFor(m => m.hrbasicid)
+                    @Html.HiddenFor(m => m.filepath)
+                    @Html.HiddenFor(m => m.filename, new { @id = "existingFileName" })
+                    @Html.HiddenFor(m => m.extension)
+                </div>
+                <div class="row ">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.doctypeid, htmlAttributes: new { @class = "labelNormal required " })
+                            @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_documenttypeEntity[0].ToString(), selectid = "doctypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_FileType, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+                            @Html.ValidationMessageFor(model => model.doctypeid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.docname, htmlAttributes: new { @class = "labelNormal required " })
+                            @Html.EditorFor(model => model.docname, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.docname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @*<input type="file" id="fileupload" name="fileupload" class="fileupload" />*@
+                            <div id="dvfile">
+                                @{
+                                    if (@Model.filename != null)
+                                    {
+                                        <a id="newfile" href="@Model.filename" download>  <img src="~/DesignsAndScripts/Images/pdf-icon.png" style="height:100px; width:100px;" /></a>
+                                    }
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                            @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-toolbar">
+                    <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+
+
+ 
+
+</script>
+    
+
+
+

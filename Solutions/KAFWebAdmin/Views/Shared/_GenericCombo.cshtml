@@ -1,0 +1,273 @@
+﻿@{
+    /**/
+
+    /**/
+
+    /**/
+
+    string selectid = ViewBag.selectid;
+    int delay = ViewBag.delay;
+    int minimumInputLength = ViewBag.minimumInputLength;
+    bool isReadOnly = ViewBag.isReadOnly;
+    bool multiple = ViewBag.multiple;
+    string strisReadOnly = isReadOnly.ToString().ToLower();
+    string strmultiple = multiple.ToString().ToLower();
+    string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower();
+    bool isRequired = ViewBag.isRequired;
+    string EntityName = ViewBag.EntityName;
+    bool isStatic = ViewBag.isStatic;
+    string selectedvalue = ViewBag.selectedvalue;
+
+    //@Html.Raw(strtype);
+
+    if (isRequired == true)
+    {
+        <select name="@selectid" id="@selectid" class="form-control @selectid" style="width:100%;display:block;box-sizing:border-box"
+                data-val="true" data-val-required="@KAF.MsgContainer._CommonHtml.pleaseselect">
+            @if (multiple == false)
+            {
+                <option value="">@KAF.MsgContainer._CommonHtml.pleaseselect</option>
+
+            }
+        </select>
+        <span class="text-danger field-validation-error" data-valmsg-for="@selectid" data-valmsg-replace="true"></span>
+    }
+    else
+    {
+        <select name="@selectid" id="@selectid" class="form-control @selectid" style="width:100%;display:block;box-sizing:border-box">
+            @if (multiple == false)
+            {
+                <option value="">@KAF.MsgContainer._CommonHtml.pleaseselect</option>
+
+            }
+        </select>
+    }
+
+}
+
+@if (isStatic == true)
+{
+    if (ViewBag.data != null)
+    {
+        <script>
+            var @selectid =@Html.Raw(ViewBag.staticData);
+
+        $(document).ready(function () {
+            $("#@selectid").select2({
+                placeholder: '@KAF.MsgContainer._CommonHtml.pleaseselect',
+                minimumInputLength: @minimumInputLength,
+                allowClear: true,
+                multiple: @strmultiple,
+                data: $.map(@selectid, function (obj) {
+                    return { id: obj.comId, text: obj.comText };
+                })
+
+            });
+
+            @if (isReadOnly==true)
+             {
+                 <Text>
+                     $("#@selectid").prop("disabled", true);
+                     $("#@selectid-multi").prop("disabled", true);
+                </Text>
+            }
+
+            var preloadarray = [];
+            for (i = 0; i < (@Html.Raw(ViewBag.data)).length; i++) {
+                preloadarray.push((@Html.Raw(ViewBag.data))[i].comId);
+            }
+
+            $('#@selectid').val(preloadarray); // Select the option with a value of '1'
+            $('#@selectid').trigger('change'); // Notify any JS components that the value changed
+
+
+            });
+
+
+        </script>
+    }
+    else
+    {
+        <script>
+            var @selectid =@Html.Raw(ViewBag.staticData);
+           
+        $(document).ready(function () {
+
+            $("#@selectid").select2({
+                placeholder: '@KAF.MsgContainer._CommonHtml.pleaseselect',
+                minimumInputLength: @minimumInputLength,
+                allowClear: true,
+                multiple: @strmultiple,
+                data: $.map(@selectid, function (obj) {
+                    return { id: obj.comId, text: obj.comText };
+                })
+            });
+
+            @if (selectedvalue != null && selectedvalue != "") {
+                  <Text>
+                     $("#@selectid").val(@Html.Raw(selectedvalue));
+                     $("#@selectid").select2().trigger('change');
+                 </Text>
+            }
+
+            @if (isReadOnly==true)
+             {
+                 <Text>
+                     $("#@selectid").prop("disabled", true);
+                     $("#@selectid-multi").prop("disabled", true);
+                </Text>
+             }
+
+        });
+        </script>
+    }
+
+}
+else
+{
+
+    if (ViewBag.data != null)
+    {
+        <script>
+        //var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+            function test() {
+
+            }
+     $(document).ready(function () {
+         //var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectid').select2(
+             {
+                 placeholder:'@KAF.MsgContainer._CommonHtml.pleaseselect',
+                 minimumInputLength: @minimumInputLength,
+                 allowClear: true,
+                 multiple: @strmultiple,
+                 ajax: {
+                     url: '/DataCache/GetGenericComboData', @*@Url.Action("GetGenericComboData", "DataCache")*@
+                     dataType: 'json',
+                     async: true,
+                     delay: @delay,
+                     data: function (params) {
+                         return {
+                             pageSize: 1000,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term,
+                             EntityName: '@EntityName'
+                         };
+                     },
+                     processResults: function (data, params) {
+                         //console.log(data);
+                         var total = 1000;
+                         params.page = params.page || 1;
+                         var more = (params.page * 1000) < total;
+                         return {
+                             results: $.map(data, function (obj) {
+                                 //console.log(obj.comId, obj.comText );
+                                 return { id: obj.comId, text: obj.comText };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 1000) < 1000
+                             }
+                         };
+                     }
+                 }
+                 ,initSelection: function (element, callback) {
+                     callback(@Html.Raw(ViewBag.data));
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnly==true)
+         {
+             <Text>
+                 $("#@selectid").prop("disabled", true);
+                 $("#@selectid-multi").prop("disabled", true);
+            </Text>
+         }
+
+         var dat =@Html.Raw(ViewBag.data);
+         for (i = 0; i < dat.length; i++) {
+             //console.log(dat[i]);
+             $('#@selectid').append('<option value="' + dat[i].comId + '" selected="selected">' + dat[i].comText + '</option>');
+         }
+
+
+
+     });
+        </script>
+    }
+    else
+    {
+        <script>
+        //var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectid').select2(
+             {
+                placeholder: '@KAF.MsgContainer._CommonHtml.pleaseselect',
+                 minimumInputLength: @minimumInputLength,
+                 allowClear: true,
+                 multiple: @strmultiple,
+                 ajax: {
+                     url: '/DataCache/GetGenericComboData', @*@Url.Action("GetGenericComboData", "DataCache")*@
+                     dataType: 'json',
+                     async: true,
+                     delay: @delay,
+                     data: function (params) {
+                         return {
+                             pageSize: 1000,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term,
+
+                             EntityName: '@EntityName'
+                         };
+                     },
+                     processResults: function (data, params) {
+                         //console.log(data);
+                         var total = 1000;
+                         params.page = params.page || 1;
+                         var more = (params.page * 1000) < total;
+                         return {
+                             results: $.map(data, function (obj) {
+                                 //console.log(obj.comId, obj.comText );
+                                 return { id: obj.comId, text: obj.comText };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 1000) < 1000
+                             }
+                         };
+                     }
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnly==true)
+         {
+             <Text>
+                 $("#@selectid").prop("disabled", true);
+                 $("#@selectid-multi").prop("disabled", true);
+            </Text>
+         }
+
+
+
+     });
+        </script>
+    }
+}
+
+

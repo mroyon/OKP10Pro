@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="okpid" value="AR:  Okp I D"></resource>
+       <resource culture="ar-kw" name="okpidRequired" value="AR: Please provide  Okp I D"></resource>
+       <resource culture="ar-kw" name="rankid" value="AR:  Rank I D"></resource>
+       <resource culture="ar-kw" name="rankidRequired" value="AR: Please provide  Rank I D"></resource>
+       <resource culture="ar-kw" name="groupid" value="AR:  Group I D"></resource>
+       <resource culture="ar-kw" name="groupidRequired" value="AR: Please provide  Group I D"></resource>
+       <resource culture="ar-kw" name="authstrength" value="AR:  Auth Strength"></resource>
+       <resource culture="ar-kw" name="authstrengthRequired" value="AR: Please provide  Auth Strength"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="authorizestrengthList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="authorizestrengthCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="authorizestrengthUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="authorizestrengthDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="okpid" value=" Okp I D"></resource>
+       <resource culture="en-us" name="okpidRequired" value="Please provide  Okp I D"></resource>
+       <resource culture="en-us" name="rankid" value=" Rank I D"></resource>
+       <resource culture="en-us" name="rankidRequired" value="Please provide  Rank I D"></resource>
+       <resource culture="en-us" name="groupid" value=" Group I D"></resource>
+       <resource culture="en-us" name="groupidRequired" value="Please provide  Group I D"></resource>
+       <resource culture="en-us" name="authstrength" value=" Auth Strength"></resource>
+       <resource culture="en-us" name="authstrengthRequired" value="Please provide  Auth Strength"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="authorizestrengthList" value="View All"></resource>
+		<resource culture="en-us" name="authorizestrengthCreate" value="Create"></resource>
+		<resource culture="en-us" name="authorizestrengthUpdate" value="Update"></resource>
+		<resource culture="en-us" name="authorizestrengthDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

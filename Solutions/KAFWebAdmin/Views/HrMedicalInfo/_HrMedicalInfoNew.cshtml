@@ -1,0 +1,276 @@
+﻿@model KAF.BusinessDataObjects.hr_medicalinfoEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_MedicalInfoNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_medicalinfo.hr_medicalinfoCreate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.miltmedicalid)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.hrbasicid, htmlAttributes: new { @class = "labelNormal required " })
+							 @Html.EditorFor(model => model.hrbasicid, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.hrbasicid, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissionno, htmlAttributes: new { @class = "labelNormal required " })
+								 @Html.EditorFor(model => model.medcommissionno, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissionno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.medcommsisiondate, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.medcommsisiondate, new {  htmlAttributes = new {  @Value = Model.medcommsisiondate != null ? Convert.ToDateTime(Model.medcommsisiondate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.medcommsisiondate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissionfiledescription, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medcommissionfiledescription, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissionfiledescription, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissionfilepath, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medcommissionfilepath, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissionfilepath, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+
+					 <div class="row">
+						 <div class="col-md-12">
+							 <div class="form-group">
+								 <div id="medcommissionfiledescription"></div>
+							</div>
+						</div>
+					</div>
+
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissionfilename, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medcommissionfilename, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissionfilename, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissionfiletype, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medcommissionfiletype, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissionfiletype, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissionextension, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medcommissionextension, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissionextension, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissionfileno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medcommissionfileno, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissionfileno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medcommissiondesc, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medcommissiondesc, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medcommissiondesc, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.docno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.docno, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.docno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.docdate, htmlAttributes: new { @class = "labelNormal   " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.docdate, new {  htmlAttributes = new {  @Value = Model.docdate != null ? Convert.ToDateTime(Model.docdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.docdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.docfiledescription, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.docfiledescription, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.docfiledescription, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+
+					 <div class="row">
+						 <div class="col-md-12">
+							 <div class="form-group">
+								 <div id="docfiledescription"></div>
+							</div>
+						</div>
+					</div>
+
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.docfilepath, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.docfilepath, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.docfilepath, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.docfilename, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.docfilename, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.docfilename, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.docfiletype, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.docfiletype, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.docfiletype, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.docextension, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.docextension, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.docextension, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.docfileno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.docfileno, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.docfileno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.medaction, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.medaction, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.medaction, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveHrMedicalInfo" class="btn btn-primary btn-md btnSaveHrMedicalInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+ var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
+
+
+$('.footable').footable({
+	 calculateWidthOverride: function () {
+		 return { width: $(window).width() };
+	 }
+});
+
+
+
+$(document).ready(function () {
+	 $('#medcommissionfiledescriptionupld').kaffileUploader({
+		 _tableid: 'tbl_medcommissionfiledescription', 
+		 _colname: 'medcommissionfiledescription',
+		 _tabname: 'Hr_MedicalInfo',
+		 _fileuploadbuttontext: 'Upload files',
+		 _modelid: 'File_upload_for_MedCommission_Document',
+		 _modeltext: 'File upload for MedCommission Document',
+		 _fileinputname: 'inpfilemedcommissionfiledescription',
+		 _containeruploadpreview: 'medcommissionfiledescriptionuploadpreview',
+		 _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
+		 _ismultiple: true,
+		 _fileobject: fileobject
+
+});
+$(document).ready(function () {
+	 $('#docfiledescriptionupld').kaffileUploader({
+		 _tableid: 'tbl_docfiledescription', 
+		 _colname: 'docfiledescription',
+		 _tabname: 'Hr_MedicalInfo',
+		 _fileuploadbuttontext: 'Upload files',
+		 _modelid: 'File_upload_for_Doc_Document',
+		 _modeltext: 'File upload for Doc Document',
+		 _fileinputname: 'inpfiledocfiledescription',
+		 _containeruploadpreview: 'docfiledescriptionuploadpreview',
+		 _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
+		 _ismultiple: true,
+		 _fileobject: fileobject
+
+});
+
+
+ $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+</script>
+
+
+
+

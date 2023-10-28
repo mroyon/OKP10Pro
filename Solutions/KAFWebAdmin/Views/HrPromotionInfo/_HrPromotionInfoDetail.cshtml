@@ -1,0 +1,248 @@
+﻿@model KAF.BusinessDataObjects.hr_promotioninfoEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_PromotionInfoDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_promotioninfo.hr_promotioninfoDetails
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.promotionid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.hrbasicid, htmlAttributes: new { @class = "labelNormal required " })
+							 @Html.EditorFor(model => model.hrbasicid, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.hrbasicid, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.promotiondate, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.promotiondate, new {  htmlAttributes = new {  @readonly = "readonly",  @Value = Model.promotiondate != null ? Convert.ToDateTime(Model.promotiondate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.promotiondate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.promotiontypeid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_promotiontype[0].ToString(), selectid = "promotiontypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_PromotionType, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.torankid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_rank[0].ToString(), selectid = "torankid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Rank, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.promotionno, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.promotionno, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.promotionno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.promotiondesignation, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.promotiondesignation, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.promotiondesignation, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.promotiondelayreason, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.promotiondelayreason, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.promotiondelayreason, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.promotiondelaydocno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.promotiondelaydocno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.promotiondelaydocno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.promotiondelaydocdate, htmlAttributes: new { @class = "labelNormal   " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.promotiondelaydocdate, new {  htmlAttributes = new {  @readonly = "readonly",  @Value = Model.promotiondelaydocdate != null ? Convert.ToDateTime(Model.promotiondelaydocdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.promotiondelaydocdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.promotiondelaystartdate, htmlAttributes: new { @class = "labelNormal   " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.promotiondelaystartdate, new {  htmlAttributes = new {  @readonly = "readonly",  @Value = Model.promotiondelaystartdate != null ? Convert.ToDateTime(Model.promotiondelaystartdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.promotiondelaystartdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.promotiondelayperiod, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.promotiondelayperiod, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.promotiondelayperiod, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.orderno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.orderno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.orderno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.orderdate, htmlAttributes: new { @class = "labelNormal   " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.orderdate, new {  htmlAttributes = new {  @readonly = "readonly",  @Value = Model.orderdate != null ? Convert.ToDateTime(Model.orderdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.orderdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.orderfiledescription, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.orderfiledescription, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.orderfiledescription, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.orderfilepath, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.orderfilepath, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.orderfilepath, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+
+					 <div class="row">
+						 <div class="col-md-12">
+							 <div class="form-group">
+								 <div id="orderfiledescription"></div>
+							</div>
+						</div>
+					</div>
+
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.orderfilename, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.orderfilename, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.orderfilename, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.orderfiletype, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.orderfiletype, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.orderfiletype, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.orderextension, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.orderextension, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.orderextension, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.orderfileno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.orderfileno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.orderfileno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+ var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
+
+
+$('.footable').footable({
+	 calculateWidthOverride: function () {
+		 return { width: $(window).width() };
+	 }
+});
+
+
+
+$(document).ready(function () {
+	 var _orderfiledescriptionupld = $('#orderfiledescriptionupld').kaffileUploader({
+		 _tableid: 'tbl_orderfiledescription', 
+		 _colname: 'orderfiledescription',
+		 _tabname: 'Hr_PromotionInfo',
+		 _fileuploadbuttontext: 'Upload files',
+		 _modelid: 'File_upload_for_Order_Document',
+		 _modeltext: 'File upload for Order Document',
+		 _fileinputname: 'inpfileorderfiledescription',
+		 _containeruploadpreview: 'orderfiledescriptionuploadpreview',
+		 _containerdeletebuttontext: '',
+		 _ismultiple: true,
+		 _fileobject: fileobject
+
+		 _orderfiledescriptionupld.loadpreloaddata(fileobject, $("#orderfiledescriptionuploadpreview"), '', 'orderfiledescription');
+
+});
+
+</script>
+    
+
+
+

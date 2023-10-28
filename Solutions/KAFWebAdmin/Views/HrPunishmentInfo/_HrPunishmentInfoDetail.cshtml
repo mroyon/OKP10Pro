@@ -1,0 +1,105 @@
+﻿@model KAF.BusinessDataObjects.hr_punishmentinfoEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_PunishmentInfoDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_punishmentinfo.hr_punishmentinfoDetails
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.punishmentid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.hrbasicid, htmlAttributes: new { @class = "labelNormal required " })
+							 @Html.EditorFor(model => model.hrbasicid, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.hrbasicid, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.punishmenttype, htmlAttributes: new { @class = "labelNormal required " })
+							 @Html.EditorFor(model => model.punishmenttype, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.punishmenttype, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.punishmentdate, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.punishmentdate, new {  htmlAttributes = new {  @readonly = "readonly",  @Value = Model.punishmentdate != null ? Convert.ToDateTime(Model.punishmentdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.punishmentdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.offence, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.offence, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.offence, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.punishment, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.punishment, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.punishment, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.punishmentdetails, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.punishmentdetails, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.punishmentdetails, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+
+
+
+
+</script>
+    
+
+
+

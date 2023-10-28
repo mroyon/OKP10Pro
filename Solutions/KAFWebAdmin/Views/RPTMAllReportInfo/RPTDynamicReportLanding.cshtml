@@ -1,0 +1,1344 @@
+﻿
+@model List<KAF.BusinessDataObjects.BusinessDataObjectsPartials.rpt_TableNameEntity>
+@{
+    ViewBag.Title = "Report Panel";
+}
+<style>
+    .detailheading {
+        background-color: darkgray !important;
+    }
+
+    .buttonpanelcenter {
+        text-align: center;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    #colsortable ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    #colsortable {
+        margin: 0;
+        padding: 0;
+    }
+
+        #colsortable li {
+            margin: 5px;
+            padding: 0px;
+            list-style-type: none;
+            width: 100%;
+        }
+
+    .sortingasc {
+        background-image: url(../DesignsAndScripts/Scripts/plugins/datatables/images/sort_asc.png);
+    }
+
+    .sortingdesc {
+        background-image: url(../DesignsAndScripts/Scripts/plugins/datatables/images/sort_desc.png);
+    }
+</style>
+@{
+    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower() == "ar-kw")
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: left;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: right;
+            }
+        </style>
+    }
+}
+
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<img src="~/DesignsAndScripts/Scripts/plugins/datatables/images/sort_desc.png" />
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmRPTMAllReportInfo", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    Dynamic Report
+                </div>
+                <div class="panel-body">
+                    <section id="content" class="table-layout">
+                        <div class="tab-block mb25">
+                            <ul class="nav nav-tabs tabs-border nav-justified ultabs">
+
+                                <li id="BodyContainer_BodyContainer_tab1" class="active">
+                                    <a href="#tabserviceinfo" data-toggle="tab" class="taskdetailtab" data_id="1"><b>Service Info</b></a>
+                                </li>
+
+                                <li id="BodyContainer_BodyContainer_tab2" class="">
+                                    <a href="#tabprofileinfo" data-toggle="tab" aria-expanded="true" class="taskdetailtab" data_id="2"><b>Profile Info</b></a>
+                                </li>
+
+                                <li id="BodyContainer_BodyContainer_tab3">
+                                    <a href="#tabkuwaitaddress" data-toggle="tab" class="taskdetailtab" data_id="3"><b> Address</b></a>
+                                </li>
+
+
+
+                            </ul>
+                            <div class="tab-content" id="dvtabcontent" style="margin-top:02px;background-color: #ccc;">
+
+                                <div id="tabserviceinfo" class="tab-pane active" style="padding-top: 10px;padding-left: 10px;">
+                                    <div class="row ">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Force Name", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationEntity[0].ToString(), selectid = "organizationkey", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedStp_Organization, multiple = false, isReadOnly = false, Is = true });}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Arms/ Branch", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_armsEntity[0].ToString(), selectid = "armsid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Arms, multiple = false, isReadOnly = false, Is = true });}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Unit Name", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadUnitSearch", "Common", new { area = "", selectid = "entitykey", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedStp_OrganizationEntity, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("OKP", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = false, Is = true, isStatic = true });}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Group", htmlAttributes: new { @class = "labelNormal     " })
+                                                @Html.DropDownList("Group",
+                                                new SelectList(
+                                                    (
+                                                    KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.Group>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.Group))), "paramvalue", "paramname"),
+                                                "Please Select",
+                                                new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row " id="dvstatus">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Rank Type KW", htmlAttributes: new { @class = "labelNormal    " })
+                                                @*@{Html.RenderAction("LoadNoneSearch", "Common", new { area = "", selectid = "ranktypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preNone, multiple = false, isReadOnly = false, Is = true });}*@
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_ranktypeEntity[0].ToString(), selectid = "ranktypeidkw", minimumInputLength = 0, delay = 250, preloaded = ViewBag.pregen_bank, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Rank (KW)", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadRankKWSearch", "Common", new { area = "", selectid = "rankidkw", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_RankKW, multiple = false, isReadOnly = false, Is = true });}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Rank Type BD", htmlAttributes: new { @class = "labelNormal    " })
+                                                @*@{Html.RenderAction("LoadNoneSearch", "Common", new { area = "", selectid = "ranktypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preNone, multiple = false, isReadOnly = false, Is = true });}*@
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_ranktypeEntity[0].ToString(), selectid = "ranktypeidbd", minimumInputLength = 0, delay = 250, preloaded = ViewBag.pregen_bank, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Rank (BD)", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadRankBDSearch", "Common", new { area = "", selectid = "rankidbd", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_RankBD, multiple = false, isReadOnly = false, Is = true });}
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Trade (KW)", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadTradeKWSearch", "Common", new { area = "", selectid = "tradeidkw", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_TradeKW, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Trade (BD)", htmlAttributes: new { @class = "labelNormal     " })
+                                                @{Html.RenderAction("LoadTradeBDSearch", "Common", new { area = "", selectid = "tradeidbd", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_TradeBD, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row ">
+
+
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.Editor("militarynokw", new { htmlAttributes = new { @class = "militarynokw form-control" } })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Military No (BD)", htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.Editor("militarynobd", new { htmlAttributes = new { @class = "militarynobd form-control" } })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Civil ID", htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.Editor("civilid", new { htmlAttributes = new { @class = "civilid form-control" } })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                @Html.Label("Official Email", htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.Editor("officialemail", new { htmlAttributes = new { @class = " form-control" } })
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row ">
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Join Date KW From", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group  fromdate1' style="width: 100%; ">
+                                                    @Html.Editor("joindatekwfrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Join Date KW To", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group  todate1' style="width: 100%; ">
+                                                    @Html.Editor("joindatekwto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Expected TOD End Dt From", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group  fromdate2' id='' style="width: 100%; ">
+                                                    @Html.Editor("expectedretiredatekwfrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Expected TOD End Dt To", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group  todate2' id='' style="width: 100%; ">
+                                                    @Html.Editor("expectedretiredatekwto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Repatriation Date From", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group  fromdate3' id='' style="width: 100%; ">
+                                                    @Html.Editor("retiredatekwfrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Repatriation Date To", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group todate3' id='' style="width: 100%; ">
+                                                    @Html.Editor("retiredatekwto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Passport Expiry From", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group  fromdate4' id='' style="width: 100%; ">
+                                                    @Html.Editor("passportexpfrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Passport Expiry  To", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group  todate4' id='' style="width: 100%; ">
+                                                    @Html.Editor("passportexpto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="dvservststs" class="row dvservststs">
+
+                                        <div class="col-md-12">
+                                            @*1-Selected, 2-Canceled, 3-Active, 4-Repatriated, 5- Arrived*@
+                                            <div class="form-group">
+                                                @Html.Label("Service Status Filter", htmlAttributes: new { @class = "labelNormal " })
+                                                <div class="row" id="dvchks">
+                                                    <div class="col-md-2">
+                                                        <div class="">
+                                                            <input type="checkbox" value="1" class="form-check-input  chkservicestatus" />
+                                                            <label class="form-check-label" for="flexCheckDisabled"> Selected</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="">
+                                                            <input type="checkbox" value="2" class="form-check-input  chkservicestatus" />
+                                                            <label class="form-check-label" for="flexCheckDisabled"> Canceled</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="">
+                                                            <input type="checkbox" value="5" checked="checked" class="form-check-input  chkservicestatus" />
+                                                            <label class="form-check-label" for="flexCheckDisabled"> Arrived</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="">
+                                                            <input type="checkbox" value="3" checked="checked" class="form-check-input  chkservicestatus" />
+                                                            <label class="form-check-label" for="flexCheckDisabled"> Active</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <input type="checkbox" value="4" class="form-check-input  chkservicestatus" />
+                                                            <label class="form-check-label" for="flexCheckDisabled"> Repatriated</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div id="tabprofileinfo" class="tab-pane" style="padding-top: 10px;padding-left: 10px;">
+
+                                    <div class="row ">
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Full Name", htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.Editor("fullname", new { htmlAttributes = new { @readonly = "readonly", @class = " form-control  fullname" } })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Date of Birth From", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group date fromdate3' style="width: 100%; ">
+                                                    @Html.Editor("dateofbirthfrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Date of Birth To", htmlAttributes: new { @class = "labelNormal   " })
+                                                <div class='input-group date todate3' style="width: 100%; ">
+                                                    @Html.Editor("dateofbirthto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Religion", htmlAttributes: new { @class = "labelNormal    " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_religionEntity[0].ToString(), selectid = "religionid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Religion, multiple = false, isReadOnly = false, Is = true, isStatic = false });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Blood Group", htmlAttributes: new { @class = "labelNormal    " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_bloodgroupEntity[0].ToString(), selectid = "bloodgroupid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_BloodGroup, multiple = false, isReadOnly = false, Is = true, isStatic = false });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Marital Status", htmlAttributes: new { @class = "labelNormal    " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_maritalstatusEntity[0].ToString(), selectid = "maritalstatusid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_MaritalStatus, multiple = false, isReadOnly = false, Is = true, isStatic = false });}
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Gender", htmlAttributes: new { @class = "labelNormal    " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_genderEntity[0].ToString(), selectid = "genderid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Gender, multiple = false, isReadOnly = false, Is = true, isStatic = false });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("Nationality", htmlAttributes: new { @class = "labelNormal    " })
+                                                @{Html.RenderAction("LoadNationalitySearch", "Common", new { area = "", selectid = "nationalityid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Nationality, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+                                                @Html.Label("Mobile No KW", htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.Editor("kwmobile", new { htmlAttributes = new { @class = " form-control" } })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                @Html.Label("Personal Email", htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.Editor("personalemail", new { htmlAttributes = new { @class = " form-control" } })
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <div id="tabkuwaitaddress" class="tab-pane" style="padding-top: 10px;padding-left: 10px;">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("KW Governorate", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadGovCitySearch", "Common", new { area = "", selectid = "kwgovid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_govcity, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("KW Area", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadGovCitySearch", "Common", new { area = "", selectid = "kwareaid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_govcity, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("KW Building", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_buildingEntity[0].ToString(), selectid = "buildingid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Building, multiple = false, isReadOnly = false, Is = false, isStatic = false });}
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row ">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("BD Cur Division", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadDivisionSearch", "Common", new { area = "", selectid = "bdcurdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DivisionCurr, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("BD Cur District", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadDistrictSearch", "Common", new { area = "", selectid = "bdcurcityid", divisionid = "bdcurdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DistrictCurr, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("BD Cur Thana", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadThanaSearch", "Common", new { area = "", selectid = "bdcurthanaid", districtid = "bdcurcityid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_ThanaCurr, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("BD Per Division", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadDivisionSearch", "Common", new { area = "", selectid = "bdperdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DivisionCurr, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("BD Per District", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadDistrictSearch", "Common", new { area = "", selectid = "bdpercityid", divisionid = "bdcurdivid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_DistrictCurr, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                @Html.Label("BD Per Thana", htmlAttributes: new { @class = "labelNormal  " })
+                                                @{Html.RenderAction("LoadThanaSearch", "Common", new { area = "", selectid = "bdperthanaid", districtid = "bdcurcityid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_ThanaCurr, multiple = false, isReadOnly = false, Is = true });}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <br />
+                            </div>
+                        </div>
+                        <br />
+                    </section>
+
+
+                    <br />
+                    <div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12" style="margin-top:15px;font-size:15px;color:darkblue;font-weight:bold">
+                                    Column Order
+                                    <hr />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul id="colsortable">
+                                        @*<li class="ui-state-default" >Item 1</li>*@
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row" id="dvservicestatus">
+                                <div class="col-md-12" style="margin-top:15px;font-size:15px;color:darkblue;font-weight:bold">
+                                    Service Info
+                                    <hr />
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" checked="checked" value="Hr_SvcInfo.MilNoKW [Mil No KW]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Mil No KW</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" checked="checked" value=" rnk_kw.rankname AS [Rank KW]" viewcolumn="RankNameKW" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Rank KW </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" checked="checked" value="HR_BasicProfile.FullName as [Full Name]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Full Name</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="('&nbsp'+convert(nvarchar,HR_BasicProfile.CivilID)) as [Civil ID]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Civil ID</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="HR_BasicProfile.PassportNo as [Passport No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Passport No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="FORMAT(Hr_PassportInfo.PassportExpiryDate, 'dd-MMM-yyyy') as [Passport Exp Date]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Passport Exp Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="FORMAT(Hr_SvcInfo.JoinDateKw, 'dd-MMM-yyyy') as [Join Date Kw]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Join Date KW</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="FORMAT(Hr_SvcInfo.ExpectedRetireDateKw, 'dd-MMM-yyyy') as [Exp Repatriate Date]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Expected TOD End Dt</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="HR_BasicProfile.MilNoBD [Mil No BD]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Mil No BD</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="gen_arms.armsname as [Arms Name]" viewcolumn="ArmsName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Arms</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="stp_organizationentity.EntityName as [Unit]" viewcolumn="ArmsName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Unit</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value=" gen_okp.okpname as OKP" viewcolumn="OkpName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> OKP</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value=" rnk_type_kw.RankType as [Rank Type KW]" viewcolumn="RankNameKW" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Rank Type KW </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value=" rnk_type_bd.RankType  as [Rank Type BD]" viewcolumn="RankNameKW" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Rank Type BD </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="rnk_bd.rankname AS [Rank BD]" viewcolumn="RankNameBD" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Rank BD</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="trd_bd.tradename AS [Trade BD]" viewcolumn="TradeNameKW" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Trade BD</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="trd_kw.tradename AS [Trade KW]" viewcolumn="TradeNameBD" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Trade KW</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="CASE   WHEN hr_svcinfo.groupid = 1 THEN 'Technical' ELSE 'Support' END   AS [Group]" viewcolumn="GroupName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Group</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="FORMAT(Hr_RepatriationInfo.SODDate, 'dd-MMM-yyyy') AS [SOD Date]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> SOD Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="FORMAT(Hr_RepatriationInfo.FlightDate, 'dd-MMM-yyyy')  AS [Repat Flight Date]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Repat Flight Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="FORMAT(Hr_RepatriationInfo.SalaryReceivedTillDate, 'dd-MMM-yyyy')  AS [Repatriation  Date]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Repatriation  Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="CASE   WHEN hr_svcinfo.Status = 1 THEN 'Selected'  WHEN hr_svcinfo.Status = 2 THEN 'Canceled'  WHEN hr_svcinfo.Status = 3 THEN 'Active'  WHEN hr_svcinfo.Status = 4 THEN 'Repatriated'  WHEN hr_svcinfo.Status = 5 THEN 'Arrived' ELSE '' END   AS [Service Status]" viewcolumn="GroupName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Service Status</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12" style="margin-top:15px;font-size:15px;color:darkblue;font-weight:bold">
+                                    General Info
+                                    <hr />
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="gen_country.countryname as [Country] " viewcolumn="CountryName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Country</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.personalemail as [Personal Email]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Personal Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.officialemail as [Official Email]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Official Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="gen_religion.religion as Religion" viewcolumn="Religion" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Religion</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value=" gen_bloodgroup.bloodgroup as [Blood Group]" viewcolumn="BloodGroup" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Blood Group</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value=" gen_maritalstatus.maritalstatus as [Marital Status]" viewcolumn="MaritalStatus" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Marital Status</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="gen_gender.Gender" viewcolumn="Gender" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Gender</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="FORMAT(HR_BasicProfile.DateofBirth, 'dd-MMM-yyyy') as [Date of Birth]" viewcolumn="Gender" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> Date of Birth</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12" style="margin-top:15px;font-size:15px;color:darkblue;font-weight:bold">
+                                    Kuwait Address and Contact Information
+                                    <hr />
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="KWGov.cityname AS [KW Governorate]" viewcolumn="KWGovName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW Governorate</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value=" KWArea.cityname  AS [KW Area]" viewcolumn="KWAreaName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW Area </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="gen_building.buildingname as [KW Building]" viewcolumn="BuildingName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW Building</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.kwblockno [KW Block No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW Block No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value=" hr_personalinfo.kwstreet [KW Street No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW Street No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.kwhouseno [KW House No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW House No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.kwflatno [KW Flat No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW Flat No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.kwmobile [KW Mobile No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> KW Mobile No</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12" style="margin-top:15px;font-size:15px;color:darkblue;font-weight:bold">
+                                    BD Current Address  and Contact Information
+                                    <hr />
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="currdiv.districtname  AS [BD Cur Divsion]" viewcolumn="BDCurDivName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Cur Divsion</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="currcity.districtname AS [BD Cur City]" viewcolumn="BDCurCityName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Cur City</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="CurThana.thananame AS [BD Cur Thana]" viewcolumn="BDCurThanaName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Cur Thana</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdcurpostoffice [BD Cur Post Office]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Cur Post Office</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdcurroad [BD Cur Road No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Cur Road No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdcurhouse [BD Cur House No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Cur House No</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdcurflatno [BD Cur Flat No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Cur Flat No</label>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdmob1 [BD Mob1]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Mob1</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdhomephone [BD Home Phone]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Home Phone</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12" style="margin-top:15px;font-size:15px;color:darkblue;font-weight:bold">
+                                    BD Permanent Address Information
+                                    <hr />
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="perdiv.districtname AS [BD Per Division]" viewcolumn="BDPerDivName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Per Division</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="percity.districtname AS [BD Per City]" viewcolumn="BDPerCityName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Per City</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="perThana.thananame AS [BD Per Thana]" viewcolumn="BDPerThanaName" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Per Thana</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdperpostoffice [BD Per Post Office]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Per Post Office</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdperroad [BD Per Road No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Per Road No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdperhouse [BD Per House No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label">BD Per House No</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" value="hr_personalinfo.bdperflatno [BD Per Flat No]" class="form-check-input tablecolumns chkcolumn" />
+                                        <label class="form-check-label"> BD Per Flat No</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dvbtn" class="row">
+
+                        <div class="col-md-3">
+                            <button type="button" id="btnSearch" class="btn btn-raised btn-primary btn-block">Load Report</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" id="btnPrint" class="btn  btn-success  btn-block btnPrint">Print</button>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <button type="button" id="btnExport" class="btn  btn-info  btn-block btnExport">Export</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-body">
+                    <div class=" " id="divReport">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="hddokpid" value='@ViewBag.okpid' />
+}
+
+
+@section Scripts {
+    <script>
+        function ghh() {
+
+        }
+
+        $(document).ready(function () {
+
+            if ($("#hddokpid").val() != "") {
+                $("#okpid").val($("#hddokpid").val()).trigger('change');
+                $("#okpid").prop("disabled", true);
+            }
+
+            $.each($(".chkcolumn"), function (val, element) {
+
+                if ($(element).prop("checked") == true) {
+                    $('#colsortable').append("<li  class='ui-state-default'  colname=" + encodeURIComponent($(element).val()) + ">" + $(element).next().text() + "</li>");
+                }
+                else {
+                    $("#colsortable li[colname=\"" + encodeURIComponent($(element).val()) + "\"]").remove();
+                }
+
+                $("#colsortable").sortable({
+                    revert: true,
+                    stop: function (event, ui) {
+                        if (!ui.item.data('tag') && !ui.item.data('handle')) {
+                            ui.item.data('tag', true);
+                            //ui.item.fadeTo(400, 0.1);
+                        }
+                    }
+                });
+
+                $("ul, li").disableSelection();
+            })
+
+            $(".chkcolumn").click(function () {
+                if ($(this).prop("checked") == true) {
+                    $('#colsortable').append("<li  class='ui-state-default'  colname=" + encodeURIComponent($(this).val()) + ">" + $(this).next().text() + "</li>");
+                }
+                else {
+                    $("#colsortable li[colname=\"" + encodeURIComponent($(this).val()) + "\"]").remove();
+                }
+
+                $("#colsortable").sortable({
+                    revert: true,
+                    stop: function (event, ui) {
+                        if (!ui.item.data('tag') && !ui.item.data('handle')) {
+                            ui.item.data('tag', true);
+                            //ui.item.fadeTo(400, 0.1);
+                        }
+                    }
+                });
+
+                $("ul, li").disableSelection();
+            });
+            $("#ranktypeidbd").change(function () {
+                LoadBDRankByRankType($("#ranktypeidbd").val(), 'rankidbd');
+
+            });
+            $("#ranktypeidkw").change(function () {
+
+                LoadKWRankByRanktypeID($("#ranktypeidkw").val(), 'rankidkw');
+            });
+
+            $("#btnPrint").click(function () {
+                $("#divReport").printThis({
+                    importCSS: true,
+                    loadCSS: "~/DesignsAndScripts/Styles/bootstrap_min.css",
+                    header: "<h1>Custom Report</h1>"
+                });
+            });
+            $("#btnExport").click(function () {
+                $("#RegBasicInfoDt").table2excel({
+                    filename: "DynamicReport" + new Date().toLocaleDateString().replaceAll('/', '') + new Date().toLocaleTimeString().replaceAll(' ', '').replaceAll(':', '')+".xls"
+                });
+            });
+            $('#btnSearch').click(function () {
+
+                var strcols = "", strwhere = "";
+
+                $.each($("#colsortable li"), function (val, element) {
+
+                    strcols += decodeURIComponent($(element).attr('colname')) + ',';
+                })
+
+
+                if ($("#organizationkey").val() != null && $("#organizationkey").val() != "")
+                    strwhere += " hr_svcinfo.organizationkey=" + $("#organizationkey").val() + " AND ";
+                if ($("#entitykey").val() != null && $("#entitykey").val() != "")
+                    strwhere += " stp_organizationentity.EntityKey=" + $("#entitykey").val() + " AND ";
+
+                if ($("#armsid").val() != null && $("#armsid").val() != "")
+                    strwhere += "  gen_arms.armsid=" + $("#armsid").val() + " AND ";
+
+                if ($("#okpid").val() != null && $("#okpid").val() != "")
+                    strwhere += " gen_okp.okpid=" + $("#okpid").val() + " AND ";
+
+                if ($("#Group").val() != null && $("#Group").val() != "")
+                    strwhere += " hr_svcinfo.groupid=" + $("#Group").val() + " AND ";
+
+                if ($("#ranktypeidkw").val() != null && $("#ranktypeidkw").val() != "")
+                    strwhere += " rnk_kw.RankTypeID=" + $("#ranktypeidkw").val() + " AND ";
+
+                if ($("#rankidkw").val() != null && $("#rankidkw").val() != "")
+                    strwhere += " Hr_SvcInfo.RankIDKW=" + $("#rankidkw").val() + " AND ";
+
+                if ($("#ranktypeidbd").val() != null && $("#ranktypeidbd").val() != "")
+                    strwhere += " rnk_bd.RankTypeID=" + $("#ranktypeidbd").val() + " AND ";
+
+                if ($("#rankidbd").val() != null && $("#rankidbd").val() != "")
+                    strwhere += " Hr_SvcInfo.RankIDBD=" + $("#rankidbd").val() + " AND ";
+
+                if ($("#tradeidkw").val() != null && $("#tradeidkw").val() != "")
+                    strwhere += " Hr_SvcInfo.TradeIDKW=" + $("#tradeidkw").val() + " AND ";
+
+                if ($("#tradeidbd").val() != null && $("#tradeidbd").val() != "")
+                    strwhere += " Hr_SvcInfo.TradeIDBD=" + $("#tradeidbd").val() + " AND ";
+
+                if ($("#religionid").val() != null && $("#religionid").val() != "")
+                    strwhere += " Hr_PersonalInfo.ReligionID =" + $("#religionid").val() + " AND ";
+
+                if ($("#bloodgroupid").val() != null && $("#bloodgroupid").val() != "")
+                    strwhere += " Hr_PersonalInfo.BloodGroupId=" + $("#bloodgroupid").val() + " AND ";
+
+                if ($("#maritalstatusid").val() != null && $("#maritalstatusid").val() != "")
+                    strwhere += " Hr_PersonalInfo.MaritalStatusID=" + $("#maritalstatusid").val() + " AND ";
+
+                if ($("#genderid").val() != null && $("#genderid").val() != "")
+                    strwhere += " Hr_PersonalInfo.GenderID =" + $("#genderid").val() + " AND ";
+
+                if ($("#nationalityid").val() != null && $("#nationalityid").val() != "")
+                    strwhere += " hr_personalinfo.nationalityid=" + $("#nationalityid").val() + " AND ";
+
+                if ($("#kwgovid").val() != null && $("#kwgovid").val() != "")
+                    strwhere += " Hr_PersonalInfo.KWGovID=" + $("#kwgovid").val() + " AND ";
+
+                if ($("#kwareaid").val() != null && $("#kwareaid").val() != "")
+                    strwhere += " Hr_PersonalInfo.KWAreaID=" + $("#kwareaid").val() + " AND ";
+
+                if ($("#buildingid").val() != null && $("#buildingid").val() != "")
+                    strwhere += " hr_personalinfo.buildingid=" + $("#buildingid").val() + " AND ";
+
+                if ($("#bdcurdivid").val() != null && $("#bdcurdivid").val() != "")
+                    strwhere += " hr_personalinfo.bdcurdivid=" + $("#bdcurdivid").val() + " AND ";
+
+                if ($("#bdcurcityid").val() != null && $("#bdcurcityid").val() != "")
+                    strwhere += " hr_personalinfo.bdcurcityid=" + $("#bdcurcityid").val() + " AND ";
+
+                if ($("#bdcurthanaid").val() != null && $("#bdcurthanaid").val() != "")
+                    strwhere += " hr_personalinfo.bdcurthanaid=" + $("#bdcurthanaid").val() + " AND ";
+
+                if ($("#bdperdivid").val() != null && $("#bdperdivid").val() != "")
+                    strwhere += " hr_personalinfo.bdperdivid=" + $("#bdperdivid").val() + " AND ";
+
+                if ($("#bdpercityid").val() != null && $("#bdpercityid").val() != "")
+                    strwhere += " hr_personalinfo.bdpercityid=" + $("#bdpercityid").val() + " AND ";
+
+
+                if ($("#bdperthanaid").val() != null && $("#bdperthanaid").val() != "")
+                    strwhere += " hr_personalinfo.bdperthanaid=" + $("#bdperthanaid").val() + " AND ";
+
+                if ($("#militarynokw").val().length > 0)
+                    strwhere += " Hr_SvcInfo.MilNoKW=" + $("#militarynokw").val() + " AND ";
+
+                if ($("#militarynobd").val().length > 0)
+                    strwhere += " HR_BasicProfile.MilNoBD=" + $("#militarynobd").val() + " AND ";
+
+                if ($("#civilid").val().length > 0)
+                    strwhere += "  HR_BasicProfile.CivilID=" + $("#civilid").val() + " AND ";
+
+                if ($("#joindatekwfrom").val().length > 0 && $("#joindatekwto").val().length > 0)
+                    strwhere += " ( Hr_SvcInfo.JoinDateKw BETWEEN " + GetDateStringFromTextBox($("#joindatekwfrom").val()) + " AND " + GetDateStringFromTextBox($("#joindatekwto").val()) + ") AND ";
+
+                if ($("#expectedretiredatekwfrom").val().length > 0 && $("#expectedretiredatekwto").val().length > 0)
+                    strwhere += " ( Hr_SvcInfo.ExpectedRetireDateKw BETWEEN " + GetDateStringFromTextBox($("#expectedretiredatekwfrom").val()) + " AND " + GetDateStringFromTextBox($("#expectedretiredatekwto").val()) + ") AND ";
+
+                if ($("#dateofbirthfrom").val().length > 0 && $("#dateofbirthto").val().length > 0)
+                    strwhere += " (  HR_BasicProfile.DateofBirth BETWEEN " + GetDateStringFromTextBox($("#dateofbirthfrom").val()) + " AND " + GetDateStringFromTextBox($("#dateofbirthto").val()) + ") AND ";
+
+                if ($("#retiredatekwfrom").val().length > 0 && $("#retiredatekwto").val().length > 0)
+                    strwhere += " ( Hr_RepatriationInfo.SODDate BETWEEN " + GetDateStringFromTextBox($("#retiredatekwfrom").val()) + " AND " + GetDateStringFromTextBox($("#retiredatekwto").val()) + ") AND ";
+
+                if ($("#passportexpfrom").val().length > 0 && $("#passportexpto").val().length > 0)
+                    strwhere += " ( Hr_PassportInfo.PassportExpiryDate BETWEEN " + GetDateStringFromTextBox($("#passportexpfrom").val()) + " AND " + GetDateStringFromTextBox($("#passportexpto").val()) + ") AND ";
+
+
+
+                if ($("#fullname").val().length > 0)
+                    strwhere += " HR_BasicProfile.FullName like '%" + $("#fullname").val() + "%' AND ";
+
+                if ($("#kwmobile").val().length > 0)
+                    strwhere += " Hr_PersonalInfo.KWMobile like '%" + $("#kwmobile").val() + "%' AND ";
+
+                if ($("#personalemail").val().length > 0)
+                    strwhere += " Hr_PersonalInfo.PersonalEmail like '%" + $("#personalemail").val() + "%' AND ";
+
+                if ($("#officialemail").val().length > 0)
+                    strwhere += " Hr_PersonalInfo.OfficialEmail like '%" + $("#officialemail").val() + "%' AND ";
+
+                var strchk = "";
+                $.each($("#dvservststs .chkservicestatus"), function (val, element) {
+
+                    if ($(element).prop('checked')) {
+                        strchk += $(element).val() + ',';
+                    }
+
+                });
+                if (strchk.length > 0) {
+                    strchk = strchk.slice(0, -1);
+                    strwhere += " hr_svcinfo.Status IN (" + strchk + ") AND";
+
+                }
+
+                if (strcols.length == 0) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: "Please Select at least one field",
+                        type: 'red'
+                    });
+                    return;
+                }
+
+                if (strwhere.length == 0) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: "Please apply at least one filter",
+                        type: 'red'
+                    });
+                    return;
+                }
+
+
+                //if ($("#joindatekwfrom").val().length > 0 && $("#joindatekwto").val().length > 0)
+                //    strwhere += " ( Hr_SvcInfo.JoinDateKw BETWEEN " + GetDateStringFromTextBox($("#joindatekwfrom").val()) + " AND " + GetDateStringFromTextBox($("#joindatekwto").val()) + ") AND ";
+
+                //if ($("#expectedretiredatekwfrom").val().length > 0 && $("#expectedretiredatekwto").val().length > 0)
+                //    strwhere += " ( Hr_SvcInfo.ExpectedRetireDateKw BETWEEN " + GetDateStringFromTextBox($("#expectedretiredatekwfrom").val()) + " AND " + GetDateStringFromTextBox($("#expectedretiredatekwto").val()) + ") AND ";
+
+                //if ($("#dateofbirthfrom").val().length > 0 && $("#dateofbirthto").val().length > 0)
+                //    strwhere += " (  HR_BasicProfile.DateofBirth BETWEEN " + GetDateStringFromTextBox($("#dateofbirthfrom").val()) + " AND " + GetDateStringFromTextBox($("#dateofbirthto").val()) + ") AND ";
+
+                //if ($("#retiredatekwfrom").val().length > 0 && $("#retiredatekwto").val().length > 0)
+                //    strwhere += " ( Hr_RepatriationInfo.SODDate BETWEEN " + GetDateStringFromTextBox($("#retiredatekwfrom").val()) + " AND " + GetDateStringFromTextBox($("#retiredatekwto").val()) + ") AND ";
+
+                //if ($("#passportexpfrom").val().length > 0 && $("#passportexpto").val().length > 0)
+                //    strwhere += " ( Hr_PassportInfo.PassportExpiryDate BETWEEN " + GetDateStringFromTextBox($("#passportexpfrom").val()) + " AND " + GetDateStringFromTextBox($("#passportexpto").val()) + ") AND ";
+
+                $("#passportexpfrom").css("border-color", "#d2d6de");
+                $("#passportexpto").css("border-color", "#d2d6de");
+                $("#dateofbirthfrom").css("border-color", "#d2d6de");
+                $("#dateofbirthto").css("border-color", "#d2d6de");
+                $("#expectedretiredatekwfrom").css("border-color", "#d2d6de");
+                $("#expectedretiredatekwto").css("border-color", "#d2d6de");
+
+                $("#joindatekwto").css("border-color", "#d2d6de");
+                $("#joindatekwfrom").css("border-color", "#d2d6de");
+                $("#retiredatekwfrom").css("border-color", "#d2d6de");
+                $("#retiredatekwto").css("border-color", "#d2d6de");
+
+
+                if ($("#passportexpfrom").val().length > 0 && $("#passportexpto").val().length == 0) {
+                    $("#passportexpto").css("border-color", "red");
+                    $("#passportexpto").focus();
+                    return;
+                }
+                else if ($("#passportexpfrom").val().length == 0 && $("#passportexpto").val().length > 0) {
+                    $("#passportexpfrom").css("border-color", "red");
+                    $("#passportexpfrom").focus();
+                    return;
+                }
+
+              
+
+                if ($("#dateofbirthfrom").val().length > 0 && $("#dateofbirthto").val().length == 0) {
+                    $("#dateofbirthto").css("border-color", "red");
+                    $("#dateofbirthto").focus();
+                    return;
+                }
+                else if ($("#dateofbirthfrom").val().length == 0 && $("#dateofbirthto").val().length > 0) {
+                    $("#dateofbirthfrom").css("border-color", "red");
+                    $("#dateofbirthfrom").focus();
+                    return;
+                }
+
+                if ($("#retiredatekwfrom").val().length > 0 && $("#retiredatekwto").val().length == 0) {
+                    $("#retiredatekwto").css("border-color", "red");
+                    $("#retiredatekwto").focus();
+                    return;
+                }
+                else if ($("#retiredatekwfrom").val().length == 0 && $("#retiredatekwto").val().length > 0) {
+                    $("#retiredatekwfrom").css("border-color", "red");
+                    $("#retiredatekwfrom").focus();
+                    return;
+                }
+
+               
+
+                if ($("#expectedretiredatekwfrom").val().length > 0 && $("#expectedretiredatekwto").val().length == 0) {
+                    $("#expectedretiredatekwto").css("border-color", "red");
+                    $("#expectedretiredatekwto").focus();
+                    return;
+                }
+                else if ($("#expectedretiredatekwfrom").val().length == 0 && $("#expectedretiredatekwto").val().length > 0) {
+                    $("#expectedretiredatekwfrom").css("border-color", "red");
+                    $("#expectedretiredatekwfrom").focus();
+                    return;
+                }
+
+
+
+                if ($("#joindatekwfrom").val().length > 0 && $("#joindatekwto").val().length == 0) {
+                    $("#joindatekwto").css("border-color", "red");
+                    $("#joindatekwto").focus();
+                    return;
+                }
+                else if ($("#joindatekwfrom").val().length == 0 && $("#joindatekwto").val().length > 0) {
+                    $("#joindatekwfrom").css("border-color", "red");
+                    $("#joindatekwfrom").focus();
+                    return;
+                }
+
+
+                try {
+                    AddAntiForgeryToken = function (data) {
+                        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                        return data;
+                    };
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrMedicalInfoNew",
+                        currenturl: window.location.href,
+
+                        strColumns: strcols,
+
+                        strWhere: strwhere
+                    });
+
+                    $.ajax({
+                        url: baseurl + "RPTMAllReportInfo/GenerateDynamicReport",
+                        type: 'POST',
+                        data: input,
+                        success: function (response) {
+                            $('#divReport').html('');
+                            $('#divReport').html(response);
+
+                        }
+                    });
+
+                } catch (e) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: e.message,
+                        type: 'red'
+                    });
+                }
+
+
+
+            });
+
+        });
+        function testss() {
+
+        }
+    </script>
+
+}
+
+
+
+
+

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = KAF.MsgContainer._hr_medicalinfo.hr_medicalinfoList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("HrMedicalInfo/HrMedicalInfoNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewHrMedicalInfo">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="HrMedicalInfoDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+							 <th>@KAF.MsgContainer._hr_medicalinfo.medcommissionno</th>                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrMedicalInfoNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrMedicalInfoNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrMedicalInfoEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrMedicalInfoEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrMedicalInfoDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrMedicalInfoDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrMedicalInfo/LandingHrMedicalInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrMedicalInfo/NewHrMedicalInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrMedicalInfo/EditHrMedicalInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrMedicalInfo/DetailHrMedicalInfo.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

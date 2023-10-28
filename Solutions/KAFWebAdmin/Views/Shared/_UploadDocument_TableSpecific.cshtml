@@ -1,0 +1,702 @@
+﻿
+@model KAF.BusinessDataObjects.BusinessDataObjectsPartials.clsFolderContent
+
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+<link href="~/DesignsAndScripts/Styles/bootstrap_min.css" rel="stylesheet" />
+<style>
+    .ui-widget-header {
+        background: #cedc98;
+        border: 1px solid #DDDDDD;
+        color: #333333;
+        font-weight: bold;
+    }
+
+
+    .red {
+        color: red;
+    }
+
+
+    .upload-area {
+        width: 95%;
+        height: 100px;
+        border: 2px solid lightgray;
+        border-radius: 3px;
+        margin-top: 10px;
+        text-align: center;
+        overflow: auto;
+        margin-left: 14px;
+    }
+
+        .upload-area:hover {
+            cursor: pointer;
+        }
+
+        .upload-area h1 {
+            text-align: center;
+            font-weight: normal;
+            font-family: sans-serif;
+            line-height: 50px;
+            color: darkslategray;
+        }
+
+    #file {
+        display: none;
+    }
+
+    /* Thumbnail */
+    .thumbnail {
+        width: 80px;
+        height: 80px;
+        padding: 2px;
+        border: 2px solid lightgray;
+        border-radius: 3px;
+        float: left;
+        margin: 5px;
+    }
+
+    .size {
+        font-size: 12px;
+    }
+</style>
+<div id="target">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel" style="margin-bottom: 4px;margin-top: 4px;margin-left: 4px; margin-right: 4px;">
+                <div class="panel-heading list-panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Upload @Model.coulumnname Documents
+                </div>
+
+                <div id="BodyContainer_BodyContainer_mainPnl">
+                    <section id="content" class="table-layout">
+
+                        @using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "" }, new { @id = "uploadFormTableSpecific", @class = "form-horizontal", @enctype = "multipart/form-data" }))
+                        {
+                            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+                            HtmlHelper.ClientValidationEnabled = true;
+                            @Html.AntiForgeryToken()
+
+                        <div style="margin-left: 15px;  margin-right: 15px;padding-top: 15px;">
+                            @*<h2>
+            File Upload
+        </h2>*@
+                            @Html.HiddenFor(model => model.userid)
+                            @Html.HiddenFor(model => model.tablename)
+                            @Html.HiddenFor(model => model.coulumnname)
+                            @Html.HiddenFor(model => model.columnpkid)
+
+                            <div class="row fileupload-buttonbar">
+                                <div class="col-lg-12">
+                                    <!-- The fileinput-button span is used to style the file input field as button -->
+
+                                    <span class="btn btn-success fileinput-button" style="width: 130px;height: 34px;">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>Add files...</span>
+                                        <input type="file" id="addFilesTableSpecific" formnovalidate="formnovalidate" multiple />
+                                    </span>
+                                    <button type="button" id="btnUploadTableSpecific" class="btn btn-primary start">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span>Start upload</span>
+                                    </button>
+                                    <button type="reset" id="btnResetTableSpecific" class="btn btn-warning cancel" onclick="CancelForm()">
+                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                        <span>Clear upload</span>
+                                    </button>
+                                    @*<button type="button" id="btnDeleteTableSpecific" class="btn btn-danger delete" onclick="DeleteSelected();">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+                <input id="chkDeleteTableSpecific" type="checkbox" class="toggle" onclick="SelectAllCheckBox(this);">*@
+                                    <!-- The global file processing state -->
+                                    <span class="fileupload-process"></span>
+                                </div>
+                                <div class="row col-lg-12">
+                                    <!-- Drag and Drop container-->
+                                    <div class="upload-area" id="uploadfileTableSpecific">
+                                        <h1 sstyle="padding-top: 23px;">Drag and Drop file here<br />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row ">
+
+                                <div id="TableSpecificprogressbar-5" style=" margin-left: 14px;  margin-right: 14px;    text-align: center;">
+                                    <div class="progress-label">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br />
+
+
+                            <table id="tblpresentationTableSpecific" role="presentation" class="table table-striped"><tbody id="tbltobodyfilesTableSpecific" class="files"></tbody></table>
+
+
+
+                        </div>
+                        }
+
+                    </section>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="@BundleTable.Bundles.ResolveBundleUrl("~/Bundles/js")">\x3C/script>');
+    }
+   
+    var uplaodedfiles = [];
+    var canceledfiles = [];
+    var dragdropfiles = null;
+    var clickfiles = null;
+</script>
+@*<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>*@
+<script>
+    function CancelForm() {
+
+        uplaodedfiles = [];
+        canceledfiles = [];
+        $("#tbltobodyfilesTableSpecific").empty();
+    }
+
+    function getUploadRow(index, filename, filesize) {
+
+        var typewisefilethumbnail = '';
+        var filetype = filename.split('.').pop();
+
+
+        if (filetype.indexOf('jpg') != -1 || filetype.indexOf('jpeg') != -1 || filetype.indexOf('gif') != -1 || filetype.indexOf('bmp') != -1 ||
+            filetype.indexOf('bmp') != -1 || filetype.indexOf('png') != -1) {
+            typewisefilethumbnail = "<img id='img" + index + "' alt='your image' style='height:100px;'>";
+        }
+        else if (filetype.indexOf('doc') != -1 || filetype.indexOf('odt') != -1) {
+            typewisefilethumbnail = "<i class='fa fa-file-word-o' style='font-size: 48px; color: red'></i>";
+        }
+        else if (filetype.indexOf('pdf') != -1) {
+            typewisefilethumbnail = "<i class='fa fa-file-pdf-o' style='font-size: 48px; color: red'></i>";
+        }
+        else if (filetype.indexOf('xls') != -1) {
+            typewisefilethumbnail = "<i class='fa fa-file-excel-o' style='font-size: 48px; color: red'></i>";
+        }
+        else if (filetype.indexOf('ppt') != -1) {
+            typewisefilethumbnail = "<i class='fa fa-file-powerpoint-o' style='font-size: 48px; color: red'></i>";
+        }
+        else if (filetype.indexOf('txt') != -1) {
+            typewisefilethumbnail = "<i class='fa fa-file-text-o' style='font-size: 48px; color: red'></i>";
+        }
+        else
+            typewisefilethumbnail = "<i class='fa fa-files-o' style='font-size: 48px; color: red'></i>";
+
+        var retstr = "<tr class='template-upload fade in' rowindex='" + index + "'>" +
+            "<td>" +
+            "<span class='preview'> " + typewisefilethumbnail + "</span>" +
+            "</td >" +
+            "<td> " +
+            "<p style=' width: 172px; overflow-x: hidden;' class='name' >" + filename + "</p>" +
+            "<strong class='error text-danger' ></strong> " +
+            "</td > " +
+            "<td > " +
+            "<p id='paraSize' class='size' style='    margin-left: 10px;' >" + filesize + "</p > " +
+            "<div id='dvsingleprogress" + index + "' class='dvsingleprogress'><div class='progress progress-striped active' role = 'progressbar' aria-valuemin='0' ari-valuemax='100' aria-valuenow='0' > <div class='progress-bar progress-bar-success' style='width:0%;'></div></div></div> " +
+
+            "</td> " +
+            "<td style='vertical-align: middle;'> " +
+            "<div id='dvrowbuttons'> " +
+            "<button class='btn btn-primary start' filename=" + filename + " onclick='fncUploadFiles(&#39;" + filename + "&#39;)' style='padding: 0px 0px 0px 0px;line-height: 1.5;font-size:12px;' */'> " +
+            "<i class='glyphicon glyphicon-upload' ></i> " +
+            "<span style='padding-right: 7px;'> Start</span> " +
+            "</button> " +
+
+            "<button class='btn btn-warning cancel' filename=" + filename + " onclick='CancelUploadFiles(this)'  style='padding: 0px 0px 0px 0px;line-height: 1.5;font-size:12px;' > " +
+            "<i class='glyphicon glyphicon-ban-circle' ></i> " +
+            "<span style='padding-right: 7px;'> Cancel</span> " +
+            "</button> " +
+            "<div/>" +
+            "</td> " +
+            "</tr> ";
+        return retstr;
+    }
+
+    function createInput(name, value) {
+        return $('<input>').attr({
+            name: name,
+            value: value
+        });
+    }
+
+    function CancelUploadFiles(btncancel) {
+
+        canceledfiles.push($(btncancel).parent().parent().parent().find('.name').text());
+        $(btncancel).parent().parent().parent().remove();
+        $("#btnResetTableSpecific").attr('disabled', 'disabled');
+        $("#btnResetTableSpecific").attr('disabled', 'disabled');
+        $("#btnDeleteTableSpecific").attr('disabled', 'disabled');
+        $("#chkDeleteTableSpecific").attr('disabled', 'disabled');
+        $("#addFilesTableSpecific").removeAttr('disabled');
+
+        $(".progress-label").text('');
+        $("#TableSpecificprogressbar-5").removeAttr('ui-progressbar');
+        $("#TableSpecificprogressbar-5").removeAttr('ui-widget');
+        $("#TableSpecificprogressbar-5").removeAttr('ui-widget-content');
+        $("#TableSpecificprogressbar-5").removeAttr('ui-corner-all');
+        $('.upload-area').css('display', 'block');
+    }
+
+    function getFileSize(_size) {
+
+        var fSExt = new Array('Bytes', 'KB', 'MB', 'GB'), i = 0;
+
+        while (_size > 900) { _size /= 1024; i++; }
+
+        var exactSize = (Math.round(_size * 100) / 100) + ' ' + fSExt[i];
+
+        return exactSize;
+    }
+    function readURL(input) {
+
+        if (input.length > 0) {
+            for (var i = 0; i < input.length; i++) {
+
+                if ($.inArray(input[i].name, uplaodedfiles) == -1 && $.inArray(input[i].name, canceledfiles) == -1) {
+                    let f = input[i];
+                    let name = input[i].name;
+
+                    if ($.inArray(name, canceledfiles) != -1) {
+                        removeA(canceledfiles, name);
+                    }
+
+                    let imgcount = 0;
+                    if ($('#tblpresentationTableSpecific tr:last').length == 0)
+                        imgcount = 1;
+                    else {
+                        imgcount = parseInt($('#tblpresentationTableSpecific tr:last').attr('rowindex')) + 1;
+                    }
+
+                    $("#tblpresentationTableSpecific tbody").append(getUploadRow(imgcount, input[i].name, getFileSize(input[i].size)));
+
+                    let reader = new FileReader();
+                    reader.onload = function (e) {
+
+                        $("#tblpresentationTableSpecific").find("#img" + imgcount).attr("src", e.target.result)
+
+                    }
+
+                    reader.readAsDataURL(f, "UTF-8");
+                }
+
+            }
+        }
+    }
+    $(document).ready(function () {
+
+        $("#btnResetTableSpecific").attr('disabled', 'disabled');
+        $("#btnDeleteTableSpecific").attr('disabled', 'disabled');
+        $("#chkDeleteTableSpecific").attr('disabled', 'disabled');
+        $("#btnUploadTableSpecific").attr('disabled', 'disabled');
+
+        $("#addFilesTableSpecific").change(function () {
+            readURL(this.files);
+            $(".fileinput-button").attr('disabled', 'disabled');
+            $("#addFilesTableSpecific").attr('disabled', 'disabled');
+            $("#btnUploadTableSpecific").removeAttr('disabled');
+            $("#btnDeleteTableSpecific").removeAttr('disabled');
+            $("#chkDeleteTableSpecific").removeAttr('disabled');
+            $("#btnResetTableSpecific").removeAttr('disabled');
+
+        });
+
+
+        $(document).on('click', '#btnUploadTableSpecific', function (event) {
+            fncUploadFiles('');
+        });
+
+        binddragevents();
+
+    });
+
+
+    function binddragevents() {
+        // preventing page from redirecting
+        $("html").on("dragover", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $("h1").text("Drag here");
+        });
+
+        $("html").on("drop", function (e) { e.preventDefault(); e.stopPropagation(); });
+
+        // Drag enter
+        $('.upload-area').on('dragenter', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            $("h1").text("Drop");
+        });
+
+        // Drag over
+        $('.upload-area').on('dragover', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            $("h1").text("Drop");
+        });
+
+        // Drop
+        $('.upload-area').on('drop', function (e) {
+
+            e.stopPropagation();
+            e.preventDefault();
+
+            $("h1").text("Upload");
+
+            dragdropfiles = e.originalEvent.dataTransfer.files;
+
+            readURL(dragdropfiles);
+
+            $('.upload-area').css('display', 'none');
+
+            //unbinddragevents();
+
+        });
+
+        // Open file selector on div click
+
+    }
+    function SelectAllCheckBox(val) {
+
+        $($("#tblpresentationTableSpecific").find('.chksingledelete')).each(function (index) {
+            if ($(val).prop("checked") == true)
+                $(this).prop("checked", true);
+            else
+                $(this).prop("checked", false);
+
+        });
+    }
+    function DeleteSelected() {
+
+        var fileids = '';
+
+        $($("#tblpresentationTableSpecific").find('.chksingledelete')).each(function (index) {
+            // console.log($(this).prop("checked") + '---' + $(this).attr('fileid'));
+            if ($(this).prop("checked") == true)
+                fileids += $(this).attr('fileid') + ',';
+        });
+
+        if (fileids != '') {
+            deleteuploadfile(fileids);
+        }
+    }
+
+    function removefromdom(filename) {
+        $($("#tblpresentationTableSpecific .name")).each(function (index) {
+            if ($(this).parent().parent().find('#btnDelete').attr('fileid') == filename) {
+                $(this).parent().parent().remove();
+
+            }
+        });
+    }
+    function deleteuploadfile(filename) {
+
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "DeleteDocument",
+            currenturl: window.location.href,
+            foldertype: $("#foldertype").val(),
+            foldername: $("#foldername").val(),
+            folderid: $("#folderid").val(),
+            filename: filename
+
+        });
+
+        $('#uploadForm').removeAttr('enctype');
+
+        $.ajax({
+            url: '/Common/DeleteDocument',
+            type: "POST",
+            data: input,
+            async: false,
+            success: function (response) {
+
+
+                if (response.status == "success") {
+                    inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                        if (filename != '') {
+
+                            if (filename.indexOf(',') == -1) {
+                                removefromdom(filename);
+                            }
+                            else {
+                                var arr = filename.split(',');
+                                $.each(arr, function (index, value) {
+                                    if (value.length > 0) {
+                                        removefromdom(value);
+                                    }
+                                });
+                            }
+
+
+                        }
+                    });
+
+                }
+
+            },
+            error: function (err) {
+                alert(err.statusText);
+            }
+        });
+    }
+    function DeleteDraftDocumentPopup(cntrl, filename, extension) {
+        try {
+            confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_deleteConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                if (answer == "true") {
+
+                    AddAntiForgeryToken = function (data) {
+                        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                        return data;
+                    };
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "CORTaskMasterDelete",
+                        currenturl: window.location.href,
+                        filename: filename,
+                        extension: extension
+
+
+                    });
+
+
+                    $.ajax({
+                        url: baseurl + "Common/DeleteDraftDocument",
+                        data: input,
+                        type: 'POST',
+                        success: function (response) {
+                            if (response.status == "success") {
+
+
+                                inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                    uplaodedfiledetails.splice(uplaodedfiledetails.findIndex(item => item.filename === filename), 1);
+                                    $(cntrl).parent().parent().parent().remove();
+                                });
+                            }
+                            else {
+                                inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    function fncUploadFiles(filename) {
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "UploadDocument",
+            currenturl: window.location.href,
+            //userid: $("#userid").val(),
+            tablename: $("#tablename").val(),
+            coulumnname: $("#coulumnname").val()
+
+        });
+
+        var fileUpload = $("#addFilesTableSpecific").get(0);
+
+        var files = fileUpload.files;
+        // Create FormData object
+        var fileData = new FormData($('#uploadFormTableSpecific').get(0));
+        // Looping over all files and add it to FormData object
+        for (var i = 0; i < files.length; i++) {
+
+            if ($.inArray(files[i].name, uplaodedfiles) == -1 && $.inArray(files[i].name, canceledfiles) == -1) {
+
+                if (filename != '') {
+                    if (filename == files[i].name) {
+                        fileData.append(files[i].name, files[i]);
+
+                        break;
+                    }
+                }
+                else {
+                    fileData.append(files[i].name, files[i]);
+
+                }
+            }
+        }
+
+        if (dragdropfiles != null)
+            for (var i = 0; i < dragdropfiles.length; i++) {
+
+                if ($.inArray(dragdropfiles[i].name, uplaodedfiles) == -1 && $.inArray(dragdropfiles[i].name, canceledfiles) == -1) {
+                    if (filename != '') {
+                        if (filename == dragdropfiles[i].name) {
+                            fileData.append(dragdropfiles[i].name, dragdropfiles[i]);
+
+                            break;
+                        }
+                    }
+                    else {
+                        fileData.append(dragdropfiles[i].name, dragdropfiles[i]);
+
+                    }
+                }
+            }
+
+        fileData.append('input', JSON.stringify(input));
+
+        $.ajax({
+            url: baseurl + '/Common/UploadTableSpecificDocument',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: fileData,
+            async: false,
+            success: function (data) {
+
+                $('#FileBrowse').find("*").prop("disabled", true);
+                if (data.status == "success") {
+                    LoadProgressBar(data.filenames, filename);
+
+                    $("#btnDeleteTableSpecific").removeAttr('disabled');
+                    $("#chkDeleteTableSpecific").removeAttr('disabled');
+
+                    loadDraftDocuments(data.filenames);
+
+                }
+
+            },
+            error: function (err) {
+                alert(err.statusText);
+            }
+        });
+    }
+    function SetUploadedButton(objuploadedfile) {
+
+        $($("#tblpresentationTableSpecific .name")).each(function (index) {
+            //console.log(objuploadedfile.userfilename + "==" + $(this).text());
+            if (objuploadedfile.userfilename == $(this).text()) {
+
+                $(this).parent().parent().find('#dvrowbuttons').empty();
+                $(this).parent().parent().find('#dvrowbuttons').append("<button type='button' id='btnDelete' fileid='" + objuploadedfile.filename + "' onclick='DeleteDraftDocumentPopup(this,&#39;" + objuploadedfile.filename +"&#39;,&#39;" + objuploadedfile.extension + "&#39;)' class='btn btn-danger delete'> <i class= 'glyphicon glyphicon-trash'></i><span>Delete</span></button>" +
+                    "<input type='checkbox' style='margin-left: 10px;' name='delete' fileid='" + objuploadedfile.filename + "' class= 'chksingledelete toggle'>");
+                $(this).parent().parent().find('.dvsingleprogress').empty();
+                $(this).parent().parent().find('.dvsingleprogress').append(getProgresshtml());
+                $(this).parent().parent().find('#paraSize').css('margin-left', '25px');
+                uplaodedfiles.push(objuploadedfile.userfilename);
+
+                var objfileuplaoded = {
+                    tablename : $("#tablename").val(),
+                    coulumnname : $("#coulumnname").val(),
+                    //columnpkid : $("#columnpkid").val(),
+                    filename : objuploadedfile.filename,
+                    userfilename: objuploadedfile.userfilename,
+
+                    filepath: objuploadedfile.filepath,
+                    filetype: objuploadedfile.filetype,
+                    filesize: objuploadedfile.filesize,
+                    extension: objuploadedfile.extension,
+                }
+
+                uplaodedfiledetails.push(objfileuplaoded);
+            }
+
+        });
+    }
+
+    function getProgresshtml() {
+        var resttr = "<div  style=' margin-left: 14px;width:65px;  margin-right: 14px;    text-align: center;' class='ui-progressbar singleprogressbar ui-widget ui-widget-content ui-corner-all' role='progressbar' aria-valuemin='0' aria-valuemax='100' aria-valuenow='100'>" +
+            " <div class='progress-label'>100%</div>" +
+            "  <div class='ui-progressbar-value ui-widget-header ui-corner-left ui-corner-right' style='width: 100%;margin-top: -21px;'></div></div>";
+        return resttr;
+    }
+    function LoadProgressBar(files, filename) {
+
+        $('.ui-progressbar-value').css('margin-top', '-21px');
+
+        $(files).each(function (index, val) {
+
+            SetUploadedButton(val);
+        });
+
+        var progressbar = $("#TableSpecificprogressbar-5");
+        var progressLabel = $(".progress-label");
+
+        if (filename != '') {
+            $($("#tblpresentationTableSpecific .name")).each(function (index) {
+
+                if ($(this).text() == filename) {
+                    progressbar = $(this).parent().parent().find('.singleprogressbar');
+                    progressLabel = $(this).parent().parent().find('.progress-label');
+                }
+
+            });
+        }
+
+        progressbar.show();
+
+        $(progressbar).progressbar({
+            //value: false,
+            change: function () {
+                progressLabel.text(
+                    progressbar.progressbar("value") + "%");
+            },
+            complete: function () {
+                //progressLabel.text("Uploading Completed!");
+                //progressbar.progressbar("value", 0);
+                //progressLabel.text("");
+                //progressbar.hide();
+
+
+
+
+            }
+        });
+
+
+        function progress() {
+            var val = progressbar.progressbar("value") || 0;
+            progressbar.progressbar("value", val + 1);
+            if (val < 99) {
+                setTimeout(progress, 10);
+            }
+        }
+        setTimeout(progress, 100);
+    }
+
+</script>
+

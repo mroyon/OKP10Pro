@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="tablename" value="AR:  T A B L E N A M E"></resource>
+		<resource culture="ar-kw" name="tableList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="tableCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="tableUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="tableDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="tablename" value=" T A B L E N A M E"></resource>
+        <resource culture="en-us" name="tableList" value="View All"></resource>
+		<resource culture="en-us" name="tableCreate" value="Create"></resource>
+		<resource culture="en-us" name="tableUpdate" value="Update"></resource>
+		<resource culture="en-us" name="tableDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

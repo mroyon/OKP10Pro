@@ -1,0 +1,259 @@
+﻿@model KAF.BusinessDataObjects.BusinessDataObjectsPartials.KAF_CuttingInsertEntity
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmCuttingInfoNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            Initiate Cutting
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.CuttingInfoID)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("OKP", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "OkpID", minimumInputLength = 0, delay = 250, preloaded = ViewBag.pregen_arms, multiple = false, isReadOnly = true, IsRequired = true, isStatic = true, selectedvalue = Model.OkpID });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Process Date", htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style='width: 100%; '>
+                                    @Html.EditorFor(m => m.ProcessDate, new { htmlAttributes = new { @Value = DateTime.Now.ToString("dd-MM-yyyy"), @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @*@readonly = "readonly",*@
+                                @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MonthID, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.DropDownListFor(model => model.MonthID, KAF.FacadeCreatorObjects.gen_monthFCC.GetFacadeCreate().GetAll(
+                                   new KAF.BusinessDataObjects.gen_monthEntity { }).Select(i => new SelectListItem()
+                                   {
+                                       Text = i.month,
+                                       Value = i.monthid.ToString()
+                                   }), "Select Month", new { @class = "form-control" })  @*, @disabled = "disabled"*@
+                                @Html.ValidationMessageFor(model => model.MonthID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row ">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.Label("Rank (KW)", htmlAttributes: new { @class = "labelNormal" })
+                                    @{Html.RenderAction("LoadRankKWSearch", "Common", new { area = "", selectid = "RankID", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_RankKW, multiple = false, isReadOnly = false, IsRequired = false, isStatic = true }); ;}
+
+                                </div>
+                            </div>
+
+                        </div>*@
+                    @*<div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("Total Applicale Count", htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.Editor("txtApplicable", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly"} })
+
+                            </div>
+                        </div>
+
+                    </div>*@
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("Payment Type", htmlAttributes: new { @class = "labelNormal  required " })
+
+                                @Html.DropDownListFor(m => m.PayAllceID, KAF.FacadeCreatorObjects.cnf_paymentitemFCC.GetFacadeCreate().GetAll(
+                               new KAF.BusinessDataObjects.cnf_paymentitemEntity { }).Where(p => p.payallceid != 1).Select(i => new SelectListItem()
+                               {
+                                   Text = i.itemname,
+                                   Value = i.payallceid.ToString()
+                               }), "Select Payment Type", new { @class = "form-control", disabled = "disabled" })
+
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        var objExhange = KAF.FacadeCreatorObjects.gen_currencyexchagerateFCC.GetFacadeCreate().GetAll
+                            (new KAF.BusinessDataObjects.gen_currencyexchagerateEntity { isCurrent = true }).FirstOrDefault();
+
+                        if (objExhange != null && (objExhange.ratedateto == null || (objExhange.ratedateto <= System.DateTime.Now)))
+                        {
+                            <div class="row dvexchangerate hidden">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("From Date", htmlAttributes: new { @class = "labelNormal   " })
+                                        <div class='input-group date dateonly' id='' style='width: 100 %; '>
+                                            @Html.Editor("txtfromdate", new { htmlAttributes = new { @Value = objExhange.ratedatefrom != null ? Convert.ToDateTime(objExhange.ratedatefrom).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text", @readonly = "readonly", } })
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("To Date", htmlAttributes: new { @class = "labelNormal   " })
+                                        <div class='input-group date dateonly' id='' style='width:100%; '>
+                                            @Html.Editor("txttodate", new { htmlAttributes = new { @Value = objExhange.ratedateto != null ? Convert.ToDateTime(objExhange.ratedateto).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text", @readonly = "readonly", } })
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.Label("Exchange Rate", htmlAttributes: new { @class = "labelNormal   " })
+
+                                        @Html.Editor("Rate", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = objExhange.rate } })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-toolbar">
+                                <button type="submit" id="btnSaveTranCuttingInfo" class="btn btn-primary btn-md btnSaveTranCuttingInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                                <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="btn-toolbar">
+                                <button type="submit" id="btnSaveTranCuttingInfo" class="btn btn-primary btn-md btnSaveTranCuttingInfo" disabled="disabled"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                                <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.Label("Please setup the currency exchange rate from setup menu.", htmlAttributes: new { @class = "labelNormal  required " })
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    @*else
+                        {
+                            <div class="btn-toolbar">
+                                <button type="submit" id="btnSaveTranCuttingInfo" class="btn btn-primary btn-md btnSaveTranCuttingInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                                <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                            </div>
+                        }*@
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    //filecontrol addons
+    function GetTotalApplicableCount() {
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "TranCuttingInfoPaymentDetail",
+            currenturl: window.location.href,
+            OkpID: $("#OkpID").val(),
+            PayAllceID: $("#PayAllceID").val(),
+            ProcessDate: GetDateFromTextBox($("#ProcessDate").val())
+        });
+
+        $.ajax({
+            url: baseurl + "TranCuttingInfo/GetTotalCount",
+            type: 'POST',
+            data: input,
+            success: function (response) {
+                // var str = response;
+                if (response.status == "success") {
+                    $("#txtApplicable").val(response.data.TotalCount);
+
+                }
+            }
+        });
+    }
+    $(document).ready(function () {
+        $j('.dateonly').datetimepicker(
+            {
+                // format: 'L'
+                format: 'DD-MM-YYYY'
+            });
+
+        $j('.dateonly').on('dp.change', function (e) {
+
+            var monthindex = parseInt(new Date(GetDateFromTextBox($('#ProcessDate').val())).getMonth()) + 1;
+            $('#MonthID  option[value="' + monthindex + '"]').prop("selected", true);
+
+            GetTotalApplicableCount();
+        });
+
+        GetTotalApplicableCount();
+        $("#rankidkw").parent().find(".select2-selection__placeholder").text('ALL Rank');
+
+        //if ($("#OkpID").val() == 16) {
+        //    $("#PayAllceID option[value=3]").remove();
+        //}
+        //else {
+        //    $("#PayAllceID option[value=5]").remove();
+        //}
+
+        if ($("#PayAllceID").val() == "5") {
+            $(".dvexchangerate").removeClass("hidden");
+        }
+        else {
+            $(".dvexchangerate").addClass("hidden");
+        }
+
+        $("#PayAllceID").change(function () {
+
+            if ($("#PayAllceID").val() == "5") {
+                $(".dvexchangerate").removeClass("hidden");
+            }
+            else {
+                $(".dvexchangerate").addClass("hidden");
+            }
+        });
+    });
+
+
+
+</script>
+
+
+
+

@@ -1,0 +1,142 @@
+﻿
+@model KAF.BusinessDataObjects.stp_organizationentityEntity
+
+
+<!-- Modal -->
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @KAF.MsgContainer._stp_organizationentity.organizationentityDetails
+            </div>
+
+            @using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "" }, new { @id = "frmViewStpOrganizationEntity", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="panel-body">
+                    <div>
+
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+
+                                <div class="row">
+                                @Html.HiddenFor(model => model.entitykey)
+                              
+                            </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.organizationkey,  htmlAttributes: new { @class = "labelNormal required" })
+                                                            @{Html.RenderAction("LoadCombo", "Common", new { ddlId = "ddl_organizationentity", ddlName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationentityEntity, type = typeof(KAF.BusinessDataObjects.stp_organizationentity), selectedvalue = "-99", cssclass = "form-control", enable = true, validatedyn = true });}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.parentkey,  htmlAttributes: new { @class = "labelNormal required" })
+                                                            @{Html.RenderAction("LoadCombo", "Common", new { ddlId = "ddl_organizationentity", ddlName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationentityEntity, type = typeof(KAF.BusinessDataObjects.stp_organizationentity), selectedvalue = "-99", cssclass = "form-control", enable = true, validatedyn = true });}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.entirytypekey,  htmlAttributes: new { @class = "labelNormal required" })
+                                                            @{Html.RenderAction("LoadCombo", "Common", new { ddlId = "ddl_organizationentity", ddlName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationentityEntity, type = typeof(KAF.BusinessDataObjects.stp_organizationentity), selectedvalue = "-99", cssclass = "form-control", enable = true, validatedyn = true });}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.entitylevel, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.entitylevel, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.seqfirstindex, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.seqfirstindex, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.seqfullindex, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.seqfullindex, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.entitycpde, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.entitycpde, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.entityname, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.entityname, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.isactive, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.isactive, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="btn btn-primary btn-md" data-dismiss="modal">@KAF.MsgContainer._Common._btnClose <i class="fa fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+
+	

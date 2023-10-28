@@ -1,0 +1,309 @@
+﻿@model KAF.BusinessDataObjects.BusinessDataObjectsPartials.tran_cuttinginfo_GAPgListView_ExtEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .panelhdr {
+        background-color: #337ab7;
+        border-color: #337ab7;
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .btnspl {
+        font-size: 16px;
+        font-weight: bold;
+        color: #f5e29c;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmCuttingInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading" style="height:60px;">
+            Payment Information Submit
+            <div class="col-lg-3" style="float: right; text-align: right;">
+                <button type="button" data-dismiss="modal" aria-label="Close" id="btnModalCloseEdit" class="close btnModalCloseEdit"
+                        style="opacity: 1.0; opacity: 1.0; margin-top: -11px; color: white; margin-right: -20px; font-size: 39px;">
+                    <span aria-hidden="true" data-dismiss="modal" class=" btnModalCloseEdit">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.CuttingInfoID)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OkpID, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.OkpName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MonthID, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.month, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Total Processed", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.Editor("txtTotal", new { htmlAttributes = new { @Value = Model.Total, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Total Paid", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.Editor("txtTotalPaid", new { htmlAttributes = new { @Value = Model.TotalPaid, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Total Not Paid", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.Editor("txtTotalNotPaid", new { htmlAttributes = new { @Value = Model.TotalNotPaid, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("Total Amount", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.Editor("txtTotalPayment", new { htmlAttributes = new { @Value = Model.TotalPaidAmount, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Submit Date", htmlAttributes: new { @class = "labelNormal   " })
+
+                                    @Html.Editor("txtSubmitDate", new { htmlAttributes = new { @Value = Model.ReviewDate.Value.ToString("dd-MMM-yyyy"), @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Submit By", htmlAttributes: new { @class = "labelNormal   " })
+
+                                    @Html.Editor("txtSubmitBy", new { htmlAttributes = new { @Value = Model.strValue1, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+                                </div>
+                            </div>
+                        </div>*@
+                    @if (Model.IsApproved==false && !string.IsNullOrEmpty( Model.ApproveRemarks))
+                    {
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("Approve Remarks", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.EditorFor(model => model.ApproveRemarks, new { htmlAttributes = new { @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.Label("Remarks", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.EditorFor(model => model.ReviewRemarks, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="button" id="btnIsFinal" class="btn btn-primary btn-md btnIsFinal"><i class="fa fa-edit"> </i> Submit</button>
+                        <button type="button" id="" class="btn btn-danger btn-md cancel btnModalCloseEdit"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    //filecontrol addons
+    $(document).ready(function () {
+        $j('.dateonly').datetimepicker(
+            {
+                // format: 'L'
+                format: 'DD-MM-YYYY'
+            });
+        GetSummary();
+
+
+        $('#btnIsFinal').click(function (event) {
+            try {
+                event.preventDefault();
+
+                var form = $('#frmCuttingInfoEdit');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "HrFamilyInfoCreate",
+                    currenturl: window.location.href,
+
+                    cuttinginfoid: $('#CuttingInfoID').val(),
+                    isreviewed: true,
+                    reviewremarks: $("#ReviewRemarks").val()
+
+                });
+
+                confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                    if (answer == "true") {
+
+                        $.ajax({
+                            url: baseurl + "TranCuttingInfoPayment/TranCuttingInfoPaymentUpdate",
+                            data: input,
+                            type: 'POST',
+                            success: function (data) {
+                                if (data.status === "success") {
+                                    inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+                                            //   GetAllDataTranCuttingInfoPaymentDetail();
+                                            // GetSummary();
+
+                                            GetAllDataTranCuttingInfoPayment();
+
+                                            $('#mcTranCuttingInfoPaymentSubmitNew').html('');
+                                            $('#modal-container-TranCuttingInfoPaymentSubmitNew').modal('hide');
+                                        }
+
+                                    });
+
+                                }
+
+                                else {
+                                    inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+
+                                        }
+
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+
+
+
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+
+        $('.btnModalCloseEdit').click(function (event) {
+            GetAllDataTranCuttingInfoPayment();
+            try {
+                event.preventDefault();
+                $('#mcTranCuttingInfoPaymentSubmitNew').html('');
+                $('#modal-container-TranCuttingInfoPaymentSubmitNew').modal('hide');
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+    });
+    function makechanges(chk) {
+        if ($(chk).prop("checked") == true) {
+
+            $(chk).parent().parent().find(".unpaidremarks").val('');
+        }
+        else {
+            $(chk).parent().parent().find(".txtsinglepayDate").val('');
+        }
+    }
+
+    function GetSummary() {
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "TranCuttingInfoPaymentDetail",
+            currenturl: window.location.href,
+            cuttinginfoid: $("#CuttingInfoID").val()
+        });
+
+        $.ajax({
+            url: baseurl + "TranCuttingInfoPayment/GetSummaryData",
+            type: 'POST',
+            data: input,
+            success: function (response) {
+                // var str = response;
+                if (response.status == "success") {
+                    $("#txtTotalPaid").val(response.data.TotalPaid);
+                    $("#txtTotalAmount").val(response.data.TotalPaidAmount);
+                    $("#txtTotalNotPaid").val(response.data.TotalNotPaid);
+                }
+            }
+        });
+    }
+
+
+
+</script>
+
+
+
+
+
+

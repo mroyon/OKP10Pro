@@ -1,0 +1,187 @@
+﻿@model KAF.BusinessDataObjects.owin_userwiseunitmappingEntity
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .form-horizontal .checkbox {
+        min-height: 0px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmUserwiseUnitMappingEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._owin_userunitmap.UserUnitMapUpdate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.userroledetentitymaplid)
+                        @Html.HiddenFor(m => m.userroledetlid)
+                        @Html.HiddenFor(m => m.userroleid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                        @Html.HiddenFor(m => m.profiletypeid)
+                    </div>
+                    <div class="row ">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label(KAF.MsgContainer._owin_userunitmap.UserID, htmlAttributes: new { @class = "labelNormal required" })
+                                @{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "masteruserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedowin_user, multiple = false, isReadOnly = true, IsRequired = true });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label(KAF.MsgContainer._owin_userunitmap.RoleID, htmlAttributes: new { @class = "labelNormal" })
+                                @Html.EditorFor(model => model.rolename, new { htmlAttributes = new { @readonly = "readonly", @class = " form-control" } })
+                                <h4><label id="ddlroleVal" class="label label-danger" hidden="hidden"></label></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.CheckBox("allunit", Model.allunit.HasValue ? Model.allunit : false)
+                                @Html.Label(KAF.MsgContainer._owin_userunitmap.AllUnit, htmlAttributes: new { @class = "labelNormal" })
+                                @Html.ValidationMessageFor(model => model.allunit, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label(KAF.MsgContainer._owin_userunitmap.EntityKey, htmlAttributes: new { @class = "labelNormal" })
+                                @{Html.RenderAction("LoadUnitSearch", "Common", new { area = "", selectid = "entitykey", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedStp_OrganizationEntity, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    @Html.CheckBox("allchild", Model.allchild.HasValue ? Model.allchild : false)
+                                    @Html.Label(KAF.MsgContainer._owin_userunitmap.AllChild, htmlAttributes: new { @class = "labelNormal" })
+                                    @Html.ValidationMessageFor(model => model.allchild, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.CheckBox("isunitadmin", Model.isunitadmin.HasValue ? Model.isunitadmin : false)
+                                    @Html.Label(KAF.MsgContainer._owin_userunitmap.IsUnitAdmin, htmlAttributes: new { @class = "labelNormal" })
+                                    @Html.ValidationMessageFor(model => model.isunitadmin, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <span class="col-md-1">  <b> Profile Type</b></span>
+
+                                @Html.CheckBox("allprofile", Model.allprofile.HasValue ? Model.allprofile : false)
+                                @Html.Label("Check All", htmlAttributes: new { @class = "labelNormal" })
+                                @Html.ValidationMessageFor(model => model.allprofile, "", new { @class = "text-danger" })
+
+                            </h4>
+
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="modal-body">
+                                <div class="form-horizontal container">
+                                    <div class="row ">
+                                        <div class="col-md-4">
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="KuwaitiOfficer" value="1">Kuwaiti Officer
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="DelegateOfficer" value="2">Delegate Officer
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="Civil" value="3">Civil
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-4">
+
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="Contructual" value="4">Contructual
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="Volunteer" value="5">Volunteer
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="Recruitment" value="6">Recruitment
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-4">
+
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="Reserve" value="7">Reserve
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="KuwaitiNonOfficer" value="8">Kuwaiti Non Officer
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label style="font-weight: bold;">
+                                                <input type="checkbox" name="allProfile" class="inline checkbox actionid" id="DelegateNonOfficer" value="9">Delegate Non Officer
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateUserwiseUnitMapping" class="btn btn-primary btn-md btnUpdateUserwiseUnitMapping"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $('#allunit').trigger('change');
+        $('#masteruserid').trigger('change');
+
+        $('#allprofile').trigger('change');
+        var res = $('#profiletypeid').val().split(",");
+        for (j = 0; j < res.length; j++) {
+            $("input[value=" + res[j] + "]").prop('checked', true);
+        }
+    });
+</script>
+
+
+

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="ptademandid" value="AR:  PTA ID"></resource>
+       <resource culture="ar-kw" name="ptademandidRequired" value="AR: Please provide  PTA ID"></resource>
+       <resource culture="ar-kw" name="flightdate" value="AR:  Flight Date"></resource>
+       <resource culture="ar-kw" name="flightdateRequired" value="AR: Please provide  Flight Date"></resource>
+       <resource culture="ar-kw" name="flightletterdate" value="AR:  Flight Letter Date"></resource>
+       <resource culture="ar-kw" name="flightletterdateRequired" value="AR: Please provide  Flight Letter Date"></resource>
+       <resource culture="ar-kw" name="flightletterno" value="AR:  Flight Letter No"></resource>
+       <resource culture="ar-kw" name="flightletternoRequired" value="AR: Please provide  Flight Letter No"></resource>
+       <resource culture="ar-kw" name="airlinesid" value="AR:  Airlines ID"></resource>
+       <resource culture="ar-kw" name="airlinesidRequired" value="AR: Please provide  Airlines ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="flightinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="flightinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="flightinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="flightinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="ptademandid" value=" PTA ID"></resource>
+       <resource culture="en-us" name="ptademandidRequired" value="Please provide  PTA ID"></resource>
+       <resource culture="en-us" name="flightdate" value=" Flight Date"></resource>
+       <resource culture="en-us" name="flightdateRequired" value="Please provide  Flight Date"></resource>
+       <resource culture="en-us" name="flightletterdate" value=" Flight Letter Date"></resource>
+       <resource culture="en-us" name="flightletterdateRequired" value="Please provide  Flight Letter Date"></resource>
+       <resource culture="en-us" name="flightletterno" value=" Flight Letter No"></resource>
+       <resource culture="en-us" name="flightletternoRequired" value="Please provide  Flight Letter No"></resource>
+       <resource culture="en-us" name="airlinesid" value=" Airlines ID"></resource>
+       <resource culture="en-us" name="airlinesidRequired" value="Please provide  Airlines ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="flightinfoList" value="View All"></resource>
+		<resource culture="en-us" name="flightinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="flightinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="flightinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

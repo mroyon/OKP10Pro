@@ -1,0 +1,136 @@
+﻿@model KAF.BusinessDataObjects.hr_flightinfodetlEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_FlightInfoDetlNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_flightinfodetl.hr_flightinfodetlCreate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.flightdetlid)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.flightid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHr_FlightInfoSearch", "Common", new { area = "", selectid = "flightid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_FlightInfo, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.ptidetlid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("Loadhr_ptademandDetlSearch", "Common", new { area = "", selectid = "ptidetlid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.prehr_ptademandDetl, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.hrbasicid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHR_BasicProfileSearch", "Common", new { area = "", selectid = "hrbasicid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHR_BasicProfile, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.hrsvcid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHr_SvcInfoSearch", "Common", new { area = "", selectid = "hrsvcid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_SvcInfo, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.iscancel, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.iscancel, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.iscancel, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.canceldate, htmlAttributes: new { @class = "labelNormal   " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.canceldate, new {  htmlAttributes = new {  @Value = Model.canceldate != null ? Convert.ToDateTime(Model.canceldate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.canceldate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.cancelletterdate, htmlAttributes: new { @class = "labelNormal   " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.cancelletterdate, new {  htmlAttributes = new {  @Value = Model.cancelletterdate != null ? Convert.ToDateTime(Model.cancelletterdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.cancelletterdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.cancelletterno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.cancelletterno, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.cancelletterno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.reason, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.reason, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.reason, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveHrFlightInfoDetl" class="btn btn-primary btn-md btnSaveHrFlightInfoDetl"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+
+
+
+
+
+ $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+</script>
+
+
+
+

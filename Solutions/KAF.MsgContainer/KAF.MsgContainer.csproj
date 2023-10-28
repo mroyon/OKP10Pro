@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03DA147D-34E0-402D-AFF7-588FEFF38665}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KAF.MsgContainer</RootNamespace>
+    <AssemblyName>KAF.MsgContainer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\BaseResourceProvider.cs" />
+    <Compile Include="Abstract\IResourceProvider.cs" />
+    <Compile Include="clsMsgContainerHelper.cs" />
+    <Compile Include="Concrete\XmlResourceProvider.cs" />
+    <Compile Include="Entities\ResourceEntry.cs" />
+    <Compile Include="OperationMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperationMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="OperationMessagesArabic.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperationMessagesArabic.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_CommonHtml.cs" />
+    <Compile Include="_Common.cs" />
+    <Compile Include="_Login.cs" />
+    <Compile Include="_Responses.cs" />
+    <Compile Include="_Status.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_airlines.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_arms.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_authorizestrength.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_bank.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_bankbranch.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_bloodgroup.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_building.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_camp.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_country.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_divisiondistrict.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_documenttype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_filetype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_freedomfighttype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_gender.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_govcity.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_issuetype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_language.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_languageproficiency.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_leaveconfig.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_leavetype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_maritalstatus.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_movementtype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_okp.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_okpco.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_penaltytype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_postoffice.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_promotiontype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_rank.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_ranktype.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_relationship.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_religion.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_servicestatus.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_subunit.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_thana.cs" />
+    <Compile Include="_UnityEntityClasses\_gen_trade.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_addresschange.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_arrivalinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_arrivalinfodetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_attachmentinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_bankaccountinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_bankloaninfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_basicfile.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_basicprofile.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_deathinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_deathinfo_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_demanddetlpassport.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_documentupload.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_emergencycontact.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_extensioninfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_extensioninfo_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_familyinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_familyjobinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_flightinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_flightinfodetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_hospitaladmissioninfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_hospitaladmissioninfo_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_languageproficiency.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_leaveinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_leaveinfo_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_leavemodification.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_leavemodification_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_medicalinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_medicalinfo_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_newdemand.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_newdemanddetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_okptransferinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_passportinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_personalinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_promotioninfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_ptademand.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_ptademanddetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_ptareceived.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_ptareceiveddetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_punishmentinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_repatriationinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_repatriationinfo_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_replacementinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_replacementinfodetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_reppassportinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_reppassportinfodetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_residentvisa.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_rewardinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_svcinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_visademandinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_visademandinfodetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_visaissueinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_visaissueinfodetl.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_visasentinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_visasentinfodetl.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_formaction.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_forminfo.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_lastworkingpage.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_reportpermission.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_reportrole.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_reportroletemplate.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_rolepermission.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_tsv.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_user.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_role.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userlogintrail.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userpasswordresetinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userprefferencessettings.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userrole.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userroledetl.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userroledetlentitymap.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userroledetlentityprofilemap.cs" />
+    <Compile Include="_UnityEntityClasses\_owin_userstatuschangehistory.cs" />
+    <Compile Include="_UnityEntityClasses\_reg_basicinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_rptm_allreportinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_rptm_reportdatasource.cs" />
+    <Compile Include="_UnityEntityClasses\_rptm_reportparameter.cs" />
+    <Compile Include="_UnityEntityClasses\_script_ins_bmc.cs" />
+    <Compile Include="_UnityEntityClasses\_script_table_bmc.cs" />
+    <Compile Include="_UnityEntityClasses\_stp_organization.cs" />
+    <Compile Include="_UnityEntityClasses\_stp_organizationentity.cs" />
+    <Compile Include="_UnityEntityClasses\_stp_organizationentitytype.cs" />
+    <Compile Include="_UnityEntityClasses\_stp_passpolicy.cs" />
+    <Compile Include="_UnityEntityClasses\_tran_manpowerstate.cs" />
+    <Compile Include="_UnityEntityClasses\_tran_manpowerstatedetl.cs" />
+    <Compile Include="_UnityEntityClasses\_tran_manpowerstatedetl_history.cs" />
+    <Compile Include="_UnityEntityClasses\_tran_manpowerstate_history.cs" />
+    <Compile Include="_UnityEntityClasses\_useraccountsprof.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="OperationMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OperationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OperationMessagesArabic.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OperationMessagesArabic.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

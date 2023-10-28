@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="arrivalld" value="AR:  Arrivall D"></resource>
+       <resource culture="ar-kw" name="arrivalldRequired" value="AR: Please provide  Arrivall D"></resource>
+       <resource culture="ar-kw" name="flightdetlid" value="AR:  Flight Detl ID"></resource>
+       <resource culture="ar-kw" name="flightdetlidRequired" value="AR: Please provide  Flight Detl ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="arrivalinfodetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="arrivalinfodetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="arrivalinfodetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="arrivalinfodetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="arrivalld" value=" Arrivall D"></resource>
+       <resource culture="en-us" name="arrivalldRequired" value="Please provide  Arrivall D"></resource>
+       <resource culture="en-us" name="flightdetlid" value=" Flight Detl ID"></resource>
+       <resource culture="en-us" name="flightdetlidRequired" value="Please provide  Flight Detl ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="arrivalinfodetlList" value="View All"></resource>
+		<resource culture="en-us" name="arrivalinfodetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="arrivalinfodetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="arrivalinfodetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="forceid" value="AR:  Force ID"></resource>
+       <resource culture="ar-kw" name="forceidRequired" value="AR: Please provide  Force ID"></resource>
+       <resource culture="ar-kw" name="countryid" value="AR:  Country ID"></resource>
+       <resource culture="ar-kw" name="countryidRequired" value="AR: Please provide  Country ID"></resource>
+       <resource culture="ar-kw" name="armsname" value="AR:  Arms Name"></resource>
+       <resource culture="ar-kw" name="armsnameRequired" value="AR: Please provide  Arms Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="armsList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="armsCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="armsUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="armsDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="forceid" value=" Force ID"></resource>
+       <resource culture="en-us" name="forceidRequired" value="Please provide  Force ID"></resource>
+       <resource culture="en-us" name="countryid" value=" Country ID"></resource>
+       <resource culture="en-us" name="countryidRequired" value="Please provide  Country ID"></resource>
+       <resource culture="en-us" name="armsname" value=" Arms Name"></resource>
+       <resource culture="en-us" name="armsnameRequired" value="Please provide  Arms Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="armsList" value="View All"></resource>
+		<resource culture="en-us" name="armsCreate" value="Create"></resource>
+		<resource culture="en-us" name="armsUpdate" value="Update"></resource>
+		<resource culture="en-us" name="armsDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

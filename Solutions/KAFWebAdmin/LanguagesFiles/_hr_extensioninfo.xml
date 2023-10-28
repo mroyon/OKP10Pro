@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="repatriationdate" value="AR:  Repatriation Date"></resource>
+       <resource culture="ar-kw" name="repatriationdateRequired" value="AR: Please provide  Repatriation Date"></resource>
+       <resource culture="ar-kw" name="extensiontill" value="AR:  Extension Till"></resource>
+       <resource culture="ar-kw" name="extensiontillRequired" value="AR: Please provide  Extension Till"></resource>
+       <resource culture="ar-kw" name="letterdate" value="AR:  Letter Date"></resource>
+       <resource culture="ar-kw" name="letterdateRequired" value="AR: Please provide  Letter Date"></resource>
+       <resource culture="ar-kw" name="letterno" value="AR:  Letter No"></resource>
+       <resource culture="ar-kw" name="letternoRequired" value="AR: Please provide  Letter No"></resource>
+       <resource culture="ar-kw" name="letternofilepath" value="AR:  Letter No File Path"></resource>
+       <resource culture="ar-kw" name="letternofilename" value="AR:  Letter No File Name"></resource>
+       <resource culture="ar-kw" name="letternofiletype" value="AR:  Letter No File Type"></resource>
+       <resource culture="ar-kw" name="letternofileextension" value="AR:  Letter No File Extension"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="extensioninfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="extensioninfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="extensioninfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="extensioninfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="repatriationdate" value=" Repatriation Date"></resource>
+       <resource culture="en-us" name="repatriationdateRequired" value="Please provide  Repatriation Date"></resource>
+       <resource culture="en-us" name="extensiontill" value=" Extension Till"></resource>
+       <resource culture="en-us" name="extensiontillRequired" value="Please provide  Extension Till"></resource>
+       <resource culture="en-us" name="letterdate" value=" Letter Date"></resource>
+       <resource culture="en-us" name="letterdateRequired" value="Please provide  Letter Date"></resource>
+       <resource culture="en-us" name="letterno" value=" Letter No"></resource>
+       <resource culture="en-us" name="letternoRequired" value="Please provide  Letter No"></resource>
+       <resource culture="en-us" name="letternofilepath" value=" Letter No File Path"></resource>
+       <resource culture="en-us" name="letternofilename" value=" Letter No File Name"></resource>
+       <resource culture="en-us" name="letternofiletype" value=" Letter No File Type"></resource>
+       <resource culture="en-us" name="letternofileextension" value=" Letter No File Extension"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="extensioninfoList" value="View All"></resource>
+		<resource culture="en-us" name="extensioninfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="extensioninfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="extensioninfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

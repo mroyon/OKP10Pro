@@ -1,0 +1,79 @@
+﻿@model KAF.BusinessDataObjects.gen_authorizestrengthEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmGen_AuthorizeStrengthNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._gen_authorizestrength.authorizestrengthCreate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.authstrengthid)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.okpid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = false, IsRequired = true });}
+                                @*@{Html.RenderAction("LoadGen_OkpSearch", "Common", new { area = "", selectid = "okpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Okp, multiple = false, isReadOnly = false, IsRequired = true });}*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <table id="GenAuthorizeStrengthDtNew" class="table table-striped table-bordered dataTable no-footer dtr-inline" style="width:100%;" role="grid" aria-describedby="GenReplacementDt_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th rowspan="1" colspan="1">Rank</th>
+                                        <th rowspan="1" colspan="1">Group</th>
+                                        <th rowspan="1" colspan="1">Strength</th>
+                                        <th rowspan="1" colspan="1" style="width:150px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveGenAuthorizeStrength" class="btn btn-primary btn-md btnSaveGenAuthorizeStrength"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+
+
+
+
+
+ $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+</script>
+
+
+
+

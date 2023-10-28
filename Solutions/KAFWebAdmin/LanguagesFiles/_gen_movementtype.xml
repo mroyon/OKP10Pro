@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="movementtype" value="AR:  Movement Type"></resource>
+       <resource culture="ar-kw" name="movementtypeRequired" value="AR: Please provide  Movement Type"></resource>
+       <resource culture="ar-kw" name="movementfor" value="AR:  Movement For"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="movementtypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="movementtypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="movementtypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="movementtypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="movementtype" value=" Movement Type"></resource>
+       <resource culture="en-us" name="movementtypeRequired" value="Please provide  Movement Type"></resource>
+       <resource culture="en-us" name="movementfor" value=" Movement For"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="movementtypeList" value="View All"></resource>
+		<resource culture="en-us" name="movementtypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="movementtypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="movementtypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

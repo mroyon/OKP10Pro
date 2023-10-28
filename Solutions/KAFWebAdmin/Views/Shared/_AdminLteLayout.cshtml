@@ -1,0 +1,589 @@
+﻿<!DOCTYPE html>
+<html lang="@KAF.CustomHelper.HelperClasses.CultureHelper.GetCurrentNeutralCulture()" dir="ltr">
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> BMC Automation</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="~/DesignsAndScripts/fonts/font_googleapis.css" rel="stylesheet" />
+    <link href="~/DesignsAndScripts/Scripts/plugins/footable/css/footable.core.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    @{
+        @*if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower() == "ar-kw")
+            {
+                @Styles.Render("~/Bundles/cssRTL");
+            }
+            else
+            {
+                @Styles.Render("~/Bundles/css");
+            }*@
+        @Styles.Render("~/Bundles/css");
+    }
+
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/DesignsAndScripts/Styles/select2.css" rel="stylesheet" />
+
+    <!-- load jQuery 3.3.1 -->
+    <script type="text/javascript" src="~/DesignsAndScripts/Scripts/plugins/jquery/jquery.js"></script>
+    <!-- load jQuery 2.1.1 -->
+    <script src="~/DesignsAndScripts/Scripts/plugins/select2/select2.full.js"></script>
+
+    <script src="~/DesignsAndScripts/Scripts/plugins/bootstrap/bootstrap.js"></script>
+    <script src="~/DesignsAndScripts/Scripts/plugins/moment/moment.js"></script>
+
+    <script type="text/javascript" src="~/DesignsAndScripts/Scripts/plugins/jquery/jquery-2_1_1.js"></script>
+    <script src="~/DesignsAndScripts/Scripts/plugins/bootstrap_datetimepicker/bootstrap_datetimepicker.js"></script>
+
+
+
+
+
+
+    <script type="text/javascript">
+        $j = jQuery.noConflict(true);
+    </script>
+
+    <script type="text/javascript" src="~/DesignsAndScripts/Scripts/plugins/footable/js/footable.min.js"></script>
+    @*@Scripts.Render("~/bundles/jqbase")*@
+</head>
+<body class="hold-transition skin-blue sidebar-mini fixed">
+    @{ string baseURL = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+        string domain = Request.Url.Authority; }
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="txtUserSTK" value='@ViewBag.usertoken' class="txtUserSTK" />
+    <input type="hidden" id="txtUserNameSTK" value='@(((KAF.BusinessDataObjects.owin_userEntity)HttpContext.Current.Session["UserModel"]).username.ToString())' class="txtUserNameSTK" />
+    <input type="hidden" id="txtUserEmailSTK" value='@(((KAF.BusinessDataObjects.owin_userEntity)HttpContext.Current.Session["UserModel"]).emailaddress.ToString())' class="txtUserEmailSTK" />
+    <input type="hidden" id="txtwebapitoken" value='@(((KAF.BusinessDataObjects.owin_userEntity)HttpContext.Current.Session["UserModel"]).comment.ToString())' class="txtwebapitoken" />
+    <input type="hidden" id="txtUserGUID" value='@(((KAF.BusinessDataObjects.owin_userEntity)HttpContext.Current.Session["UserModel"]).userid.ToString())' class="txtUserNameSTK" />
+    <input type="hidden" id="txtUserRoleID" value='@(((KAF.BusinessDataObjects.owin_userEntity)HttpContext.Current.Session["UserModel"]).userroleid.ToString())' class="txtUserRoleID" />
+    <input type="hidden" id="txtdomain" value='@System.Configuration.ConfigurationManager.AppSettings["LoginURL"].ToString()' class="txtdomain" />
+
+    <input type="hidden" value="@baseURL" id="txtBaseUrl" class="txtBaseUrl" />
+    <div class="wrapper">
+
+        @Html.Partial("_Header")
+
+        @Html.Partial("_Sidebar")
+
+        <div class="content-wrapper">
+            @*<section class="content-header">
+                    @{
+                        var SelectProfile = new KAF.BusinessDataObjects.hr_basicprofileEntity();
+                        if (Session["selectedprofile"] == null)
+                        {
+                            SelectProfile = new KAF.BusinessDataObjects.hr_basicprofileEntity();
+                        }
+                        else
+                        {
+                            SelectProfile = (Session["selectedprofile"] as KAF.BusinessDataObjects.hr_basicprofileEntity);
+                        }
+
+                        Html.RenderPartial("_ProfileSummary", SelectProfile);
+                    }
+
+                </section>*@
+            @*<section class="content-header">
+                    <h1>
+                        @ViewBag.Title
+                        <small>@ViewBag.TitleSmall</small>
+                    </h1>
+
+                </section>*@
+
+            <section class="content">
+                @RenderBody()
+                <div class="row">
+                    <!-- Left col -->
+                </div>
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.5
+            </div>
+            <strong>Copyright &copy; 2021 <a href="https://mgt.bmc.kw/"> Bangladesh Military Contigent to Kuwait</a>.</strong> All rights reserved
+        </footer>
+        @Html.Partial("_ControlSidebar")
+
+        <div class="control-sidebar-bg"></div>
+    </div>
+    @Scripts.Render("~/Bundles/js")
+
+    <script src="~/DesignsAndScripts/Scripts/plugins/signalr/signalR.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/DesignsAndScripts/PageWise/Home/chatHUB.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/Home/ProfileSearchPanel.js"></script>
+
+    @RenderSection("scripts", required: false)
+    @Html.Partial("_testPartialView")
+
+
+
+    <input type="hidden" id="txtuserip" value="@domain" class="txtuserip" />
+    <script>
+        //replaced with
+        //$.getJSON('https://api.ipify.org/?format=json', function (data) {
+        //    $('.txtuserip').val(data.ip);
+        //});
+
+        //$.ajax({
+        //    url: baseurl + "home/GetClientIPAddress",
+        //    //data: input,
+        //    type: 'POST',
+        //    async: false,
+        //    success: function (data) {
+        //        //console.log(data);
+        //        $('.txtuserip').val(data.data);
+        //    }
+        //});
+
+        function CallLanguageShifter(lan) {
+            try {
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "CallLanguageShifter",
+                    currenturl: window.location.href,
+                    username: lan,
+                    password: lan
+                });
+
+
+                $.ajax({
+                    url: baseurl + "home/CallLanguageShifterRoot",
+                    data: input,
+                    type: 'POST',
+                    async: false,
+                    success: function (data) {
+                        if (data.status === "success") {
+                            location.reload();
+                        }
+                    }
+                });
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+            $("#divProgressBar").hide();
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        $(document).ready(function () {
+
+
+
+            var whichlang = readCookie("_culture");
+
+            console.log(whichlang);
+
+            if (whichlang != '') {
+                if (whichlang == "en-us") {
+                    $("#btnArabic").css("background-color", "");
+                    $("#btnArabic").css("border", "");
+                    $("#btnEnglish").css("border", "1px solid blue");
+                    $("#btnEnglish").css("background-color", "#f4f4f4");
+                }
+                else if (whichlang == "ar-kw") {
+                    $("#btnEnglish").css("background-color", "");
+                    $("#btnEnglish").css("border", "");
+                    $("#btnArabic").css("border", "1px solid blue");
+                    $("#btnArabic").css("background-color", "#f4f4f4");
+                }
+            }
+
+
+            $('body').on('click', '#btnEnglish', function (event) {
+                try {
+                    event.preventDefault();
+                    CallLanguageShifter("en-us");
+                } catch (e) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: e.message,
+                        type: 'red'
+                    });
+                }
+                $("#divProgressBar").hide();
+            });
+
+            $('body').on('click', '#btnArabic', function (event) {
+                try {
+                    event.preventDefault();
+                    CallLanguageShifter("ar-kw");
+                } catch (e) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: e.message,
+                        type: 'red'
+                    });
+                }
+                $("#divProgressBar").hide();
+            });
+
+
+            // showMenu();
+        });
+
+        var pendingTasksQueryinterval = 9000;
+
+        $(document).ready(function () {
+
+
+
+        });
+
+
+        function LoadPendingTasks() {
+            try {
+                // alert("Asdf");
+                var baseurl = $("#txtBaseUrl").val();
+                AddAntiForgeryToken = function (data) {
+                    data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                    return data;
+                };
+
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "LoadPendingTasks",
+                    currenturl: window.location.href
+                });
+
+                $.ajax({
+                    url: $('#txtBaseUrl').val() + "Home/LoadPendingTasks",
+                    data: input,
+                    type: 'POST',
+                    async: true,
+                    success: function (data) {
+
+                        if (data != null && data.status === "success") {
+                            $("#headerspanPendingtaskbarmenu").empty();
+                            $("#headerPendingtaskitems").empty();
+                            $(".headerPendingtaskbarmenu").removeClass("hidden");
+                            var stringBuilder = '';
+                            stringBuilder += '<li class="header">You have ' + data.redirectUrl + ' Tasks</li>'
+                            stringBuilder += '<li>';
+                            stringBuilder += '<ul class="menu taskslist">';
+
+                            var val = $.parseJSON(data.responsetext);
+                            $.each(val, function (index, item) {
+                                stringBuilder += '<li>';
+
+                                if (item.reviewedby > 0) {
+                                    stringBuilder += "<div class='alert-info' style='padding 3;'>" + item.currentactivitytitle + "</div>";
+                                    stringBuilder += '<a href="' + item.reviewurl + '">';
+                                    stringBuilder += '<span class="badge">' + item.reviewedby.toString() + '</span> Review';
+                                    stringBuilder += '</a>';
+                                }
+
+                                if (item.publishedby > 0) {
+                                    stringBuilder += '<a href="' + item.publishurl + '">';
+                                    stringBuilder += '<span class="badge">' + item.publishedby.toString() + '</span> Publish';
+                                    stringBuilder += '</a>';
+                                }
+
+                                if (item.archivedby > 0) {
+                                    stringBuilder += '<a href="' + item.archiveurl + '">';
+                                    stringBuilder += '<span class="badge">' + item.archivedby.toString() + '</span> Atchive';
+                                    stringBuilder += '</a>';
+                                }
+
+                                stringBuilder += '</li>';
+                            });
+
+                            stringBuilder += '';
+                            stringBuilder += '';
+                            stringBuilder += '';
+                            stringBuilder += '';
+                            stringBuilder += '';
+                            stringBuilder += '';
+
+                            stringBuilder += '</ul>';
+                            stringBuilder += '</li>';
+                            $("#headerPendingtaskitems").append(stringBuilder);
+                            $("#headerspanPendingtaskbarmenu").text(data.redirectUrl);
+                        }
+                        else {
+                            $(".headerPendingtaskbarmenu").addClass("hidden");
+                        }
+                    },
+                    complete: function (data) {
+                        //setTimeout(LoadPendingTasks, pendingTasksQueryinterval);
+                    },
+                    beforeSend: function () {
+
+                    }
+                });
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        }
+
+
+        try {
+
+
+            jQuery.ajaxSetup({
+                beforeSend: function () {
+                    $('#divProgressBar').show();
+                },
+                complete: function () {
+                    $('#divProgressBar').hide();
+                },
+                success: function (response) {
+                    if (response != null)
+                        if (response.status === "success") {
+                            inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                            });
+                        }
+                        else if (response.status === "failed") {
+                            inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                            });
+                        }
+                        else if (response.status === "error") {
+                            inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                            });
+                        }
+                        else if (response.status === "Error") {
+                            inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                            });
+                        }
+                },
+                failure: function (response) {
+
+                    if (response == "_Logon_") {
+                        inforamtionDialog("Session Expired", "Please wait while redirecting to login page.", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            window.location.href = $('#txtBaseUrl').val() + "login/index";
+                        });
+                    }
+                },
+                error: function (response) {
+                    if (response.responseText == "Error: Session Out!Error: Session Out!") {
+                        inforamtionDialog("Session Expired", "Please wait while redirecting to login page.", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            window.location.href = $('#txtBaseUrl').val() + "login/index";
+                        });
+                    }
+                }
+            });
+        } catch (e) {
+            $('#divProgressBar').hide();
+            if (e.message.indexOf("_Logon_") >= 0) {
+                inforamtionDialog("Session Expired", "Please wait while redirecting to login page.", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                    window.location.href = $('#txtBaseUrl').val() + "login/index";
+                });
+            }
+            $.alert({
+                title: 'Error!',
+                content: e.message,
+                type: 'red'
+            });
+        }
+
+
+        $(function () {
+            var url = window.location.pathname;
+            urlRegExp = new RegExp(url.replace(/\/$/, '') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+            $('#menuitemslistul a').each(function () {
+                if (document.location.href == $(this).attr('href')) {
+                    $(this).parents('li').add(this).each(function () {
+                        $(this).addClass('active menu-open');
+                    });
+                }
+            });
+        });
+
+        (function ($) {
+            jQuery.expr[':'].Contains = function (a, i, m) {
+                return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+            };
+
+            function filterList(list) {
+
+                $("#txtfiltermenu").change(function () {
+
+                    var filter = $(this).val();
+                    if (filter) {
+
+                        $matches = $(list).find('a.isChild:Contains(' + filter + ')').parents();
+                        $('li', list).not($matches).slideUp();
+                        $matches.slideDown();
+
+                    } else {
+                        $(list).find("li").slideDown();
+                    }
+                    return false;
+                })
+                    .keyup(function () {
+                        $(this).change();
+                    });
+            }
+
+            $(function () {
+                filterList($("#menuitemslistul"));
+            });
+        }(jQuery));
+
+
+    </script>
+
+
+    @{ var dic = new Dictionary<string, string>();
+        foreach (string var in Request.ServerVariables)
+        {
+            if (!string.IsNullOrEmpty(HttpUtility.UrlEncode(Request[var]).ToString()))
+            {
+                if (
+                (var == "HTTP_USER_AGENT")
+                || (var == "HTTP_REFERER")
+                || (var == "HTTP_COOKIE")
+                    || (var == "SCRIPT_NAME")
+                    || (var == "SERVER_NAME")
+                    || (var == "SERVER_PORT")
+                    || (var == "SERVER_PROTOCOL")
+                    || (var == "HTTP_CONNECTION")
+                    || (var == "AUTH_USER")
+                    || (var == "LOGON_USER")
+                || (var == "REQUEST_METHOD")
+                || (var == "URL")
+                    )
+                {
+                    dic.Add(var.ToString(), HttpUtility.UrlEncode(Request[var]).ToString());
+                }
+            }
+        }
+        var jlist = Newtonsoft.Json.JsonConvert.SerializeObject(dic);
+        string js = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(jlist); }
+
+    <textarea id="txtServerUtil" style="display: none;" hidden="hidden" class="txtServerUtil">@js</textarea>
+    <textarea id="txtServerUtilObj" style="display: none;" hidden="hidden" class="txtServerUtilObj"> @jlist</textarea>
+    <input type="hidden" id="txtUserSes" value='@Session.SessionID' class="txtUserSes" />
+    <textarea id="txtCommonLanguages" style="display: none;" hidden="hidden" class="txtCommonLanguages">@Session["comlanguage"].ToString()</textarea>
+
+
+    @{ if (!string.IsNullOrEmpty(ViewBag.exceptiontitle) && !string.IsNullOrEmpty(ViewBag.exceptionbody))
+        {
+<script>
+    $(document).ready(function () {
+        $('#exampleModalLabel').append(ViewBag.exceptiontitle);
+        $('#exampleModalBody').append(ViewBag.exceptionbody);
+        $('#exampleModal').modal('toggle');
+
+    });
+</script>
+ ViewBag.exceptiontitle = string.Empty;
+ViewBag.exceptionbody = string.Empty;
+} }
+    @*@{
+            if ((bool)(ViewData["OpenAuthorizationPopup"] ?? false))
+            {
+                <script>
+                    $(document).ready(function () {
+                        $('#exampleModalLabel').append("permission denied");
+                        $('#exampleModalBody').append("you don't have permission");
+                        $('#exampleModal').modal('toggle');
+
+                    });
+                </script>
+            }
+        }*@
+
+
+    <div id="divProgressBar" class="modal">
+        <div class="center">
+            <img src="~/DesignsAndScripts/Images/ajax-loader.gif" />
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#337ab7;">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color:white;"></h5>
+                </div>
+                <div class="modal-body" id="exampleModalBody">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="modal fade" id="passchange" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#337ab7;">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:white;"></h5>
+                    </div>
+                    <div class="modal-body" id="passchange-content">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div id="passchange" class="modal fade hidden-print" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" id="passchange-content">
+            </div>
+        </div>
+    </div>
+    <div id="updateprofile" class="modal fade hidden-print" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" id="updateprofile-content">
+            </div>
+        </div>
+    </div>
+    @*<div class="modal fade" id="updateprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#337ab7;">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:white;"></h5>
+                    </div>
+                    <div class="modal-body" id="updateprofile-content">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+</body>
+</html>

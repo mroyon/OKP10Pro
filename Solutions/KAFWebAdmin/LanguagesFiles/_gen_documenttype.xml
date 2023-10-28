@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="doctypename" value="AR:  Doc Type Name"></resource>
+       <resource culture="ar-kw" name="doctypenameRequired" value="AR: Please provide  Doc Type Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="documenttypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="documenttypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="documenttypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="documenttypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="doctypename" value=" Doc Type Name"></resource>
+       <resource culture="en-us" name="doctypenameRequired" value="Please provide  Doc Type Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="documenttypeList" value="View All"></resource>
+		<resource culture="en-us" name="documenttypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="documenttypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="documenttypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,141 @@
+﻿@model KAF.BusinessDataObjects.hr_extensioninfoEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_ExtensionInfoNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_extensioninfo.hr_extensioninfoCreate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.hrextensionid)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.hrbasicid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHR_BasicProfileSearch", "Common", new { area = "", selectid = "hrbasicid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHR_BasicProfile, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.repatriationdate, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.repatriationdate, new {  htmlAttributes = new {  @Value = Model.repatriationdate != null ? Convert.ToDateTime(Model.repatriationdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.repatriationdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.extensiontill, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.extensiontill, new {  htmlAttributes = new {  @Value = Model.extensiontill != null ? Convert.ToDateTime(Model.extensiontill).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.extensiontill, "", new { @class = "text-danger " })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.letterdate, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.letterdate, new {  htmlAttributes = new {  @Value = Model.letterdate != null ? Convert.ToDateTime(Model.letterdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.letterdate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.letterno, htmlAttributes: new { @class = "labelNormal required " })
+								 @Html.EditorFor(model => model.letterno, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.letterno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.letternofilepath, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.letternofilepath, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.letternofilepath, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.letternofilename, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.letternofilename, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.letternofilename, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.letternofiletype, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.letternofiletype, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.letternofiletype, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.letternofileextension, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.letternofileextension, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.letternofileextension, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveHrExtensionInfo" class="btn btn-primary btn-md btnSaveHrExtensionInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+
+
+
+
+
+ $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+</script>
+
+
+
+

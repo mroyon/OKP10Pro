@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="okpname" value="AR:  Okp Name"></resource>
+       <resource culture="ar-kw" name="okpnameRequired" value="AR: Please provide  Okp Name"></resource>
+       <resource culture="ar-kw" name="description" value="AR:  Description"></resource>
+       <resource culture="ar-kw" name="raisingdate" value="AR:  Raising Date"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="okpList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="okpCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="okpUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="okpDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="okpname" value=" Okp Name"></resource>
+       <resource culture="en-us" name="okpnameRequired" value="Please provide  Okp Name"></resource>
+       <resource culture="en-us" name="description" value=" Description"></resource>
+       <resource culture="en-us" name="raisingdate" value=" Raising Date"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="okpList" value="View All"></resource>
+		<resource culture="en-us" name="okpCreate" value="Create"></resource>
+		<resource culture="en-us" name="okpUpdate" value="Update"></resource>
+		<resource culture="en-us" name="okpDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

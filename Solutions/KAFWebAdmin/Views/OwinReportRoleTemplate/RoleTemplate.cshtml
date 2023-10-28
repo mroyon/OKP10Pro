@@ -1,0 +1,95 @@
+﻿
+@model KAF.BusinessDataObjects.owin_reportroletemplateEntity
+
+@{
+    ViewBag.Title = KAF.MsgContainer._owin_reportroletemplate.reportroletemplateList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+<style>
+    /*body {
+            margin: 50px;
+        }*/
+
+    a:hover, a:visited, a:link, a:active {
+        text-decoration: none;
+    }
+
+    .controls {
+        margin-bottom: 10px;
+    }
+
+    .collapse-group {
+        padding: 10px;
+        border: 1px solid darkgrey;
+        margin-bottom: 10px;
+    }
+
+    .panel-title .trigger:before {
+        content: '\e082';
+        font-family: 'Glyphicons Halflings';
+        vertical-align: text-bottom;
+    }
+
+    .panel-title .trigger.collapsed:before {
+        content: '\e081';
+    }
+
+
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal well">
+        <div class="row panel panel-primary">
+            <div class="col-lg-12 panel-heading">@KAF.MsgContainer._Common.createtext @KAF.MsgContainer._owin_rolepermission.permissionpagetitle</div>
+        </div>
+
+        @*<h4 class="text-center ">Create Role Permission</h4>*@
+        @*<hr />*@
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            @Html.HiddenFor(model => model.reportroletemplateid, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.reportroleid, htmlAttributes: new { @class = "labelNormal   required " })
+                            @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.owin_reportrole[0].ToString(), selectid = "reportroleid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedReport_Role, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true });}
+                            <h4><label id="ddlroleVal" class="label label-danger" hidden="hidden"></label></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row container">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button type="submit" id="btnsearch" class="btn btn-primary btn-md" value="Save"> @KAF.MsgContainer._Common._btnSearch <i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 divMenu container">
+        </div>
+
+
+        <button type="submit" id="btnRolePerSave" class="btn btn-primary btn-md" value="Save"> @KAF.MsgContainer._Common._btnSave <i class="fa fa-sign-in"></i></button>
+
+    </div>
+
+
+
+}
+
+@section scripts {
+    <script src="~/DesignsAndScripts/PageWise/Security/OwinReportRoleTemplate/RoleTemplate.js"></script>
+}

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = KAF.MsgContainer._stp_passpolicy.stp_passpolicyList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("StpPassPolicy/StpPassPolicyNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewStpPassPolicy">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="StpPassPolicyDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+							 <th>@KAF.MsgContainer._stp_passpolicy.regpasscontainchar</th>                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-StpPassPolicyNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcStpPassPolicyNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-StpPassPolicyEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcStpPassPolicyEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-StpPassPolicyDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcStpPassPolicyDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/StpPassPolicy/LandingStpPassPolicy.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/StpPassPolicy/NewStpPassPolicy.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/StpPassPolicy/EditStpPassPolicy.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/StpPassPolicy/DetailStpPassPolicy.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

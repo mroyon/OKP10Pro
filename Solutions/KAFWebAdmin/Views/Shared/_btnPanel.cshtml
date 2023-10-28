@@ -1,0 +1,18 @@
+﻿
+@model KAF.BusinessDataObjects.BusinessDataObjectsBase.BaseEntity.EntityState
+@{
+    //if (Model == KAF.BusinessDataObjects.BusinessDataObjectsBase.BaseEntity.EntityState.Added)
+    //{
+        <div id="divbtnpanelNew" class="">
+            <button type="submit" id="btnSaveGenLeaveBalance" value='add' class="btn btn-primary btn-md btnSaveGenLeaveBalance"> @KAF.MsgContainer._Common._btnSave <i class="fa fa-save"></i></button>
+        </div>
+    //}
+    //else
+    //{
+        <div id="divbtnpanelEdit" class="">
+            <button type="submit" id="btnUpdateGenLeaveBalance" value='add' class="btn btn-primary btn-md btnUpdateGenLeaveBalance"> @KAF.MsgContainer._Common._btnUpdate <i class="fa fa-edit"></i></button>
+            <button type="submit" id="btnDeleteGenLeaveBalance" value='add' class="btn btn-primary btn-md btnDeleteGenLeaveBalance"> @KAF.MsgContainer._Common._btnDelete<i class="fa fa-remove"></i></button>
+        </div>
+   // }
+    <button type="submit" id="btnCancelGenLeaveBalance" value='add' class="btn btn-primary btn-md btnCancelGenLeaveBalance"> @KAF.MsgContainer._Common._btnCancel <i class="fa fa-window-close"></i></button>
+}

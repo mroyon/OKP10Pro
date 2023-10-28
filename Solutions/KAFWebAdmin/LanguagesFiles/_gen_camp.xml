@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campname" value="AR:  Camp Name"></resource>
+       <resource culture="ar-kw" name="campnameRequired" value="AR: Please provide  Camp Name"></resource>
+       <resource culture="ar-kw" name="okpid" value="AR:  O Kp I D"></resource>
+       <resource culture="ar-kw" name="okpidRequired" value="AR: Please provide  O Kp I D"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="campList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campname" value=" Camp Name"></resource>
+       <resource culture="en-us" name="campnameRequired" value="Please provide  Camp Name"></resource>
+       <resource culture="en-us" name="okpid" value=" O Kp I D"></resource>
+       <resource culture="en-us" name="okpidRequired" value="Please provide  O Kp I D"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="campList" value="View All"></resource>
+		<resource culture="en-us" name="campCreate" value="Create"></resource>
+		<resource culture="en-us" name="campUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

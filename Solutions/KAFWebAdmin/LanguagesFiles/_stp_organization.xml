@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="organizationnamear" value="AR:  Organization Name Ar"></resource>
+       <resource culture="ar-kw" name="addresslineonear" value="AR:  Address Line One Ar"></resource>
+       <resource culture="ar-kw" name="addresslinetwoar" value="AR:  Address Line Two Ar"></resource>
+       <resource culture="ar-kw" name="phonear" value="AR:  Phone Ar"></resource>
+       <resource culture="ar-kw" name="emailar" value="AR:  Email Ar"></resource>
+       <resource culture="ar-kw" name="websitear" value="AR:  Website Ar"></resource>
+       <resource culture="ar-kw" name="domainar" value="AR:  Domain Ar"></resource>
+       <resource culture="ar-kw" name="faxar" value="AR:  Fax Ar"></resource>
+       <resource culture="ar-kw" name="organizationname" value="AR:  Organization Name"></resource>
+       <resource culture="ar-kw" name="organizationnameRequired" value="AR: Please provide  Organization Name"></resource>
+       <resource culture="ar-kw" name="addresslineone" value="AR:  Address Line One"></resource>
+       <resource culture="ar-kw" name="addresslinetwo" value="AR:  Address Line Two"></resource>
+       <resource culture="ar-kw" name="phone" value="AR:  Phone"></resource>
+       <resource culture="ar-kw" name="email" value="AR:  Email"></resource>
+       <resource culture="ar-kw" name="website" value="AR:  Website"></resource>
+       <resource culture="ar-kw" name="domain" value="AR:  Domain"></resource>
+       <resource culture="ar-kw" name="fax" value="AR:  Fax"></resource>
+       <resource culture="ar-kw" name="ismailenable" value="AR:  Is Mail Enable"></resource>
+       <resource culture="ar-kw" name="smtphost" value="AR: smtp Host"></resource>
+       <resource culture="ar-kw" name="mailport" value="AR: mail Port"></resource>
+       <resource culture="ar-kw" name="smtpusername" value="AR: smtp User Name"></resource>
+       <resource culture="ar-kw" name="smtppassword" value="AR: smtp Password"></resource>
+       <resource culture="ar-kw" name="mailssl" value="AR: mail S S L"></resource>
+       <resource culture="ar-kw" name="fromemailaddress" value="AR: fromemailaddress"></resource>
+       <resource culture="ar-kw" name="maildisplayname" value="AR: maildisplay Name"></resource>
+       <resource culture="ar-kw" name="isftpenable" value="AR: is Ftp Enable"></resource>
+       <resource culture="ar-kw" name="ftpaddress" value="AR: ftp Address"></resource>
+       <resource culture="ar-kw" name="ftpport" value="AR: ftp Port"></resource>
+       <resource culture="ar-kw" name="ftpusername" value="AR: ftp User Name"></resource>
+       <resource culture="ar-kw" name="ftppassword" value="AR: ftp Password"></resource>
+       <resource culture="ar-kw" name="isssl" value="AR:  Is S S L"></resource>
+       <resource culture="ar-kw" name="logoimg" value="AR:  Logo Img"></resource>
+       <resource culture="ar-kw" name="webheader" value="AR:  Web Header"></resource>
+       <resource culture="ar-kw" name="folderpath" value="AR:  Folder Path"></resource>
+		<resource culture="ar-kw" name="organizationList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="organizationCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="organizationUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="organizationDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="organizationnamear" value=" Organization Name Ar"></resource>
+       <resource culture="en-us" name="addresslineonear" value=" Address Line One Ar"></resource>
+       <resource culture="en-us" name="addresslinetwoar" value=" Address Line Two Ar"></resource>
+       <resource culture="en-us" name="phonear" value=" Phone Ar"></resource>
+       <resource culture="en-us" name="emailar" value=" Email Ar"></resource>
+       <resource culture="en-us" name="websitear" value=" Website Ar"></resource>
+       <resource culture="en-us" name="domainar" value=" Domain Ar"></resource>
+       <resource culture="en-us" name="faxar" value=" Fax Ar"></resource>
+       <resource culture="en-us" name="organizationname" value=" Organization Name"></resource>
+       <resource culture="en-us" name="organizationnameRequired" value="Please provide  Organization Name"></resource>
+       <resource culture="en-us" name="addresslineone" value=" Address Line One"></resource>
+       <resource culture="en-us" name="addresslinetwo" value=" Address Line Two"></resource>
+       <resource culture="en-us" name="phone" value=" Phone"></resource>
+       <resource culture="en-us" name="email" value=" Email"></resource>
+       <resource culture="en-us" name="website" value=" Website"></resource>
+       <resource culture="en-us" name="domain" value=" Domain"></resource>
+       <resource culture="en-us" name="fax" value=" Fax"></resource>
+       <resource culture="en-us" name="ismailenable" value=" Is Mail Enable"></resource>
+       <resource culture="en-us" name="smtphost" value="smtp Host"></resource>
+       <resource culture="en-us" name="mailport" value="mail Port"></resource>
+       <resource culture="en-us" name="smtpusername" value="smtp User Name"></resource>
+       <resource culture="en-us" name="smtppassword" value="smtp Password"></resource>
+       <resource culture="en-us" name="mailssl" value="mail S S L"></resource>
+       <resource culture="en-us" name="fromemailaddress" value="fromemailaddress"></resource>
+       <resource culture="en-us" name="maildisplayname" value="maildisplay Name"></resource>
+       <resource culture="en-us" name="isftpenable" value="is Ftp Enable"></resource>
+       <resource culture="en-us" name="ftpaddress" value="ftp Address"></resource>
+       <resource culture="en-us" name="ftpport" value="ftp Port"></resource>
+       <resource culture="en-us" name="ftpusername" value="ftp User Name"></resource>
+       <resource culture="en-us" name="ftppassword" value="ftp Password"></resource>
+       <resource culture="en-us" name="isssl" value=" Is S S L"></resource>
+       <resource culture="en-us" name="logoimg" value=" Logo Img"></resource>
+       <resource culture="en-us" name="webheader" value=" Web Header"></resource>
+       <resource culture="en-us" name="folderpath" value=" Folder Path"></resource>
+        <resource culture="en-us" name="organizationList" value="View All"></resource>
+		<resource culture="en-us" name="organizationCreate" value="Create"></resource>
+		<resource culture="en-us" name="organizationUpdate" value="Update"></resource>
+		<resource culture="en-us" name="organizationDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

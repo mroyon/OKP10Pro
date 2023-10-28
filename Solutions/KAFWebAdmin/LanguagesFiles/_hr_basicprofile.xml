@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="civilid" value="AR:  Civil ID"></resource>
+       <resource culture="ar-kw" name="civilidexpiredate" value="AR:  Civil ID Expire Date"></resource>
+       <resource culture="ar-kw" name="passportno" value="AR:  Passport No"></resource>
+       <resource culture="ar-kw" name="nationalid" value="AR:  National ID"></resource>
+       <resource culture="ar-kw" name="bdsmartcardid" value="AR:  B D Smart Card ID"></resource>
+       <resource culture="ar-kw" name="name1" value="AR:  Name 1"></resource>
+       <resource culture="ar-kw" name="name1Required" value="AR: Please provide  Name 1"></resource>
+       <resource culture="ar-kw" name="name2" value="AR:  Name 2"></resource>
+       <resource culture="ar-kw" name="name2Required" value="AR: Please provide  Name 2"></resource>
+       <resource culture="ar-kw" name="name3" value="AR:  Name 3"></resource>
+       <resource culture="ar-kw" name="fullname" value="AR:  Full Name"></resource>
+       <resource culture="ar-kw" name="fullnameRequired" value="AR: Please provide  Full Name"></resource>
+       <resource culture="ar-kw" name="name1ar" value="AR:  Name 1 Ar"></resource>
+       <resource culture="ar-kw" name="name2ar" value="AR:  Name 2 Ar"></resource>
+       <resource culture="ar-kw" name="name3ar" value="AR:  Name 3 Ar"></resource>
+       <resource culture="ar-kw" name="fullnamear" value="AR:  Full Name Ar"></resource>
+       <resource culture="ar-kw" name="dateofbirth" value="AR:  Dateof Birth"></resource>
+       <resource culture="ar-kw" name="joindatebd" value="AR:  Join Date B D"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="profilephoto" value="AR:  Profile Photo"></resource>
+       <resource culture="ar-kw" name="profilephotofilepath" value="AR:  Profile Photo File Path"></resource>
+       <resource culture="ar-kw" name="profilephotofilename" value="AR:  Profile Photo File Name"></resource>
+       <resource culture="ar-kw" name="profilephotofiletype" value="AR:  Profile Photo File Type"></resource>
+       <resource culture="ar-kw" name="profilephotofileextension" value="AR:  Profile Photo File Extension"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+       <resource culture="ar-kw" name="status" value="AR:  Status"></resource>
+		<resource culture="ar-kw" name="basicprofileList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="basicprofileCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="basicprofileUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="basicprofileDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="civilid" value=" Civil ID"></resource>
+       <resource culture="en-us" name="civilidexpiredate" value=" Civil ID Expire Date"></resource>
+       <resource culture="en-us" name="passportno" value=" Passport No"></resource>
+       <resource culture="en-us" name="nationalid" value=" National ID"></resource>
+       <resource culture="en-us" name="bdsmartcardid" value=" B D Smart Card ID"></resource>
+       <resource culture="en-us" name="name1" value=" Name 1"></resource>
+       <resource culture="en-us" name="name1Required" value="Please provide  Name 1"></resource>
+       <resource culture="en-us" name="name2" value=" Name 2"></resource>
+       <resource culture="en-us" name="name2Required" value="Please provide  Name 2"></resource>
+       <resource culture="en-us" name="name3" value=" Name 3"></resource>
+       <resource culture="en-us" name="fullname" value=" Full Name"></resource>
+       <resource culture="en-us" name="fullnameRequired" value="Please provide  Full Name"></resource>
+       <resource culture="en-us" name="name1ar" value=" Name 1 Ar"></resource>
+       <resource culture="en-us" name="name2ar" value=" Name 2 Ar"></resource>
+       <resource culture="en-us" name="name3ar" value=" Name 3 Ar"></resource>
+       <resource culture="en-us" name="fullnamear" value=" Full Name Ar"></resource>
+       <resource culture="en-us" name="dateofbirth" value=" Dateof Birth"></resource>
+       <resource culture="en-us" name="joindatebd" value=" Join Date B D"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="profilephoto" value=" Profile Photo"></resource>
+       <resource culture="en-us" name="profilephotofilepath" value=" Profile Photo File Path"></resource>
+       <resource culture="en-us" name="profilephotofilename" value=" Profile Photo File Name"></resource>
+       <resource culture="en-us" name="profilephotofiletype" value=" Profile Photo File Type"></resource>
+       <resource culture="en-us" name="profilephotofileextension" value=" Profile Photo File Extension"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+       <resource culture="en-us" name="status" value=" Status"></resource>
+        <resource culture="en-us" name="basicprofileList" value="View All"></resource>
+		<resource culture="en-us" name="basicprofileCreate" value="Create"></resource>
+		<resource culture="en-us" name="basicprofileUpdate" value="Update"></resource>
+		<resource culture="en-us" name="basicprofileDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="flightid" value="AR:  Flight ID"></resource>
+       <resource culture="ar-kw" name="flightidRequired" value="AR: Please provide  Flight ID"></resource>
+       <resource culture="ar-kw" name="arrivaldate" value="AR:  Arrival Date"></resource>
+       <resource culture="ar-kw" name="arrivaldateRequired" value="AR: Please provide  Arrival Date"></resource>
+       <resource culture="ar-kw" name="arrivalletterdate" value="AR:  Arrival Letter Date"></resource>
+       <resource culture="ar-kw" name="arrivalletterdateRequired" value="AR: Please provide  Arrival Letter Date"></resource>
+       <resource culture="ar-kw" name="arrivalletterno" value="AR:  Arrival Letter No"></resource>
+       <resource culture="ar-kw" name="arrivalletternoRequired" value="AR: Please provide  Arrival Letter No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="arrivalinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="arrivalinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="arrivalinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="arrivalinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="flightid" value=" Flight ID"></resource>
+       <resource culture="en-us" name="flightidRequired" value="Please provide  Flight ID"></resource>
+       <resource culture="en-us" name="arrivaldate" value=" Arrival Date"></resource>
+       <resource culture="en-us" name="arrivaldateRequired" value="Please provide  Arrival Date"></resource>
+       <resource culture="en-us" name="arrivalletterdate" value=" Arrival Letter Date"></resource>
+       <resource culture="en-us" name="arrivalletterdateRequired" value="Please provide  Arrival Letter Date"></resource>
+       <resource culture="en-us" name="arrivalletterno" value=" Arrival Letter No"></resource>
+       <resource culture="en-us" name="arrivalletternoRequired" value="Please provide  Arrival Letter No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="arrivalinfoList" value="View All"></resource>
+		<resource culture="en-us" name="arrivalinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="arrivalinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="arrivalinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

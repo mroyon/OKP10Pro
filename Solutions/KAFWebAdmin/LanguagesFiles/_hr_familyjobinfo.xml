@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrfamilyid" value="AR:  Hr Family ID"></resource>
+       <resource culture="ar-kw" name="hrfamilyidRequired" value="AR: Please provide  Hr Family ID"></resource>
+       <resource culture="ar-kw" name="jobtype" value="AR:  Job Type"></resource>
+       <resource culture="ar-kw" name="jobtypeRequired" value="AR: Please provide  Job Type"></resource>
+       <resource culture="ar-kw" name="organization" value="AR:  Organization"></resource>
+       <resource culture="ar-kw" name="organizationRequired" value="AR: Please provide  Organization"></resource>
+       <resource culture="ar-kw" name="designation" value="AR:  Designation"></resource>
+       <resource culture="ar-kw" name="designationRequired" value="AR: Please provide  Designation"></resource>
+       <resource culture="ar-kw" name="joiningdate" value="AR:  Joining Date"></resource>
+       <resource culture="ar-kw" name="joiningdateRequired" value="AR: Please provide  Joining Date"></resource>
+       <resource culture="ar-kw" name="workplaceaddress" value="AR:  Work Place Address"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="familyjobinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="familyjobinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="familyjobinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="familyjobinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrfamilyid" value=" Hr Family ID"></resource>
+       <resource culture="en-us" name="hrfamilyidRequired" value="Please provide  Hr Family ID"></resource>
+       <resource culture="en-us" name="jobtype" value=" Job Type"></resource>
+       <resource culture="en-us" name="jobtypeRequired" value="Please provide  Job Type"></resource>
+       <resource culture="en-us" name="organization" value=" Organization"></resource>
+       <resource culture="en-us" name="organizationRequired" value="Please provide  Organization"></resource>
+       <resource culture="en-us" name="designation" value=" Designation"></resource>
+       <resource culture="en-us" name="designationRequired" value="Please provide  Designation"></resource>
+       <resource culture="en-us" name="joiningdate" value=" Joining Date"></resource>
+       <resource culture="en-us" name="joiningdateRequired" value="Please provide  Joining Date"></resource>
+       <resource culture="en-us" name="workplaceaddress" value=" Work Place Address"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="familyjobinfoList" value="View All"></resource>
+		<resource culture="en-us" name="familyjobinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="familyjobinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="familyjobinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

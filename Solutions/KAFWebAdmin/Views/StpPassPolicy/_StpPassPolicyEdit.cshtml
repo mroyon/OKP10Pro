@@ -1,0 +1,166 @@
+﻿@model KAF.BusinessDataObjects.stp_passpolicyEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmStp_PassPolicyEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._stp_passpolicy.stp_passpolicyUpdate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.serialnopolicykey)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.categoryid, htmlAttributes: new { @class = "labelNormal required " })
+							 @Html.EditorFor(model => model.categoryid, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.categoryid, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.passexpiredays, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.passexpiredays, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.passexpiredays, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.passexpiredaysis, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.passexpiredaysis, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.passexpiredaysis, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.passmcontainchar, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.passmcontainchar, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.passmcontainchar, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.passmcontainuchar, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.passmcontainuchar, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.passmcontainuchar, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.passmcontainnum, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.passmcontainnum, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.passmcontainnum, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.passmcontainspchar, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.passmcontainspchar, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.passmcontainspchar, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.oldpasscom, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.oldpasscom, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.oldpasscom, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.newpasscomoldpass, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.newpasscomoldpass, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.newpasscomoldpass, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.regpasscontainchar, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.regpasscontainchar, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.regpasscontainchar, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.regpasscontainuchar, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.regpasscontainuchar, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.regpasscontainuchar, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.regpasscontainnum, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.regpasscontainnum, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.regpasscontainnum, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.regpasscontainspchar, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.regpasscontainspchar, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.regpasscontainspchar, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.organizationkey,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadNoneSearch", "Common", new { area = "", selectid = "organizationkey", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preNone, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateStpPassPolicy" class="btn btn-primary btn-md btnUpdateStpPassPolicy"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+
+
+
+
+</script>
+
+
+
+
+
+

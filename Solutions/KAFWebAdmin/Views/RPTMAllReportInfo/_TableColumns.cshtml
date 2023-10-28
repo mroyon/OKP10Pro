@@ -1,0 +1,97 @@
+﻿
+@model List<KAF.BusinessDataObjects.BusinessDataObjectsPartials.rpt_TableColumn>
+@{
+    ViewBag.Title = "Report Panel";
+}
+
+
+<div id="" class="row" style="margin-right: -0px; margin-left: -0px;">
+
+    <div class="col-md-12">
+
+        @Html.Label("Fields", htmlAttributes: new { @class = "labelNormal " })
+
+    </div>
+
+</div>
+@*<div id="" class="row" style="margin-right: -0px; margin-left: -0px;">
+    @foreach (var objsingle in Model)
+    {
+        <div class="col-md-2">
+            <div class="form-check">
+                <input type="checkbox" value="@objsingle.COLUMN_NAME" class="form-check-input tablecolumns chkcolumn" />
+                <label class="form-check-label" for="flexCheckDisabled"> @objsingle.COLUMN_NAME_Alias</label>
+            </div>
+        </div>
+    }
+
+</div>*@
+<div id="" class="row" style="margin-right: -0px; margin-left: -0px;">
+
+    <div class="col-md-4">
+        <div class="form-check">
+
+            <label class="form-check-label"> Select Category</label>
+            <select id="drpfiltercolumn" class="form-control" disabled="disabled">
+                @*<option value="-99">Please Select</option>*@
+                @foreach (var objsingle in Model)
+                {
+                    <option  selected="selected" value="@objsingle.COLUMN_NAME">@objsingle.COLUMN_NAME_Alias</option>
+                }
+
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-check">
+            <label class="form-check-label"> Select Field</label>
+            <select id="drpcolumndata" class="form-control">
+            </select>
+        </div>
+    </div>
+
+</div>
+<br />
+<!--<div id="" class="row">
+
+    <div class="col-md-4">-->
+@*<div class="form-group">
+        @Html.Label("User", htmlAttributes: new { @class = "labelNormal " })
+
+        @{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "masteruserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preOwin_userid, multiple = false, isReadOnly = false, IsRequired = false });}
+    </div>*@
+<!--</div>
+<div class="col-md-4">-->
+@*<div class="form-group">
+        @Html.Label("Military ID", htmlAttributes: new { @class = "labelNormal " })
+
+        <input type="text" class="form-control txtmilid" id="txtmilid" />
+    </div>*@
+
+<!--</div>
+</div>-->
+
+
+
+
+<script>
+   
+    $(document).ready(function () {
+        loadfiltercolvalue();
+        $("#drpfiltercolumn").change(function () {
+
+
+            loadfiltercolvalue();
+
+
+        });
+    });
+
+
+</script>
+
+
+
+
+
+

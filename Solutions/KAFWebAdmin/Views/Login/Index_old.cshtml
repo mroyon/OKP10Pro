@@ -1,0 +1,148 @@
+﻿@model KAF.BusinessDataObjects.owin_userEntity
+@{
+    Layout = "~/Views/LandingPage/_LandingPage.cshtml";
+    //Layout = "~/Views/LandingPage/_LandingPage.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    //PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority +  Request.ApplicationPath.TrimEnd('/') + "/";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-xs-12 col-md-6 ">
+            <div class="panel with-nav-tabs panel-info">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        @*<li class="active"><a href="#login" data-toggle="tab"> Login </a></li>*@
+                        @*<li><a href="#signup" data-toggle="tab"> Signup </a></li>*@
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        @using (Ajax.BeginForm("", "",
+                         new AjaxOptions
+                         {
+                             HttpMethod = "POST",
+                             OnSuccess = "",
+                             OnFailure = "",
+                             LoadingElementId = "divProgressBar"
+                         }, new { @id = "frmLogin", @class = "form-horizontal" }))
+                        {
+                            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+                            HtmlHelper.ClientValidationEnabled = true;
+
+                            <div id="login" class="tab-pane fade in active register ">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="row text-center">
+                                            <div class="col-md-4">
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <span class="text-center" style="color: #5cb85c;"> <img src="~/DesignsAndScripts/Images/Picture1.png" style="text-align:center; height: 120px !important" /></span>
+                                            </div>
+                                            <div class="col-md-4">
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="row">
+                                        <h2 class="text-center" style="color: #5cb85c;"> <strong>@KAF.MsgContainer._Login.headerText</strong></h2><hr />
+                                        <div class="row ">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-10 ">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-user"></span>
+                                                        </div>
+                                                        <input class="form-control text-box single-line valid" data-error="@KAF.MsgContainer._Login.usernameRequired" data-val="true" data-val-required="@KAF.MsgContainer._Login.usernameRequired" id="txtusername" name="txtusername" placeholder="@KAF.MsgContainer._Login.usernamePlaceholder" value="" type="text" autocomplete="off"
+                                                               onselectstart="return false" >
+                                                    </div>
+                                                    <span class="text-danger field-validation-valid" data-valmsg-for="txtusername" data-valmsg-replace="true"></span>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-lock"></span>
+                                                        </div>
+                                                        <input class="form-control text-box single-line valid pwd" data-error="@KAF.MsgContainer._Login.passwordRequired" data-val="true" data-val-required="@KAF.MsgContainer._Login.passwordRequired" id="txtpassword" name="txtpassword" placeholder="@KAF.MsgContainer._Login.passwordPlaceholder" value="" type="password" autocomplete="off"
+                                                               onselectstart="return false" >
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
+                                                        </span>
+                                                    </div>
+                                                    <span class="text-danger field-validation-valid" data-valmsg-for="txtpassword" data-valmsg-replace="true"></span>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    @*<div id="divcaptcha" class="divcaptcha">
+                        </div>*@
+                                                    <a href="#forgot" id="forgotlink" @*data-toggle="modal" data-backdrop="static" data-keyboard="false"*@> @KAF.MsgContainer._Login.forgetPasswordLink</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-5 text-left">
+                                                <button type="submit" id="btnlogin" class="btn btn-primary btn-md btnhascaptcha"> @KAF.MsgContainer._Common._btnSignIn <i class="fa fa-sign-in"></i></button>
+                                            </div>
+                                            <div class="col-md-5 te text-right hidden">
+                                                <button type="submit" id="btnEnglish" class=""> <img src="~/DesignsAndScripts/Images/US.png" width="30px" /> </button>
+                                                <button type="submit" id="btnArabic" class=""> <img src="~/DesignsAndScripts/Images/KW.png" width="30px" /> </button>
+                                            </div>
+                                            <div class="col-md-1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<div id="modal-container-forgetpassword" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcforgetpassword">
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @*<script type="text/javascript" src="~/DesignsAndScripts/Scripts/plugins/jquery/jquery.js"></script>*@
+    <script type="text/javascript" src="~/DesignsAndScripts/PageWise/Login/Login.js"></script>
+}
+
+
+
+

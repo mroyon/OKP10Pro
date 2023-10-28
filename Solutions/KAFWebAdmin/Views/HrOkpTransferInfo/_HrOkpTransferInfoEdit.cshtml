@@ -1,0 +1,167 @@
+﻿@model KAF.BusinessDataObjects.hr_okptransferinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmOkpTransferInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_okptransferinfo.okptransferinfoUpdate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.okptransferid)
+                        @Html.HiddenFor(m => m.hrbasicid)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @readonly = "readonly", @class = "militarynokw form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fromkopid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @* @{Html.RenderAction("LoadOkpSearch", "Common", new { area = "", selectid = "fromkopid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Okp, multiple = false, isReadOnly = false, IsRequired = true });}*@
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "fromkopid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_fromOkp, multiple = false, isReadOnly = true, IsRequired = true, isStatic = true });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.tookpid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @*@{Html.RenderAction("LoadOkpSearch", "Common", new { area = "", selectid = "tookpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Okp, multiple = false, isReadOnly = false, IsRequired = true });}*@
+                                @{Html.RenderAction("LoadComboBoxWithException", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "tookpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_toOkp, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true, exceptionIds = Model.fromkopid.ToString() });}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.subunitid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @*@{Html.RenderAction("LoadSubUnitSearch", "Common", new { area = "", selectid = "subunitid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_SubUnit, multiple = false, isReadOnly = false, IsRequired = true });}*@
+                                @{Html.RenderAction("LoadComboBoxWithCascadeOption", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_subunitEntity[0].ToString(), selectid = "subunitid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_SubUnit, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true, cascadewith = Model.tookpid.ToString() });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.campid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @*@{Html.RenderAction("LoadCampSearch", "Common", new { area = "", selectid = "campid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Camp, multiple = false, isReadOnly = false, IsRequired = true });}*@
+                                @{Html.RenderAction("LoadComboBoxWithCascadeOption", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_campEntity[0].ToString(), selectid = "campid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Camp, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true, cascadewith = Model.tookpid.ToString() });}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.transferdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                <div class='input-group date dateonly' id='' style='width: 100%; '>
+                                    @Html.EditorFor(model => model.transferdate, new { htmlAttributes = new { @Value = Model.transferdate != null ? Convert.ToDateTime(Model.transferdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon ">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.transferdate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.reason, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.reason, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.reason, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.letterno, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.letterno, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.letterno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.letterdate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style='width: 100%; '>
+                                    @Html.EditorFor(model => model.letterdate, new { htmlAttributes = new { @Value = Model.letterdate != null ? Convert.ToDateTime(Model.letterdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon ">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.letterdate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateHrOkpTransferInfo" class="btn btn-primary btn-md btnUpdateHrOkpTransferInfo"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+ $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+      //$('#tookpid').change(function () {
+    $('#tookpid').on("select2:select", function (e) {
+
+            LoadCascadeCacheData("gen_subunitEntity", "subunitid");
+            LoadCascadeCacheData("gen_campEntity", "campid");
+        });
+        function LoadCascadeCacheData(entity, domid) {
+            $.ajax({
+                url: baseurl + "DataCache/GetCacheDataWithCascadeOption?EntityName=" + entity + "&cascadewith=" + $('#tookpid').val(),
+                type: 'POST',
+                data: null,
+                success: function (response) {
+                    //console.log(response);
+                    $("#" + domid).html('').select2({
+                        placeholder: '@KAF.MsgContainer._CommonHtml.pleaseselect',
+
+                        allowClear: true,
+                        multiple: false,
+                        data: response
+                    });
+                    $("#" + domid).val('').trigger('change')
+
+                }
+            });
+        }
+</script>
+
+
+
+
+
+

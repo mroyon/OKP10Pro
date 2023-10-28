@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="ptademandid" value="AR:  P T A Demand ID"></resource>
+       <resource culture="ar-kw" name="ptademandidRequired" value="AR: Please provide  P T A Demand ID"></resource>
+       <resource culture="ar-kw" name="ptidate" value="AR:  PTA Date"></resource>
+       <resource culture="ar-kw" name="ptidateRequired" value="AR: Please provide  PTA Date"></resource>
+       <resource culture="ar-kw" name="ptiletterdate" value="AR:  PTA Letter Date"></resource>
+       <resource culture="ar-kw" name="ptiletterdateRequired" value="AR: Please provide  PTA Letter Date"></resource>
+       <resource culture="ar-kw" name="ptiletterno" value="AR:  PTA Letter No"></resource>
+       <resource culture="ar-kw" name="ptiletternoRequired" value="AR: Please provide  PTA Letter No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="letterstatus" value="AR:  Letter Status"></resource>
+		<resource culture="ar-kw" name="ptareceivedList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="ptareceivedCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="ptareceivedUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="ptareceivedDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="ptademandid" value=" P T A Demand ID"></resource>
+       <resource culture="en-us" name="ptademandidRequired" value="Please provide  P T A Demand ID"></resource>
+       <resource culture="en-us" name="ptidate" value=" PTA Date"></resource>
+       <resource culture="en-us" name="ptidateRequired" value="Please provide  PTA Date"></resource>
+       <resource culture="en-us" name="ptiletterdate" value=" PTA Letter Date"></resource>
+       <resource culture="en-us" name="ptiletterdateRequired" value="Please provide  PTA Letter Date"></resource>
+       <resource culture="en-us" name="ptiletterno" value=" PTA Letter No"></resource>
+       <resource culture="en-us" name="ptiletternoRequired" value="Please provide  PTA Letter No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="letterstatus" value=" Letter Status"></resource>
+        <resource culture="en-us" name="ptareceivedList" value="View All"></resource>
+		<resource culture="en-us" name="ptareceivedCreate" value="Create"></resource>
+		<resource culture="en-us" name="ptareceivedUpdate" value="Update"></resource>
+		<resource culture="en-us" name="ptareceivedDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

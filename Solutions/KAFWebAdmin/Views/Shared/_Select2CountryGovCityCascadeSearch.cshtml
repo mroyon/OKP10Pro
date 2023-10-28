@@ -1,0 +1,645 @@
+﻿@{
+    string selectidForCountry = ViewBag.selectidForCountry;
+    int minimumInputLengthForCountry = ViewBag.minimumInputLengthForCountry;
+    bool isReadOnlyForCountry = ViewBag.isReadOnlyForCountry;
+    bool multipleForCountry = ViewBag.multipleForCountry;
+    string strisReadOnlyForCountry = isReadOnlyForCountry.ToString().ToLower();
+    string strmultipleForCountry = multipleForCountry.ToString().ToLower();
+    bool isRequiredForCountry = ViewBag.isRequiredForCountry;
+
+    string selectidForGov = ViewBag.selectidForGov;
+    int minimumInputLengthForGov = ViewBag.minimumInputLengthForGov;
+    bool isReadOnlyForGov = ViewBag.isReadOnlyForGov;
+    bool multipleForGov = ViewBag.multipleForGov;
+    string strisReadOnlyForGov = isReadOnlyForGov.ToString().ToLower();
+    string strmultipleForGov = multipleForGov.ToString().ToLower();
+    bool isRequiredForGov = ViewBag.isRequiredForGov;
+
+    string selectidForCity = ViewBag.selectidForCity;
+    int minimumInputLengthForCity = ViewBag.minimumInputLengthForCity;
+    bool isReadOnlyForCity = ViewBag.isReadOnlyForCity;
+    bool multipleForCity = ViewBag.multipleForCity;
+    string strisReadOnlyForCity = isReadOnlyForCity.ToString().ToLower();
+    string strmultipleForCity = multipleForCity.ToString().ToLower();
+    bool isRequiredForCity = ViewBag.isRequiredForCity;
+
+    int delay = ViewBag.delay;
+    string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower();
+
+
+    if (isRequiredForCountry == true)
+    {
+        <div class="form-group">
+            <label class="labelNormal required" for="@selectidForCountry">@KAF.MsgContainer._gen_country.countryname</label>
+            <select name="@selectidForCountry" id="@selectidForCountry" class="form-control @selectidForCountry" style="width:100%;display:block;box-sizing:border-box"
+                    data-val="true" data-val-required="Please Select Country"></select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="@selectidForCountry" data-valmsg-replace="true"></span>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            <label class="labelNormal " for="@selectidForGov">@KAF.MsgContainer._gen_civilworkplaces.governorateid</label>
+            <select name="@selectidForCountry" id="@selectidForCountry" class="form-control @selectidForCountry" style="width:100%;display:block;box-sizing:border-box"></select>
+        </div>
+    }
+
+
+    if (isRequiredForGov == true)
+    {
+        <div class="form-group">
+            <label class="labelNormal required" for="@selectidForGov">@KAF.MsgContainer._gen_civilworkplaces.governorateid</label>
+            <select name="@selectidForGov" id="@selectidForGov" class="form-control @selectidForGov" style="width:100%;display:block;box-sizing:border-box"
+                    data-val="true" data-val-required="Please Select Governorate"></select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="@selectidForGov" data-valmsg-replace="true"></span>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            <label class="labelNormal " for="@selectidForGov">@KAF.MsgContainer._gen_civilworkplaces.governorateid</label>
+            <select name="@selectidForGov" id="@selectidForGov" class="form-control @selectidForGov" style="width:100%;display:block;box-sizing:border-box"></select>
+        </div>
+    }
+
+
+    if (isRequiredForCity == true)
+    {
+        <div class="form-group">
+            <label class="labelNormal required" for="@selectidForCity">@KAF.MsgContainer._gen_civilworkplaces.areaid</label>
+            <select name="@selectidForCity" id="@selectidForCity" class="form-control @selectidForCity" style="width:100%;display:block;box-sizing:border-box"
+                    data-val="true" data-val-required="Please Select Area"></select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="@selectidForCity" data-valmsg-replace="true"></span>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            <label class="labelNormal " for="@selectidForCity">@KAF.MsgContainer._gen_civilworkplaces.areaid</label>
+            <select name="@selectidForCity" id="@selectidForCity" class="form-control @selectidForCity" style="width:100%;display:block;box-sizing:border-box"></select>
+        </div>
+    }
+
+}
+
+@if (ViewBag.preloadedCountryData != null)
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectidForCountry').select2(
+             {
+                 placeholder: 'Enter Country',
+                 minimumInputLength: @minimumInputLengthForCountry,
+                 allowClear: true,
+                 //maximumSelectionSize: 2,
+                 multiple: @strmultipleForCountry,
+                 ajax: {
+                     url: webapiurl + 'api/Country/getCountryData',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                          return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                             param: '@lang'
+                         };
+                     },
+                     processResults: function (data, params) {
+                         var res = data.result.Results;
+                         var total = data.result.Total;
+                         //console.log(res, total);
+
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+
+                         //console.log(params, more);
+
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,initSelection: function (element, callback) {
+                     callback(@Html.Raw(ViewBag.data));
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnlyForCountry==true)
+         {
+             <Text>
+                 $("#@selectidForCountry").prop("disabled", true);
+                 $("#@selectidForCountry-multi").prop("disabled", true);
+            </Text>
+         }
+
+         var dat =@Html.Raw(ViewBag.data);
+         for (i = 0; i < dat.length; i++) {
+             ////console.log(dat[i]);
+             $('#@selectidForCountry').append('<option value="' + dat[i].Id + '" selected="selected">' + dat[i].Text + '</option>');
+         }
+
+
+         $('#@selectidForCountry').on('select2:select', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCountry").val();
+             var formid = $(this).closest('form').attr('id');
+              //$('#' + formid).data('validator').element("#@selectidForCountry").valid();
+             //$('#' + formid).validate().element("#@selectidForCountry");
+
+             //console.log(data, value, value.length, formid);
+             @*$("#@selectid").trigger("change");*@
+         });
+         $('#@selectidForCountry').on('select2:unselect', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCountry").val();
+             var formid = $(this).closest('form').attr('id');
+              //$('#' + formid).data('validator').element("#@selectidForCountry").valid();
+             //$('#' + formid).validate().element("#@selectidForCountry");
+
+             //$("#@selectidForCountry").trigger("change");
+         });
+     });
+    </script>
+}
+else
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectidForCountry').select2(
+             {
+                placeholder: 'Enter Country',
+                 minimumInputLength: @minimumInputLengthForCountry,
+                 allowClear: true,
+                 multiple: @strmultipleForCountry,
+                 ajax: {
+                     url: webapiurl + 'api/Country/getCountryData',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                          return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                             param: '@lang'
+                         };
+                     },
+                     processResults: function (data, params) {
+                         //var res = data.result.Results;
+                         ////console.log(res);
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnlyForCountry==true)
+         {
+             <Text>
+                 $("#@selectidForCountry").prop("disabled", true);
+                 $("#@selectidForCountry-multi").prop("disabled", true);
+            </Text>
+         }
+
+
+         $('#@selectidForCountry').on('select2:select', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCountry").val();
+             var formid = $(this).closest('form').attr('id');
+              @*$('#' + formid).data('validator').element("#@selectid").valid();*@
+             //$('#' + formid).validate().element("#@selectidForCountry");
+
+             //console.log(data, value, value.length, formid);
+         });
+         $('#@selectidForCountry').on('select2:unselect', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCountry").val();
+             var formid = $(this).closest('form').attr('id');
+              @*$('#' + formid).data('validator').element("#@selectid").valid();*@
+             //$('#' + formid).validate().element("#@selectidForCountry");
+
+         });
+     });
+    </script>
+}
+
+@if (ViewBag.preloadedGovData != null)
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectidForGov').select2(
+             {
+                 placeholder: 'Enter Governorate',
+                 minimumInputLength: @minimumInputLengthForGov,
+                 allowClear: true,
+                 //maximumSelectionSize: 2,
+                 multiple: @strmultipleForGov,
+                 ajax: {
+                     url: webapiurl + 'api/GovCity/getGovDataByCountry',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                          return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                             param: $("#@selectidForCountry").val()
+                         };
+                     },
+                     processResults: function (data, params) {
+                         var res = data.result.Results;
+                         var total = data.result.Total;
+                         //console.log(res, total);
+
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+
+                         //console.log(params, more);
+
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,initSelection: function (element, callback) {
+                     callback(@Html.Raw(ViewBag.preloadedGovData));
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnlyForGov==true)
+         {
+             <Text>
+                 $("#@selectidForGov").prop("disabled", true);
+                 $("#@selectidForGov-multi").prop("disabled", true);
+            </Text>
+         }
+
+         var preloadedGovData =@Html.Raw(ViewBag.preloadedGovData);
+         for (i = 0; i < preloadedGovData.length; i++) {
+             ////console.log(dat[i]);
+             $('#@selectidForGov').append('<option value="' + preloadedGovData[i].Id + '" selected="selected">' + preloadedGovData[i].Text + '</option>');
+         }
+
+
+          $('#@selectidForGov').on('select2:select', function (e) {
+             var data = e.params.data;
+              value = $("#@selectidForGov").val();
+
+              $("#@selectidForCity").val('').change();
+
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForGov");*@
+             //console.log(data, value, value.length, formid);
+         });
+         $('#@selectidForGov').on('select2:unselect', function (e) {
+             var data = e.params.data;
+
+              $("#@selectidForCity").val('').change();
+
+             value = $("#@selectidForGov").val();
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForGov");*@
+         });
+     });
+    </script>
+}
+else
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectidForGov').select2(
+             {
+                 placeholder: 'Enter Governorate',
+                 minimumInputLength: @minimumInputLengthForGov,
+                 allowClear: true,
+                 multiple: @strmultipleForGov,
+                 ajax: {
+                     url: webapiurl + 'api/GovCity/getGovDataByCountry',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                          return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                             param: $("#@selectidForCountry").val()
+                         };
+                     },
+                     processResults: function (data, params) {
+                         //var res = data.result.Results;
+                         ////console.log(res);
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnlyForGov==true)
+         {
+             <Text>
+                 $("#@selectidForGov").prop("disabled", true);
+                 $("#@selectidForGov-multi").prop("disabled", true);
+            </Text>
+         }
+
+
+          $('#@selectidForGov').on('select2:select', function (e) {
+             var data = e.params.data;
+              value = $("#@selectidForGov").val();
+
+              $("#@selectidForCity").val('').change();
+
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForGov");*@
+             //console.log(data, value, value.length, formid);
+         });
+         $('#@selectidForGov').on('select2:unselect', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForGov").val();
+
+              $("#@selectidForCity").val('').change();
+
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForGov");*@
+         });
+     });
+    </script>
+}
+
+@if (ViewBag.preloadedCityData != null)
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectidForCity').select2(
+             {
+                 placeholder: 'Enter City',
+                 minimumInputLength: @minimumInputLengthForCity,
+                 allowClear: true,
+                 //maximumSelectionSize: 2,
+                 multiple: @strmultipleForCity,
+                 ajax: {
+                     url: webapiurl + 'api/GovCity/geCityByGovData',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                          return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                             param: $("#@selectidForGov").val()
+                         };
+                     },
+                     processResults: function (data, params) {
+                         var res = data.result.Results;
+                         var total = data.result.Total;
+                         //console.log(res, total);
+
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+
+                         //console.log(params, more);
+
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,initSelection: function (element, callback) {
+                     callback(@Html.Raw(ViewBag.preloadedCityData));
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnlyForCity==true)
+         {
+             <Text>
+                 $("#@selectidForCity").prop("disabled", true);
+                 $("#@selectidForCity-multi").prop("disabled", true);
+            </Text>
+         }
+
+         var preloadedCityData =@Html.Raw(ViewBag.preloadedCityData);
+         for (i = 0; i < preloadedCityData.length; i++) {
+             ////console.log(dat[i]);
+             $('#@selectidForCity').append('<option value="' + preloadedCityData[i].Id + '" selected="selected">' + preloadedCityData[i].Text + '</option>');
+         }
+
+
+          $('#@selectidForCity').on('select2:select', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCity").val();
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForCity");*@
+             //console.log(data, value, value.length, formid);
+         });
+         $('#@selectidForCity').on('select2:unselect', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCity").val();
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForCity");*@
+         });
+     });
+    </script>
+}
+else
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectidForCity').select2(
+             {
+                placeholder: 'Enter City',
+                 minimumInputLength: @minimumInputLengthForCity,
+                 allowClear: true,
+                 multiple: @strmultipleForCity,
+                 ajax: {
+                     url: webapiurl + 'api/GovCity/geCityByGovData',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                          return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                              param: $("#@selectidForGov").val()
+                         };
+                     },
+                     processResults: function (data, params) {
+                         //var res = data.result.Results;
+                         ////console.log(res);
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnlyForCity==true)
+         {
+             <Text>
+                 $("#@selectidForCity").prop("disabled", true);
+                 $("#@selectidForCity-multi").prop("disabled", true);
+            </Text>
+         }
+
+
+          $('#@selectidForCity').on('select2:select', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCity").val();
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForCity");*@
+             //console.log(data, value, value.length, formid);
+         });
+         $('#@selectidForCity').on('select2:unselect', function (e) {
+             var data = e.params.data;
+             value = $("#@selectidForCity").val();
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectidForCity");*@
+         });
+     });
+    </script>
+}

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = KAF.MsgContainer._arms_user.arms_userList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("ArmsUser/ArmsUserNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewArmsUser">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="ArmsUserDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+							 <th>@KAF.MsgContainer._arms_user.username</th>                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-ArmsUserNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcArmsUserNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-ArmsUserEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcArmsUserEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-ArmsUserDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcArmsUserDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/ArmsUser/LandingArmsUser.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/ArmsUser/NewArmsUser.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/ArmsUser/EditArmsUser.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/ArmsUser/DetailArmsUser.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

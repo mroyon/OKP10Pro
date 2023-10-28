@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="passportid" value="AR:  Passport ID"></resource>
+       <resource culture="ar-kw" name="passportidRequired" value="AR: Please provide  Passport ID"></resource>
+       <resource culture="ar-kw" name="residencynumber" value="AR:  Residency Number"></resource>
+       <resource culture="ar-kw" name="residencynumberRequired" value="AR: Please provide  Residency Number"></resource>
+       <resource culture="ar-kw" name="issuedate" value="AR:  Issue Date"></resource>
+       <resource culture="ar-kw" name="issuedateRequired" value="AR: Please provide  Issue Date"></resource>
+       <resource culture="ar-kw" name="expirydate" value="AR:  Expiry Date"></resource>
+       <resource culture="ar-kw" name="expirydateRequired" value="AR: Please provide  Expiry Date"></resource>
+       <resource culture="ar-kw" name="isfamilyvisa" value="AR:  Is Family V I S A"></resource>
+       <resource culture="ar-kw" name="filedescription" value="AR:  File Description"></resource>
+       <resource culture="ar-kw" name="filepath" value="AR:  File Path"></resource>
+       <resource culture="ar-kw" name="filename" value="AR:  File Name"></resource>
+       <resource culture="ar-kw" name="filetype" value="AR:  File Type"></resource>
+       <resource culture="ar-kw" name="extension" value="AR:  Extension"></resource>
+       <resource culture="ar-kw" name="fileno" value="AR:  File No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="residentvisaList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="residentvisaCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="residentvisaUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="residentvisaDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic Id"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic Id"></resource>
+       <resource culture="en-us" name="passportid" value=" Passport ID"></resource>
+       <resource culture="en-us" name="passportidRequired" value="Please provide  Passport ID"></resource>
+       <resource culture="en-us" name="residencynumber" value=" Residency Number"></resource>
+       <resource culture="en-us" name="residencynumberRequired" value="Please provide  Residency Number"></resource>
+       <resource culture="en-us" name="issuedate" value=" Issue Date"></resource>
+       <resource culture="en-us" name="issuedateRequired" value="Please provide  Issue Date"></resource>
+       <resource culture="en-us" name="expirydate" value=" Expiry Date"></resource>
+       <resource culture="en-us" name="expirydateRequired" value="Please provide  Expiry Date"></resource>
+       <resource culture="en-us" name="isfamilyvisa" value=" Is Family V I S A"></resource>
+       <resource culture="en-us" name="filedescription" value=" File Description"></resource>
+       <resource culture="en-us" name="filepath" value=" File Path"></resource>
+       <resource culture="en-us" name="filename" value=" File Name"></resource>
+       <resource culture="en-us" name="filetype" value=" File Type"></resource>
+       <resource culture="en-us" name="extension" value=" Extension"></resource>
+       <resource culture="en-us" name="fileno" value=" File No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="residentvisaList" value="View All"></resource>
+		<resource culture="en-us" name="residentvisaCreate" value="Create"></resource>
+		<resource culture="en-us" name="residentvisaUpdate" value="Update"></resource>
+		<resource culture="en-us" name="residentvisaDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

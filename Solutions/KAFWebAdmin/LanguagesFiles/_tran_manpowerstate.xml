@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="okpid" value="AR:  Okp I D"></resource>
+       <resource culture="ar-kw" name="okpidRequired" value="AR: Please provide  Okp I D"></resource>
+       <resource culture="ar-kw" name="manpowerstatedate" value="AR:  Manpower State Date"></resource>
+       <resource culture="ar-kw" name="manpowerstatedateRequired" value="AR: Please provide  Manpower State Date"></resource>
+       <resource culture="ar-kw" name="isprepared" value="AR:  Is Prepared"></resource>
+       <resource culture="ar-kw" name="prepareddate" value="AR:  Prepared Date"></resource>
+       <resource culture="ar-kw" name="preparedby" value="AR:  Prepared By"></resource>
+       <resource culture="ar-kw" name="isreviewed" value="AR:  Is Reviewed"></resource>
+       <resource culture="ar-kw" name="reviewdate" value="AR:  Review Date"></resource>
+       <resource culture="ar-kw" name="reviewedby" value="AR:  Reviewed By"></resource>
+       <resource culture="ar-kw" name="reviewremarks" value="AR:  Review Remarks"></resource>
+       <resource culture="ar-kw" name="isapproved" value="AR:  Is Approved"></resource>
+       <resource culture="ar-kw" name="approvedate" value="AR:  Approve Date"></resource>
+       <resource culture="ar-kw" name="approveby" value="AR:  Approve By"></resource>
+       <resource culture="ar-kw" name="approveremarks" value="AR:  Approve Remarks"></resource>
+		<resource culture="ar-kw" name="manpowerstateList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="manpowerstateCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="manpowerstateUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="manpowerstateDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="okpid" value=" Okp I D"></resource>
+       <resource culture="en-us" name="okpidRequired" value="Please provide  Okp I D"></resource>
+       <resource culture="en-us" name="manpowerstatedate" value=" Manpower State Date"></resource>
+       <resource culture="en-us" name="manpowerstatedateRequired" value="Please provide  Manpower State Date"></resource>
+       <resource culture="en-us" name="isprepared" value=" Is Prepared"></resource>
+       <resource culture="en-us" name="prepareddate" value=" Prepared Date"></resource>
+       <resource culture="en-us" name="preparedby" value=" Prepared By"></resource>
+       <resource culture="en-us" name="isreviewed" value=" Is Reviewed"></resource>
+       <resource culture="en-us" name="reviewdate" value=" Review Date"></resource>
+       <resource culture="en-us" name="reviewedby" value=" Reviewed By"></resource>
+       <resource culture="en-us" name="reviewremarks" value=" Review Remarks"></resource>
+       <resource culture="en-us" name="isapproved" value=" Is Approved"></resource>
+       <resource culture="en-us" name="approvedate" value=" Approve Date"></resource>
+       <resource culture="en-us" name="approveby" value=" Approve By"></resource>
+       <resource culture="en-us" name="approveremarks" value=" Approve Remarks"></resource>
+        <resource culture="en-us" name="manpowerstateList" value="View All"></resource>
+		<resource culture="en-us" name="manpowerstateCreate" value="Create"></resource>
+		<resource culture="en-us" name="manpowerstateUpdate" value="Update"></resource>
+		<resource culture="en-us" name="manpowerstateDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

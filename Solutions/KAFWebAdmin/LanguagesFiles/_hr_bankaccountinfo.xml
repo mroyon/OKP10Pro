@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="bankid" value="AR:  Bank ID"></resource>
+       <resource culture="ar-kw" name="bankidRequired" value="AR: Please provide  Bank ID"></resource>
+       <resource culture="ar-kw" name="branchid" value="AR:  Branch ID"></resource>
+       <resource culture="ar-kw" name="branchidRequired" value="AR: Please provide  Branch ID"></resource>
+       <resource culture="ar-kw" name="accountno" value="AR:  Account No"></resource>
+       <resource culture="ar-kw" name="accountnoRequired" value="AR: Please provide  Account No"></resource>
+       <resource culture="ar-kw" name="accountname" value="AR:  Account Name"></resource>
+       <resource culture="ar-kw" name="accountnameRequired" value="AR: Please provide  Account Name"></resource>
+       <resource culture="ar-kw" name="accountdescription" value="AR:  Account Description"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+		<resource culture="ar-kw" name="bankaccountinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="bankaccountinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="bankaccountinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="bankaccountinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="bankid" value=" Bank ID"></resource>
+       <resource culture="en-us" name="bankidRequired" value="Please provide  Bank ID"></resource>
+       <resource culture="en-us" name="branchid" value=" Branch ID"></resource>
+       <resource culture="en-us" name="branchidRequired" value="Please provide  Branch ID"></resource>
+       <resource culture="en-us" name="accountno" value=" Account No"></resource>
+       <resource culture="en-us" name="accountnoRequired" value="Please provide  Account No"></resource>
+       <resource culture="en-us" name="accountname" value=" Account Name"></resource>
+       <resource culture="en-us" name="accountnameRequired" value="Please provide  Account Name"></resource>
+       <resource culture="en-us" name="accountdescription" value=" Account Description"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+        <resource culture="en-us" name="bankaccountinfoList" value="View All"></resource>
+		<resource culture="en-us" name="bankaccountinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="bankaccountinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="bankaccountinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

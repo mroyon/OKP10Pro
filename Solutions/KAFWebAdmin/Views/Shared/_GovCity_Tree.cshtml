@@ -1,0 +1,115 @@
+﻿@{
+    String txtid = ViewBag.txtid;
+
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.TextBox("txtSearch", null, new { @class = "form-control txtSearch", placeholder = "Search Area at least 2 character." })
+    </div>
+
+    <div class="col-md-6">
+        <button type="submit" id="btnSearch" class="btn btn-warning btn-md btnSearch"><i class="fa fa-save"> </i> Search </button>
+        <button type="submit" id="btnClear" class="btn btn-danger btn-md btnClear"><i class="fa fa-save"> </i> Clear </button>
+
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="row">
+        <div id="@txtid">
+
+        </div>
+    </div>
+</div>
+}
+
+<script>
+        function test() {
+
+        }
+
+        var baseurl = $("#txtBaseUrl").val();
+
+        var txtid = '#@txtid';
+
+    $(document).ready(function () {
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+        $(txtid).css('height', (window.innerHeight - 250) + 'px');
+
+        $('#btnClear').on('click', function (event) {
+            $('#txtSearch').val('');
+            $(txtid).jstree(true).settings.core.data.url = baseurl + "Common/GetAllGovCityNodes/?id";
+            $(txtid).jstree(true).refresh();
+        });
+
+        $(txtid).jstree({
+            'core': {
+
+                'data': {
+                    "url": baseurl + "Common/GetAllGovCityNodes/?id",
+                    "data": function (node) {
+                        // console.log(node);
+                        return { "id": node.id };
+                    }
+                },
+                'check_callback': true,
+
+            }
+
+
+            , plugins: ["search", "themes", "types","ui"]
+            //'search': { "case_sensitive": false, "show_only_matches": true }
+        });
+        $('#btnSearch').on('click',function (event) {
+
+            //event.preventDefault();
+
+            if ($('#txtSearch').val().length > 1) {
+
+                $(txtid).jstree(true).settings.core.data.url = baseurl + "Common/GetAllGovCityNodes/?id&&text=" + $('#txtSearch').val();
+                $(txtid).jstree(true).refresh();
+
+                setTimeout(function () { $(txtid).jstree(true).open_all(); }, 500);
+
+
+
+            }
+            else if ($('#txtSearch').val().length != 0) {
+                inforamtionDialog("Alert","Please Provide at least two character", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                });
+            }
+            else {
+                $(txtid).jstree(true).settings.core.data.url = baseurl + "Common/GetAllGovCityNodes/?id";
+                $(txtid).jstree(true).refresh();
+            }
+
+
+
+        });
+
+
+
+            $(txtid).jstree('get_selected', true);
+
+            $(txtid).on("select_node.jstree",
+                function (evt, data) {
+                    // alert(data.node.text);
+                    var currentnode = data.node;
+                    var parentnode = $( txtid).jstree(true).get_node(data.node.parent);
+
+                    afterselectgovcity(currentnode, parentnode);
+
+
+                }
+            );
+
+
+
+        });
+
+
+
+</script>

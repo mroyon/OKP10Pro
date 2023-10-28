@@ -1,0 +1,79 @@
+﻿@model KAF.BusinessDataObjects.gen_tradeEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmGen_TradeDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._gen_trade.tradeDetails
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.tradeid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Force Name", htmlAttributes: new { @class = "labelNormal  " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationEntity[0].ToString(), selectid = "forceid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedstp_organization, multiple = false, isReadOnly = true, IsRequired = true });}
+                                @Html.ValidationMessageFor(model => model.forceid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Country", htmlAttributes: new { @class = "labelNormal  " })
+                                @{Html.RenderAction("LoadCountrySearch", "Common", new { area = "", selectid = "countryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_country, multiple = false, isReadOnly = true, IsRequired = true });}
+
+                                @Html.ValidationMessageFor(model => model.countryid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.tradename, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.tradename, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.tradename, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+
+
+
+
+</script>
+    
+
+
+

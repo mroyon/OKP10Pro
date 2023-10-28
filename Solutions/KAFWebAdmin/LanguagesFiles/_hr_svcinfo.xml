@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  H R Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  H R Basic ID"></resource>
+       <resource culture="ar-kw" name="passportno" value="AR:  Passport No"></resource>
+       <resource culture="ar-kw" name="joindatekw" value="AR:  Join Date Kw"></resource>
+       <resource culture="ar-kw" name="expectedretiredatekw" value="AR:  Expected Retire Date Kw"></resource>
+       <resource culture="ar-kw" name="userid" value="AR:  User ID"></resource>
+       <resource culture="ar-kw" name="entitykey" value="AR:  Entity Key"></resource>
+       <resource culture="ar-kw" name="armsid" value="AR:  Arms ID"></resource>
+       <resource culture="ar-kw" name="okpid" value="AR:  Okp ID"></resource>
+       <resource culture="ar-kw" name="rankidkw" value="AR:  Rank ID K W"></resource>
+       <resource culture="ar-kw" name="rankidbd" value="AR:  Rank ID B D"></resource>
+       <resource culture="ar-kw" name="tradeidbd" value="AR:  Trade ID B D"></resource>
+       <resource culture="ar-kw" name="tradeidkw" value="AR:  Trade ID K W"></resource>
+       <resource culture="ar-kw" name="groupid" value="AR:  Group ID"></resource>
+       <resource culture="ar-kw" name="status" value="AR:  Status"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="svcinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="svcinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="svcinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="svcinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" H R Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  H R Basic ID"></resource>
+       <resource culture="en-us" name="passportno" value=" Passport No"></resource>
+       <resource culture="en-us" name="joindatekw" value=" Join Date Kw"></resource>
+       <resource culture="en-us" name="expectedretiredatekw" value=" Expected Retire Date Kw"></resource>
+       <resource culture="en-us" name="userid" value=" User ID"></resource>
+       <resource culture="en-us" name="entitykey" value=" Entity Key"></resource>
+       <resource culture="en-us" name="armsid" value=" Arms ID"></resource>
+       <resource culture="en-us" name="okpid" value=" Okp ID"></resource>
+       <resource culture="en-us" name="rankidkw" value=" Rank ID K W"></resource>
+       <resource culture="en-us" name="rankidbd" value=" Rank ID B D"></resource>
+       <resource culture="en-us" name="tradeidbd" value=" Trade ID B D"></resource>
+       <resource culture="en-us" name="tradeidkw" value=" Trade ID K W"></resource>
+       <resource culture="en-us" name="groupid" value=" Group ID"></resource>
+       <resource culture="en-us" name="status" value=" Status"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="svcinfoList" value="View All"></resource>
+		<resource culture="en-us" name="svcinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="svcinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="svcinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

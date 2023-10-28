@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="@KAF.CustomHelper.HelperClasses.CultureHelper.GetCurrentNeutralCulture()" dir= "ltr">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="ronty" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMC Automation</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="~/DesignsAndScripts/fonts/font_googleapis.css" rel="stylesheet" />
+
+    @Styles.Render("~/Bundles/css")
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /*.content-wrapper {
+            background-image: url(../../DesignsAndScripts/Images/Camo-29.jpg) !important;
+            background-repeat: repeat !important;
+            opacity: .5;
+        }
+        .content {
+            opacity: 1;
+        }*/
+        .bodyimg {
+            background: url(../../DesignsAndScripts/Images/log3.jpg) no-repeat center center fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin-left: 0px;
+            border: 100px solid transparent;
+            background-size: cover;
+            width: 100%;
+        }
+
+        .bgimg {
+            background-image: url(../../DesignsAndScripts/Images/log.jpeg) ;
+            margin-top: 0px;
+            width: 100%;
+            height: 670px;
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-left: 0px;
+            margin-right: 0px;
+            bottom: 0px;
+            margin-bottom: 0px;
+            
+        }
+    </style>
+
+</head>
+<body class="skin-blue">
+    @{ string baseURL = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+        string domain = Request.Url.Authority; }
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="txtUserSTK" value='@ViewBag.usertoken' class="txtUserSTK" />
+    <input type="hidden" value="@baseURL" id="txtBaseUrl" class="txtBaseUrl" />
+    
+
+    
+
+    <div class="wrapper">
+        <div class="content-wrapper bodyimg" style="margin-left:0px;">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    @ViewBag.Title
+                    <small>@ViewBag.TitleSmall</small>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                @RenderBody()
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer" style="margin-left:0px;">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.0
+            </div>
+            <strong><b>Version</b> 2.0 Copyright &copy; 2019-2020<a href="http://www.kaf.gov.kw">Kuwait Armed Forces</a>.</strong> All rights reserved.
+        </footer>
+
+    </div><!-- ./wrapper -->
+    @Scripts.Render("~/Bundles/loginjs")
+    @RenderSection("scripts", required: false)
+
+
+    <input type="hidden" id="txtuserip" value="@domain" class="txtuserip" />
+
+    <script>
+        $(document).on('click', '.toggle-password', function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+
+            var input = $("#txtpassword");
+            input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password')
+        });
+
+        $(document).ready(function () {
+            try {
+
+                //$.getJSON('https://api.ipify.org/?format=json', function (data) {
+                //    $('.txtuserip').val(data.ip);
+                //});
+
+                //$.getJSON('https://ipapi.co/json/', function (data) {
+                //    $('.txtuserip').val(data.ip);
+                //});
+
+                //$.ajax({
+                //    url: baseurl + "home/GetClientIPAddress",
+                //    //data: input,
+                //    type: 'POST',
+                //    async: false,
+                //    success: function (data) {
+                //        //console.log(data);
+                //        $('.txtuserip').val(data.data);
+                //    }
+                //});
+            }
+            catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+
+            // showMenu();
+        });
+
+        try {
+            jQuery.ajaxSetup({
+                beforeSend: function () {
+                    $('#divProgressBar').show();
+                },
+                complete: function () {
+                    $('#divProgressBar').hide();
+                },
+                success: function (response) {
+                    if (response.status === "success") {
+                        inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                        });
+                    }
+                    else if (response.status === "failed") {
+                        inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                        });
+                    }
+                },
+                failure: function (response) {
+                    $.alert({
+                        title: 'Information - failure!',
+                        content: response.responsetext,
+                        type: 'red'
+                    });
+                },
+                error: function (response) {
+                    $.alert({
+                        title: 'Information - error!',
+                        content: response.responsetext,
+                        type: 'red'
+                    });
+                }
+            });
+        } catch (e) {
+            $.alert({
+                title: 'Error!',
+                content: e.message,
+                type: 'red'
+            });
+        }
+
+    </script>
+    @{ var dic = new Dictionary<string, string>();
+        foreach (string var in Request.ServerVariables)
+        {
+            if (!string.IsNullOrEmpty(HttpUtility.UrlEncode(Request[var]).ToString()))
+            {
+                if (
+                (var == "HTTP_USER_AGENT")
+                || (var == "HTTP_REFERER")
+                || (var == "HTTP_COOKIE")
+                    || (var == "SCRIPT_NAME")
+                    || (var == "SERVER_NAME")
+                    || (var == "SERVER_PORT")
+                    || (var == "SERVER_PROTOCOL")
+                    || (var == "HTTP_CONNECTION")
+                    || (var == "AUTH_USER")
+                    || (var == "LOGON_USER")
+                || (var == "REQUEST_METHOD")
+                || (var == "URL")
+                    )
+                {
+                    dic.Add(var.ToString(), HttpUtility.UrlEncode(Request[var]).ToString());
+                }
+            }
+        }
+        var jlist = Newtonsoft.Json.JsonConvert.SerializeObject(dic);
+        string js = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(jlist); }
+
+    <textarea id="txtServerUtil" style="display: none;" hidden="hidden" class="txtServerUtil">@js</textarea>
+    <textarea id="txtServerUtilObj" style="display: none;" hidden="hidden" class="txtServerUtilObj"> @jlist</textarea>
+    <input type="hidden" id="txtUserSes" value='@Session.SessionID' class="txtUserSes" />
+    <textarea id="txtCommonLanguages" style="display: none;" hidden="hidden" class="txtCommonLanguages">@Session["comlanguage"].ToString()</textarea>
+
+    @{ if (!string.IsNullOrEmpty(ViewBag.exceptiontitle) && !string.IsNullOrEmpty(ViewBag.exceptionbody))
+        {
+<script>
+    $(document).ready(function () {
+        $('#exampleModalLabel').append(ViewBag.exceptiontitle);
+        $('#exampleModalBody').append(ViewBag.exceptionbody);
+        $('#exampleModal').modal('toggle');
+
+    });
+</script>
+ ViewBag.exceptiontitle = string.Empty;
+ViewBag.exceptionbody = string.Empty;
+} }
+    <div id="divProgressBar" class="modal">
+        <div class="center">
+            <img src="~/DesignsAndScripts/Images/ajax-loader.gif" />
+        </div>
+    </div>
+
+</body>
+</html>

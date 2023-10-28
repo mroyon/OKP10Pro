@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  H R Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  H R Basic ID"></resource>
+       <resource culture="ar-kw" name="filetypeid" value="AR:  File Type ID"></resource>
+       <resource culture="ar-kw" name="filetypeidRequired" value="AR: Please provide  File Type ID"></resource>
+       <resource culture="ar-kw" name="filedescription" value="AR:  File Description"></resource>
+       <resource culture="ar-kw" name="filepath" value="AR:  File Path"></resource>
+       <resource culture="ar-kw" name="filepathRequired" value="AR: Please provide  File Path"></resource>
+       <resource culture="ar-kw" name="filename" value="AR:  File Name"></resource>
+       <resource culture="ar-kw" name="filenameRequired" value="AR: Please provide  File Name"></resource>
+       <resource culture="ar-kw" name="filetype" value="AR:  File Type"></resource>
+       <resource culture="ar-kw" name="filetypeRequired" value="AR: Please provide  File Type"></resource>
+       <resource culture="ar-kw" name="extension" value="AR:  Extension"></resource>
+       <resource culture="ar-kw" name="extensionRequired" value="AR: Please provide  Extension"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="basicfileList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="basicfileCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="basicfileUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="basicfileDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" H R Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  H R Basic ID"></resource>
+       <resource culture="en-us" name="filetypeid" value=" File Type ID"></resource>
+       <resource culture="en-us" name="filetypeidRequired" value="Please provide  File Type ID"></resource>
+       <resource culture="en-us" name="filedescription" value=" File Description"></resource>
+       <resource culture="en-us" name="filepath" value=" File Path"></resource>
+       <resource culture="en-us" name="filepathRequired" value="Please provide  File Path"></resource>
+       <resource culture="en-us" name="filename" value=" File Name"></resource>
+       <resource culture="en-us" name="filenameRequired" value="Please provide  File Name"></resource>
+       <resource culture="en-us" name="filetype" value=" File Type"></resource>
+       <resource culture="en-us" name="filetypeRequired" value="Please provide  File Type"></resource>
+       <resource culture="en-us" name="extension" value=" Extension"></resource>
+       <resource culture="en-us" name="extensionRequired" value="Please provide  Extension"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="basicfileList" value="View All"></resource>
+		<resource culture="en-us" name="basicfileCreate" value="Create"></resource>
+		<resource culture="en-us" name="basicfileUpdate" value="Update"></resource>
+		<resource culture="en-us" name="basicfileDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

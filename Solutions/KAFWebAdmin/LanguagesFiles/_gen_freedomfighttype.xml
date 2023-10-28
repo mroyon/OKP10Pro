@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="freedomfight" value="AR:  Freedom Fight"></resource>
+       <resource culture="ar-kw" name="freedomfightRequired" value="AR: Please provide  Freedom Fight"></resource>
+       <resource culture="ar-kw" name="priority" value="AR:  Priority"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="freedomfighttypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="freedomfighttypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="freedomfighttypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="freedomfighttypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="freedomfight" value=" Freedom Fight"></resource>
+       <resource culture="en-us" name="freedomfightRequired" value="Please provide  Freedom Fight"></resource>
+       <resource culture="en-us" name="priority" value=" Priority"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="freedomfighttypeList" value="View All"></resource>
+		<resource culture="en-us" name="freedomfighttypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="freedomfighttypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="freedomfighttypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

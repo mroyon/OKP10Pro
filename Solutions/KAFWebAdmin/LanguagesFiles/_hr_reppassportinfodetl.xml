@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="reppassportid" value="AR:  Rep Passport ID"></resource>
+       <resource culture="ar-kw" name="reppassportidRequired" value="AR: Please provide  Rep Passport ID"></resource>
+       <resource culture="ar-kw" name="replacementdetlid" value="AR:  Replacement Detl ID"></resource>
+       <resource culture="ar-kw" name="replacementdetlidRequired" value="AR: Please provide  Replacement Detl ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="newhrbasicid" value="AR:  New Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="newhrbasicidRequired" value="AR: Please provide  New Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="newhrsvcid" value="AR:  New Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="newhrsvcidRequired" value="AR: Please provide  New Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="newpassportno" value="AR:  New Passport No"></resource>
+       <resource culture="ar-kw" name="newpassportnoRequired" value="AR: Please provide  New Passport No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="reppassportinfodetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="reppassportinfodetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="reppassportinfodetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="reppassportinfodetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="reppassportid" value=" Rep Passport ID"></resource>
+       <resource culture="en-us" name="reppassportidRequired" value="Please provide  Rep Passport ID"></resource>
+       <resource culture="en-us" name="replacementdetlid" value=" Replacement Detl ID"></resource>
+       <resource culture="en-us" name="replacementdetlidRequired" value="Please provide  Replacement Detl ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc ID"></resource>
+       <resource culture="en-us" name="newhrbasicid" value=" New Hr Basic ID"></resource>
+       <resource culture="en-us" name="newhrbasicidRequired" value="Please provide  New Hr Basic ID"></resource>
+       <resource culture="en-us" name="newhrsvcid" value=" New Hr Svc ID"></resource>
+       <resource culture="en-us" name="newhrsvcidRequired" value="Please provide  New Hr Svc ID"></resource>
+       <resource culture="en-us" name="newpassportno" value=" New Passport No"></resource>
+       <resource culture="en-us" name="newpassportnoRequired" value="Please provide  New Passport No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="reppassportinfodetlList" value="View All"></resource>
+		<resource culture="en-us" name="reppassportinfodetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="reppassportinfodetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="reppassportinfodetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

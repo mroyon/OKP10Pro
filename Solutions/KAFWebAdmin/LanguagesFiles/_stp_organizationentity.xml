@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="organizationkey" value="AR:  Organization Key"></resource>
+       <resource culture="ar-kw" name="organizationkeyRequired" value="AR: Please provide  Organization Key"></resource>
+       <resource culture="ar-kw" name="parentkey" value="AR:  Parent Key"></resource>
+       <resource culture="ar-kw" name="entirytypekey" value="AR:  Entiry Type Key"></resource>
+       <resource culture="ar-kw" name="entirytypekeyRequired" value="AR: Please provide  Entiry Type Key"></resource>
+       <resource culture="ar-kw" name="entitylevel" value="AR:  Entity Level"></resource>
+       <resource culture="ar-kw" name="entitylevelRequired" value="AR: Please provide  Entity Level"></resource>
+       <resource culture="ar-kw" name="seqfirstindex" value="AR:  Seq First Index"></resource>
+       <resource culture="ar-kw" name="seqfullindex" value="AR:  Seq Full Index"></resource>
+       <resource culture="ar-kw" name="entitycode" value="AR:  Entity Code"></resource>
+       <resource culture="ar-kw" name="entityname" value="AR:  Entity Name"></resource>
+       <resource culture="ar-kw" name="entitynameRequired" value="AR: Please provide  Entity Name"></resource>
+       <resource culture="ar-kw" name="entitynamear" value="AR:  Entity Name Ar"></resource>
+       <resource culture="ar-kw" name="description" value="AR:  Description"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+       <resource culture="ar-kw" name="entitystatus" value="AR:  Entity Status"></resource>
+       <resource culture="ar-kw" name="entityseniority" value="AR:  Entity Seniority"></resource>
+       <resource culture="ar-kw" name="entityidentitycode" value="AR:  Entity Identity Code"></resource>
+       <resource culture="ar-kw" name="adidentitycode" value="AR:  A D Identity Code"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="entitylogo" value="AR:  Entity Logo"></resource>
+       <resource culture="ar-kw" name="entitylogofiledescription" value="AR:  Entity Logo File Description"></resource>
+       <resource culture="ar-kw" name="entitylogofilepath" value="AR:  Entity Logo File Path"></resource>
+       <resource culture="ar-kw" name="entitylogofilename" value="AR:  Entity Logo File Name"></resource>
+       <resource culture="ar-kw" name="entitylogofiletype" value="AR:  Entity Logo File Type"></resource>
+       <resource culture="ar-kw" name="entitylogoextension" value="AR:  Entity Logo Extension"></resource>
+       <resource culture="ar-kw" name="entitylogofileno" value="AR:  Entity Logo File No"></resource>
+		<resource culture="ar-kw" name="organizationentityList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="organizationentityCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="organizationentityUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="organizationentityDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="organizationkey" value=" Organization Key"></resource>
+       <resource culture="en-us" name="organizationkeyRequired" value="Please provide  Organization Key"></resource>
+       <resource culture="en-us" name="parentkey" value=" Parent Key"></resource>
+       <resource culture="en-us" name="entirytypekey" value=" Entiry Type Key"></resource>
+       <resource culture="en-us" name="entirytypekeyRequired" value="Please provide  Entiry Type Key"></resource>
+       <resource culture="en-us" name="entitylevel" value=" Entity Level"></resource>
+       <resource culture="en-us" name="entitylevelRequired" value="Please provide  Entity Level"></resource>
+       <resource culture="en-us" name="seqfirstindex" value=" Seq First Index"></resource>
+       <resource culture="en-us" name="seqfullindex" value=" Seq Full Index"></resource>
+       <resource culture="en-us" name="entitycode" value=" Entity Code"></resource>
+       <resource culture="en-us" name="entityname" value=" Entity Name"></resource>
+       <resource culture="en-us" name="entitynameRequired" value="Please provide  Entity Name"></resource>
+       <resource culture="en-us" name="entitynamear" value=" Entity Name Ar"></resource>
+       <resource culture="en-us" name="description" value=" Description"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+       <resource culture="en-us" name="entitystatus" value=" Entity Status"></resource>
+       <resource culture="en-us" name="entityseniority" value=" Entity Seniority"></resource>
+       <resource culture="en-us" name="entityidentitycode" value=" Entity Identity Code"></resource>
+       <resource culture="en-us" name="adidentitycode" value=" A D Identity Code"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="entitylogo" value=" Entity Logo"></resource>
+       <resource culture="en-us" name="entitylogofiledescription" value=" Entity Logo File Description"></resource>
+       <resource culture="en-us" name="entitylogofilepath" value=" Entity Logo File Path"></resource>
+       <resource culture="en-us" name="entitylogofilename" value=" Entity Logo File Name"></resource>
+       <resource culture="en-us" name="entitylogofiletype" value=" Entity Logo File Type"></resource>
+       <resource culture="en-us" name="entitylogoextension" value=" Entity Logo Extension"></resource>
+       <resource culture="en-us" name="entitylogofileno" value=" Entity Logo File No"></resource>
+        <resource culture="en-us" name="organizationentityList" value="View All"></resource>
+		<resource culture="en-us" name="organizationentityCreate" value="Create"></resource>
+		<resource culture="en-us" name="organizationentityUpdate" value="Update"></resource>
+		<resource culture="en-us" name="organizationentityDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

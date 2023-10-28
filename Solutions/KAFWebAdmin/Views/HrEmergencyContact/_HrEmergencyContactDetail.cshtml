@@ -1,0 +1,315 @@
+﻿@model KAF.BusinessDataObjects.hr_emergencycontactEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_EmergencyContactDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_emergencycontact.hr_emergencycontactDetails
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.emergencycontactid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.hrbasicid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHR_BasicProfileSearch", "Common", new { area = "", selectid = "hrbasicid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHR_BasicProfile, multiple = false, isReadOnly = true, IsRequired = true });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.relationshipid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_relationship[0].ToString(), selectid = "relationshipid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Relationship, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.name1, htmlAttributes: new { @class = "labelNormal required " })
+								 @Html.EditorFor(model => model.name1, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.name1, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.name2, htmlAttributes: new { @class = "labelNormal required " })
+								 @Html.EditorFor(model => model.name2, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.name2, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.name3, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.name3, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.name3, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.name4, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.name4, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.name4, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.name5, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.name5, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.name5, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.fullname, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curbdaddressflatno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curbdaddressflatno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curbdaddressflatno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curbdaddresshouseno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curbdaddresshouseno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curbdaddresshouseno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curbdaddressstreet, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curbdaddressstreet, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curbdaddressstreet, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curbdadrresspo,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_PostOfficeSearch", "Common", new { area = "", selectid = "curbdadrresspo", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_PostOffice, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curbdadrressps,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_ThanaSearch", "Common", new { area = "", selectid = "curbdadrressps", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Thana, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curbdaddressdist,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_DivisionDistrictSearch", "Common", new { area = "", selectid = "curbdaddressdist", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_DivisionDistrict, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curbdaddressdivision,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_DivisionDistrictSearch", "Common", new { area = "", selectid = "curbdaddressdivision", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_DivisionDistrict, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.mobilebd, htmlAttributes: new { @class = "labelNormal required " })
+								 @Html.EditorFor(model => model.mobilebd, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.mobilebd, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.telephonebd, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.telephonebd, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.telephonebd, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.perbdaddressflatno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.perbdaddressflatno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.perbdaddressflatno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.perbdaddresshouseno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.perbdaddresshouseno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.perbdaddresshouseno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.perbdaddressstreet, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.perbdaddressstreet, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.perbdaddressstreet, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.perbdadrresspo,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_PostOfficeSearch", "Common", new { area = "", selectid = "perbdadrresspo", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_PostOffice, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.perbdadrressps,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_ThanaSearch", "Common", new { area = "", selectid = "perbdadrressps", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Thana, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.perbdaddressdivision,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_DivisionDistrictSearch", "Common", new { area = "", selectid = "perbdaddressdivision", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_DivisionDistrict, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.perbdaddressdist,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_DivisionDistrictSearch", "Common", new { area = "", selectid = "perbdaddressdist", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_DivisionDistrict, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curkwaddressflatno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curkwaddressflatno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curkwaddressflatno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curkwaddresshouseno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curkwaddresshouseno, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curkwaddresshouseno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curkwaddressstreet, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curkwaddressstreet, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curkwaddressstreet, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curkwadrressblock, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curkwadrressblock, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curkwadrressblock, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curkwadrressavenue, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.curkwadrressavenue, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.curkwadrressavenue, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curkwgovnerid,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_GovCitySearch", "Common", new { area = "", selectid = "curkwgovnerid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_GovCity, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.curkwareaid,  htmlAttributes: new { @class = "labelNormal     " })
+								 @{Html.RenderAction("LoadGen_GovCitySearch", "Common", new { area = "", selectid = "curkwareaid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_GovCity, multiple = false, isReadOnly = true, IsRequired = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.curkwpacino, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.curkwpacino, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.curkwpacino, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.mobilekw, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.mobilekw, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.mobilekw, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.telephonekw, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.telephonekw, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.telephonekw, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+
+
+
+
+</script>
+    
+
+
+

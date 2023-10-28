@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="medcommissionno" value="AR:  Med Commission No"></resource>
+       <resource culture="ar-kw" name="medcommissionnoRequired" value="AR: Please provide  Med Commission No"></resource>
+       <resource culture="ar-kw" name="medcommsisiondate" value="AR:  Med Commsision Date"></resource>
+       <resource culture="ar-kw" name="medcommsisiondateRequired" value="AR: Please provide  Med Commsision Date"></resource>
+       <resource culture="ar-kw" name="medcommissionfiledescription" value="AR:  Med Commission File Description"></resource>
+       <resource culture="ar-kw" name="medcommissionfilepath" value="AR:  Med Commission File Path"></resource>
+       <resource culture="ar-kw" name="medcommissionfilename" value="AR:  Med Commission File Name"></resource>
+       <resource culture="ar-kw" name="medcommissionfiletype" value="AR:  Med Commission File Type"></resource>
+       <resource culture="ar-kw" name="medcommissionextension" value="AR:  Med Commission Extension"></resource>
+       <resource culture="ar-kw" name="medcommissionfileno" value="AR:  Med Commission File No"></resource>
+       <resource culture="ar-kw" name="medcommissiondesc" value="AR:  Med Commission Desc"></resource>
+       <resource culture="ar-kw" name="docno" value="AR:  Doc No"></resource>
+       <resource culture="ar-kw" name="docdate" value="AR:  Doc Date"></resource>
+       <resource culture="ar-kw" name="docfiledescription" value="AR:  Doc File Description"></resource>
+       <resource culture="ar-kw" name="docfilepath" value="AR:  Doc File Path"></resource>
+       <resource culture="ar-kw" name="docfilename" value="AR:  Doc File Name"></resource>
+       <resource culture="ar-kw" name="docfiletype" value="AR:  Doc File Type"></resource>
+       <resource culture="ar-kw" name="docextension" value="AR:  Doc Extension"></resource>
+       <resource culture="ar-kw" name="docfileno" value="AR:  Doc File No"></resource>
+       <resource culture="ar-kw" name="medaction" value="AR:  Med Action"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="medicalinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="medicalinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="medicalinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="medicalinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="medcommissionno" value=" Med Commission No"></resource>
+       <resource culture="en-us" name="medcommissionnoRequired" value="Please provide  Med Commission No"></resource>
+       <resource culture="en-us" name="medcommsisiondate" value=" Med Commsision Date"></resource>
+       <resource culture="en-us" name="medcommsisiondateRequired" value="Please provide  Med Commsision Date"></resource>
+       <resource culture="en-us" name="medcommissionfiledescription" value=" Med Commission File Description"></resource>
+       <resource culture="en-us" name="medcommissionfilepath" value=" Med Commission File Path"></resource>
+       <resource culture="en-us" name="medcommissionfilename" value=" Med Commission File Name"></resource>
+       <resource culture="en-us" name="medcommissionfiletype" value=" Med Commission File Type"></resource>
+       <resource culture="en-us" name="medcommissionextension" value=" Med Commission Extension"></resource>
+       <resource culture="en-us" name="medcommissionfileno" value=" Med Commission File No"></resource>
+       <resource culture="en-us" name="medcommissiondesc" value=" Med Commission Desc"></resource>
+       <resource culture="en-us" name="docno" value=" Doc No"></resource>
+       <resource culture="en-us" name="docdate" value=" Doc Date"></resource>
+       <resource culture="en-us" name="docfiledescription" value=" Doc File Description"></resource>
+       <resource culture="en-us" name="docfilepath" value=" Doc File Path"></resource>
+       <resource culture="en-us" name="docfilename" value=" Doc File Name"></resource>
+       <resource culture="en-us" name="docfiletype" value=" Doc File Type"></resource>
+       <resource culture="en-us" name="docextension" value=" Doc Extension"></resource>
+       <resource culture="en-us" name="docfileno" value=" Doc File No"></resource>
+       <resource culture="en-us" name="medaction" value=" Med Action"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="medicalinfoList" value="View All"></resource>
+		<resource culture="en-us" name="medicalinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="medicalinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="medicalinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0EB08418-3CF6-4A78-A7FE-B4D758A92E83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KAF.DataAccessObjects</RootNamespace>
+    <AssemblyName>KAF.DataAccessObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccessObjectsBase\BaseDataAccess.cs" />
+    <Compile Include="DataAccessObjectsBase\BaseDataAccessFactory.cs" />
+    <Compile Include="DataAccessObjectsBase\BaseDataAccessFactoryEx.cs" />
+    <Compile Include="DataAccessObjectsBase\CustomMembershipUser.cs" />
+    <Compile Include="DataAccessObjectsBase\DataAccessFactory.cs" />
+    <Compile Include="DataAccessObjectsBase\DataAccessFactoryEx.cs" />
+    <Compile Include="DataAccessObjectsBase\SqlConstants.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_attachmentinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_basicprofileDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_demanddetlpassportDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_documentuploadDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_hospitaladmissioninfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_newdemandDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_newdemanddetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_okptransferinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_passportinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_personalinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_svcinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\KAFDataCacheDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\KAFUserSecurityDataAccess.cs" />
+    <Compile Include="DataAccessObjectsPartial\owin_rolepermissionDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\ReportExtensionDataAccess.cs" />
+    <Compile Include="DataAccessObjectsPartial\SelectTwoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\stp_OrganizationEntityDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\owin_userDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\gen_documenttypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_addresschangeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_attachmentinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_documentuploadDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_okptransferinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\ParadeState\hr_deathinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\ParadeState\hr_leaveinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\ParadeState\hr_leavemodificationDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\ParadeState\tran_manpowerstateDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\ParadeState\tran_manpowerstatedetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\ParadeState\tran_manpowerstatedetl_historyDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\ParadeState\tran_manpowerstate_historyDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Payment\cnf_paymentitemDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Payment\cnf_rankpayconfigDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Payment\gen_currencyexchagerateDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Payment\gen_grouprankDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_authorizestrengthDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_campDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_leaveconfigDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_leavetypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_monthDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Payment\tran_cuttinginfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Payment\tran_cuttinginfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_arrivalinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_arrivalinfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_bankaccountinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_bankloaninfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_basicfileDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_basicprofileDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_demanddetlpassportDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_emergencycontactDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_extensioninfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_familyinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_familyjobinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_flightinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_flightinfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_hospitaladmissioninfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_languageproficiencyDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_medicalinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_newdemandDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_newdemanddetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_passportinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_personalinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_promotioninfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_punishmentinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_repatriationinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_replacementinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_replacementinfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_reppassportinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_reppassportinfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_residentvisaDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_rewardinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_svcinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_visademandinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_visademandinfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_visaissueinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_visaissueinfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_visasentinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_visasentinfodetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_ptademandDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_ptademanddetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_ptareceivedDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Process\hr_ptareceiveddetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\RPTM\rptm_allreportinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\RPTM\rptm_reportdatasourceDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\RPTM\rptm_reportparameterDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_reportpermissionDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_reportroleDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_reportroletemplateDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_tsvDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userroledetlentityprofilemapDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\useraccountsprofDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_formactionDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_forminfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_lastworkingpageDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_roleDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_rolepermissionDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userlogintrailDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userpasswordresetinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userprefferencessettingsDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userroleDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userroledetlDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userroledetlentitymapDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Security\owin_userstatuschangehistoryDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_airlinesDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_armsDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_bankbranchDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_bankDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_bloodgroupDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_buildingDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_countryDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_divisiondistrictDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_filetypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_freedomfighttypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_genderDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_govcityDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_issuetypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_languageDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_languageproficiencyDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_maritalstatusDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_movementtypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_okpcoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_okpDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_penaltytypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_postofficeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_promotiontypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_rankDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_ranktypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_relationshipDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_religionDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_servicestatusDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_subunitDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_thanaDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\gen_tradeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\stp_countrycityDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\stp_countryDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\stp_organizationDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\stp_organizationentityDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\stp_organizationentitytypeDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\Setup\stp_passpolicyDataAccessObjects.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KAF.AppConfiguration\KAF.AppConfiguration.csproj">
+      <Project>{a0591d23-3c4e-4aca-bd0d-88497940e28b}</Project>
+      <Name>KAF.AppConfiguration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KAF.BusinessDataObjects\KAF.BusinessDataObjects.csproj">
+      <Project>{ef8dae61-781c-41d2-8290-c01419a273c9}</Project>
+      <Name>KAF.BusinessDataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KAF.ConstantTypes\KAF.ConstantTypes.csproj">
+      <Project>{c7ae8095-9886-4eb3-8050-91f0be6c7537}</Project>
+      <Name>KAF.ConstantTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KAF.IDataAccessObjects\KAF.IDataAccessObjects.csproj">
+      <Project>{54392614-2388-4c16-98e8-324cfdf04a26}</Project>
+      <Name>KAF.IDataAccessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="DAOTemplates\BaseDataAccessFactory.cst" />
+    <None Include="DAOTemplates\DaoGenerator.csp" />
+    <None Include="DAOTemplates\DaoGenerator.cst" />
+    <None Include="DAOTemplates\DataAccess.cst" />
+    <None Include="DAOTemplates\DataAccessEx.cst" />
+    <None Include="DAOTemplates\DataAccessFactory.cst" />
+    <None Include="DAOTemplates\GetTopNumberedSP.cst" />
+    <None Include="DAOTemplates\SPCreator.cst" />
+    <None Include="DAOTemplates\SPCreator_Ext.cst" />
+    <None Include="DAOTemplates\SPCreator_Ext_REV_PUB_ARCONLY.cst" />
+    <None Include="DataAccessObjectsBase\database.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAOTemplates\y.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

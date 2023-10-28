@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = KAF.MsgContainer._hr_promotioninfo.hr_promotioninfoList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("HrPromotionInfo/HrPromotionInfoNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewHrPromotionInfo">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="HrPromotionInfoDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+							 <th>@KAF.MsgContainer._hr_promotioninfo.promotiondelayreason</th>                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrPromotionInfoNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrPromotionInfoNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrPromotionInfoEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrPromotionInfoEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrPromotionInfoDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrPromotionInfoDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrPromotionInfo/LandingHrPromotionInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrPromotionInfo/NewHrPromotionInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrPromotionInfo/EditHrPromotionInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/HrPromotionInfo/DetailHrPromotionInfo.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

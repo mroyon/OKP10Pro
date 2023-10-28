@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="penaltytype" value="AR:  Penalty Type"></resource>
+       <resource culture="ar-kw" name="penaltytypeRequired" value="AR: Please provide  Penalty Type"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="penaltytypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="penaltytypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="penaltytypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="penaltytypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="penaltytype" value=" Penalty Type"></resource>
+       <resource culture="en-us" name="penaltytypeRequired" value="Please provide  Penalty Type"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="penaltytypeList" value="View All"></resource>
+		<resource culture="en-us" name="penaltytypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="penaltytypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="penaltytypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

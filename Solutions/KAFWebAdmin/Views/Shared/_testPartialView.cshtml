@@ -1,0 +1,17 @@
+﻿
+<script type="text/javascript" src="~/DesignsAndScripts/PageWise/Signout/Signout.js"></script>
+<script src="~/DesignsAndScripts/PageWise/Home/ChangePassword.js"></script>
+<script src="~/DesignsAndScripts/PageWise/Home/ProfileUpdate.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#modal-container-profile').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+            $('#modal-container .modal-content').empty();
+        });
+
+        $('#modal-container-changepassword').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+            $('#modal-container .modal-content').empty();
+        });
+    });
+</script>

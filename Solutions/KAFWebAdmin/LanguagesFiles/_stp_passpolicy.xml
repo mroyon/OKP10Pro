@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="categoryid" value="AR:  Category ID"></resource>
+       <resource culture="ar-kw" name="categoryidRequired" value="AR: Please provide  Category ID"></resource>
+       <resource culture="ar-kw" name="passexpiredays" value="AR:  Pass Expire Days"></resource>
+       <resource culture="ar-kw" name="passexpiredaysis" value="AR:  Pass Expire Days Is"></resource>
+       <resource culture="ar-kw" name="passmaxlength" value="AR:  Pass Max Length"></resource>
+       <resource culture="ar-kw" name="passminlength" value="AR:  Pass Min Length"></resource>
+       <resource culture="ar-kw" name="passmcontainchar" value="AR:  Pass M Contain Char"></resource>
+       <resource culture="ar-kw" name="passmcontainuchar" value="AR:  Pass M Contain U Char"></resource>
+       <resource culture="ar-kw" name="passmcontainnum" value="AR:  Pass M Contain Num"></resource>
+       <resource culture="ar-kw" name="passmcontainspchar" value="AR:  Pass M Contain S P Char"></resource>
+       <resource culture="ar-kw" name="oldpasscom" value="AR:  Old Pass Com"></resource>
+       <resource culture="ar-kw" name="newpasscomoldpass" value="AR:  New Pass Com Old Pass"></resource>
+       <resource culture="ar-kw" name="regpasscontainchar" value="AR:  Reg Pass Contain Char"></resource>
+       <resource culture="ar-kw" name="regpasscontainuchar" value="AR:  Reg Pass Contain U Char"></resource>
+       <resource culture="ar-kw" name="regpasscontainnum" value="AR:  Reg Pass Contain Num"></resource>
+       <resource culture="ar-kw" name="regpasscontainspchar" value="AR:  Reg Pass Contain S P Char"></resource>
+       <resource culture="ar-kw" name="organizationkey" value="AR:  Organization Key"></resource>
+       <resource culture="ar-kw" name="organizationkeyRequired" value="AR: Please provide  Organization Key"></resource>
+		<resource culture="ar-kw" name="passpolicyList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="passpolicyCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="passpolicyUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="passpolicyDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="categoryid" value=" Category ID"></resource>
+       <resource culture="en-us" name="categoryidRequired" value="Please provide  Category ID"></resource>
+       <resource culture="en-us" name="passexpiredays" value=" Pass Expire Days"></resource>
+       <resource culture="en-us" name="passexpiredaysis" value=" Pass Expire Days Is"></resource>
+       <resource culture="en-us" name="passmaxlength" value=" Pass Max Length"></resource>
+       <resource culture="en-us" name="passminlength" value=" Pass Min Length"></resource>
+       <resource culture="en-us" name="passmcontainchar" value=" Pass M Contain Char"></resource>
+       <resource culture="en-us" name="passmcontainuchar" value=" Pass M Contain U Char"></resource>
+       <resource culture="en-us" name="passmcontainnum" value=" Pass M Contain Num"></resource>
+       <resource culture="en-us" name="passmcontainspchar" value=" Pass M Contain S P Char"></resource>
+       <resource culture="en-us" name="oldpasscom" value=" Old Pass Com"></resource>
+       <resource culture="en-us" name="newpasscomoldpass" value=" New Pass Com Old Pass"></resource>
+       <resource culture="en-us" name="regpasscontainchar" value=" Reg Pass Contain Char"></resource>
+       <resource culture="en-us" name="regpasscontainuchar" value=" Reg Pass Contain U Char"></resource>
+       <resource culture="en-us" name="regpasscontainnum" value=" Reg Pass Contain Num"></resource>
+       <resource culture="en-us" name="regpasscontainspchar" value=" Reg Pass Contain S P Char"></resource>
+       <resource culture="en-us" name="organizationkey" value=" Organization Key"></resource>
+       <resource culture="en-us" name="organizationkeyRequired" value="Please provide  Organization Key"></resource>
+        <resource culture="en-us" name="passpolicyList" value="View All"></resource>
+		<resource culture="en-us" name="passpolicyCreate" value="Create"></resource>
+		<resource culture="en-us" name="passpolicyUpdate" value="Update"></resource>
+		<resource culture="en-us" name="passpolicyDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

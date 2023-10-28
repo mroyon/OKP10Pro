@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="countryname" value="AR:  Country Name"></resource>
+       <resource culture="ar-kw" name="countrynameRequired" value="AR: Please provide  Country Name"></resource>
+       <resource culture="ar-kw" name="nationality" value="AR:  Nationality"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="countryList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="countryCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="countryUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="countryDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="countryname" value=" Country Name"></resource>
+       <resource culture="en-us" name="countrynameRequired" value="Please provide  Country Name"></resource>
+       <resource culture="en-us" name="nationality" value=" Nationality"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="countryList" value="View All"></resource>
+		<resource culture="en-us" name="countryCreate" value="Create"></resource>
+		<resource culture="en-us" name="countryUpdate" value="Update"></resource>
+		<resource culture="en-us" name="countryDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

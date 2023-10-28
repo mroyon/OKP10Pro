@@ -1,0 +1,373 @@
+﻿
+@model List<KAF.BusinessDataObjects.BusinessDataObjectsPartials.rpt_TableNameEntity>
+@{
+    ViewBag.Title = "Report Panel";
+}
+<style>
+    .detailheading {
+        background-color: darkgray !important;
+    }
+
+    .buttonpanelcenter {
+        text-align: center;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+@{
+    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower() == "ar-kw")
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: left;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: right;
+            }
+        </style>
+    }
+}
+
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmRPTMAllReportInfo", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    User Tracking
+                </div>
+                <div class="panel-body">
+                    <div id="tabsetup">
+                        <div id="" class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("Table", htmlAttributes: new { @class = "labelNormal " })
+                                    <select id="drpTable" class="form-control">
+
+                                        @foreach (var objsingle in Model)
+                                        {
+                                            <option value="@objsingle.TableName">@objsingle.TableName_Alias</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("User", htmlAttributes: new { @class = "labelNormal " })
+
+                                    @{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "masteruserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preOwin_userid, multiple = false, isReadOnly = false, IsRequired = false });}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="dvtablecoulmns">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    @Html.Label("From Date", htmlAttributes: new { @class = "labelNormal " })
+
+
+                                    <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                        @Html.Editor("txtFromDate", new { htmlAttributes = new { @placeholder = "From Date", @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    @Html.Label("To Date", htmlAttributes: new { @class = "labelNormal " })
+                                    <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                        @Html.Editor("txtToDate", new { htmlAttributes = new { @placeholder = "To Date", @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <div id="dvbtn" class="row">
+
+                        <div class="col-md-3">
+                            <button type="button" id="btnSearch" class="btn btn-raised btn-primary btn-block">Load Report</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" id="btnPrint" class="btn  btn-success  btn-block btnPrint">Print</button>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <button type="button" id="btnExport" class="btn  btn-info  btn-block btnExport">Export</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div id="" class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Table", htmlAttributes: new { @class = "labelNormal " })
+                    <select id="drpTable" class="form-control">
+
+                        @foreach (var objsingle in Model)
+                        {
+                            <option value="@objsingle.TableName">@objsingle.TableName_Alias</option>
+                        }
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("User", htmlAttributes: new { @class = "labelNormal " })
+
+                    @{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "masteruserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preOwin_userid, multiple = false, isReadOnly = false, IsRequired = false });}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Military ID", htmlAttributes: new { @class = "labelNormal " })
+
+                    <input type="text" class="form-control txtmilid" id="txtmilid" />
+                </div>
+
+            </div>
+        </div>*@
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-body">
+                    <div class=" " id="divReport">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    <script>
+        function loadfiltercolvalue(colname) {
+
+            $("#drpcolumndata option").remove();
+            try {
+                AddAntiForgeryToken = function (data) {
+                    data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                    return data;
+                };
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "HrMedicalInfoNew",
+                    currenturl: window.location.href,
+                    TableName: $("#drpTable").val(),
+                    strColumns: $("#drpfiltercolumn").val()
+                });
+
+                $.ajax({
+                    url: baseurl + "RPTMAllReportInfo/getColumnData",
+                    type: 'POST',
+                    data: input,
+                    success: function (response) {
+                        if (response.status == "success") {
+                            $("#drpcolumndata").append($("<option value='-99'>Please Select</option>"));
+
+                            $.each(JSON.parse(response.records), function (val, element) {
+                                $("#drpcolumndata").append($("<option value='" + element.ColID + "'>" + element.ColText + "</option>"));
+                            });
+
+
+                        }
+                        else {
+                            $("#drpcolumndata option").remove();
+                        }
+                    }
+                });
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+
+        }
+
+        $(document).ready(function () {
+            //  LoadSelect2DemandtLetterNo();
+
+            $("#drpTable").change(function () {
+                try {
+                    AddAntiForgeryToken = function (data) {
+                        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                        return data;
+                    };
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrMedicalInfoNew",
+                        currenturl: window.location.href,
+                        TableName: $("#drpTable").val()
+                    });
+
+                    $.ajax({
+                        url: baseurl + "RPTMAllReportInfo/getTableColumnsNames",
+                        type: 'POST',
+                        data: input,
+                        success: function (response) {
+                            $('#dvtablecoulmns').html('');
+                            $('#dvtablecoulmns').html(response);
+
+                        }
+                    });
+
+                } catch (e) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: e.message,
+                        type: 'red'
+                    });
+                }
+            });
+
+            $("#drpTypes").change(function () {
+                if ($("#drpTypes").val() == "1") {
+                    $("#drpserviceinfo").removeClass("hidden");
+                    $("#drpprofileinfo").addClass("hidden");
+                }
+                else {
+                    $("#drpserviceinfo").addClass("hidden");
+                    $("#drpprofileinfo").removeClass("hidden");
+                }
+            });
+
+            $("#btnPrint").click(function () {
+                $("#divReport").printThis({
+                    importCSS: true,
+                    loadCSS: "~/DesignsAndScripts/Styles/bootstrap_min.css",
+                    header: "<h1>User Tracking Data</h1>"
+                });
+            });
+            $("#btnExport").click(function () {
+                $("#RegBasicInfoDt").table2excel({
+                    filename: "UserTracking.xls"
+                });
+            });
+            $('#btnSearch').click(function () {
+
+                $("#drpTable").css("border", "1px solid #d2d6de");
+                $("#drpfiltercolumn").css("border", "1px solid #d2d6de");
+
+                var strcols = "";
+
+                if ($("#drpTable").val() == "PleaseSelect") {
+
+                    $("#drpTable").css("border", "1px solid red");
+                    return;
+                }
+
+                if ($("#drpfiltercolumn").val() == "-99") {
+
+                    $("#drpfiltercolumn").css("border", "1px solid red");
+                    return;
+                }
+
+                //var strDateRange = "";
+                //if ($("#txtFromDate").val().length > 0 && $("#txtToDate").val().length > 0) {
+
+                //    strDateRange= "fromdate=" + $("#txtFromDate").val() + "&todate=" + $("#txtToDate").val();
+                //}
+
+
+                try {
+                    AddAntiForgeryToken = function (data) {
+                        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                        return data;
+                    };
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrMedicalInfoNew",
+                        currenturl: window.location.href,
+                        TableName: $("#drpTable").val(),
+                        strColumns: $("#drpfiltercolumn").val(),
+                        lonVal1: $("#masteruserid").val(),
+                        lonVal2: $("#txtmilid").val(),
+                        strModelPrimaryKey: $("#drpcolumndata").val(),
+                        FromDate1: $("#txtFromDate").val() != "" ? GetDateFromTextBox($("#txtFromDate").val()) : null,
+                        ToDate1: $("#txtToDate").val() != "" ? GetDateFromTextBox($("#txtToDate").val()) : null
+
+                    });
+
+                    $.ajax({
+                        url: baseurl + "RPTMAllReportInfo/GenerateReport",
+                        type: 'POST',
+                        data: input,
+                        success: function (response) {
+                            $('#divReport').html('');
+                            $('#divReport').html(response);
+
+                        }
+                    });
+
+                } catch (e) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: e.message,
+                        type: 'red'
+                    });
+                }
+
+
+
+
+            });
+
+        });
+
+    </script>
+
+}
+
+
+
+
+

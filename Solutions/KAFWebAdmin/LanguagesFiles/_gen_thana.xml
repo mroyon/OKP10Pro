@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="thananame" value="AR:  Thana Name"></resource>
+       <resource culture="ar-kw" name="thananameRequired" value="AR: Please provide  Thana Name"></resource>
+       <resource culture="ar-kw" name="districtid" value="AR:  District ID"></resource>
+       <resource culture="ar-kw" name="districtidRequired" value="AR: Please provide  District ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="thanaList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="thanaCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="thanaUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="thanaDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="thananame" value=" Thana Name"></resource>
+       <resource culture="en-us" name="thananameRequired" value="Please provide  Thana Name"></resource>
+       <resource culture="en-us" name="districtid" value=" District ID"></resource>
+       <resource culture="en-us" name="districtidRequired" value="Please provide  District ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="thanaList" value="View All"></resource>
+		<resource culture="en-us" name="thanaCreate" value="Create"></resource>
+		<resource culture="en-us" name="thanaUpdate" value="Update"></resource>
+		<resource culture="en-us" name="thanaDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

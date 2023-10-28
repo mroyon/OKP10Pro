@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="visademandid" value="AR:  Visa Demand ID"></resource>
+       <resource culture="ar-kw" name="visademandidRequired" value="AR: Please provide  Visa Demand ID"></resource>
+       <resource culture="ar-kw" name="demandtype" value="AR:  Demand Type"></resource>
+       <resource culture="ar-kw" name="demandtypeRequired" value="AR: Please provide  Demand Type"></resource>
+       <resource culture="ar-kw" name="passportdetlid" value="AR:  Passport Detl ID"></resource>
+       <resource culture="ar-kw" name="passportdetlidRequired" value="AR: Please provide  Passport Detl ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="visademandinfodetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="visademandinfodetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="visademandinfodetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="visademandinfodetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="visademandid" value=" Visa Demand ID"></resource>
+       <resource culture="en-us" name="visademandidRequired" value="Please provide  Visa Demand ID"></resource>
+       <resource culture="en-us" name="demandtype" value=" Demand Type"></resource>
+       <resource culture="en-us" name="demandtypeRequired" value="Please provide  Demand Type"></resource>
+       <resource culture="en-us" name="passportdetlid" value=" Passport Detl ID"></resource>
+       <resource culture="en-us" name="passportdetlidRequired" value="Please provide  Passport Detl ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="visademandinfodetlList" value="View All"></resource>
+		<resource culture="en-us" name="visademandinfodetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="visademandinfodetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="visademandinfodetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

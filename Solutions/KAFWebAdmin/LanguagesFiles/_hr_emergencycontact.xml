@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="relationshipid" value="AR:  Relationship ID"></resource>
+       <resource culture="ar-kw" name="relationshipidRequired" value="AR: Please provide  Relationship ID"></resource>
+       <resource culture="ar-kw" name="name1" value="AR:  Name 1"></resource>
+       <resource culture="ar-kw" name="name1Required" value="AR: Please provide  Name 1"></resource>
+       <resource culture="ar-kw" name="name2" value="AR:  Name 2"></resource>
+       <resource culture="ar-kw" name="name2Required" value="AR: Please provide  Name 2"></resource>
+       <resource culture="ar-kw" name="name3" value="AR:  Name 3"></resource>
+       <resource culture="ar-kw" name="name4" value="AR:  Name 4"></resource>
+       <resource culture="ar-kw" name="name5" value="AR:  Name 5"></resource>
+       <resource culture="ar-kw" name="fullname" value="AR:  Full Name"></resource>
+       <resource culture="ar-kw" name="curbdaddressflatno" value="AR:  Cur B D Address Flat No"></resource>
+       <resource culture="ar-kw" name="curbdaddresshouseno" value="AR:  Cur B D Address House No"></resource>
+       <resource culture="ar-kw" name="curbdaddressstreet" value="AR:  Cur B D Address Street"></resource>
+       <resource culture="ar-kw" name="curbdadrresspo" value="AR:  Cur B D Adrress P O"></resource>
+       <resource culture="ar-kw" name="curbdadrressps" value="AR:  Cur B D Adrress P S"></resource>
+       <resource culture="ar-kw" name="curbdaddressdist" value="AR:  Cur B D Address Dist"></resource>
+       <resource culture="ar-kw" name="curbdaddressdivision" value="AR:  Cur B D Address Division"></resource>
+       <resource culture="ar-kw" name="mobilebd" value="AR:  Mobile B D"></resource>
+       <resource culture="ar-kw" name="mobilebdRequired" value="AR: Please provide  Mobile B D"></resource>
+       <resource culture="ar-kw" name="telephonebd" value="AR:  Telephone B D"></resource>
+       <resource culture="ar-kw" name="perbdaddressflatno" value="AR:  Per B D Address Flat No"></resource>
+       <resource culture="ar-kw" name="perbdaddresshouseno" value="AR:  Per B D Address House No"></resource>
+       <resource culture="ar-kw" name="perbdaddressstreet" value="AR:  Per B D Address Street"></resource>
+       <resource culture="ar-kw" name="perbdadrresspo" value="AR:  Per B D Adrress P O"></resource>
+       <resource culture="ar-kw" name="perbdadrressps" value="AR:  Per B D Adrress P S"></resource>
+       <resource culture="ar-kw" name="perbdaddressdivision" value="AR:  Per B D Address Division"></resource>
+       <resource culture="ar-kw" name="perbdaddressdist" value="AR:  Per B D Address Dist"></resource>
+       <resource culture="ar-kw" name="curkwaddressflatno" value="AR:  Cur K W Address Flat No"></resource>
+       <resource culture="ar-kw" name="curkwaddresshouseno" value="AR:  Cur K W Address House No"></resource>
+       <resource culture="ar-kw" name="curkwaddressstreet" value="AR:  Cur K W Address Street"></resource>
+       <resource culture="ar-kw" name="curkwadrressblock" value="AR:  Cur K W Adrress Block"></resource>
+       <resource culture="ar-kw" name="curkwadrressavenue" value="AR:  Cur K W Adrress Avenue"></resource>
+       <resource culture="ar-kw" name="curkwgovnerid" value="AR:  Cur K W Govner ID"></resource>
+       <resource culture="ar-kw" name="curkwareaid" value="AR:  Cur K W Area ID"></resource>
+       <resource culture="ar-kw" name="curkwpacino" value="AR:  Cur K W P A C I No"></resource>
+       <resource culture="ar-kw" name="mobilekw" value="AR:  Mobile K W"></resource>
+       <resource culture="ar-kw" name="telephonekw" value="AR:  Telephone K W"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="emergencycontactList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="emergencycontactCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="emergencycontactUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="emergencycontactDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="relationshipid" value=" Relationship ID"></resource>
+       <resource culture="en-us" name="relationshipidRequired" value="Please provide  Relationship ID"></resource>
+       <resource culture="en-us" name="name1" value=" Name 1"></resource>
+       <resource culture="en-us" name="name1Required" value="Please provide  Name 1"></resource>
+       <resource culture="en-us" name="name2" value=" Name 2"></resource>
+       <resource culture="en-us" name="name2Required" value="Please provide  Name 2"></resource>
+       <resource culture="en-us" name="name3" value=" Name 3"></resource>
+       <resource culture="en-us" name="name4" value=" Name 4"></resource>
+       <resource culture="en-us" name="name5" value=" Name 5"></resource>
+       <resource culture="en-us" name="fullname" value=" Full Name"></resource>
+       <resource culture="en-us" name="curbdaddressflatno" value=" Cur B D Address Flat No"></resource>
+       <resource culture="en-us" name="curbdaddresshouseno" value=" Cur B D Address House No"></resource>
+       <resource culture="en-us" name="curbdaddressstreet" value=" Cur B D Address Street"></resource>
+       <resource culture="en-us" name="curbdadrresspo" value=" Cur B D Adrress P O"></resource>
+       <resource culture="en-us" name="curbdadrressps" value=" Cur B D Adrress P S"></resource>
+       <resource culture="en-us" name="curbdaddressdist" value=" Cur B D Address Dist"></resource>
+       <resource culture="en-us" name="curbdaddressdivision" value=" Cur B D Address Division"></resource>
+       <resource culture="en-us" name="mobilebd" value=" Mobile B D"></resource>
+       <resource culture="en-us" name="mobilebdRequired" value="Please provide  Mobile B D"></resource>
+       <resource culture="en-us" name="telephonebd" value=" Telephone B D"></resource>
+       <resource culture="en-us" name="perbdaddressflatno" value=" Per B D Address Flat No"></resource>
+       <resource culture="en-us" name="perbdaddresshouseno" value=" Per B D Address House No"></resource>
+       <resource culture="en-us" name="perbdaddressstreet" value=" Per B D Address Street"></resource>
+       <resource culture="en-us" name="perbdadrresspo" value=" Per B D Adrress P O"></resource>
+       <resource culture="en-us" name="perbdadrressps" value=" Per B D Adrress P S"></resource>
+       <resource culture="en-us" name="perbdaddressdivision" value=" Per B D Address Division"></resource>
+       <resource culture="en-us" name="perbdaddressdist" value=" Per B D Address Dist"></resource>
+       <resource culture="en-us" name="curkwaddressflatno" value=" Cur K W Address Flat No"></resource>
+       <resource culture="en-us" name="curkwaddresshouseno" value=" Cur K W Address House No"></resource>
+       <resource culture="en-us" name="curkwaddressstreet" value=" Cur K W Address Street"></resource>
+       <resource culture="en-us" name="curkwadrressblock" value=" Cur K W Adrress Block"></resource>
+       <resource culture="en-us" name="curkwadrressavenue" value=" Cur K W Adrress Avenue"></resource>
+       <resource culture="en-us" name="curkwgovnerid" value=" Cur K W Govner ID"></resource>
+       <resource culture="en-us" name="curkwareaid" value=" Cur K W Area ID"></resource>
+       <resource culture="en-us" name="curkwpacino" value=" Cur K W P A C I No"></resource>
+       <resource culture="en-us" name="mobilekw" value=" Mobile K W"></resource>
+       <resource culture="en-us" name="telephonekw" value=" Telephone K W"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="emergencycontactList" value="View All"></resource>
+		<resource culture="en-us" name="emergencycontactCreate" value="Create"></resource>
+		<resource culture="en-us" name="emergencycontactUpdate" value="Update"></resource>
+		<resource culture="en-us" name="emergencycontactDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

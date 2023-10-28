@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="buildingid" value="AR:  Building ID"></resource>
+       <resource culture="ar-kw" name="kwgovid" value="AR:  K W Gov ID"></resource>
+       <resource culture="ar-kw" name="kwareaid" value="AR:  K W Area ID"></resource>
+       <resource culture="ar-kw" name="kwblockno" value="AR:  K W Block No"></resource>
+       <resource culture="ar-kw" name="kwstreet" value="AR:  K W Street"></resource>
+       <resource culture="ar-kw" name="kwhouseno" value="AR:  K W House No"></resource>
+       <resource culture="ar-kw" name="kwflatno" value="AR:  K W Flat No"></resource>
+       <resource culture="ar-kw" name="kwmobile" value="AR:  K W Mobile"></resource>
+       <resource culture="ar-kw" name="kwviber" value="AR:  K W Viber"></resource>
+       <resource culture="ar-kw" name="kwviberRequired" value="AR: Please provide  K W Viber"></resource>
+       <resource culture="ar-kw" name="personalemail" value="AR:  Personal Email"></resource>
+       <resource culture="ar-kw" name="officialemail" value="AR:  Official Email"></resource>
+       <resource culture="ar-kw" name="bdcurdivid" value="AR:  B D Cur Div ID"></resource>
+       <resource culture="ar-kw" name="bdcurdividRequired" value="AR: Please provide  B D Cur Div ID"></resource>
+       <resource culture="ar-kw" name="bdcurcityid" value="AR:  B D Cur City ID"></resource>
+       <resource culture="ar-kw" name="bdcurcityidRequired" value="AR: Please provide  B D Cur City ID"></resource>
+       <resource culture="ar-kw" name="bdcurthanaid" value="AR:  B D Cur Thana ID"></resource>
+       <resource culture="ar-kw" name="bdcurthanaidRequired" value="AR: Please provide  B D Cur Thana ID"></resource>
+       <resource culture="ar-kw" name="bdcurpostoffice" value="AR:  B D Cur Post Office"></resource>
+       <resource culture="ar-kw" name="bdcurroad" value="AR:  B D Cur Road"></resource>
+       <resource culture="ar-kw" name="bdcurhouse" value="AR:  B D Cur House"></resource>
+       <resource culture="ar-kw" name="bdcurflatno" value="AR:  B D Cur Flat No"></resource>
+       <resource culture="ar-kw" name="bdmob1" value="AR:  B D Mob 1"></resource>
+       <resource culture="ar-kw" name="bdmob2" value="AR:  B D Mob 2"></resource>
+       <resource culture="ar-kw" name="bdhomephone" value="AR:  B D Home Phone"></resource>
+       <resource culture="ar-kw" name="bdperdivid" value="AR:  B D Per Div ID"></resource>
+       <resource culture="ar-kw" name="bdperdividRequired" value="AR: Please provide  B D Per Div ID"></resource>
+       <resource culture="ar-kw" name="bdpercityid" value="AR:  B D Per City ID"></resource>
+       <resource culture="ar-kw" name="bdpercityidRequired" value="AR: Please provide  B D Per City ID"></resource>
+       <resource culture="ar-kw" name="bdperthanaid" value="AR:  B D Per Thana ID"></resource>
+       <resource culture="ar-kw" name="bdperthanaidRequired" value="AR: Please provide  B D Per Thana ID"></resource>
+       <resource culture="ar-kw" name="bdperpostoffice" value="AR:  B D Per Post Office"></resource>
+       <resource culture="ar-kw" name="bdperroad" value="AR:  B D Per Road"></resource>
+       <resource culture="ar-kw" name="bdperhouse" value="AR:  B D Per House"></resource>
+       <resource culture="ar-kw" name="bdperflatno" value="AR:  B D Per Flat No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="addresschangeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="addresschangeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="addresschangeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="addresschangeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="buildingid" value=" Building ID"></resource>
+       <resource culture="en-us" name="kwgovid" value=" K W Gov ID"></resource>
+       <resource culture="en-us" name="kwareaid" value=" K W Area ID"></resource>
+       <resource culture="en-us" name="kwblockno" value=" K W Block No"></resource>
+       <resource culture="en-us" name="kwstreet" value=" K W Street"></resource>
+       <resource culture="en-us" name="kwhouseno" value=" K W House No"></resource>
+       <resource culture="en-us" name="kwflatno" value=" K W Flat No"></resource>
+       <resource culture="en-us" name="kwmobile" value=" K W Mobile"></resource>
+       <resource culture="en-us" name="kwviber" value=" K W Viber"></resource>
+       <resource culture="en-us" name="kwviberRequired" value="Please provide  K W Viber"></resource>
+       <resource culture="en-us" name="personalemail" value=" Personal Email"></resource>
+       <resource culture="en-us" name="officialemail" value=" Official Email"></resource>
+       <resource culture="en-us" name="bdcurdivid" value=" B D Cur Div ID"></resource>
+       <resource culture="en-us" name="bdcurdividRequired" value="Please provide  B D Cur Div ID"></resource>
+       <resource culture="en-us" name="bdcurcityid" value=" B D Cur City ID"></resource>
+       <resource culture="en-us" name="bdcurcityidRequired" value="Please provide  B D Cur City ID"></resource>
+       <resource culture="en-us" name="bdcurthanaid" value=" B D Cur Thana ID"></resource>
+       <resource culture="en-us" name="bdcurthanaidRequired" value="Please provide  B D Cur Thana ID"></resource>
+       <resource culture="en-us" name="bdcurpostoffice" value=" B D Cur Post Office"></resource>
+       <resource culture="en-us" name="bdcurroad" value=" B D Cur Road"></resource>
+       <resource culture="en-us" name="bdcurhouse" value=" B D Cur House"></resource>
+       <resource culture="en-us" name="bdcurflatno" value=" B D Cur Flat No"></resource>
+       <resource culture="en-us" name="bdmob1" value=" B D Mob 1"></resource>
+       <resource culture="en-us" name="bdmob2" value=" B D Mob 2"></resource>
+       <resource culture="en-us" name="bdhomephone" value=" B D Home Phone"></resource>
+       <resource culture="en-us" name="bdperdivid" value=" B D Per Div ID"></resource>
+       <resource culture="en-us" name="bdperdividRequired" value="Please provide  B D Per Div ID"></resource>
+       <resource culture="en-us" name="bdpercityid" value=" B D Per City ID"></resource>
+       <resource culture="en-us" name="bdpercityidRequired" value="Please provide  B D Per City ID"></resource>
+       <resource culture="en-us" name="bdperthanaid" value=" B D Per Thana ID"></resource>
+       <resource culture="en-us" name="bdperthanaidRequired" value="Please provide  B D Per Thana ID"></resource>
+       <resource culture="en-us" name="bdperpostoffice" value=" B D Per Post Office"></resource>
+       <resource culture="en-us" name="bdperroad" value=" B D Per Road"></resource>
+       <resource culture="en-us" name="bdperhouse" value=" B D Per House"></resource>
+       <resource culture="en-us" name="bdperflatno" value=" B D Per Flat No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="addresschangeList" value="View All"></resource>
+		<resource culture="en-us" name="addresschangeCreate" value="Create"></resource>
+		<resource culture="en-us" name="addresschangeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="addresschangeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

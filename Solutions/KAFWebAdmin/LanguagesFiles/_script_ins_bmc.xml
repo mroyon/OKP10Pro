@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="script" value="AR:  S C R I P T"></resource>
+		<resource culture="ar-kw" name="insList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="insCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="insUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="insDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="script" value=" S C R I P T"></resource>
+        <resource culture="en-us" name="insList" value="View All"></resource>
+		<resource culture="en-us" name="insCreate" value="Create"></resource>
+		<resource culture="en-us" name="insUpdate" value="Update"></resource>
+		<resource culture="en-us" name="insDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

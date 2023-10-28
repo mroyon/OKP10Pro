@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="reportroleid" value="AR:  Report Role ID"></resource>
+       <resource culture="ar-kw" name="reportroleidRequired" value="AR: Please provide  Report Role ID"></resource>
+       <resource culture="ar-kw" name="reportid" value="AR:  Report ID"></resource>
+       <resource culture="ar-kw" name="reportidRequired" value="AR: Please provide  Report ID"></resource>
+       <resource culture="ar-kw" name="status" value="AR:  Status"></resource>
+       <resource culture="ar-kw" name="statusRequired" value="AR: Please provide  Status"></resource>
+		<resource culture="ar-kw" name="reportroletemplateList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="reportroletemplateCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="reportroletemplateUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="reportroletemplateDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="reportroleid" value=" Report Role ID"></resource>
+       <resource culture="en-us" name="reportroleidRequired" value="Please provide  Report Role ID"></resource>
+       <resource culture="en-us" name="reportid" value=" Report ID"></resource>
+       <resource culture="en-us" name="reportidRequired" value="Please provide  Report ID"></resource>
+       <resource culture="en-us" name="status" value=" Status"></resource>
+       <resource culture="en-us" name="statusRequired" value="Please provide  Status"></resource>
+        <resource culture="en-us" name="reportroletemplateList" value="View All"></resource>
+		<resource culture="en-us" name="reportroletemplateCreate" value="Create"></resource>
+		<resource culture="en-us" name="reportroletemplateUpdate" value="Update"></resource>
+		<resource culture="en-us" name="reportroletemplateDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

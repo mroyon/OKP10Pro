@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="doctypeid" value="AR:  Doc Type I D"></resource>
+       <resource culture="ar-kw" name="doctypeidRequired" value="AR: Please provide  Doc Type I D"></resource>
+       <resource culture="ar-kw" name="filetypeid" value="AR:  File Type I D"></resource>
+       <resource culture="ar-kw" name="docname" value="AR:  Doc Name"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  H R Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  H R Basic I D"></resource>
+       <resource culture="ar-kw" name="orderno" value="AR:  Order No"></resource>
+       <resource culture="ar-kw" name="orderdate" value="AR:  Order Date"></resource>
+       <resource culture="ar-kw" name="filedescription" value="AR:  File Description"></resource>
+       <resource culture="ar-kw" name="filepath" value="AR:  File Path"></resource>
+       <resource culture="ar-kw" name="filename" value="AR:  File Name"></resource>
+       <resource culture="ar-kw" name="filetype" value="AR:  File Type"></resource>
+       <resource culture="ar-kw" name="extension" value="AR:  Extension"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="documentuploadList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="documentuploadCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="documentuploadUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="documentuploadDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="doctypeid" value=" Doc Type I D"></resource>
+       <resource culture="en-us" name="doctypeidRequired" value="Please provide  Doc Type I D"></resource>
+       <resource culture="en-us" name="filetypeid" value=" File Type I D"></resource>
+       <resource culture="en-us" name="docname" value=" Doc Name"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" H R Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  H R Basic I D"></resource>
+       <resource culture="en-us" name="orderno" value=" Order No"></resource>
+       <resource culture="en-us" name="orderdate" value=" Order Date"></resource>
+       <resource culture="en-us" name="filedescription" value=" File Description"></resource>
+       <resource culture="en-us" name="filepath" value=" File Path"></resource>
+       <resource culture="en-us" name="filename" value=" File Name"></resource>
+       <resource culture="en-us" name="filetype" value=" File Type"></resource>
+       <resource culture="en-us" name="extension" value=" Extension"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="documentuploadList" value="View All"></resource>
+		<resource culture="en-us" name="documentuploadCreate" value="Create"></resource>
+		<resource culture="en-us" name="documentuploadUpdate" value="Update"></resource>
+		<resource culture="en-us" name="documentuploadDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

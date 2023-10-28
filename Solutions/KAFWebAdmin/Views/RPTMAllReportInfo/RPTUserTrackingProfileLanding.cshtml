@@ -1,0 +1,449 @@
+﻿
+@model List<KAF.BusinessDataObjects.BusinessDataObjectsPartials.rpt_TableNameEntity>
+@{
+    ViewBag.Title = "Report Panel";
+}
+<style>
+    .detailheading {
+        background-color: darkgray !important;
+    }
+
+    .buttonpanelcenter {
+        text-align: center;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+@{
+    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower() == "ar-kw")
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: left;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: right;
+            }
+        </style>
+    }
+}
+
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmRPTMAllReportInfo", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    User Tracking
+                </div>
+                <div class="panel-body">
+                    <div id="tabprofile">
+                        <div id="" class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("User", htmlAttributes: new { @class = "labelNormal " })
+
+                                    @{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "profilesearchuserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preOwin_userid, multiple = false, isReadOnly = false, IsRequired = false });}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("Military ID", htmlAttributes: new { @class = "labelNormal " })
+
+                                    <input type="text" class="form-control txtmilid" id="txtmilid" />
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="" class="row" style="margin-right: -0px; margin-left: -0px;">
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <label class="form-check-label"> Select Category</label>
+                                    <select id="drpTypes" class="form-control">
+                                        @*<option value="-99">Please Select</option>*@
+
+                                        <option value="1">Service Information</option>
+                                        <option value="2">Profile Information</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check">
+
+                                    <label class="form-check-label"> Select Field</label>
+                                    <select id="drpserviceinfo" class="form-control drpserviceinfo ">
+                                        <option value="ALLChanges">ALL Changes</option>
+
+                                        <option value="r.CivilID">Civil ID</option>
+                                        <option value="r.PassportNo">Passport No</option>
+                                        <option value="r.FullName">Full Name</option>
+                                        <option value="r.DateofBirth">Date of Birth</option>
+
+
+                                        <option value="r.MilNoKW">Mil No KW</option>
+                                        <option value="r.JoinDateKw">Join Date Kw</option>
+                                        <option value="r.ExpectedRetireDateKw">Expected Repatriate Date Kw</option>
+                                        <option value="r.EntityKey">Unit</option>
+                                        <option value="r.ArmsID">Arms</option>
+                                        <option value="r.OkpID">OKP</option>
+                                        <option value="r.RankIDKW">Rank KW</option>
+                                        <option value="r.RankIDBD">Rank BD</option>
+                                        <option value="r.TradeIDBD">Trade BD</option>
+                                        <option value="r.TradeIDKW">Trade KW</option>
+                                        <option value="r.GroupID">Group</option>
+
+
+                                    </select>
+
+                                    <select id="drpprofileinfo" class="form-control drpprofileinfo hidden">
+                                        <option value="ALLChanges">ALL Changes</option>
+
+                                        <option value="r.ReligionID">Religion</option>
+                                        <option value="r.BloodGroupId">Blood Group</option>
+                                        <option value="r.MaritalStatusID">Marital Status</option>
+                                        <option value="r.GenderID">Gender</option>
+
+                                        <option value="r.NationalityID">Nationality</option>
+                                        <option value="r.BuildingID">Building</option>
+                                        <option value="r.KWGovID">KW Governorate</option>
+                                        <option value="r.KWAreaID">KW Area</option>
+                                        <option value="r.KWBlockNo">KW Block No</option>
+                                        <option value="r.KWStreet">KW Street No</option>
+                                        <option value="r.KWHouseNo">KW House No</option>
+                                        <option value="r.KWFlatNo">KW Flat No</option>
+                                        <option value="r.KWMobile">KW Mobile</option>
+                                        <option value="r.KWViber">KW Viber</option>
+                                        <option value="r.PersonalEmail">Personal Email</option>
+                                        <option value="r.OfficialEmail">Official Email</option>
+                                        <option value="r.BDCurDivID">BD Cur Division</option>
+                                        <option value="r.BDCurCityID">BD Cur City</option>
+                                        <option value="r.BDCurThanaID">BD Cur Thana</option>
+                                        <option value="r.BDCurPostOffice">BD Cur PostOffice</option>
+                                        <option value="r.BDCurRoad">BD Cur Road</option>
+                                        <option value="r.BDCurHouse">BD Cur House</option>
+                                        <option value="r.BDCurFlatNo">BD Cur Flat No</option>
+                                        <option value="r.BDMob1">BD Mob1</option>
+                                        <option value="r.BDMob12">BD Mob2</option>
+                                        <option value="r.BDHomePhone">BD Home Phone</option>
+                                        <option value="r.BDPerDivID">BD Permanent Division</option>
+                                        <option value="r.BDPerCityID">BD Permanent City</option>
+                                        <option value="r.BDPerThanaID">BD Permanent Thana</option>
+                                        <option value="r.BDPerPostOffice">BD Permanent PostOffice</option>
+                                        <option value="r.BDPerRoad">BD Permanent Road</option>
+                                        <option value="r.BDPerHouse">BD Permanent House</option>
+                                        <option value="r.BDPerFlatNo">BD Permanent Flat No</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    @Html.Label("From Date", htmlAttributes: new { @class = "labelNormal " })
+
+
+                                    <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                        @Html.Editor("txtFromDate", new { htmlAttributes = new { @placeholder = "From Date", @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    @Html.Label("To Date", htmlAttributes: new { @class = "labelNormal " })
+                                    <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                        @Html.Editor("txtToDate", new { htmlAttributes = new { @placeholder = "To Date", @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <br />
+                    <div id="dvbtn" class="row">
+
+                        <div class="col-md-3">
+                            <button type="button" id="btnSearch" class="btn btn-raised btn-primary btn-block">Load Report</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" id="btnPrint" class="btn  btn-success  btn-block btnPrint">Print</button>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <button type="button" id="btnExport" class="btn  btn-info  btn-block btnExport">Export</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div id="" class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Table", htmlAttributes: new { @class = "labelNormal " })
+                    <select id="drpTable" class="form-control">
+
+                        @foreach (var objsingle in Model)
+                        {
+                            <option value="@objsingle.TableName">@objsingle.TableName_Alias</option>
+                        }
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("User", htmlAttributes: new { @class = "labelNormal " })
+
+                    @{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "masteruserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preOwin_userid, multiple = false, isReadOnly = false, IsRequired = false });}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Military ID", htmlAttributes: new { @class = "labelNormal " })
+
+                    <input type="text" class="form-control txtmilid" id="txtmilid" />
+                </div>
+
+            </div>
+        </div>*@
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-body">
+                    <div class=" " id="divReport">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    <script>
+        function loadfiltercolvalue(colname) {
+
+            $("#drpcolumndata option").remove();
+            try {
+                AddAntiForgeryToken = function (data) {
+                    data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                    return data;
+                };
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "HrMedicalInfoNew",
+                    currenturl: window.location.href,
+                    TableName: $("#drpTable").val(),
+                    strColumns: $("#drpfiltercolumn").val()
+                });
+
+                $.ajax({
+                    url: baseurl + "RPTMAllReportInfo/getColumnData",
+                    type: 'POST',
+                    data: input,
+                    success: function (response) {
+                        if (response.status == "success") {
+                            $("#drpcolumndata").append($("<option value='-99'>Please Select</option>"));
+
+                            $.each(JSON.parse(response.records), function (val, element) {
+                                $("#drpcolumndata").append($("<option value='" + element.ColID + "'>" + element.ColText + "</option>"));
+                            });
+
+
+                        }
+                        else {
+                            $("#drpcolumndata option").remove();
+                        }
+                    }
+                });
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+
+        }
+
+        $(document).ready(function () {
+            //  LoadSelect2DemandtLetterNo();
+
+
+
+            $("#drpTypes").change(function () {
+                if ($("#drpTypes").val() == "1") {
+                    $("#drpserviceinfo").removeClass("hidden");
+                    $("#drpprofileinfo").addClass("hidden");
+                }
+                else {
+                    $("#drpserviceinfo").addClass("hidden");
+                    $("#drpprofileinfo").removeClass("hidden");
+                }
+            });
+
+            $("#btnPrint").click(function () {
+                $("#divReport").printThis({
+                    importCSS: true,
+                    loadCSS: "~/DesignsAndScripts/Styles/bootstrap_min.css",
+                    header: "<h1>User Tracking Data</h1>"
+                });
+            });
+            $("#btnExport").click(function () {
+                $("#RegBasicInfoDt").table2excel({
+                    filename: "UserTracking.xls"
+                });
+            });
+            $('#btnSearch').click(function () {
+
+
+                $("#profilesearchuserid").next(".select2-container").css("border", "1px solid #d2d6de");
+                $("#txtmilid").css("border", "1px solid #d2d6de");
+
+                if ($("#profilesearchuserid").val() == null && $("#txtmilid").val() == '') {
+                    $("#profilesearchuserid").next(".select2-container").css("border", "1px solid red");
+                    $("#txtmilid").css("border", "1px solid red");
+                    return;
+                }
+
+                if ($("#drpTypes").val() == "1") {
+
+                    try {
+                        AddAntiForgeryToken = function (data) {
+                            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                            return data;
+                        };
+                        var input = AddAntiForgeryToken({
+                            token: $(".txtUserSTK").val(),
+                            userinfo: $(".txtServerUtilObj").val(),
+                            useripaddress: $(".txtuserip").val(),
+                            sessionid: $(".txtUserSes").val(),
+                            methodname: "HrMedicalInfoNew",
+                            currenturl: window.location.href,
+                            TableName: $("#drpTable").val(),
+                            // strColumns: strcols,
+                            lonVal1: $("#profilesearchuserid").val(),
+                            lonVal2: $("#txtmilid").val(),
+                            strModelPrimaryKey: $("#drpserviceinfo").val(),
+                            FromDate1: $("#txtFromDate").val() != "" ? GetDateFromTextBox($("#txtFromDate").val()) : null,
+                            ToDate1: $("#txtToDate").val() != "" ? GetDateFromTextBox($("#txtToDate").val()) : null
+
+                        });
+
+                        $.ajax({
+                            url: baseurl + "RPTMAllReportInfo/GenerateServiceReport",
+                            type: 'POST',
+                            data: input,
+                            success: function (response) {
+                                $('#divReport').html('');
+                                $('#divReport').html($('<div>' + response + '<div/>').html());
+
+                            }
+                        });
+
+                    } catch (e) {
+                        $.alert({
+                            title: _getCookieForLanguage("_informationTitle"),
+                            content: e.message,
+                            type: 'red'
+                        });
+                    }
+                } else if ($("#drpTypes").val() == "2") {
+                    try {
+                        AddAntiForgeryToken = function (data) {
+                            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                            return data;
+                        };
+                        var input = AddAntiForgeryToken({
+                            token: $(".txtUserSTK").val(),
+                            userinfo: $(".txtServerUtilObj").val(),
+                            useripaddress: $(".txtuserip").val(),
+                            sessionid: $(".txtUserSes").val(),
+                            methodname: "HrMedicalInfoNew",
+                            currenturl: window.location.href,
+                            TableName: $("#drpTable").val(),
+                            //strColumns: strcols,
+                            lonVal1: $("#profilesearchuserid").val(),
+                            lonVal2: $("#txtmilid").val(),
+                            strModelPrimaryKey: $("#drpprofileinfo").val(),
+                            FromDate1: $("#txtFromDate").val() != "" ? GetDateFromTextBox($("#txtFromDate").val()) : null,
+                            ToDate1: $("#txtToDate").val() != "" ? GetDateFromTextBox($("#txtToDate").val()) : null
+
+                        });
+
+                        $.ajax({
+                            url: baseurl + "RPTMAllReportInfo/GenerateProfileReport",
+                            type: 'POST',
+                            data: input,
+                            success: function (response) {
+                                $('#divReport').html('');
+                                $('#divReport').html($('<div>' + response + '<div/>').html());
+
+                            }
+                        });
+
+                    } catch (e) {
+                        $.alert({
+                            title: _getCookieForLanguage("_informationTitle"),
+                            content: e.message,
+                            type: 'red'
+                        });
+                    }
+                }
+
+
+
+
+            });
+
+        });
+
+    </script>
+
+}
+
+
+
+
+

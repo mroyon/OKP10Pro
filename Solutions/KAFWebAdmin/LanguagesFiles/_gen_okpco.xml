@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="okpid" value="AR:  Okp ID"></resource>
+       <resource culture="ar-kw" name="okpidRequired" value="AR: Please provide  Okp ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="fromdate" value="AR:  From Date"></resource>
+       <resource culture="ar-kw" name="fromdateRequired" value="AR: Please provide  From Date"></resource>
+       <resource culture="ar-kw" name="todate" value="AR:  To Date"></resource>
+       <resource culture="ar-kw" name="iscurrent" value="AR: is Current"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="okpcoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="okpcoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="okpcoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="okpcoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="okpid" value=" Okp ID"></resource>
+       <resource culture="en-us" name="okpidRequired" value="Please provide  Okp ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="fromdate" value=" From Date"></resource>
+       <resource culture="en-us" name="fromdateRequired" value="Please provide  From Date"></resource>
+       <resource culture="en-us" name="todate" value=" To Date"></resource>
+       <resource culture="en-us" name="iscurrent" value="is Current"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="okpcoList" value="View All"></resource>
+		<resource culture="en-us" name="okpcoCreate" value="Create"></resource>
+		<resource culture="en-us" name="okpcoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="okpcoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

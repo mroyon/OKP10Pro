@@ -1,0 +1,604 @@
+﻿@model KAF.BusinessDataObjects.hr_demanddetlpassportEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_DemandDetlPassportEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+
+
+            <div class="row">
+                <div class="col-md-6 text-left">New Demand Passport Information: @KAF.MsgContainer._hr_demanddetlpassport.demanddetlpassportUpdate</div>
+                <div class="col-md-6 text-right modalClose"><i class="fa fa-close"></i></div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.newdemandpassportid)
+                    </div>
+                    <div class="row ">
+                        @*<div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Demand Letter Date", htmlAttributes: new { @class = "labelNormal required " })
+                                    <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                        @Html.Editor("txtRepPassportLetterDate", new { htmlAttributes = new { @class = "txtRepPassportLetterDate form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>*@
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Demand Letter Date", htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @Html.Editor("txtRepPassportLetterDate", new { htmlAttributes = new { @Value = Model.demandletterdate != null ? Convert.ToDateTime(Model.demandletterdate).ToString("dd-MM-yyyy") : null, @readonly = "readonly", @class = "txtRepPassportLetterDate form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @{Html.RenderAction("LoadDemandLetterNo", "Common", new { area = "", selectid = "newdemandid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_NewDemandLetterNo, multiple = false, isReadOnly = true, IsRequired = true });}
+                        </div>
+                        @*<div class="col-md-6">
+                                <div class="form-group">
+                                    <button style="margin-top: 25px;" type="submit" id="btnSearch" class="btn btn-primary btn-md btnSearch"><i class="fa fa-search"> </i> @KAF.MsgContainer._Common._btnSearch</button>
+                                </div>
+                            </div>*@
+                    </div>
+                    <div id="dvInfoDetail" class="hidden">
+
+                        @*<div class="row " style="margin-top: 10px;">
+                                <div class="col-md-6">
+                                    <input type="checkbox" checked="checked" class="chkAssign" name="chkAssign" value="assignnew" style="margin-left: 11px;"> Assign New Letter No
+                                    <input type="checkbox" name="vehicle1" value="updateexisting" class="chkAssign" style="margin-left:20px;"> Update Existing Letter No
+
+                                </div>
+
+                            </div>*@
+
+                        @*<div class="panel panel-primary list-panel" id="dvexistingletterno">
+                                <div class="panel-body">
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @{Html.RenderAction("LoadDemandPassportLetterNo", "Common", new { area = "", selectid = "existingreppassportid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloaded_PassportLetterNo, multiple = false, isReadOnly = true, IsRequired = true });}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div id="dvExistingPassportInfo">
+                            <div class="panel panel-primary list-panel" id="dvrecinfo">
+                                <div class="panel-body">
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.passportrecvdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                                    @Html.EditorFor(model => model.passportrecvdate, new { htmlAttributes = new { @Value = Model.passportrecvdate != null ? Convert.ToDateTime(Model.passportrecvdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                                @Html.ValidationMessageFor(m => m.passportrecvdate, "", new { @class = "text-danger " })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.Label("Passport Letter Date", htmlAttributes: new { @class = "labelNormal  required " })
+                                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                                    @Html.EditorFor(model => model.letterdate, new { htmlAttributes = new { @Value = Model.letterdate != null ? Convert.ToDateTime(Model.letterdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                                @Html.ValidationMessageFor(m => m.letterdate, "", new { @class = "text-danger " })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.Label("Passport Letter No", htmlAttributes: new { @class = "labelNormal required " })
+                                                @Html.EditorFor(model => model.letterno, new { htmlAttributes = new { @class = " form-control" } })
+                                                @Html.ValidationMessageFor(model => model.letterno, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 hidden">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <table id="GenRepPassportDt" class="table table-striped table-bordered dataTable no-footer dtr-inline" style="width:100%;" role="grid" aria-describedby="GenRepPassportDt_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th rowspan="1" colspan="1" style="width:50px;">SL</th>
+                                                <th rowspan="1" colspan="1" style='width:300px'>Mil No/Rank/Name/Appt/OKP</th>
+                                                <th rowspan="1" colspan="1">Passport No</th>
+                                                <th rowspan="1" colspan="1">First Name</th>
+                                                <th rowspan="1" colspan="1">Sur Name</th>
+                                                <th rowspan="1" colspan="1">Birth Date</th>
+                                                <th rowspan="1" colspan="1">Father's Name</th>
+                                                <th class="hdrletterstat ">Status</th>
+                                                <th rowspan="1" colspan="1"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="btn-toolbar">
+                                <button type="submit" id="btnUpdateHrDemandDetlPassport" class="btn btn-primary btn-md btnUpdateHrDemandDetlPassport"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                                <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    //filecontrol addons
+
+
+    $(document).ready(function () {
+        //LoadSelect2RepPassportLetterNo();
+        $('body').on('click', '.modalClose', function (event) {
+            try {
+                event.preventDefault();
+                $('#mcHrDemandDetlPassportEdit').html('');
+                $('#modal-container-HrDemandDetlPassportEdit').modal('hide');
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        //$("#dvexistingletterno").removeClass("hidden");
+        //LoadSelect2PassportLetterNo($('#newdemandid').val());
+        getReplacementListUpdate(1);
+
+        //$("#existingreppassportid").change(function () {
+        //    $("#dvExistingPassportInfo").removeClass("hidden");
+        //    getReplacementListUpdate(1);
+        //});
+
+    });
+    function loadselectedpassportletterno(val) {
+        if (val != "") {
+            getReplacementListByRepPassportID(val);
+        }
+        else {
+            $("#passportrecvdate").val('');
+            $("#passportletterno").val('');
+            $("#passportletterdate").val('');
+            $("#GenRepPassportDt").find("tr:gt(0)").remove();
+        }
+    }
+    function getReplacementList(type) {
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "HrReplacementInfoNew",
+                currenturl: window.location.href,
+                newdemandid: $("#newdemandid").val(),
+                txtRepPassportLetterDate: $("#txtRepPassportLetterDate").val(),
+                isall: type
+            });
+
+
+
+            $.ajax({
+                url: $("#txtBaseUrl").val() + "Common/GetNewDemandListPassportByDemandID",
+                type: 'POST',
+                data: input,
+                success: function (response) {
+                    $("#GenRepPassportDt").find("tr:gt(0)").remove();
+
+                    if (response.status = "success" && response.totalrows > 0) {
+
+                        var rowindex = 0;
+
+                        $(response.data).each(function (index) {
+                            // console.log(index + ": " + $(this).text());
+                            rowindex++;
+                            $('#GenRepPassportDt tr:last').after("<tr role='row'>" +
+                                "<td>" + rowindex + " </td>" +
+                                "<td style='width:460px'> <strong>" + response.data[index].rankname + "/" + response.data[index].tradename + "/" + response.data[index].okpname + "/" + response.data[index].groupname +
+                                " </strong><input class='hidden txtdetailinfo' value='" + "' newdemanddetlid='" + response.data[index].newdemanddetlid + "' newdemandpassportid='" + response.data[index].newdemandpassportid + "'  type='text' class='form-control txtMilNo'  hrbasicid='" + response.data[index].hrbasicid + "' hrsvcid='" + response.data[index].hrsvcid + "'  hrbasicid_prev='" + response.data[index].hrbasicid + "' hrsvcid_prev='" + response.data[index].hrsvcid + "'></td>" +
+                                "<td class='tdPassportNo'><input  type='text' class='form-control txtPassportNo' ></td>" +
+                                "<td class='tdFirstName'><input  type='text' class='form-control txtFirstName' ></td>" +
+                                "<td class='tdSurName'><input  type='text' class='form-control txtSurName' ></td>" +
+
+                                "<td class='tdSelect'><input  type='checkbox' class='chkSelect' ></td>" +
+                                "</tr>");
+                        });
+
+                        $(".txtPassportNo").change(function () {
+                            if ($(this).val().length > 0) {
+
+                                $(this).parent().parent().find(".chkSelect").prop("checked", true);
+                                if (checkduplicatepassportno($(this).parent().parent().index() - 1, $(this).val()) == 1) {
+                                    $(this).val('');
+                                    inforamtionDialog("Alert", "Duplicate Passport Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+                                            $(this).focus();
+                                        }
+
+                                    });
+                                }
+                                else checkexists('', this);
+                            }
+                            else
+                                $(this).parent().parent().find(".chkSelect").prop("checked", false);
+                        });
+                        //if (type == 1)
+                        //    HrReplacementNewRow();
+                    }
+                    else {
+                        //if (type == 1)
+                        //    HrReplacementNewRow();
+                    }
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    function getReplacementListUpdate(type) {
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "HrReplacementInfoNew",
+                currenturl: window.location.href,
+                newdemandid: $("#newdemandid").val(),
+                letterno: $("#letterno").val(),
+                isall: type
+            });
+
+            //console.log($("#newdemandid").val());
+            //console.log($("#existingreppassportid").val());
+
+            $.ajax({
+                url: $("#txtBaseUrl").val() + "Common/GetNewDemandListPassportByDemandID",
+                type: 'POST',
+                data: input,
+                success: function (response) {
+
+                    $("#GenRepPassportDt").find("tr:gt(0)").remove();
+
+                    if (response.status = "success" && response.totalrows > 0) {
+
+
+                        var rowindex = 0;
+                        var letterstat = 0;
+                        $(response.data).each(function (index) {
+                            // console.log(index + ": " + $(this).text());
+                            rowindex++;
+                            if ((typeof $(response.data[index].LetterStatus).attr("leterstatusid") != 'undefined')
+                                && (parseInt($(response.data[index].LetterStatus).attr("leterstatusid")) > letterstat))                    
+                            letterstat = $(response.data[index].LetterStatus).attr("leterstatusid");
+
+                            if (response.data[index].passportrecvdate != null) {
+                                $('#passportrecvdate').val(datetoStr(response.data[index].passportrecvdate));
+                                $('#letterno').val(response.data[index].letterno);
+                                $('#letterdate').val(datetoStr(response.data[index].letterdate));
+                            }
+
+                              
+
+                                var ischcked = response.data[index].hrbasicid != 0 ? "checked='checked'" : "";
+                                var strdisabled = response.data[index].LetterStatus != null & response.data[index].LetterStatus != "" && parseInt($(response.data[index].LetterStatus).attr("leterstatusid")) > 2 ? "disabled='disabled'" : "";
+
+                                var strpassport = response.data[index].hrbasicid != null ? " class='form-control txtPassportNo ' value='" + response.data[index].passportno + "'" : "  class='form-control txtPassportNo NewPassportNoEntry' ";
+                                var strname1 = response.data[index].hrbasicid != null ? "value='" + response.data[index].name1 + "'" : "";
+                                var strname2 = response.data[index].hrbasicid != null ? "value='" + response.data[index].name2 + "'" : "";
+                                var strbdate1 = response.data[index].hrbasicid != null ? "value='" + datetoStr(response.data[index].ex_date1) + "'" : "";
+                                var strfathername = response.data[index].hrbasicid != null ? "value='" + (response.data[index].ex_nvarchar1 == null ? "" : response.data[index].ex_nvarchar1) + "'" : "";
+
+                                $('#GenRepPassportDt tr:last').after("<tr role='row'>" +
+                                    "<td>" + rowindex + " </td>" +
+                                    "<td style='width:300px'>" + response.data[index].rankname + "/" + response.data[index].tradename + "/" + response.data[index].okpname + "/" + response.data[index].groupname +
+                                    " <input class='hidden txtdetailinfo' value='" + "' newdemanddetlid='" + response.data[index].newdemanddetlid + "' newdemandpassportid='" + response.data[index].newdemandpassportid + "'  type='text' class='form-control txtMilNo'  hrbasicid='" + response.data[index].hrbasicid + "' hrsvcid='" + response.data[index].hrsvcid + "'></td>" +
+                                    "<td class='tdPassportNo'><input  type='text' " + strpassport + "  class='form-control txtPassportNo'></td>" +
+                                    "<td class='tdFirstName'><input " + strname1 + "  type='text' class='form-control txtFirstName' ></td>" +
+                                    "<td class='tdSurName'><input  type='text' " + strname2 + " class='form-control txtSurName' ></td>" +
+                                    "<td class='tdBDate'> <div class='input-group date dateonly' id='' style='width: 100%; '>" +
+                                    "<input  type='text'  style='width:100px;' " + strbdate1 + "  class='form-control txtBDate' >" +
+                                    " <span class='input-group-addon'>" +
+                                    "         <span class='glyphicon glyphicon-calendar'></span>" +
+                                    "    </span>" +
+                                    "</div></td>" +
+                                    "<td class='tdFatherName'><input  type='text' " + strfathername + " class='form-control txtFatherName' ></td>" +
+
+                                    "<td class='lblletterstat'>" + response.data[index].LetterStatus + "</td>" +
+
+                                    "<td class='tdSelect'><input  type='checkbox' class='chkSelect '  " + ischcked + strdisabled + "' ></td>" +
+                                    "</tr>");
+
+                        });
+
+                        if (letterstat>2)
+                        {
+                            $('#passportrecvdate').attr('disabled', 'disabled');
+                            $('#letterno').attr('disabled', 'disabled');
+                            $('#letterdate').attr('disabled', 'disabled');
+                        }
+                        else {
+                            $('#passportrecvdate').removeAttr('disabled', 'disabled');
+                            $('#letterno').removeAttr('disabled', 'disabled');
+                            $('#letterdate').removeAttr('disabled', 'disabled');
+                        }
+
+                        $j('.dateonly').datetimepicker(
+                            {
+                                // format: 'L'
+                                format: 'DD-MM-YYYY'
+                            });
+                        $(".txtPassportNo").change(function () {
+                            if ($(this).val().length > 0) {
+
+                                $(this).parent().parent().find(".chkSelect").prop("checked", true);
+                                if (checkduplicatepassportno($(this).parent().parent().index() - 1, $(this).val()) == 1) {
+                                    $(this).val('');
+                                    inforamtionDialog("Alert", "Duplicate Passport Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+                                            $(this).focus();
+                                        }
+
+                                    });
+                                }
+                                else checkexists('', this);
+                            }
+                            else
+                                $(this).parent().parent().find(".chkSelect").prop("checked", false);
+                        });
+                    }
+                    else {
+                    }
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    function getReplacementListByRepPassportID(passportid) {
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "HrReplacementInfoNew",
+                currenturl: window.location.href,
+                RepPassportID: passportid
+
+            });
+
+
+
+            $.ajax({
+                url: $("#txtBaseUrl").val() + "Common/GetNewDemandListPassportByDemandID",
+                type: 'POST',
+                data: input,
+                success: function (response) {
+                    if (response.status = "success" && response.totalrows > 0) {
+
+                        $("#GenRepPassportDt").find("tr:gt(0)").remove();
+
+                        $(response.data).each(function (index) {
+                            // console.log(index + ": " + $(this).text());
+
+                            var ischcked = response.data[index].NewPassport.length > 0 ? "checked='checked'" : "";
+                            var strfathername = response.data[index].hrbasicid != null ? "value='" + response.data[index].ex_nvarchar1 == null ? "" : response.data[index].ex_nvarchar1 + "'" : "";
+                            var strbdate1 = response.data[index].hrbasicid != null ? "value='" + datetoStr(response.data[index].ex_date1) + "'" : "";
+
+                            $('#GenRepPassportDt tr:last').after("<tr role='row'>" +
+                                "<td style='width:460px'>" + response.data[index].milnokw + "/" + response.data[index].KuwaitiRank + "/" + response.data[index].fullname + "/" + response.data[index].KuwaitiTrade + "/" + response.data[index].OkpName +
+                                " <input class='hidden txtdetailinfo' value='" + response.data[index].milnokw + "' reppassportdetlid='" + response.data[index].RepPassportDetlID + "' detailid='" + response.data[index].ReplacementDetlID + "'  type='text' class='form-control txtMilNo' hrbasicid='" + response.data[index].HRBasicID + "' hrsvcid='" + response.data[index].HrSvcID + "'  newhrbasicid='" + response.data[index].NewHrBasicID + "' newhrsvcid='" + response.data[index].NewHrSvcID + "''></td>" +
+                                "<td class='tdPassportNo'><input  type='text' class='form-control txtPassportNo' value='" + response.data[index].NewPassport + "' ></td>" +
+                                "<td class='tdFirstName'><input  type='text' class='form-control txtFirstName' value='" + response.data[index].NewName1 + "'></td>" +
+                                "<td class='tdSurName'><input  type='text' class='form-control txtSurName' value='" + response.data[index].NewName2 + "'></td>" +
+                                "<td class='tdBDate'> <div class='input-group date dateonly' id='' style='width: 100%; '>" +
+                                "<input  type='text' " + strbdate1 + "  style='width:100px;' class='form-control txtBDate' >" +
+                                " <span class='input-group-addon'>" +
+                                "         <span class='glyphicon glyphicon-calendar'></span>" +
+                                "    </span>" +
+                                "</div></td>" +
+                                "<td class='tdFatherName'><input  type='text' " + strfathername + " class='form-control txtFatherName' ></td>" +
+
+                                "<td class='tdSelect'><input  type='checkbox' class='chkSelect'  " + ischcked + "' ></td>" +
+                                "</tr>");
+                        });
+                        $j('.dateonly').datetimepicker(
+                            {
+                                // format: 'L'
+                                format: 'DD-MM-YYYY'
+                            });
+                        $(".txtPassportNo").change(function () {
+                            if ($(this).val().length > 0) {
+
+                                $(this).parent().parent().find(".chkSelect").prop("checked", true);
+                                if (checkduplicatepassportno($(this).parent().parent().index() - 1, $(this).val()) == 1) {
+                                    $(this).val('');
+                                    inforamtionDialog("Alert", "Duplicate Passport Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+                                            $(this).focus();
+                                        }
+
+                                    });
+                                }
+                                else checkexists('', this);
+                            }
+                            else
+                                $(this).parent().parent().find(".chkSelect").prop("checked", false);
+                        });
+                        //if (type == 1)
+                        //    HrReplacementNewRow();
+                    }
+                    else {
+                        //if (type == 1)
+                        //    HrReplacementNewRow();
+                    }
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+
+    var webapiurl = '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+    var headerauth = $("#txtwebapitoken").val();
+    function checkexists(civilid, cntrl) {
+        console.log($(cntrl).val());
+        $.ajax({
+            url: webapiurl + "api/HrMilitaryProfile/GetMilitaryInfoData?civilid=" + civilid + "&passportno=" + $(cntrl).val(),
+            headers: {
+                "Authorization": headerauth,
+                "Content-Type": "application/json",
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                //$.alert({
+                //    title: _getCookieForLanguage("_informationTitle"),
+                //    content: _getCookieForLanguage("dataAlreadyExist"),
+                //    type: 'red'
+                //});
+
+                inforamtionDialog("Alert", "Passport Number already exists", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                    if (answer == "true") {
+                        $(cntrl).focus();
+                        $(cntrl).val('');
+                        $(cntrl).parent().parent().find(".chkSelect").prop("checked", false);
+                    }
+
+                });
+
+
+            },
+            error: function (xhr, status, error) {
+                //console.log("Status: " + status);
+                //console.log("Error: " + error);
+                //console.log("xhr: " + xhr.readyState);
+
+                //return error;
+            }
+        });
+
+
+    }
+
+    function checkduplicatepassportno(curr_index, passportnumber) {
+        var ret = 0;
+        $("#GenRepPassportDt .txtPassportNo").each(function (index, element) {
+            if (curr_index != index && $(element).val().toLowerCase() == passportnumber.toLowerCase()) {
+                ret = 1;
+                return false;
+            }
+
+        });
+
+        return ret;
+    }
+    //function formValidatrion() {
+    //    var isValid = true;
+    //    if ($('#passportrecvdate').val(''))
+    //});
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+    function datetoStr(data) {
+        if (data != null) {
+            var regex = /-?\d+/;
+            var match = regex.exec(data);
+            var pubdate = new Date(parseInt(match[0]));
+
+            var dd = pubdate.getDate(); var mm = pubdate.getMonth() + 1;
+            var yyyy = pubdate.getFullYear(); if (dd < 10) { dd = '0' + dd } if (mm < 10) { mm = '0' + mm }
+            var today = dd + '-' + mm + '-' + yyyy;
+            return today;
+        }
+        else {
+            return "";
+        }
+    }
+</script>
+
+
+
+
+
+

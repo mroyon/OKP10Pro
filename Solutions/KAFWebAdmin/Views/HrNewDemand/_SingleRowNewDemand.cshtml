@@ -1,0 +1,88 @@
+﻿@model KAF.BusinessDataObjects.hr_newdemandEntity
+
+@if (Model.hr_newdemanddetl != null && Model.hr_newdemanddetl.hrbasicid != null)
+{
+    <tr role="row">
+
+        <td style="width:250px">
+            @{Html.RenderAction("LoadRankKWSearch", "Common", new { area = "", selectid = "rankidkw" + Model.newdemandid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_RankKW, multiple = false, isReadOnly = true, IsRequired = true });}
+        </td>
+        <td>
+            @{Html.RenderAction("LoadTradeKWSearch", "Common", new { area = "", selectid = "tradeidkw" + Model.newdemandid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_TradeKW, multiple = false, isReadOnly = true, IsRequired = true });}
+        </td>
+        <td>
+
+            @Html.DropDownListFor(model => model.hr_newdemanddetl.groupid,
+                   new SelectList(
+                       (
+                       KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.Group>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.Group))), "paramvalue", "paramname"),
+                   "Please Select",
+                   new { @disabled = "disabled", @id = "groupid" + Model.newdemandid, @class = "required form-control" })
+        </td>
+        <td>
+            @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid" + Model.newdemandid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = true, IsRequired = true });}
+        </td>
+        <td style="width:180px">
+            @if (Model.hr_newdemanddetl != null && Model.hr_newdemanddetl.totalperson != 0)
+            {
+                @Html.EditorFor(model => model.hr_newdemanddetl.noofvacancies, new { htmlAttributes = new { @id = "noofvacancies" + Model.newdemandid, @class = "required noofvacancies form-control", @min = Model.hr_newdemanddetl.totalperson, @type = "number",@readonly="readonly" } })
+            }
+            else
+            {
+                @Html.EditorFor(model => model.hr_newdemanddetl.noofvacancies, new { htmlAttributes = new { @id = "noofvacancies" + Model.newdemandid, @class = "required noofvacancies form-control", @min = "1", @type = "number", @readonly = "readonly" } })
+            }
+            @* @Html.EditorFor(model => model.hr_newdemanddetl.noofvacancies, new { htmlAttributes = new { @id = "noofvacancies" + Model.newdemandid, @class = "required noofvacancies form-control",  @type = "number" } })*@
+
+        </td>
+        <td class="hdrletterstat">
+            @if(Model.hr_newdemanddetl!=null){
+            @Html.Raw(  Model.hr_newdemanddetl.ex_nvarchar2.ToString() )
+            }
+        </td>
+        @Html.HiddenFor(m => m.hr_newdemanddetl.newdemanddetlid, new { @class = "newdemanddetlid", @id = "newdemanddetlid" + Model.newdemandid, @Name = "newdemanddetlid" + Model.newdemandid })
+    </tr>
+}
+else
+{
+    <tr role="row">
+
+        <td style="width:250px">
+            @{Html.RenderAction("LoadRankKWSearch", "Common", new { area = "", selectid = "rankidkw" + Model.newdemandid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_RankKW, multiple = false, isReadOnly = false, IsRequired = true });}
+        </td>
+        <td>
+            @{Html.RenderAction("LoadTradeKWSearch", "Common", new { area = "", selectid = "tradeidkw" + Model.newdemandid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_TradeKW, multiple = false, isReadOnly = false, IsRequired = true });}
+        </td>
+        <td>
+
+            @Html.DropDownListFor(model=> model.hr_newdemanddetl.groupid,
+                                    new SelectList (
+                                        (
+                                        KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.Group>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.Group))), "paramvalue", "paramname"),
+                                    "Please Select",
+                                    new { @id = "groupid" + Model.newdemandid, @class ="required form-control"})
+        </td>
+        <td>
+            @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid" + Model.newdemandid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = false, IsRequired = true });}
+        </td>
+
+        <td style="width:180px">
+            @Html.EditorFor(model => model.hr_newdemanddetl.noofvacancies, new { htmlAttributes = new { @id = "noofvacancies" + Model.newdemandid, @class = "required noofvacancies form-control", @min = "1", @type = "number" } })
+        </td>
+        <td class="hdrletterstat">
+            @if(Model.hr_newdemanddetl!=null){
+             @Html.Raw(  Model.hr_newdemanddetl.ex_nvarchar2.ToString() )
+            }
+        </td>
+        <td>
+            <div class="btn-toolbar pull-right singleRowNewDemand" role="toolbar">
+                <button class="btn btn-primary btn-md btnnerow" onclick="HrNewDemandNewRow(this)"><i class="fa fa-plus"></i> Add</button>
+
+                <button class="btn btn-danger btn-md" onclick="HrDemandDeleteDetail(this)"><i class="fa fa-trash"></i> Delete</button>
+            </div>
+        </td>
+
+        @Html.HiddenFor(m => m.hr_newdemanddetl.newdemanddetlid, new { @class = "newdemanddetlid", @id = "newdemanddetlid" + Model.newdemandid, @Name = "newdemanddetlid" + Model.newdemandid })
+    </tr>
+}
+
+@*@Value = Model.hr_newdemanddetl != null && Model.hr_newdemanddetl.ex_nvarchar2 != "" ? Model.hr_newdemanddetl.ex_nvarchar2 : "New",*@

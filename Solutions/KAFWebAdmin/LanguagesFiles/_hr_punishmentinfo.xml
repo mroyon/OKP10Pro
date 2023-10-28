@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="punishmenttype" value="AR:  Punishment Type"></resource>
+       <resource culture="ar-kw" name="punishmenttypeRequired" value="AR: Please provide  Punishment Type"></resource>
+       <resource culture="ar-kw" name="punishmentdate" value="AR:  Punishment Date"></resource>
+       <resource culture="ar-kw" name="punishmentdateRequired" value="AR: Please provide  Punishment Date"></resource>
+       <resource culture="ar-kw" name="offence" value="AR:  Offence"></resource>
+       <resource culture="ar-kw" name="punishment" value="AR:  Punishment"></resource>
+       <resource culture="ar-kw" name="punishmentdetails" value="AR:  Punishment Details"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="punishmentinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="punishmentinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="punishmentinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="punishmentinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic Id"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic Id"></resource>
+       <resource culture="en-us" name="punishmenttype" value=" Punishment Type"></resource>
+       <resource culture="en-us" name="punishmenttypeRequired" value="Please provide  Punishment Type"></resource>
+       <resource culture="en-us" name="punishmentdate" value=" Punishment Date"></resource>
+       <resource culture="en-us" name="punishmentdateRequired" value="Please provide  Punishment Date"></resource>
+       <resource culture="en-us" name="offence" value=" Offence"></resource>
+       <resource culture="en-us" name="punishment" value=" Punishment"></resource>
+       <resource culture="en-us" name="punishmentdetails" value=" Punishment Details"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="punishmentinfoList" value="View All"></resource>
+		<resource culture="en-us" name="punishmentinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="punishmentinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="punishmentinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

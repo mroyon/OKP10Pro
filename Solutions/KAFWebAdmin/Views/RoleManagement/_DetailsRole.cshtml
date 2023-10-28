@@ -1,0 +1,103 @@
+﻿@model KAF.BusinessDataObjects.BusinessDataObjectsPartials.MenuModel.RoleWithPermission
+
+<!-- Modal -->
+
+@*<div class="modal-dialog" role="document" >*@
+    <div class="panel panel-primary list-panel">
+
+        <div class="panel-heading list-panel-heading">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            @KAF.MsgContainer._Common.detailstext @KAF.MsgContainer._owin_user.pagetitle
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                @Html.LabelFor(model => model.RoleEntity.rolename, KAF.MsgContainer._owin_role.rolename, htmlAttributes: new { @class = "labelNormal" })
+
+
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                @Html.DisplayFor(m => m.RoleEntity.rolename, new { @class = "control-label input-lg" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                @Html.LabelFor(model => model.RoleEntity.description, KAF.MsgContainer._owin_role.description, htmlAttributes: new { @class = "labelNormal" })
+
+
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-md-">
+                                @Html.DisplayFor(m => m.RoleEntity.description, new { @class = "control-label input-lg" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12" style="text-align:center">
+                            @KAF.MsgContainer._owin_role.pagetitle
+                        </div>
+                    </div>
+                    @{
+                        var orderGroups = from p in Model.RolePermissionList
+                                          group p by p.ex_nvarchar1 into g
+                                          select new
+                                          {
+                                              menuname = g.Key,
+                                              RolePermissionList = g
+                                          };
+                    }
+
+                    @*<div class="col-lg-12" id="collapse1" aria-expanded="true" style="">
+            @foreach (var group in orderGroups)
+            {
+                <div class="col-lg-12 panel-body">
+                    @Html.DisplayFor(x => group.menuname, new { @class = "control-label input-lg" })
+                </div>
+                <div class="col-lg-6 panel panel-info">
+                    @foreach (var permission in group.RolePermissionList)
+                    {
+                        bool ischecked = Convert.ToBoolean(permission.status);
+                        <div class="col-lg-6 checkbox-inline">
+                            @Html.CheckBoxFor(m => ischecked, new { @disabled = "disabled" }) @Html.DisplayFor(m => permission.ex_nvarchar2, new { @class = "label" })
+                        </div>
+
+                    }
+                </div>
+            }
+        </div>*@
+                    <div class="col-lg-12" id="collapse1" aria-expanded="true" style="">
+                        @foreach (var group in orderGroups)
+                        {
+                            <div class="col-lg-12 panel-body menu">
+                                @Html.DisplayFor(x => group.menuname, new { @class = "control-label input-lg" })
+                            </div>
+                            <div class="col-lg-12 panel panel-info">
+                                @foreach (var permission in group.RolePermissionList)
+                                {
+                                    bool ischecked = Convert.ToBoolean(permission.status);
+                                    <div class="col-lg-6 checkbox-inline">
+                                        @Html.CheckBoxFor(m => ischecked, new { @disabled = "disabled" }) @Html.DisplayFor(m => permission.ex_nvarchar2, new { @class = "label" })
+                                    </div>
+
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-md" data-dismiss="modal">@KAF.MsgContainer._Common._btnClose <i class="fa fa-times"></i></button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@*</div>*@

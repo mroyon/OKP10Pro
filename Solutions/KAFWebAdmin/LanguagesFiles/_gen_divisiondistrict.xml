@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="parentid" value="AR:  Parent ID"></resource>
+       <resource culture="ar-kw" name="districtname" value="AR:  District Name"></resource>
+       <resource culture="ar-kw" name="districtnameRequired" value="AR: Please provide  District Name"></resource>
+       <resource culture="ar-kw" name="isdivision" value="AR:  Is Division"></resource>
+       <resource culture="ar-kw" name="countryid" value="AR:  Country ID"></resource>
+       <resource culture="ar-kw" name="countryidRequired" value="AR: Please provide  Country ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="divisiondistrictList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="divisiondistrictCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="divisiondistrictUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="divisiondistrictDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="parentid" value=" Parent ID"></resource>
+       <resource culture="en-us" name="districtname" value=" District Name"></resource>
+       <resource culture="en-us" name="districtnameRequired" value="Please provide  District Name"></resource>
+       <resource culture="en-us" name="isdivision" value=" Is Division"></resource>
+       <resource culture="en-us" name="countryid" value=" Country ID"></resource>
+       <resource culture="en-us" name="countryidRequired" value="Please provide  Country ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="divisiondistrictList" value="View All"></resource>
+		<resource culture="en-us" name="divisiondistrictCreate" value="Create"></resource>
+		<resource culture="en-us" name="divisiondistrictUpdate" value="Update"></resource>
+		<resource culture="en-us" name="divisiondistrictDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

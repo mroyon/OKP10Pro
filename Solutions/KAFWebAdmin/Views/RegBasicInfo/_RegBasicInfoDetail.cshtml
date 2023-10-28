@@ -1,0 +1,114 @@
+﻿@model KAF.BusinessDataObjects.reg_basicinfoEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmReg_BasicInfoDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._reg_basicinfo.basicinfoDetails
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.basicinfoid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name1, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.name1, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name2, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.name2, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name3, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.name3, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name4, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.name4, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name4, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.studentid, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.studentid, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.studentid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.batchid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadGen_BatchSearch", "Common", new { area = "", selectid = "batchid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Batch, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.platoonid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadGen_PlatoonSearch", "Common", new { area = "", selectid = "platoonid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Platoon, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+ 
+$('.footable').footable({
+	 calculateWidthOverride: function () {
+		 return { width: $(window).width() };
+	 }
+});
+
+
+
+    $(document).ready(function () {
+
+    }
+
+</script>
+    
+
+
+

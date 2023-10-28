@@ -1,0 +1,79 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.Label("Main Unit", htmlAttributes: new { @class = "labelNormal   required " })
+            @{Html.RenderAction("LoadCombo", "Common", new { ddlId = "ddl_MainUnit", ddlName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationUnit, type = typeof(KAF.BusinessDataObjects.workflow_processinfoEntity), selectedvalue = "-99", cssclass = "form-control", enable = true, validatedyn = true });}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.Label("Sub Unit", htmlAttributes: new { @class = "labelNormal   required " })
+            @Html.DropDownList("ddl_SubUnit", new List<SelectListItem>
+                {
+                   new SelectListItem{ Text="Select", Value = "-99"},
+
+                }, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Bundles/js")
+@*@RenderSection("scripts", required: false)*@
+<script>
+
+    var selectedentitykey = '';
+    $(document).ready(function () {
+        $("#ddl_MainUnit").change(function () {
+            try {
+                selectedentitykey = $("#ddl_MainUnit").val();
+
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "CreateEvent",
+                    currenturl: window.location.href,
+                    parentkey: $('#ddl_MainUnit').val()
+                });
+
+                $.ajax({
+                    url: $('#txtBaseUrl').val() + "Common/GetUnit",
+                    data: input,
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.status === "success") {
+                            if (parseInt(data.totalrows) > 0) {
+                                var ddl = $("#ddl_SubUnit");
+                                ddl.empty().append('<option selected="selected" value="">- اختر واحدة -</option>');
+                                $.each(data.data, function (key, value) {
+                                    ddl.append('<option value="' + value.entitykey + '">' + value.entityname + '</option>');
+                                });
+                            }
+                            else {
+                                var ddl = $("#ddl_SubUnit");
+                                ddl.empty().append('<option selected="selected" value="">- اختر واحدة -</option>');
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        $("#ddl_SubUnit").change(function () {
+            if ($("#ddl_MainUnit").val() != '-99' && $("#ddl_SubUnit").val() != '-99')
+                selectedentitykey = $("#ddl_SubUnit").val();
+
+        });
+    });
+
+</script>
+
+

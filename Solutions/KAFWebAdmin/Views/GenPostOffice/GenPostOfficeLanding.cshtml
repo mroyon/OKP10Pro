@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = KAF.MsgContainer._gen_postoffice.postofficeList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("GenPostOffice/GenPostOfficeNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewGenPostOffice">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="GenPostOfficeDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+							 <th>@KAF.MsgContainer._gen_postoffice.postofficename</th>                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-GenPostOfficeNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcGenPostOfficeNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-GenPostOfficeEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcGenPostOfficeEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-GenPostOfficeDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcGenPostOfficeDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/GenPostOffice/LandingGenPostOffice.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/GenPostOffice/NewGenPostOffice.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/GenPostOffice/EditGenPostOffice.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/SetupJS/GenPostOffice/DetailGenPostOffice.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

@@ -1,0 +1,167 @@
+﻿
+
+@model KAF.BusinessDataObjects.stp_organizationentityEntity
+
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = @KAF.MsgContainer._stp_organizationentity.organizationentityCreate;
+                Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @KAF.MsgContainer._stp_organizationentity.organizationentityCreate
+            </div>
+            <div class="panel-body">
+                <div class="container MainPageCnt" role="main">
+                    <div class='ms-bodyareacell clearfix'>
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div id="#dbtree" class="col-md-6" style="overflow-y:scroll;">
+
+                                    @{Html.RenderAction("LoadTreeViewUnit", "Common", new { area = "", txtid = "treeview_all_unit" });}
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="BodyContainer_BodyContainer_mainPnl">
+                                        <section id="content" class="table-layout">
+                                            <div class="tab-block mb25">
+                                                <ul class="nav nav-tabs tabs-border nav-justified">
+                                                    <li id="BodyContainer_BodyContainer_tab2" class="active">
+                                                        <a href="#orgunitContent2" data-toggle="tab" class="taskdetailtab" data_id="2">أضف الوحدة الفرعية</a>
+                                                    </li>
+                                                    <li id="BodyContainer_BodyContainer_tab1" class="">
+                                                        <a href="#orgunitContent1" data-toggle="tab" class="taskdetailtab" data_id="1" aria-expanded="true">تحرير الوحدة</a>
+                                                    </li>
+
+
+                                                </ul>
+                                                <div class="tab-content" style="border: 2px solid #c6d3de;">
+
+                                                    <div id="orgunitContent1" class="tab-pane " style="margin-left: 21px;margin-right: 21px;">
+
+                                                    </div>
+
+                                                    <div id="orgunitContent2" class="tab-pane active" style="margin-left: 21px;margin-right: 21px;">
+                                                        @using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmCreateStpOrgEntity", @class = "form-horizontal" }))
+                                                        {
+                                                            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+                                                            HtmlHelper.ClientValidationEnabled = true;
+                                                            @Html.AntiForgeryToken()
+
+                                                            @Html.Hidden("hidParent2")
+
+                                                            <div class="row">
+                                                                <div class="col-md-10">
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.parentkey, htmlAttributes: new { @class = "labelNormal  required ", @Value = "Parent" })
+                                                                        @Html.Editor("txtParent2", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-10">
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.entirytypekey, htmlAttributes: new { @class = "labelNormal   required " })
+                                                                         @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationentitytypeEntity[0].ToString(), selectid = "ddl_entirytypekey2", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedunits, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true });}
+
+                                                                        @Html.ValidationMessageFor(model => model.entirytypekey, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="row">
+                                                                <div class="col-md-10">
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.entityname, htmlAttributes: new { @class = "labelNormal  required " })
+                                                                        @Html.EditorFor(model => model.entityname, new { htmlAttributes = new { @class = "form-control", @ID = "txtentityname2" } })
+                                                                        @Html.ValidationMessageFor(model => model.entityname, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-10">
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.entitylevel, htmlAttributes: new { @class = "labelNormal  required " })
+                                                                        @Html.EditorFor(model => model.entitylevel, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @ID = "txtentitylevel2", @Value = "1" } })
+                                                                        @Html.ValidationMessageFor(model => model.entitylevel, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-10">
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "labelNormal " })
+                                                                        @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control", @ID = "txtdescription2" } })
+                                                                        @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" id="divisactive">
+                                                                <div class="col-md-10">
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.isactive, htmlAttributes: new { @class = "labelNormal " })
+                                                                        @Html.EditorFor(model => model.isactive, new { htmlAttributes = new { @class = "form-control", @ID = "txtisactive2" } })
+                                                                        @Html.ValidationMessageFor(model => model.isactive, "", new { @class = "text-danger" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="btn-toolbar" style="margin-bottom: 15px;">
+                                                                <button type="submit" id="btnCreateStpOrganizationEntity" class="btn btn-primary btn-md btnCreateStpOrganizationEntity"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                                                                <button type="submit" id="btnCreateCancel" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                                                            </div>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts {
+
+
+    <script src="~/DesignsAndScripts/PageWise/StpOrganizationEntity/CreateStpOrganizationEntity.js"></script>
+
+}
+
+

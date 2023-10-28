@@ -1,0 +1,67 @@
+﻿
+@model KAF.BusinessDataObjects.owin_roleEntity
+<div id="target">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    @KAF.MsgContainer._Common.updatetext @KAF.MsgContainer._owin_role.pagetitle
+                </div>
+
+                @using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "" }, new { @id = "roleForm", @class = "form-horizontal" }))
+                {
+                    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+                    HtmlHelper.ClientValidationEnabled = true;
+                    @Html.AntiForgeryToken()
+                    <div class="panel-body">
+                        <div>
+                            <div class="modal-body">
+                                <div class="form-horizontal">
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.roleid)
+
+                                    <div class="row">
+                                        @Html.HiddenFor(model => model.roleid)
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.rolename, KAF.MsgContainer._owin_role.rolename, htmlAttributes: new { @class = "labelNormal required" })
+                                                @Html.EditorFor(model => model.rolename, new { htmlAttributes = new { @id = "txtRolename", @class = "form-control",  @data_error = "provide role name" } })
+                                                @Html.ValidationMessageFor(m => m.rolename, "", new { @class = "text-danger " })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.description, KAF.MsgContainer._owin_role.description, htmlAttributes: new { @class = "labelNormal" })
+                                                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @id = "txtdescription", @class = "form-control", @data_error = "provide description" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="modal-footer">
+                                                    <button type="submit" id="btnRoleEdit" class="btn btn-primary btn-md btnCurrentActivityEdit">@KAF.MsgContainer._Common._btnUpdate <i class="fa fa-sign-in"></i></button>
+                                                    <button type="submit" id="btnRoleReturn" class="btn btn-primary btn-md cancel" data-dismiss="modal"> @KAF.MsgContainer._Common._btnReset <i class="fa fa-arrow-left"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

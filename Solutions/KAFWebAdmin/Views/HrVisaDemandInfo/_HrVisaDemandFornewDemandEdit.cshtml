@@ -1,0 +1,441 @@
+﻿@model KAF.BusinessDataObjects.hr_visademandinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 0px;
+    }
+
+    .form-control {
+       height:31px;
+    }
+
+    .input-group-addon {
+        padding: 3px 12px;
+    }
+
+    .panel {
+        margin-bottom: 5px;
+    }
+
+    .panel-body {
+        padding: 7px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_VisaDemandInfoNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            Visa Demand Information (New Demand): @KAF.MsgContainer._hr_visademandinfo.visademandinfoCreate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.visademandid)
+                        @Html.HiddenFor(m => m.passportinfoid)
+                    </div>
+                    
+
+                    <div id="dvInfoDetail" class="">
+
+                      
+                       
+                        <div class="panel panel-primary list-panel" id="dvrecinfo">
+                            <div class="panel-body">
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.visademanddate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                                @Html.EditorFor(model => model.visademanddate, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.visademanddate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.visademandletterdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                                @Html.EditorFor(model => model.visademandletterdate, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.visademandletterdate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.visademandletterno, htmlAttributes: new { @class = "labelNormal required " })
+                                            @Html.EditorFor(model => model.visademandletterno, new { htmlAttributes = new { @class = " form-control" } })
+                                            @Html.ValidationMessageFor(model => model.visademandletterno, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 hidden">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                            @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                            @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <table id="GenVisaDemandDt" class="table table-striped table-bordered dataTable no-footer dtr-inline" style="width:100%;" role="grid" aria-describedby="GenVisaDemandDt_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th rowspan="1" colspan="1" style='width:460px'>Name/Passport/Appt</th>
+                                            <th rowspan="1" colspan="1">Passport Recv Date</th>
+                                            <th rowspan="1" colspan="1">Letter Date/Letter No</th>
+                                            <th rowspan="1" colspan="1"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="btn-toolbar">
+                            <button type="submit" id="btnSaveVisaNewDemandEdit" class="btn btn-primary btn-md btnSaveVisaNewDemandEdit"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                            <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+<script>
+    $(document).ready(function () {
+
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+        getReplacementList(5);
+
+        $('body').on('click', '#btnSaveVisaNewDemandEdit', function (event) {
+            try {
+                event.preventDefault();
+                var form = $('#frmHr_VisaDemandInfoNew');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+                var myData = [];
+                $("#GenVisaDemandDt .txtdetailinfo").each(function (index) {
+                    //console.log(index + ": " + $(this).val() + " " + $(this).attr("hrbasicid"));
+                    if (($(this).parent().parent().find(".chkSelect").prop("checked") == true > 0)
+                        && (typeof $(this).attr("detailid") == "undefined" || $(this).attr("detailid") == "null")) {
+                        var inputdetl = AddAntiForgeryToken({
+                            token: $(".txtUserSTK").val(),
+                            userinfo: $(".txtServerUtilObj").val(),
+                            useripaddress: $(".txtuserip").val(),
+                            sessionid: $(".txtUserSes").val(),
+                            methodname: "HrFamilyInfoCreate",
+                            currenturl: window.location.href,
+
+                            visademanddetlid: $(this).attr("detailid"),
+                            visademandid: $("#existingvisademandid").val(),
+                            demandtype: 2, //1-replacement,2-new demand
+                            hrbasicid: $(this).attr("hrbasicid"),
+                            hrsvcid: $(this).attr("hrsvcid"),
+                            passportdetlid: $(this).attr("newdemandpassportid"),
+
+                            CurrentState: 1
+
+                        });
+
+                        myData.push(inputdetl);
+                    }
+                    if (($(this).parent().parent().find(".chkSelect").prop("checked") == false > 0) &&
+                        (typeof $(this).attr("detailid") != "undefined" && $(this).attr("detailid") != "null")) {
+
+                        var inputdetl = AddAntiForgeryToken({
+                            token: $(".txtUserSTK").val(),
+                            userinfo: $(".txtServerUtilObj").val(),
+                            useripaddress: $(".txtuserip").val(),
+                            sessionid: $(".txtUserSes").val(),
+                            methodname: "HrFamilyInfoCreate",
+                            currenturl: window.location.href,
+
+                            visademanddetlid: $(this).attr("detailid"),
+                            visademandid: $("#existingdisademandid").val(),
+                            demandtype: 2, //1-replacement,2-new demand
+                            hrbasicid: $(this).attr("hrbasicid"),
+                            hrsvcid: $(this).attr("hrsvcid"),
+                            passportdetlid: $(this).attr("newdemandpassportid"),
+
+                            CurrentState: 3
+
+                        });
+
+                        myData.push(inputdetl);
+                    }
+                });
+
+                if (form.valid()) {
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrFamilyInfoCreate",
+                        currenturl: window.location.href,
+
+                        visademandid: $('#existingvisademandid').val(),
+                        demandtype: 2, //1-replacement,2-new demand
+                        passportinfoid: $('#RepPassportID').val(),
+                        visademanddate: GetDateFromTextBox($('#visademanddate').val()),
+                        visademandletterdate: GetDateFromTextBox($('#visademandletterdate').val()),
+                        visademandletterno: $('#visademandletterno').val(),
+                        hr_visademandList: myData,
+
+                        CurrentState: $("#chknewassign").prop("checked") == true ? 1 : 2 //$("#existingreppassportid").val() == null ? 1 : 2,
+
+                    });
+
+                    if (myData.length == 0) {
+                        inforamtionDialog("Alert", "No Detail Provided", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+
+                            }
+
+                        });
+                    }
+                    else {
+                        confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                            if (answer == "true") {
+
+                                $.ajax({
+                                    url: baseurl + "HrVisaDemandInfo/HrVisaDemandInfoInsert",
+                                    data: input,
+                                    type: 'POST',
+                                    success: function (data) {
+                                        if (data.status === "success") {
+                                            inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                                if (answer == "true") {
+                                                    //window.location.href =  baseurl + "HrVisaDemandInfo/HrVisaDemandInfo";
+                                                    $('#mcHrVisaDemandInfoNew').html('');
+                                                    $('#modal-container-HrVisaDemandInfoNew').modal('hide');
+                                                    GetAllDataHrVisaDemandInfo();
+                                                }
+                                                else {
+                                                    $('#mcHrVisaDemandInfoNew').html('');
+                                                    $('#modal-container-HrVisaDemandInfoNew').modal('hide');
+                                                    GetAllDataHrVisaDemandInfo();
+                                                }
+                                            });
+                                        }
+
+                                        else {
+                                            return;
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+                else {
+                    return;
+                }
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+
+  
+    });
+    
+    function getReplacementList(type) {
+
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "HrReplacementInfoNew",
+                currenturl: window.location.href,
+
+                DemandTypeID:2,
+                RepPassportID: $("#RepPassportID").val(),
+                DemandID: $("#passportinfoid").val(),
+                IsAll: type
+            });
+
+            $.ajax({
+                url: $("#txtBaseUrl").val() + "Common/GetRepPassportListByRepPassportID",
+                type: 'POST',
+                data: input,
+                success: function (response) {
+                    $("#GenVisaDemandDt").find("tr:gt(0)").remove();
+                    if (response.status = "success" && response.totalrows > 0) {
+                        
+
+                        $(response.data).each(function (index) {
+
+                            if (response.data[index].passportrecvdate != null) {
+                                $('#passportrecvdate').val(datetoStr(response.data[index].passportrecvdate));
+                                $('#letterno').val(response.data[index].letterno);
+                                $('#letterdate').val(datetoStr(response.data[index].letterdate));
+                                $('#txtpassportletterdate').val(datetoStr(response.data[index].letterdate));
+                            }
+
+                            $('#passportrecvdate').attr('disabled', 'disabled');
+                            $('#letterno').attr('disabled', 'disabled');
+                            $('#letterdate').attr('disabled', 'disabled');
+
+                            var ischcked = response.data[index].visademanddetailid != null ? "checked='checked'" : "";
+                            var strpassport = response.data[index].hrbasicid != null ? "value='" + response.data[index].passportno + "'" : "";
+                            var strname1 = response.data[index].hrbasicid != null ? "value='" + response.data[index].name1 + "'" : "";
+                            var strname2 = response.data[index].hrbasicid != null ? "value='" + response.data[index].name2 + "'" : "";
+
+                            if (response.data[index].hrbasicid != null) {
+                                $('#GenVisaDemandDt tr:last').after("<tr role='row'>" +
+
+                                    "<td style='width:460px'>" + response.data[index].name1 + ' ' + response.data[index].name2 + "/" + response.data[index].passportno + "/" + response.data[index].tradename +
+                                    " <input class='hidden txtdetailinfo' value='" + "' detlid='" + response.data[index].newdemanddetlid + "' newdemandpassportid='" + response.data[index].newdemandpassportid + "'  type='text' class='form-control txtMilNo'  hrbasicid='" + response.data[index].hrbasicid + "' hrsvcid='" + response.data[index].hrsvcid + "'></td>" +
+                                    "<td class='tdPassportNo'><input disabled='disabled'  type='text' " + strpassport + " class='form-control txtPassportNo' ></td>" +
+                                    "<td class='tdFirstName'><input disabled='disabled'  " + strname1 + "  type='text' class='form-control txtFirstName' ></td>" +
+                                    "<td class='tdSurName'><input disabled='disabled'  type='text' " + strname2 + " class='form-control txtSurName' ></td>" +
+                                    "<td class='tdSelect'><input  type='checkbox' class='chkSelect'  " + ischcked + "' ></td>" +
+                                    "</tr>");
+                            }
+                        });
+
+                        $(".txtPassportNo").change(function () {
+                            if ($(this).val().length > 0)
+                                $(this).parent().parent().find(".chkSelect").prop("checked", true);
+                            else
+                                $(this).parent().parent().find(".chkSelect").prop("checked", false);
+                        });
+                    }
+                    else {
+                    }
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+        //try {
+        //    AddAntiForgeryToken = function (data) {
+        //        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+        //        return data;
+        //    };
+        //    var input = AddAntiForgeryToken({
+        //        token: $(".txtUserSTK").val(),
+        //        userinfo: $(".txtServerUtilObj").val(),
+        //        useripaddress: $(".txtuserip").val(),
+        //        sessionid: $(".txtUserSes").val(),
+        //        methodname: "HrReplacementInfoNew",
+        //        currenturl: window.location.href,
+        //        //RepPassportID: $("#RepPassportID").val(),
+        //        newdemandid: $("#existingvisademandid").val(),
+        //        isall: type
+        //    });
+
+        //    $.ajax({
+        //        url: $("#txtBaseUrl").val() + "Common/GetNewDemandListPassportByDemandID",
+        //        type: 'POST',
+        //        data: input,
+        //        success: function (response) {
+        //            if (response.status = "success" && response.totalrows > 0) {
+        //                $("#GenVisaDemandDt").find("tr:gt(0)").remove();
+        //                $(response.data).each(function (index) {
+        //                    // console.log(index + ": " + $(this).text());
+        //                    var ischcked = response.data[index].VisaDemandDetlID!=null ? "checked='checked'" : "";
+
+        //                    $('#GenVisaDemandDt tr:last').after("<tr role='row'>" +
+        //                        "<td style='width:460px'>" + response.data[index].NewFullName + "/" + response.data[index].PassportNoNew + "/" +  response.data[index].KuwaitiTrade  +
+        //                        " <input class='hidden txtdetailinfo' value='" + response.data[index].MilNoKW + "' detailid='" + response.data[index].VisaDemandDetlID + "' reppassportdetlid='" + response.data[index].RepPassportDetlID + "'  type='text' class='form-control txtMilNo'  hrbasicid='" + response.data[index].NewHrBasicID + "' hrsvcid='" + response.data[index].NewHrSvcID + "''></td>" +
+        //                        "<td ><input disabled='disabled'  type='text' value='" + datetoStr( response.data[index].PassportRecvDate) + "' class='form-control txtPassRecvDate' ></td>" +
+        //                        "<td><input disabled='disabled' type='text' value='" + datetoStr(response.data[index].PassportLetterDate) + "/" + response.data[index].PassportLetterNo + "' class='form-control txtLetterDateAndNo' ></td>" +
+        //                        "<td class='tdSelect'><input  type='checkbox' class='chkSelect' class='chkSelect'  " + ischcked + "' ></td>" +
+        //                        "</tr>");
+        //                });
+
+        //            }
+        //            else {
+                        
+        //            }
+        //        }
+        //    });
+
+        //} catch (e) {
+        //    $.alert({
+        //        title: _getCookieForLanguage("_informationTitle"),
+        //        content: e.message,
+        //        type: 'red'
+        //    });
+        //}
+
+    }
+
+    function datetoStr(data) {
+        if (data != null) {
+            var regex = /-?\d+/;
+            var match = regex.exec(data);
+            var pubdate = new Date(parseInt(match[0]));
+
+            var dd = pubdate.getDate(); var mm = pubdate.getMonth() + 1;
+            var yyyy = pubdate.getFullYear();
+
+            if (dd < 10) { dd = '0' + dd }
+
+            if (mm < 10) { mm = '0' + mm }
+
+            var today = dd + '/' + mm + '/' + yyyy;// + ' ' + pubdate.getHours() + ':' + pubdate.getMinutes() + ':' + pubdate.getSeconds();
+            return today;
+        }
+        else {
+            return "";
+        }
+    }
+    
+
+</script>
+
+
+
+

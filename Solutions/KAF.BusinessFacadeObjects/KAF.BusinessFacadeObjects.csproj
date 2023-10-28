@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F47635D-64EB-4F92-9D94-EDFE3EEA79C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KAF.BusinessFacadeObjects</RootNamespace>
+    <AssemblyName>KAF.BusinessFacadeObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KAF.AppConfiguration">
+      <HintPath>..\KAF.AppConfiguration\obj\Debug\KAF.AppConfiguration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessFacadeObjectsBase\BaseFacade.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_attachmentinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_basicprofileFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_demanddetlpassportFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_documentuploadFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_hospitaladmissioninfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_newdemanddetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_newdemandFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_okptransferinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_passportinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_personalinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_svcinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\KAFDataCacheFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\KAFUserSecurity.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\owin_rolepermissionFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\ReportExtensionFacade.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\SelectTwoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\stp_organizationentityFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\owin_userFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_addresschangeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_attachmentinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_documentuploadFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_okptransferinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\ParadeState\hr_deathinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\ParadeState\hr_leaveinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\ParadeState\hr_leavemodificationFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\ParadeState\tran_manpowerstatedetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\ParadeState\tran_manpowerstatedetl_historyFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\ParadeState\tran_manpowerstateFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\ParadeState\tran_manpowerstate_historyFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Payment\cnf_paymentitemFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Payment\cnf_rankpayconfigFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Payment\gen_grouprankFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Payment\tran_cuttinginfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Payment\tran_cuttinginfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\gen_currencyexchagerateFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_arrivalinfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_arrivalinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_bankaccountinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_bankloaninfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_basicfileFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_basicprofileFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_demanddetlpassportFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_emergencycontactFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_extensioninfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_familyinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_familyjobinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_flightinfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_flightinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_hospitaladmissioninfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_languageproficiencyFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_medicalinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_newdemanddetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_newdemandFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_passportinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_personalinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_promotioninfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_punishmentinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_repatriationinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_replacementinfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_replacementinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_reppassportinfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_reppassportinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_residentvisaFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_rewardinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_svcinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_visademandinfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_visademandinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_visaissueinfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_visaissueinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_visasentinfodetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_visasentinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_ptademanddetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_ptademandFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_ptareceiveddetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Process\hr_ptareceivedFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\RPTM\rptm_allreportinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\RPTM\rptm_reportdatasourceFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\RPTM\rptm_reportparameterFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_reportpermissionFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_reportroleFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_reportroletemplateFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_tsvFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userroledetlentitymapFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userroledetlentityprofilemapFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userroledetlFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\useraccountsprofFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_formactionFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_forminfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_lastworkingpageFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_roleFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_rolepermissionFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userlogintrailFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userpasswordresetinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userprefferencessettingsFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userroleFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Security\owin_userstatuschangehistoryFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_airlinesFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_armsFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_authorizestrengthFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_bankbranchFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_bankFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_bloodgroupFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_buildingFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_campFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_countryFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_divisiondistrictFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_documenttypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_filetypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_freedomfighttypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_genderFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_govcityFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_issuetypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_languageFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_languageproficiencyFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_leaveconfigFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_leavetypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_maritalstatusFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_monthFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_movementtypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_okpcoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_okpFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_penaltytypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_postofficeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_promotiontypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_rankFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_ranktypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_relationshipFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_religionFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_servicestatusFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_subunitFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_thanaFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\gen_tradeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\stp_countrycityFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\stp_countryFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\stp_organizationentityFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\stp_organizationentitytypeFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\stp_organizationFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\Setup\stp_passpolicyFacadeObjects.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KAF.BusinessDataObjects\KAF.BusinessDataObjects.csproj">
+      <Project>{ef8dae61-781c-41d2-8290-c01419a273c9}</Project>
+      <Name>KAF.BusinessDataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KAF.ConstantTypes\KAF.ConstantTypes.csproj">
+      <Project>{c7ae8095-9886-4eb3-8050-91f0be6c7537}</Project>
+      <Name>KAF.ConstantTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KAF.DataAccessObjects\KAF.DataAccessObjects.csproj">
+      <Project>{0eb08418-3cf6-4a78-a7fe-b4d758a92e83}</Project>
+      <Name>KAF.DataAccessObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KAF.IBusinessFacadeObjects\KAF.IBusinessFacadeObjects.csproj">
+      <Project>{d250cb1a-091f-43e9-9415-a2558e529e3c}</Project>
+      <Name>KAF.IBusinessFacadeObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KAF.IDataAccessObjects\KAF.IDataAccessObjects.csproj">
+      <Project>{54392614-2388-4c16-98e8-324cfdf04a26}</Project>
+      <Name>KAF.IDataAccessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="BFOTemplates\BusinessFacade.cst" />
+    <None Include="BFOTemplates\BusinessFacadeEx.cst" />
+    <None Include="BFOTemplates\FacadeGenerator.csp" />
+    <None Include="BFOTemplates\FacadeGenerator.cst" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

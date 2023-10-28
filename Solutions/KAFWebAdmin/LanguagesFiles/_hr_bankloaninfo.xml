@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="bankid" value="AR:  Bank ID"></resource>
+       <resource culture="ar-kw" name="bankidRequired" value="AR: Please provide  Bank ID"></resource>
+       <resource culture="ar-kw" name="branchid" value="AR:  Branch ID"></resource>
+       <resource culture="ar-kw" name="branchidRequired" value="AR: Please provide  Branch ID"></resource>
+       <resource culture="ar-kw" name="loanamount" value="AR:  Loan Amount"></resource>
+       <resource culture="ar-kw" name="loanamountRequired" value="AR: Please provide  Loan Amount"></resource>
+       <resource culture="ar-kw" name="lastpaiddate" value="AR:  Last Paid Date"></resource>
+       <resource culture="ar-kw" name="lastpaiddateRequired" value="AR: Please provide  Last Paid Date"></resource>
+       <resource culture="ar-kw" name="islastinstallmentpaid" value="AR:  Is Last Installment Paid"></resource>
+       <resource culture="ar-kw" name="description" value="AR:  Description"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+		<resource culture="ar-kw" name="bankloaninfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="bankloaninfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="bankloaninfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="bankloaninfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="bankid" value=" Bank ID"></resource>
+       <resource culture="en-us" name="bankidRequired" value="Please provide  Bank ID"></resource>
+       <resource culture="en-us" name="branchid" value=" Branch ID"></resource>
+       <resource culture="en-us" name="branchidRequired" value="Please provide  Branch ID"></resource>
+       <resource culture="en-us" name="loanamount" value=" Loan Amount"></resource>
+       <resource culture="en-us" name="loanamountRequired" value="Please provide  Loan Amount"></resource>
+       <resource culture="en-us" name="lastpaiddate" value=" Last Paid Date"></resource>
+       <resource culture="en-us" name="lastpaiddateRequired" value="Please provide  Last Paid Date"></resource>
+       <resource culture="en-us" name="islastinstallmentpaid" value=" Is Last Installment Paid"></resource>
+       <resource culture="en-us" name="description" value=" Description"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+        <resource culture="en-us" name="bankloaninfoList" value="View All"></resource>
+		<resource culture="en-us" name="bankloaninfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="bankloaninfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="bankloaninfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

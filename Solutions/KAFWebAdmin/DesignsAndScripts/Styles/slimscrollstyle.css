@@ -1,0 +1,14 @@
+﻿
+pre.prettyprint {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background: #eee;
+    border-bottom: 3px solid;
+}
+
+
+.slimScrollDiv {
+    border: 1px solid #eee;
+    height:550px;
+}

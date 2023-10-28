@@ -1,0 +1,167 @@
+﻿using System;
+using System.Runtime.Serialization;
+using System.Data;
+using System.ComponentModel.DataAnnotations;
+using KAF.BusinessDataObjects.BusinessDataObjectsBase;
+
+namespace KAF.BusinessDataObjects
+{
+    [Serializable]
+    [DataContract(Name = "hr_deathinfo_historyEntity", Namespace = "http://www.KAF.com/types")]
+    public partial class hr_deathinfo_historyEntity : BaseEntity
+    {
+        #region Properties
+    
+        protected long ? _deathinfo_historyid;
+        protected long ? _deathinfoid;
+        protected long ? _hrbasicid;
+        protected DateTime ? _deathdate;
+        protected string _deathreason;
+        protected string _remarks;
+                
+        
+        [DataMember]
+        public long ? deathinfo_historyid
+        {
+            get { return _deathinfo_historyid; }
+            set { _deathinfo_historyid = value; this.OnChnaged(); }
+        }
+        
+        [DataMember]
+        [Display(Name = "deathinfoid", ResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history))]
+        [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history), ErrorMessageResourceName = "deathinfoidRequired")]
+        public long ? deathinfoid
+        {
+            get { return _deathinfoid; }
+            set { _deathinfoid = value; this.OnChnaged(); }
+        }
+        
+        [DataMember]
+        [Display(Name = "hrbasicid", ResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history))]
+        [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history), ErrorMessageResourceName = "hrbasicidRequired")]
+        public long ? hrbasicid
+        {
+            get { return _hrbasicid; }
+            set { _hrbasicid = value; this.OnChnaged(); }
+        }
+        
+        [DataMember]
+        [Display(Name = "deathdate", ResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history))]
+        [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history), ErrorMessageResourceName = "deathdateRequired")]
+        public DateTime ? deathdate
+        {
+            get { return _deathdate; }
+            set { _deathdate = value; this.OnChnaged(); }
+        }
+        
+        [DataMember]
+        [MaxLength(550)]
+        [Display(Name = "deathreason", ResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history))]
+        [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history), ErrorMessageResourceName = "deathreasonRequired")]
+        public string deathreason
+        {
+            get { return _deathreason; }
+            set { _deathreason = value; this.OnChnaged(); }
+        }
+        
+        [DataMember]
+        [MaxLength(550)]
+        [Display(Name = "remarks", ResourceType = typeof(KAF.MsgContainer._hr_deathinfo_history))]
+        public string remarks
+        {
+            get { return _remarks; }
+            set { _remarks = value; this.OnChnaged(); }
+        }
+        
+        
+        #endregion
+    
+        #region Constructor
+    
+        public hr_deathinfo_historyEntity():base()
+        {
+        }
+        
+        public hr_deathinfo_historyEntity(IDataReader reader)
+        {
+            this.LoadFromReader(reader);
+        }
+        
+         public hr_deathinfo_historyEntity(IDataReader reader, bool IsListViewShow)
+        {
+            this.LoadFromReader(reader, IsListViewShow);
+        }
+        
+        protected void LoadFromReader(IDataReader reader)
+        {
+            if (reader != null && !reader.IsClosed)
+            {
+                this.BaseSecurityParam = new SecurityCapsule();
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathInfo_HistoryID"))) _deathinfo_historyid = reader.GetInt64(reader.GetOrdinal("DeathInfo_HistoryID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathInfoID"))) _deathinfoid = reader.GetInt64(reader.GetOrdinal("DeathInfoID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("HRBasicID"))) _hrbasicid = reader.GetInt64(reader.GetOrdinal("HRBasicID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathDate"))) _deathdate = reader.GetDateTime(reader.GetOrdinal("DeathDate"));
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathReason"))) _deathreason = reader.GetString(reader.GetOrdinal("DeathReason"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Remarks"))) _remarks = reader.GetString(reader.GetOrdinal("Remarks"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date1"))) _ex_date1 = reader.GetDateTime(reader.GetOrdinal("Ex_Date1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date2"))) _ex_date2 = reader.GetDateTime(reader.GetOrdinal("Ex_Date2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Nvarchar1"))) _ex_nvarchar1 = reader.GetString(reader.GetOrdinal("Ex_Nvarchar1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Nvarchar2"))) _ex_nvarchar2 = reader.GetString(reader.GetOrdinal("Ex_Nvarchar2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Bigint1"))) _ex_bigint1 = reader.GetInt64(reader.GetOrdinal("Ex_Bigint1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Bigint2"))) _ex_bigint2 = reader.GetInt64(reader.GetOrdinal("Ex_Bigint2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Decimal1"))) _ex_decimal1 = reader.GetDecimal(reader.GetOrdinal("Ex_Decimal1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Decimal2"))) _ex_decimal2 = reader.GetDecimal(reader.GetOrdinal("Ex_Decimal2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("TransID"))) this.BaseSecurityParam.transid = reader.GetString(reader.GetOrdinal("TransID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UserOrganizationKey"))) this.BaseSecurityParam.userorganizationkey = reader.GetInt64(reader.GetOrdinal("UserOrganizationKey"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UserEntityKey"))) this.BaseSecurityParam.userentitykey = reader.GetInt64(reader.GetOrdinal("UserEntityKey"));
+                if (!reader.IsDBNull(reader.GetOrdinal("CreatedBy"))) this.BaseSecurityParam.createdby = reader.GetInt64(reader.GetOrdinal("CreatedBy"));
+                if (!reader.IsDBNull(reader.GetOrdinal("CreatedByUserName"))) _createdbyusername = reader.GetString(reader.GetOrdinal("CreatedByUserName"));
+                if (!reader.IsDBNull(reader.GetOrdinal("CreatedDate"))) this.BaseSecurityParam.createddate = reader.GetDateTime(reader.GetOrdinal("CreatedDate"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UpdatedBy"))) this.BaseSecurityParam.updatedby = reader.GetInt64(reader.GetOrdinal("UpdatedBy"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UpdatedByUserName"))) _updatedbyusername = reader.GetString(reader.GetOrdinal("UpdatedByUserName"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UpdatedDate"))) this.BaseSecurityParam.updateddate = reader.GetDateTime(reader.GetOrdinal("UpdatedDate"));
+                if (!reader.IsDBNull(reader.GetOrdinal("IPAddress"))) this.BaseSecurityParam.ipaddress = reader.GetString(reader.GetOrdinal("IPAddress"));
+                if (!reader.IsDBNull(reader.GetOrdinal("FormID"))) this.BaseSecurityParam.appformid = reader.GetInt64(reader.GetOrdinal("FormID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("TS"))) this.BaseSecurityParam.ts = reader.GetInt64(reader.GetOrdinal("ts"));
+                CurrentState = EntityState.Unchanged;
+            }
+        }
+
+
+        protected void LoadFromReader(IDataReader reader, bool IsListViewShow)
+        {
+            if (reader != null && !reader.IsClosed)
+            {
+                this.BaseSecurityParam = new SecurityCapsule();
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathInfo_HistoryID"))) _deathinfo_historyid = reader.GetInt64(reader.GetOrdinal("DeathInfo_HistoryID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathInfoID"))) _deathinfoid = reader.GetInt64(reader.GetOrdinal("DeathInfoID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("HRBasicID"))) _hrbasicid = reader.GetInt64(reader.GetOrdinal("HRBasicID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathDate"))) _deathdate = reader.GetDateTime(reader.GetOrdinal("DeathDate"));
+                if (!reader.IsDBNull(reader.GetOrdinal("DeathReason"))) _deathreason = reader.GetString(reader.GetOrdinal("DeathReason"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Remarks"))) _remarks = reader.GetString(reader.GetOrdinal("Remarks"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date1"))) _ex_date1 = reader.GetDateTime(reader.GetOrdinal("Ex_Date1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date2"))) _ex_date2 = reader.GetDateTime(reader.GetOrdinal("Ex_Date2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Nvarchar1"))) _ex_nvarchar1 = reader.GetString(reader.GetOrdinal("Ex_Nvarchar1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Nvarchar2"))) _ex_nvarchar2 = reader.GetString(reader.GetOrdinal("Ex_Nvarchar2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Bigint1"))) _ex_bigint1 = reader.GetInt64(reader.GetOrdinal("Ex_Bigint1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Bigint2"))) _ex_bigint2 = reader.GetInt64(reader.GetOrdinal("Ex_Bigint2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Decimal1"))) _ex_decimal1 = reader.GetDecimal(reader.GetOrdinal("Ex_Decimal1"));
+                if (!reader.IsDBNull(reader.GetOrdinal("Ex_Decimal2"))) _ex_decimal2 = reader.GetDecimal(reader.GetOrdinal("Ex_Decimal2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("TransID"))) this.BaseSecurityParam.transid = reader.GetString(reader.GetOrdinal("TransID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UserOrganizationKey"))) this.BaseSecurityParam.userorganizationkey = reader.GetInt64(reader.GetOrdinal("UserOrganizationKey"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UserEntityKey"))) this.BaseSecurityParam.userentitykey = reader.GetInt64(reader.GetOrdinal("UserEntityKey"));
+                if (!reader.IsDBNull(reader.GetOrdinal("CreatedBy"))) this.BaseSecurityParam.createdby = reader.GetInt64(reader.GetOrdinal("CreatedBy"));
+                if (!reader.IsDBNull(reader.GetOrdinal("CreatedByUserName"))) _createdbyusername = reader.GetString(reader.GetOrdinal("CreatedByUserName"));
+                if (!reader.IsDBNull(reader.GetOrdinal("CreatedDate"))) this.BaseSecurityParam.createddate = reader.GetDateTime(reader.GetOrdinal("CreatedDate"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UpdatedBy"))) this.BaseSecurityParam.updatedby = reader.GetInt64(reader.GetOrdinal("UpdatedBy"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UpdatedByUserName"))) _updatedbyusername = reader.GetString(reader.GetOrdinal("UpdatedByUserName"));
+                if (!reader.IsDBNull(reader.GetOrdinal("UpdatedDate"))) this.BaseSecurityParam.updateddate = reader.GetDateTime(reader.GetOrdinal("UpdatedDate"));
+                if (!reader.IsDBNull(reader.GetOrdinal("IPAddress"))) this.BaseSecurityParam.ipaddress = reader.GetString(reader.GetOrdinal("IPAddress"));
+                if (!reader.IsDBNull(reader.GetOrdinal("FormID"))) this.BaseSecurityParam.appformid = reader.GetInt64(reader.GetOrdinal("FormID"));
+                if (!reader.IsDBNull(reader.GetOrdinal("TS"))) this.BaseSecurityParam.ts = reader.GetInt64(reader.GetOrdinal("ts"));
+                CurrentState = EntityState.Unchanged;
+            }
+        }
+        #endregion
+    }
+}

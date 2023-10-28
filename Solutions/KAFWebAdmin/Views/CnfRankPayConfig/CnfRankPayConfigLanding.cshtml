@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Rank Wise Salary Config List";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading" style="height:60px;">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("CnfRankPayConfig/CnfRankPayConfigNew"))
+                    {
+                        <div class="col-lg-3">
+                            @Html.DropDownList("drpPayAllceID", KAF.FacadeCreatorObjects.cnf_paymentitemFCC.GetFacadeCreate().GetAll(
+                               new KAF.BusinessDataObjects.cnf_paymentitemEntity { }).Select(i => new SelectListItem()
+                               {
+                                   Text = i.itemname,
+                                   Value = i.payallceid.ToString()
+                               }), "Select Payment Type", new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-primary btn-md" id="btnNewCnfRankPayConfig">
+                                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                            </button>
+                        </div>
+
+
+
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="CnfRankPayConfigDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>Payment Type</th>
+                            <th>Group</th>
+                            <th>Rank</th>
+                            <th>Amount</th>
+                           
+                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-CnfRankPayConfigNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:60%!important">
+        <div class="modal-content" id="mcCnfRankPayConfigNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-CnfRankPayConfigEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:60%!important">
+        <div class="modal-content" id="mcCnfRankPayConfigEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-CnfRankPayConfigDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:60%!important">
+        <div class="modal-content" id="mcCnfRankPayConfigDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/Payment/CnfRankPayConfig/LandingCnfRankPayConfig.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/Payment/CnfRankPayConfig/NewCnfRankPayConfig.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/Payment/CnfRankPayConfig/EditCnfRankPayConfig.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/Payment/CnfRankPayConfig/DetailCnfRankPayConfig.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

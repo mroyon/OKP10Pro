@@ -1,0 +1,17 @@
+﻿
+
+
+    <a href="#" class="returnImage" data-url="http://localhost:18319/Uploads/Images/ccksgnabxcanjihovtcb.png">
+        <img src="http://localhost:18319/Uploads/Images/ccksgnabxcanjihovtcb.png" alt="Hejsan" id="#image" data-source="http://localhost:18319/Uploads/Images/ccksgnabxcanjihovtcb.png" width="200" height="200" />
+    </a>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".returnImage").click("click", function (e) {
+            var urlImage = $(this).attr("data-url");
+            //This takes the data value and id of the editor and sends the data(i.e.,image url) back to the caller page
+            window.opener.updateValue("cke_72_textInput", urlImage);
+            window.close();
+        });
+    });
+</script>

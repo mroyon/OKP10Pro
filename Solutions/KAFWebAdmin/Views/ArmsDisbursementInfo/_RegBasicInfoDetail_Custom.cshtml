@@ -1,0 +1,91 @@
+﻿@model KAF.BusinessDataObjects.reg_basicinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmReg_BasicInfoDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+<div class="panel panel-primary list-panel" id="list-panel">
+    <div class="panel-heading list-panel-heading">
+        @KAF.MsgContainer._reg_basicinfo.basicinfoDetails
+    </div>
+    @Html.HiddenFor(m => m.basicinfoid)
+    <div class="panel-body">
+        <div class="modal-body">
+            <div class="form-horizontal container">
+                <div class="row ">
+                    <div class="col-md-4">
+
+                        <img id="imgstudent" width="140" height="150"  src="@System.Configuration.ConfigurationManager.AppSettings["DomainURL"]@Model.filepath/@Model.filename@Model.extension" alt="profile image" />
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "labelNormal " })
+                                    @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.studentid, htmlAttributes: new { @class = "labelNormal " })
+                                    @Html.EditorFor(model => model.studentid, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.batchid, htmlAttributes: new { @class = "labelNormal   required " })
+                                    @{Html.RenderAction("LoadGen_BatchSearch", "Common", new { area = "", selectid = "batchid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Batch, multiple = false, isReadOnly = true, IsRequired = false });}
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.platoonid, htmlAttributes: new { @class = "labelNormal   required " })
+                                    @{Html.RenderAction("LoadGen_PlatoonSearch", "Common", new { area = "", selectid = "platoonid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Platoon, multiple = false, isReadOnly = true, IsRequired = false });}
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+}
+<script>
+    //filecontrol addons
+
+    $('.footable').footable({
+        calculateWidthOverride: function () {
+            return { width: $(window).width() };
+        }
+    });
+
+
+
+   
+
+</script>
+
+
+
+

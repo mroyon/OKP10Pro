@@ -1,0 +1,45 @@
+﻿@{ KAF.BusinessDataObjects.owin_userEntity user = (KAF.BusinessDataObjects.owin_userEntity)HttpContext.Current.Session["UserModel"]; }
+<script type="text/javascript">
+    function GetUserToken() {
+        return document.getElementById("txtUserSTK").value;
+    }
+</script>
+
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                @*<img src="@user.UserProfilePhoto" class="img-circle" alt="User Image" />*@
+              
+            </div>
+            <div class="pull-left info">
+                <p>@user.loweredusername</p>
+            </div>
+        </div>
+        @* BEGIN Search *@
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="fa fa-search"></span>
+                </div>
+                <input type="text" id="txtfiltermenu" name="q" class="form-control" autocomplete="off" placeholder="Search" />
+            </div>
+        </form>
+        @* END Search *@
+        @* BEGIN Menu *@
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu " id="menuitemslistul" data-widget="tree">
+            <!--static menu-->
+            @if (@Session["json"] != null)
+            {
+                @Html.Raw(@Session["json"].ToString())
+            }
+            else
+            {
+                Response.Redirect("~/login");
+            }
+        </ul>
+        @* END Menu *@
+    </section>
+</aside>

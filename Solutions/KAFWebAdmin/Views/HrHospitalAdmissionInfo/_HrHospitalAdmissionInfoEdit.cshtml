@@ -1,0 +1,208 @@
+﻿@model KAF.BusinessDataObjects.hr_hospitaladmissioninfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHospitalAdmissionInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_hospitaladmissioninfo.hospitaladmissioninfoUpdate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.hospitaladmissionid, htmlAttributes : new { id = "hddhospitaladmissionid" })
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                        @Html.HiddenFor(m => m.pageInfo)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.hrbasicid, htmlAttributes: new { @class = "labelNormal required " })
+
+                                @if (Model.pageInfo == "release")
+                                {
+                                    @Html.EditorFor(model => model.hrbasicid, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.hrbasicid, new { htmlAttributes = new { @class = "form-control" } })
+                                }
+                                @Html.ValidationMessageFor(model => model.hrbasicid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.hospitalname, htmlAttributes: new { @class = "labelNormal required " })
+                                @if (Model.pageInfo == "release")
+                                {
+                                    @Html.EditorFor(model => model.hospitalname, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.hospitalname, new { htmlAttributes = new { @class = " form-control" } })
+                                }
+                                @Html.ValidationMessageFor(model => model.hospitalname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.diseasename, htmlAttributes: new { @class = "labelNormal required " })
+                                @if (Model.pageInfo == "release")
+                                {
+                                    @Html.EditorFor(model => model.diseasename, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.diseasename, new { htmlAttributes = new { @class = " form-control" } })
+                                }
+                                @Html.ValidationMessageFor(model => model.diseasename, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "labelNormal  " })
+                                @if (Model.pageInfo == "release")
+                                {
+                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = " form-control", } })
+                                }
+                                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.hospitaladmissiondate, htmlAttributes: new { @class = "labelNormal  required   " })
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @if (Model.pageInfo == "release")
+                                    {
+                                        @Html.EditorFor(model => model.hospitaladmissiondate, new { htmlAttributes = new { @Value = Model.hospitaladmissiondate != null ? Convert.ToDateTime(Model.hospitaladmissiondate).ToString("dd-MM-yyyy") : null, @class = "form-control required ", @id = "modal_hospitaladmissiondate", @type = "text", @readonly = "readonly" } })
+                                    }
+                                    else
+                                    {
+                                        @Html.EditorFor(model => model.hospitaladmissiondate, new { htmlAttributes = new { @Value = Model.hospitaladmissiondate != null ? Convert.ToDateTime(Model.hospitaladmissiondate).ToString("dd-MM-yyyy") : null, @class = "form-control required ", @id = "modal_hospitaladmissiondate", @type = "text" } })
+                                    }
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.hospitaladmissiondate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        @*<div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.hospitaladmissiondate, htmlAttributes: new { @class = "labelNormal  required " })
+                    <div class='input-group date dateonly' id='' style='width: 100 %; '>
+                        @Html.EditorFor(model => model.hospitaladmissiondate, new { htmlAttributes = new { @Value = Model.hospitaladmissiondate != null ? Convert.ToDateTime(Model.hospitaladmissiondate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                        @Html.EditorFor(model => model.hospitaladmissiondate, new { htmlAttributes = new { @Value = Model.hospitaladmissiondate != null ? Convert.ToDateTime(Model.hospitaladmissiondate).ToString("dd-MM-yyyy") : null, @class = "form-control required ", @type = "text" } })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.hospitaladmissiondate, "", new { @class = "text-danger " })
+                </div>
+            </div>*@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.hospitalcountryid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadCountrySearch", "Common", new { area = "", selectid = "hospitalcountryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Country, multiple = false, isReadOnly = Model.pageInfo == "release" ? "true" : "false", IsRequired = true });}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                @if (Model.pageInfo == "release")
+                                {
+                                    @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                }
+                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row " style="@(Model.pageInfo == "admit" ? "display:none" : "display:block")">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.hospitalreleasedate, htmlAttributes: new { @class = "labelNormal  required   " })
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @if (Model.pageInfo == "release")
+                                    {
+                                        @Html.EditorFor(model => model.hospitalreleasedate, new { htmlAttributes = new { @Value = Model.hospitalreleasedate != null ? Convert.ToDateTime(Model.hospitalreleasedate).ToString("dd-MM-yyyy") : null, @id = "modal_hospitalreleasedate", @class = "form-control required ", @type = "text" } })
+                                    }
+                                    else
+                                    {
+                                        @Html.EditorFor(model => model.hospitalreleasedate, new { htmlAttributes = new { @Value = Model.hospitalreleasedate != null ? Convert.ToDateTime(Model.hospitalreleasedate).ToString("dd-MM-yyyy") : null, @id = "modal_hospitalreleasedate", @class = "form-control required ", @readonly = "readonly", @type = "text" } })
+                                    }
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.hospitalreleasedate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.releasenote, htmlAttributes: new { @class = "labelNormal  " })
+                                @if (Model.pageInfo == "release")
+                                {
+                                    @Html.EditorFor(model => model.releasenote, new { htmlAttributes = new { @class = " form-control" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.releasenote, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                }
+                                @Html.ValidationMessageFor(model => model.releasenote, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateHrHospitalAdmissionInfo" class="btn btn-primary btn-md btnUpdateHrHospitalAdmissionInfo"><i class="fa fa-edit"> </i>@KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+
+</script>
+
+
+
+
+
+

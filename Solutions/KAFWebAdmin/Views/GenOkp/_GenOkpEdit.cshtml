@@ -1,0 +1,114 @@
+﻿@model KAF.BusinessDataObjects.gen_okpEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmGen_OkpEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._gen_okp.okpUpdate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.okpid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.okpname, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.okpname, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.okpname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.raisingdate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.raisingdate, new { htmlAttributes = new { @Value = Model.raisingdate != null ? Convert.ToDateTime(Model.raisingdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.raisingdate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "labelNormal" })
+							 @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+														 @*<script>
+														 CKEDITOR.replace("description", {
+														 allowedContent: true, 
+														 extraAllowedContent: 'div;span;ul;li;table;td;style;*[id];*(*);*{*}', 
+														 toolbarCanCollapse: true, 
+														 language: 'ar', 
+														 extraPlugins: 'uploadimage,uploadwidget,image2,widget', 
+														 height: 300, 
+														 filebrowserBrowseUrl: '/Gen_Okp/_Gen_OkpImageBrowser?type=Files&tk=' + GetUserToken(), 
+														 filebrowserImageBrowseUrl: '/Gen_Okp/_Gen_OkpImageBrowser?type=Images&tk=' + GetUserToken(), 
+														 stylesSet: [ 
+														 { name: 'Narrow image', type: 'widget', widget: 'image', attributes: { 'class': 'image-narrow' } }, 
+{ name: 'Wide image', type: 'widget', widget: 'image', attributes: { 'class': 'image-wide' } } 
+														 ], 
+														 contentsCss: [CKEDITOR.basePath + 'contents.css', 'https://sdk.ckeditor.com/samples/assets/css/widgetstyles.css'], 
+														 image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'], 
+														 image2_disableResizer: true 
+														 }); 
+														 </script>*@
+							</div>
+						</div>
+                         <div class="col-md-6">
+                             <div class="form-group">
+                                 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                             </div>
+                         </div>
+					</div>
+					 <div class="row ">
+						 
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateGenOkp" class="btn btn-primary btn-md btnUpdateGenOkp"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+
+
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+
+</script>
+
+
+
+
+
+

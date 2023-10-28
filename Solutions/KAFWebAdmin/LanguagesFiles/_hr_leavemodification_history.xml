@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="leavemodificationid" value="AR:  Leave Modification I D"></resource>
+       <resource culture="ar-kw" name="leavemodificationidRequired" value="AR: Please provide  Leave Modification I D"></resource>
+       <resource culture="ar-kw" name="leaveinfoid" value="AR:  Leave Info I D"></resource>
+       <resource culture="ar-kw" name="leaveinfoidRequired" value="AR: Please provide  Leave Info I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="leavetypeid" value="AR:  Leave Type I D"></resource>
+       <resource culture="ar-kw" name="leavetypeidRequired" value="AR: Please provide  Leave Type I D"></resource>
+       <resource culture="ar-kw" name="modificationdate" value="AR:  Modification Date"></resource>
+       <resource culture="ar-kw" name="modificationdateRequired" value="AR: Please provide  Modification Date"></resource>
+       <resource culture="ar-kw" name="startdate" value="AR:  Start Date"></resource>
+       <resource culture="ar-kw" name="startdateRequired" value="AR: Please provide  Start Date"></resource>
+       <resource culture="ar-kw" name="enddate" value="AR:  End Date"></resource>
+       <resource culture="ar-kw" name="enddateRequired" value="AR: Please provide  End Date"></resource>
+       <resource culture="ar-kw" name="noofdays" value="AR:  No Of Days"></resource>
+       <resource culture="ar-kw" name="noofdaysRequired" value="AR: Please provide  No Of Days"></resource>
+       <resource culture="ar-kw" name="leavestartdate" value="AR:  Leave Start Date"></resource>
+       <resource culture="ar-kw" name="leavestartdateRequired" value="AR: Please provide  Leave Start Date"></resource>
+       <resource culture="ar-kw" name="leaveenddate" value="AR:  Leave End Date"></resource>
+       <resource culture="ar-kw" name="leaveenddateRequired" value="AR: Please provide  Leave End Date"></resource>
+       <resource culture="ar-kw" name="leavedays" value="AR:  Leave Days"></resource>
+       <resource culture="ar-kw" name="leavedaysRequired" value="AR: Please provide  Leave Days"></resource>
+       <resource culture="ar-kw" name="letterno" value="AR:  Letter No"></resource>
+       <resource culture="ar-kw" name="letterdate" value="AR:  Letter Date"></resource>
+       <resource culture="ar-kw" name="withgovtticket" value="AR:  With Govt Ticket"></resource>
+       <resource culture="ar-kw" name="withgovtticketRequired" value="AR: Please provide  With Govt Ticket"></resource>
+       <resource culture="ar-kw" name="modificationtype" value="AR:  Modification Type"></resource>
+       <resource culture="ar-kw" name="modificationtypeRequired" value="AR: Please provide  Modification Type"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="leavemodificationList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="leavemodificationCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="leavemodificationUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="leavemodificationDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="leavemodificationid" value=" Leave Modification I D"></resource>
+       <resource culture="en-us" name="leavemodificationidRequired" value="Please provide  Leave Modification I D"></resource>
+       <resource culture="en-us" name="leaveinfoid" value=" Leave Info I D"></resource>
+       <resource culture="en-us" name="leaveinfoidRequired" value="Please provide  Leave Info I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="leavetypeid" value=" Leave Type I D"></resource>
+       <resource culture="en-us" name="leavetypeidRequired" value="Please provide  Leave Type I D"></resource>
+       <resource culture="en-us" name="modificationdate" value=" Modification Date"></resource>
+       <resource culture="en-us" name="modificationdateRequired" value="Please provide  Modification Date"></resource>
+       <resource culture="en-us" name="startdate" value=" Start Date"></resource>
+       <resource culture="en-us" name="startdateRequired" value="Please provide  Start Date"></resource>
+       <resource culture="en-us" name="enddate" value=" End Date"></resource>
+       <resource culture="en-us" name="enddateRequired" value="Please provide  End Date"></resource>
+       <resource culture="en-us" name="noofdays" value=" No Of Days"></resource>
+       <resource culture="en-us" name="noofdaysRequired" value="Please provide  No Of Days"></resource>
+       <resource culture="en-us" name="leavestartdate" value=" Leave Start Date"></resource>
+       <resource culture="en-us" name="leavestartdateRequired" value="Please provide  Leave Start Date"></resource>
+       <resource culture="en-us" name="leaveenddate" value=" Leave End Date"></resource>
+       <resource culture="en-us" name="leaveenddateRequired" value="Please provide  Leave End Date"></resource>
+       <resource culture="en-us" name="leavedays" value=" Leave Days"></resource>
+       <resource culture="en-us" name="leavedaysRequired" value="Please provide  Leave Days"></resource>
+       <resource culture="en-us" name="letterno" value=" Letter No"></resource>
+       <resource culture="en-us" name="letterdate" value=" Letter Date"></resource>
+       <resource culture="en-us" name="withgovtticket" value=" With Govt Ticket"></resource>
+       <resource culture="en-us" name="withgovtticketRequired" value="Please provide  With Govt Ticket"></resource>
+       <resource culture="en-us" name="modificationtype" value=" Modification Type"></resource>
+       <resource culture="en-us" name="modificationtypeRequired" value="Please provide  Modification Type"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="leavemodificationList" value="View All"></resource>
+		<resource culture="en-us" name="leavemodificationCreate" value="Create"></resource>
+		<resource culture="en-us" name="leavemodificationUpdate" value="Update"></resource>
+		<resource culture="en-us" name="leavemodificationDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

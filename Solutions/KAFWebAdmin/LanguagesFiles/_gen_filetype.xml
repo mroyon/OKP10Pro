@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="filetypename" value="AR:  File Type Name"></resource>
+       <resource culture="ar-kw" name="filetypenameRequired" value="AR: Please provide  File Type Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="filetypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="filetypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="filetypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="filetypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="filetypename" value=" File Type Name"></resource>
+       <resource culture="en-us" name="filetypenameRequired" value="Please provide  File Type Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="filetypeList" value="View All"></resource>
+		<resource culture="en-us" name="filetypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="filetypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="filetypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

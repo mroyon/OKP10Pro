@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="newdemanddetlid" value="AR:  New Demand Detl ID"></resource>
+       <resource culture="ar-kw" name="newdemanddetlidRequired" value="AR: Please provide  New Demand Detl ID"></resource>
+       <resource culture="ar-kw" name="serialno" value="AR:  Serial No"></resource>
+       <resource culture="ar-kw" name="serialnoRequired" value="AR: Please provide  Serial No"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="passportrecvdate" value="AR:  Passport Recv Date"></resource>
+       <resource culture="ar-kw" name="letterno" value="AR:  Letter No"></resource>
+       <resource culture="ar-kw" name="letterdate" value="AR:  Letter Date"></resource>
+		<resource culture="ar-kw" name="demanddetlpassportList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="demanddetlpassportCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="demanddetlpassportUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="demanddetlpassportDetails" value="AR: Detail"></resource>
+  <resource culture="ar-kw" name="passportrecvdateRequired" value="AR: Please provide Passport Recv Date"></resource>
+       <resource culture="ar-kw" name="letternoRequired" value="AR: Please provide Letter No"></resource>
+       <resource culture="ar-kw" name="letterdateRequired" value="AR: Please provide Letter Date"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="newdemanddetlid" value=" New Demand Detl ID"></resource>
+       <resource culture="en-us" name="newdemanddetlidRequired" value="Please provide  New Demand Detl ID"></resource>
+       <resource culture="en-us" name="serialno" value=" Serial No"></resource>
+       <resource culture="en-us" name="serialnoRequired" value="Please provide  Serial No"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="passportrecvdate" value=" Passport Recv Date"></resource>
+       <resource culture="en-us" name="letterno" value=" Letter No"></resource>
+       <resource culture="en-us" name="letterdate" value=" Letter Date"></resource>
+        <resource culture="en-us" name="demanddetlpassportList" value="View All"></resource>
+		<resource culture="en-us" name="demanddetlpassportCreate" value="Create"></resource>
+		<resource culture="en-us" name="demanddetlpassportUpdate" value="Update"></resource>
+		<resource culture="en-us" name="demanddetlpassportDetails" value="Detail"></resource>
+  
+  <resource culture="en-us" name="passportrecvdateRequired" value="Please provide Passport Recv Date"></resource>
+       <resource culture="en-us" name="letternoRequired" value="Please provide Letter No"></resource>
+       <resource culture="en-us" name="letterdateRequired" value=" Please provide Letter Date"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

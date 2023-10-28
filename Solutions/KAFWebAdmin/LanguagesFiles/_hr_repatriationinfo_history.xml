@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="repatriationid" value="AR:  Repatriation I D"></resource>
+       <resource culture="ar-kw" name="repatriationidRequired" value="AR: Please provide  Repatriation I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc I D"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc I D"></resource>
+       <resource culture="ar-kw" name="soddate" value="AR:  S O D Date"></resource>
+       <resource culture="ar-kw" name="soddateRequired" value="AR: Please provide  S O D Date"></resource>
+       <resource culture="ar-kw" name="flightdate" value="AR:  Flight Date"></resource>
+       <resource culture="ar-kw" name="salaryreceivedtilldate" value="AR:  Salary Received Till Date"></resource>
+       <resource culture="ar-kw" name="rewardavaildate" value="AR:  Reward Avail Date"></resource>
+       <resource culture="ar-kw" name="letterdate" value="AR:  Letter Date"></resource>
+       <resource culture="ar-kw" name="letterdateRequired" value="AR: Please provide  Letter Date"></resource>
+       <resource culture="ar-kw" name="letterno" value="AR:  Letter No"></resource>
+       <resource culture="ar-kw" name="letternoRequired" value="AR: Please provide  Letter No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="repatriationinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="repatriationinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="repatriationinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="repatriationinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="repatriationid" value=" Repatriation I D"></resource>
+       <resource culture="en-us" name="repatriationidRequired" value="Please provide  Repatriation I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc I D"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc I D"></resource>
+       <resource culture="en-us" name="soddate" value=" S O D Date"></resource>
+       <resource culture="en-us" name="soddateRequired" value="Please provide  S O D Date"></resource>
+       <resource culture="en-us" name="flightdate" value=" Flight Date"></resource>
+       <resource culture="en-us" name="salaryreceivedtilldate" value=" Salary Received Till Date"></resource>
+       <resource culture="en-us" name="rewardavaildate" value=" Reward Avail Date"></resource>
+       <resource culture="en-us" name="letterdate" value=" Letter Date"></resource>
+       <resource culture="en-us" name="letterdateRequired" value="Please provide  Letter Date"></resource>
+       <resource culture="en-us" name="letterno" value=" Letter No"></resource>
+       <resource culture="en-us" name="letternoRequired" value="Please provide  Letter No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="repatriationinfoList" value="View All"></resource>
+		<resource culture="en-us" name="repatriationinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="repatriationinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="repatriationinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

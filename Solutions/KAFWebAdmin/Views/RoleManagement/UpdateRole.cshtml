@@ -1,0 +1,82 @@
+﻿@model KAF.BusinessDataObjects.owin_roleEntity
+@{
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "" }, new { @id = "roleForm", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    @KAF.MsgContainer._Common.detailstext  @KAF.MsgContainer._owin_role.pagetitle
+
+                </div>
+                <div class="panel-body">
+
+                    <div class="container MainPageCnt" role="main">
+                        <div class='ms-bodyareacell clearfix'>
+
+                            <div class="container-fluid">
+
+                                <div class="row">
+                                    @Html.HiddenFor(model => model.roleid)
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.rolename, KAF.MsgContainer._owin_role.rolename, htmlAttributes: new { @class = "labelNormal" })
+
+
+                                            @Html.EditorFor(model => model.rolename, new { htmlAttributes = new { @id = "txtRolename", @class = "form-control input-lg", @placeholder = "Name", @data_error = "provide role name" } })
+                                            @Html.ValidationMessageFor(m => m.rolename, "", new { @class = "text-danger " })
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.description, KAF.MsgContainer._owin_role.description, htmlAttributes: new { @class = "labelNormal" })
+
+
+                                            @Html.EditorFor(model => model.description, new { htmlAttributes = new { @id = "txtdescription", @class = "form-control input-lg", @placeholder = "Description", @data_error = "provide description" } })
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button type="submit" id="btnRoleEdit" class="form-control btn btn-primary btn-md">@KAF.MsgContainer._Common._btnUpdate <i class="fa fa-sign-in"></i></button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" id="btnRoleReturn" class="form-control btn btn-primary btn-md cancel"> @KAF.MsgContainer._Common._btnReset <i class="fa fa-arrow-left"></i></button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@*<input type="hidden" value="@PageData["baseUrl"]" id="txtBaseUrl" />*@
+@section Scripts {
+    <script src="~/DesignsAndScripts/PageWise/RoleManagement/RoleManagement.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/RoleManagement/UpdateRole.js"></script>
+}

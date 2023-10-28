@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="visasentid" value="AR:  Visa Sent ID"></resource>
+       <resource culture="ar-kw" name="visasentidRequired" value="AR: Please provide  Visa Sent ID"></resource>
+       <resource culture="ar-kw" name="visaissuedetlid" value="AR:  Visa Issue Detl ID"></resource>
+       <resource culture="ar-kw" name="visaissuedetlidRequired" value="AR: Please provide  Visa Issue Detl ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="visasentinfodetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="visasentinfodetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="visasentinfodetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="visasentinfodetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="visasentid" value=" Visa Sent ID"></resource>
+       <resource culture="en-us" name="visasentidRequired" value="Please provide  Visa Sent ID"></resource>
+       <resource culture="en-us" name="visaissuedetlid" value=" Visa Issue Detl ID"></resource>
+       <resource culture="en-us" name="visaissuedetlidRequired" value="Please provide  Visa Issue Detl ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="visasentinfodetlList" value="View All"></resource>
+		<resource culture="en-us" name="visasentinfodetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="visasentinfodetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="visasentinfodetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

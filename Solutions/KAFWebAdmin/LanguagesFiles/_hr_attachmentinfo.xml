@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic"></resource>
+       <resource culture="ar-kw" name="fromsubunitid" value="AR:  From Sub Unit"></resource>
+       <resource culture="ar-kw" name="fromsubunitidRequired" value="AR: Please provide  From Sub Unit"></resource>
+       <resource culture="ar-kw" name="fromcampid" value="AR:  From Camp"></resource>
+       <resource culture="ar-kw" name="fromcampidRequired" value="AR: Please provide  From Camp"></resource>
+       <resource culture="ar-kw" name="subunitid" value="AR:  Sub Unit"></resource>
+       <resource culture="ar-kw" name="subunitidRequired" value="AR: Please provide  Sub Unit"></resource>
+       <resource culture="ar-kw" name="campid" value="AR:  Camp"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp"></resource>
+       <resource culture="ar-kw" name="fromdate" value="AR:  Attachment Date"></resource>
+       <resource culture="ar-kw" name="fromdateRequired" value="AR: Please provide  From Date"></resource>
+       <resource culture="ar-kw" name="todate" value="AR:  To Date"></resource>
+       <resource culture="ar-kw" name="reason" value="AR:  Reason"></resource>
+       <resource culture="ar-kw" name="letterno" value="AR:  Letter No"></resource>
+       <resource culture="ar-kw" name="letterdate" value="AR:  Letter Date"></resource>
+       <resource culture="ar-kw" name="returndate" value="AR:  Return Date"></resource>
+       <resource culture="ar-kw" name="returnletterno" value="AR:  Return Letter No"></resource>
+       <resource culture="ar-kw" name="returnletterdate" value="AR:  Return Letter Date"></resource>
+       <resource culture="ar-kw" name="countryid" value="AR:  Country"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="attachmentinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="attachmentinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="attachmentinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="attachmentinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic"></resource>
+       <resource culture="en-us" name="fromsubunitid" value=" From Sub Unit"></resource>
+       <resource culture="en-us" name="fromsubunitidRequired" value="Please provide  From Sub Unit"></resource>
+       <resource culture="en-us" name="fromcampid" value=" From Camp"></resource>
+       <resource culture="en-us" name="fromcampidRequired" value="Please provide  From Camp"></resource>
+       <resource culture="en-us" name="subunitid" value="To Sub Unit"></resource>
+       <resource culture="en-us" name="subunitidRequired" value="Please provide  Sub Unit"></resource>
+       <resource culture="en-us" name="campid" value="To Camp"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp"></resource>
+       <resource culture="en-us" name="fromdate" value="Attachment Date"></resource>
+       <resource culture="en-us" name="fromdateRequired" value="Please provide  From Date"></resource>
+       <resource culture="en-us" name="todate" value=" To Date"></resource>
+       <resource culture="en-us" name="reason" value=" Reason"></resource>
+       <resource culture="en-us" name="letterno" value=" Letter No"></resource>
+       <resource culture="en-us" name="letterdate" value=" Letter Date"></resource>
+       <resource culture="en-us" name="returndate" value=" Return Date"></resource>
+       <resource culture="en-us" name="returnletterno" value=" Return Letter No"></resource>
+       <resource culture="en-us" name="returnletterdate" value=" Return Letter Date"></resource>
+       <resource culture="en-us" name="countryid" value=" Country"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="attachmentinfoList" value="View All"></resource>
+		<resource culture="en-us" name="attachmentinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="attachmentinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="attachmentinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

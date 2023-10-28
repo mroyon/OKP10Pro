@@ -1,0 +1,147 @@
+﻿@model KAF.BusinessDataObjects.reg_basicinfoEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmReg_BasicInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._reg_basicinfo.basicinfoUpdate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.basicinfoid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12" style="text-align:center">
+                            <div class="form-group">
+                                <img src="@System.Configuration.ConfigurationManager.AppSettings["DomainURL"]@Model.filepath/@Model.filename@Model.extension" id="imgProfilePic" width="100" height="120"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12" style="text-align:center">
+                            <div class="form-group">
+                                <div id="orderfilenoupld"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name1, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.name1, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name2, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.name2, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name3, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.name3, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name4, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.name4, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.name4, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.studentid, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.studentid, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.studentid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.batchid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadGen_BatchSearch", "Common", new { area = "", selectid = "batchid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Batch, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.platoonid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadGen_PlatoonSearch", "Common", new { area = "", selectid = "platoonid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Platoon, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateRegBasicInfo" class="btn btn-primary btn-md btnUpdateRegBasicInfo"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+ 
+$('.footable').footable({
+	 calculateWidthOverride: function () {
+		 return { width: $(window).width() };
+	 }
+});
+
+
+
+    $(document).ready(function () {
+
+        $('#orderfilenoupld').kaffileUploader({
+            _tableid: 'BasicInfoID', //'tbl_ is the convention and 'fileno' is the column name
+            _colname: 'FileName',
+            _tabname: 'Reg_BasicInfo',
+            _fileuploadbuttontext: 'Upload Profile Image',
+            _modelid: 'File_upload_for_Cert_Document',
+            _modeltext: '@KAF.MsgContainer._reg_basicinfo.fileName',
+            _fileinputname: 'profileimage', //'inpfile' is the convention and 'fileno' is the column name
+            _containeruploadpreview: 'BasicInfoID', //'fileno' is the column name + 'uploadpreview' is the convention
+            _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
+            _ismultiple: false//,
+            //_fileobject: fileobject
+        });
+
+    });
+
+</script>
+
+
+
+
+
+

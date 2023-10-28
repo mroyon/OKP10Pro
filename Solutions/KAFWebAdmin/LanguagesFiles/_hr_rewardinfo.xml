@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="rewarddate" value="AR:  Reward Date"></resource>
+       <resource culture="ar-kw" name="rewarddateRequired" value="AR: Please provide  Reward Date"></resource>
+       <resource culture="ar-kw" name="rewardevent" value="AR:  Reward Event"></resource>
+       <resource culture="ar-kw" name="rewardeventRequired" value="AR: Please provide  Reward Event"></resource>
+       <resource culture="ar-kw" name="reward" value="AR:  Reward"></resource>
+       <resource culture="ar-kw" name="rewardRequired" value="AR: Please provide  Reward"></resource>
+       <resource culture="ar-kw" name="rewardcountryid" value="AR:  Reward Country ID"></resource>
+       <resource culture="ar-kw" name="description" value="AR:  Description"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="rewardinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="rewardinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="rewardinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="rewardinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="rewarddate" value=" Reward Date"></resource>
+       <resource culture="en-us" name="rewarddateRequired" value="Please provide  Reward Date"></resource>
+       <resource culture="en-us" name="rewardevent" value=" Reward Event"></resource>
+       <resource culture="en-us" name="rewardeventRequired" value="Please provide  Reward Event"></resource>
+       <resource culture="en-us" name="reward" value=" Reward"></resource>
+       <resource culture="en-us" name="rewardRequired" value="Please provide  Reward"></resource>
+       <resource culture="en-us" name="rewardcountryid" value=" Reward Country ID"></resource>
+       <resource culture="en-us" name="description" value=" Description"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="rewardinfoList" value="View All"></resource>
+		<resource culture="en-us" name="rewardinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="rewardinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="rewardinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

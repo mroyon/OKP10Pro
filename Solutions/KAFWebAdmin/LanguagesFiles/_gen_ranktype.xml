@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="ranktype" value="AR:  Rank Type"></resource>
+       <resource culture="ar-kw" name="ranktypeRequired" value="AR: Please provide  Rank Type"></resource>
+       <resource culture="ar-kw" name="priority" value="AR:  Priority"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="ranktypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="ranktypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="ranktypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="ranktypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="ranktype" value=" Rank Type"></resource>
+       <resource culture="en-us" name="ranktypeRequired" value="Please provide  Rank Type"></resource>
+       <resource culture="en-us" name="priority" value=" Priority"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="ranktypeList" value="View All"></resource>
+		<resource culture="en-us" name="ranktypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="ranktypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="ranktypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

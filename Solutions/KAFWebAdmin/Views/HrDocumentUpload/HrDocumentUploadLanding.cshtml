@@ -1,0 +1,80 @@
+﻿
+@model KAF.BusinessDataObjects.hr_documentuploadEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("HrDocumentUpload/HrDocumentUploadNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md" id="btnNewHrDocumentUpload">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+
+                }
+                <button type="submit" id="btnModalCloseLanding" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                <input type="hidden" id="hrbasicidLanding" value="@ViewBag.hrbasicid" />
+                <input type="hidden" id="hrbasicids" value="2" />
+            </div>
+            <div class="panel-body">
+                <table id="HrDocumentUploadDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>@KAF.MsgContainer._hr_documentupload.docname</th>
+                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrDocumentUploadNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrDocumentUploadNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrDocumentUploadEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrDocumentUploadEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrDocumentUploadDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrDocumentUploadDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrDocumentUpload/LandingHrDocumentUpload.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrDocumentUpload/NewHrDocumentUpload.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrDocumentUpload/EditHrDocumentUpload.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrDocumentUpload/DetailHrDocumentUpload.js"></script>
+    @*<script src="~/DesignsAndScripts/PageWise/HRJS/HrDocumentUpload/jquery.uploadify.js"></script>*@
+    <script>
+        var addlink = '@ViewBag.addlink';
+
+
+       
+    </script>
+}
+
+
+

@@ -1,0 +1,118 @@
+﻿@model KAF.BusinessDataObjects.owin_userEntity
+@{
+    ViewBag.Title = KAF.MsgContainer._Login.userReviewpagetitle;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<style type="text/css">
+    input.user-search {
+        display: inline-block;
+        border: 0px solid;
+        width: 85%;
+    }
+</style>
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "" }, new { @id = "userReviewForm", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary list-panel" id="slxx">
+                <div class="panel-heading list-panel-heading">
+                    @KAF.MsgContainer._Login.userapprovalheader
+                </div>
+                <div class="panel-body">
+                    <div class="container MainPageCnt" role="main">
+                        <div class='ms-bodyareacell clearfix'>
+                            <div class="container-fluid">
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                      
+                                        @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "labelNormal required " })
+                                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @id = "txtUsername", @class = "form-control ", @placeholder = "Please enter user name", @data_error = "provide user name" } })
+                                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label for="exampleFormControlInput1">@KAF.MsgContainer._Login.isapproved</label>
+                                        @{
+                                            var listItems = new List<SelectListItem>();
+                                            listItems.Add(new SelectListItem { Text = @KAF.MsgContainer._CommonHtml.pleaseselect, Value = "-99" });
+                                            listItems.Add(new SelectListItem { Text = @KAF.MsgContainer._CommonHtml.yes, Value = "1" });
+                                            listItems.Add(new SelectListItem { Text = @KAF.MsgContainer._CommonHtml.no, Value = "0" });
+                                        }
+                                        @Html.DropDownList("ddlIsReviewed", listItems, new { @id = "ddlIsReviewed", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <button type="submit" id="btnSearch" class="btn btn-primary btn-md"> @KAF.MsgContainer._CommonHtml.searchText <i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <hr />
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <div id="list-panel">
+                                            <div class="row">
+                                                <table id="reviewTable" class="table table-striped table-bordered" style="width:100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>@KAF.MsgContainer._Login.username</th>
+                                                            <th>
+                                                                @KAF.MsgContainer._Login.emailaddress /
+                                                            <br />
+                                                            @KAF.MsgContainer._Login.mobilenumber
+                                                        </th>
+                                                        <th>
+                                                            @KAF.MsgContainer._Login.islocked /
+                                                        <br />
+                                                        @KAF.MsgContainer._Login.isapproved
+                                                    </th>
+                                                    <th>
+                                                        <input type="checkbox" name="check_all" class="select-checkall" id="check_all" value="1" /> @KAF.MsgContainer._CommonHtml.isreviewed
+                                                        / <br />@KAF.MsgContainer._CommonHtml.comment
+                                                    </th>
+                                                    <th>
+                                                        @KAF.MsgContainer._CommonHtml.date /
+                                                    <br />@KAF.MsgContainer._CommonHtml.by
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div id="list-panelButtons">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+}
+
+
+@section Scripts {
+    <script src="~/DesignsAndScripts/PageWise/Security/UserReview/UserReview.js"></script>
+}
+
+
+

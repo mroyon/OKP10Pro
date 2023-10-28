@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EF8DAE61-781C-41D2-8290-C01419A273C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KAF.BusinessDataObjects</RootNamespace>
+    <AssemblyName>KAF.BusinessDataObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessDataObjectsBase\BaseEntity.cs" />
+    <Compile Include="BusinessDataObjectsBase\clsValidateExcludeChar.cs" />
+    <Compile Include="BusinessDataObjectsBase\SecurityCapsule.cs" />
+    <Compile Include="BusinessDataObjectsBase\security\userClass.cs" />
+    <Compile Include="BusinessDataObjectsBase\TransMessegeEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ApplicationUser.cs" />
+    <Compile Include="BusinessDataObjectsPartials\clsObjectUCaseIndentification.cs" />
+    <Compile Include="BusinessDataObjectsPartials\clsTableAndFormRelationEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\gen_govcityEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_attachmentinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_demanddetlpassportEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_hospitaladmissioninfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_newdemanddetlEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_newdemandEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_leaveinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_okptransferinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_deathinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_repatriationInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_passportinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_personalinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_svcinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\hr_partial.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAFGenericComboEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\clsLogDetailEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\MenuModel\MenuWiseForm.cs" />
+    <Compile Include="BusinessDataObjectsPartials\Owin_ProcessGetFormActionistEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\Owin_ProcessGetFormActionistEntity_Ext.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_UserSearchViewEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\clsUserNameAndNumberEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAFNameAndIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_ReplyContainerEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\MailEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAFParamsListGeneric.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_GetMenuHierarchyEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_GetUserInfoByCredentialEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_LoadMenuByUserIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_LoadPermissionToUseEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_OnlyUserAccWithNameEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\KAF_TransCodesEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\hr_flightcancelinfo_GAPgListView_ExtEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAFProcess_ManpoewrStateEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAFProcess_UpdateLetterStatusEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_CuttingInsertEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetChildUnitsEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetDemandListByDemandIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetFlightListByFlightIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetLeaveBalanceEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetMilitaryPersonalInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetNewDemandInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetProfileInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetPTADemandListByPTADemandIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetPTAReceivedListByPTAReceiveIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetRankByGroupEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetReplacementInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetReplacementListByREplacementIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetReplacementPassportListByRepPassportIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetRepPassportListByRepPassportIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetVisaDemandListByVisaDemandIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetVisaIssueListByVisaIssueIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAF_GetVisaSentListByVisaSentIDEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\Kaf_tran_cuttinginfo_ProcessCountEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_BMCStrengthSummaryEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_CampWiseManpowerStateHeldEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_CuttingSummaryEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_CuttingSummeryIndividualEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_DeploymentStateEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_GetCuttingInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_GetCuttingInfo_ExtEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_GetTotalApplicableEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_GetTotalApplicable_DetailEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_HospitalInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_LeaveInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_ManpoewrStateByStatusEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_ManpoewrStateEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_OkpSummaryOkpwiseEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_OkpWiseManpowerStateEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_OkpWiseManpowerStateHeldAuthEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_OkpWiseManpowerStateHeldEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_PrfoileFullReportEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_RepatriationInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_TableColumnEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_TableReferenceInfo.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_TableNameEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_arrivalreportEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_GetReplacementPassportInfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_issueofvisaandptaEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_newdemanddetailsEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_passportheldbyspabEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_ptareceivedwithflightinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_visareceivedpersonnelEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\tran_cuttinginfodetl_GAPgListView_ExtEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\tran_cuttinginfo_GAPgListView_ExtEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\UserHubModels.cs" />
+    <Compile Include="BusinessDataObjects\Common\cor_foldercontentsEntity.cs" />
+    <Compile Include="BusinessDataObjects\Common\cor_foldershareddataEntity.cs" />
+    <Compile Include="BusinessDataObjects\Common\cor_foldersharedinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Common\cor_folderstructureEntity.cs" />
+    <Compile Include="BusinessDataObjects\Common\log_applogactivityEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_airlinesEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_armsEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_authorizestrengthEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_bankbranchEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_bankEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_bloodgroupEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_buildingEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_campEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_countryEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_divisiondistrictEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_documenttypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_filetypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_freedomfighttypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_genderEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_govcityEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_issuetypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_languageEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_languageproficiencyEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_leaveconfigEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_leavetypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_maritalstatusEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_movementtypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_okpcoEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_okpEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_penaltytypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_postofficeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_promotiontypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_rankEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_ranktypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_relationshipEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_religionEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_servicestatusEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_subunitEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_thanaEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_tradeEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_addresschangeEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_attachmentinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_documentuploadEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_okptransferinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\hr_deathinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\hr_deathinfo_historyEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\hr_leaveinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\hr_leaveinfo_historyEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\hr_leavemodificationEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\hr_leavemodification_historyEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\tran_manpowerstatedetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\tran_manpowerstatedetl_historyEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\tran_manpowerstateEntity.cs" />
+    <Compile Include="BusinessDataObjects\ParadeState\tran_manpowerstate_historyEntity.cs" />
+    <Compile Include="BusinessDataObjects\Payment\cnf_paymentitemEntity.cs" />
+    <Compile Include="BusinessDataObjects\Payment\cnf_rankpayconfigEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_currencyexchagerateEntity.cs" />
+    <Compile Include="BusinessDataObjects\Payment\gen_grouprankEntity.cs" />
+    <Compile Include="BusinessDataObjects\GEN\gen_monthEntity.cs" />
+    <Compile Include="BusinessDataObjects\Payment\tran_cuttinginfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Payment\tran_cuttinginfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_arrivalinfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_arrivalinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_bankaccountinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_bankloaninfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_basicfileEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_basicprofileEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_demanddetlpassportEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_emergencycontactEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_extensioninfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_familyinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_familyjobinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_flightinfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_flightinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_hospitaladmissioninfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_languageproficiencyEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_medicalinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_newdemanddetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_newdemandEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_passportinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_personalinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_promotioninfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_ptademanddetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_ptademandEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_ptareceiveddetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_ptareceivedEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_punishmentinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_repatriationinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_replacementinfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_replacementinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_reppassportinfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_reppassportinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_residentvisaEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_rewardinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_svcinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_visademandinfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_visademandinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_visaissueinfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_visaissueinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_visasentinfodetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Process\hr_visasentinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\rptm_allreportinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\rptm_reportdatasourceEntity.cs" />
+    <Compile Include="BusinessDataObjects\rptm_reportparameterEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_formactionEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_forminfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_lastworkingpageEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_reportpermissionEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_reportroleEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_reportroletemplateEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_roleEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_rolepermissionEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_tsvEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userlogintrailEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userpasswordresetinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userprefferencessettingsEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userroledetlEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userroledetlentitymapEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userroledetlentityprofilemapEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userroleEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\owin_userstatuschangehistoryEntity.cs" />
+    <Compile Include="BusinessDataObjects\Security\useraccountsprofEntity.cs" />
+    <Compile Include="BusinessDataObjects\STP\stp_countrycityEntity.cs" />
+    <Compile Include="BusinessDataObjects\STP\stp_countryEntity.cs" />
+    <Compile Include="BusinessDataObjects\STP\stp_organizationEntity.cs" />
+    <Compile Include="BusinessDataObjects\STP\stp_organizationentityEntity.cs" />
+    <Compile Include="BusinessDataObjects\STP\stp_organizationentitytypeEntity.cs" />
+    <Compile Include="BusinessDataObjects\STP\stp_passpolicyEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="BDOTemplates\DTOGenerator.csp" />
+    <None Include="BDOTemplates\DTOGenerator.cst" />
+    <None Include="BDOTemplates\DTOGeneratorSP.csp" />
+    <None Include="BDOTemplates\DTOGeneratorSP.cst" />
+    <None Include="BDOTemplates\MFS.BusinessDataObjects.cst" />
+    <None Include="BDOTemplates\MFS.BusinessDataObjectsEx.cst" />
+    <None Include="BDOTemplates\MFS.BusinessDataObjectsSP.cst" />
+    <None Include="BDOTemplates\_xmlResourceClass.cst" />
+    <None Include="BDOTemplates\_xmlResourceClassGenerate.csp" />
+    <None Include="BDOTemplates\_xmlResourceClassGenerate.cst" />
+    <None Include="BDOTemplates\_xmlSchema.cst" />
+    <None Include="BDOTemplates\_XMLSchemaGenerator.csp" />
+    <None Include="BDOTemplates\_XMLSchemaGenerator.cst" />
+    <None Include="BDOTemplates\_xmlUnityEntityDisReq.cst" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KAF.MsgContainer\KAF.MsgContainer.csproj">
+      <Project>{03da147d-34e0-402d-aff7-588feff38665}</Project>
+      <Name>KAF.MsgContainer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

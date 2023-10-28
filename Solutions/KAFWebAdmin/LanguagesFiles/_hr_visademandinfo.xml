@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="demandtype" value="AR:  Demand Type"></resource>
+       <resource culture="ar-kw" name="demandtypeRequired" value="AR: Please provide  Demand Type"></resource>
+       <resource culture="ar-kw" name="passportinfoid" value="AR:  Passport Info ID"></resource>
+       <resource culture="ar-kw" name="passportinfoidRequired" value="AR: Please provide  Passport Info ID"></resource>
+       <resource culture="ar-kw" name="visademanddate" value="AR:  Visa Demand Date"></resource>
+       <resource culture="ar-kw" name="visademanddateRequired" value="AR: Please provide  Visa Demand Date"></resource>
+       <resource culture="ar-kw" name="visademandletterdate" value="AR:  Visa Demand Letter Date"></resource>
+       <resource culture="ar-kw" name="visademandletterdateRequired" value="AR: Please provide  Visa Demand Letter Date"></resource>
+       <resource culture="ar-kw" name="visademandletterno" value="AR:  Visa Demand Letter No"></resource>
+       <resource culture="ar-kw" name="visademandletternoRequired" value="AR: Please provide  Visa Demand Letter No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="visademandinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="visademandinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="visademandinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="visademandinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="demandtype" value=" Demand Type"></resource>
+       <resource culture="en-us" name="demandtypeRequired" value="Please provide  Demand Type"></resource>
+       <resource culture="en-us" name="passportinfoid" value=" Passport Info ID"></resource>
+       <resource culture="en-us" name="passportinfoidRequired" value="Please provide  Passport Info ID"></resource>
+       <resource culture="en-us" name="visademanddate" value=" Visa Demand Date"></resource>
+       <resource culture="en-us" name="visademanddateRequired" value="Please provide  Visa Demand Date"></resource>
+       <resource culture="en-us" name="visademandletterdate" value=" Visa Demand Letter Date"></resource>
+       <resource culture="en-us" name="visademandletterdateRequired" value="Please provide  Visa Demand Letter Date"></resource>
+       <resource culture="en-us" name="visademandletterno" value=" Visa Demand Letter No"></resource>
+       <resource culture="en-us" name="visademandletternoRequired" value="Please provide  Visa Demand Letter No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="visademandinfoList" value="View All"></resource>
+		<resource culture="en-us" name="visademandinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="visademandinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="visademandinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

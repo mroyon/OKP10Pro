@@ -1,0 +1,56 @@
+﻿
+
+@{
+    ViewBag.Title = KAF.MsgContainer._owin_role.pagetitle;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @*<h1 class="panel-title list-panel-title">User Role</h1>*@
+                @*<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#advancedSearchModal" id="advancedsearch-button">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Advanced Search
+                    </button>*@
+                <button type="submit" class="btn btn-default btn-md" data-url="@PageData["baseUrl"]@Url.Action("Role_Create", "RoleManagement")" id="btnCreateRole">
+                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                </button>
+            </div>
+            <div class="panel-body">
+                <table id="Rolesdt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>@KAF.MsgContainer._owin_role.rolename</th>
+                            <th>@KAF.MsgContainer._owin_role.description</th>
+                            <th>@KAF.MsgContainer._CommonHtml._listAction</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-roleedit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="roleeditdatacontainer">
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="detailsRoleModal" role="dialog" aria-labelledby="DetailsRoleModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" style="width:60%!important">
+        <div class="modal-content" id="detailsRoleContainer">
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script type="text/javascript" src="~/DesignsAndScripts/PageWise/Security/RoleManagement/RoleManagement.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/Security/RoleManagement/UpdateRole.js"></script>
+}

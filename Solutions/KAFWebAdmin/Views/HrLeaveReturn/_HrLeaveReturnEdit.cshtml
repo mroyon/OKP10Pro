@@ -1,0 +1,472 @@
+﻿@model KAF.BusinessDataObjects.hr_leaveinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_LeaveInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_leaveinfo.leaveinfoUpdate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.leaveinfoid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                        @Html.HiddenFor(m => m.hrbasicid)
+                    </div>
+                    <div class="panel panel-primary list-panel" id="list-panel">
+                        <div class="panel-heading list-panel-heading">
+                            Actual Leave Information
+                        </div>
+                        <div class="panel-body">
+                            <div class="modal-body">
+                                <div class="row ">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.leavetypeid, htmlAttributes: new { @class = "labelNormal required " })
+                                            @{Html.RenderAction("LoadLeaveTypeSearch", "Common", new { area = "", selectid = "leavetypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloaded_leavetype, multiple = false, isReadOnly = true, IsRequired = true, isActive = 1 });}
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.startdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date ' id='fromdateapprx' style="width: 100 %; ">
+                                                @Html.EditorFor(model => model.startdate, new { htmlAttributes = new { @Value = Model.startdate != null ? Convert.ToDateTime(Model.startdate).ToString("dd-MM-yyyy") : null, @class = " form-control", @readonly = "readonly", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.startdate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.enddate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date ' id='todateapprx' style="width: 100 %; ">
+                                                @Html.EditorFor(model => model.enddate, new { htmlAttributes = new { @Value = Model.enddate != null ? Convert.ToDateTime(Model.enddate).ToString("dd-MM-yyyy") : null, @class = " form-control", @readonly = "readonly", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.enddate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.leavestartdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date ' id='fromdateactual' style="width: 100 %; ">
+                                                @Html.EditorFor(model => model.leavestartdate, new { htmlAttributes = new { @Value = Model.leavestartdate != null ? Convert.ToDateTime(Model.leavestartdate).ToString("dd-MM-yyyy") : null, @class = " form-control", @readonly = "readonly", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.leavestartdate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.leaveenddate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date ' id='todateactual' style="width: 100 %; ">
+                                                @Html.EditorFor(model => model.leaveenddate, new { htmlAttributes = new { @Value = Model.leaveenddate != null ? Convert.ToDateTime(Model.leaveenddate).ToString("dd-MM-yyyy") : null, @class = " form-control", @readonly = "readonly", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.leaveenddate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.leavedays, htmlAttributes: new { @class = "labelNormal  required " })
+                                            @Html.EditorFor(model => model.leavedays, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.letterno, htmlAttributes: new { @class = "labelNormal  " })
+                                            @Html.EditorFor(model => model.letterno, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.letterno, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.letterdate, htmlAttributes: new { @class = "labelNormal   " })
+                                            <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                                @Html.EditorFor(model => model.letterdate, new { htmlAttributes = new { @Value = Model.letterdate != null ? Convert.ToDateTime(Model.letterdate).ToString("dd-MM-yyyy") : null, @class = " form-control", @readonly = "readonly", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.letterdate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.withgovtticket, htmlAttributes: new { @class = "labelNormal required " })
+                                            @Html.EditorFor(model => model.withgovtticket, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.withgovtticket, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                            @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model.ismodified == true && Model.objModifiedLeave != null)
+                    {
+                        <div class="panel panel-primary list-panel" id="list-panel">
+                            <div class="panel-heading list-panel-heading">
+                                Modified Leave Information
+                            </div>
+                            <div class="panel-body">
+                                <div class="modal-body">
+                                    <div class="form-horizontal container">
+
+                                        <div class="row ">
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.objModifiedLeave.leavetypeid, htmlAttributes: new { @class = "labelNormal required " })
+                                                    @{Html.RenderAction("LoadLeaveTypeSearch", "Common", new { area = "", selectid = "ddlleavetypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloaded_leavetype, multiple = false, isReadOnly = true, IsRequired = true, isActive = 1 });}
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.startdate, htmlAttributes: new { @class = "labelNormal   " })
+                                                    <div class='input-group date ' id='' style="width: 100 %; ">
+                                                        @Html.Editor("txtstartdate", new { htmlAttributes = new { @Value = Model.objModifiedLeave.startdate != null ? Convert.ToDateTime(Model.objModifiedLeave.startdate).ToString("dd-MM-yyyy") : null, @class = " form-control", @readonly = "readonly", @type = "text" } })
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                    @Html.ValidationMessageFor(m => m.startdate, "", new { @class = "text-danger " })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.enddate, htmlAttributes: new { @class = "labelNormal  required " })
+                                                    <div class='input-group date ' id='' style="width: 100 %; ">
+                                                        @Html.Editor("txtenddate", new { htmlAttributes = new { @Value = Model.objModifiedLeave.enddate != null ? Convert.ToDateTime(Model.objModifiedLeave.enddate).ToString("dd -MM-yyyy") : null, @class = " form-control", @type = "text", @readonly = "readonly" } })
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                    @Html.ValidationMessageFor(m => m.enddate, "", new { @class = "text-danger " })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row ">
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.leavestartdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                                    <div class='input-group date ' id='' style="width: 100 %; ">
+                                                        @Html.Editor("txtleavestartdate", new { htmlAttributes = new { @Value = Model.objModifiedLeave.leavestartdate != null ? Convert.ToDateTime(Model.objModifiedLeave.leavestartdate).ToString("dd -MM-yyyy") : null, @class = " form-control", @type = "text", @readonly = "readonly" } })
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                    @Html.ValidationMessageFor(m => m.leavestartdate, "", new { @class = "text-danger " })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.leaveenddate, htmlAttributes: new { @class = "labelNormal  required " })
+                                                    <div class='input-group date ' id='' style="width: 100 %; ">
+                                                        @Html.Editor("txtleaveenddate", new { htmlAttributes = new { @Value = Model.objModifiedLeave.leaveenddate != null ? Convert.ToDateTime(Model.objModifiedLeave.leaveenddate).ToString("dd -MM-yyyy") : null, @class = " form-control", @type = "text", @readonly = "readonly" } })
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                    @Html.ValidationMessageFor(m => m.leaveenddate, "", new { @class = "text-danger " })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.leavedays, htmlAttributes: new { @class = "labelNormal  required " })
+                                                    @Html.Editor("txtleavedays", new { htmlAttributes = new { @Value = Model.objModifiedLeave.leavedays, @class = " form-control", @readonly = "readonly" } })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row ">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.letterno, htmlAttributes: new { @class = "labelNormal  " })
+                                                    @Html.Editor("txtletterno", new { htmlAttributes = new { @Value = Model.objModifiedLeave.letterno, @class = " form-control", @readonly = "readonly" } })
+                                                    @Html.ValidationMessageFor(model => model.letterno, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.letterdate, htmlAttributes: new { @class = "labelNormal   " })
+                                                    <div class='input-group date ' id='' style="width: 100 %; ">
+                                                        @Html.Editor("txtletterdate", new { htmlAttributes = new { @Value = Model.objModifiedLeave.letterdate != null ? Convert.ToDateTime(Model.objModifiedLeave.letterdate).ToString("dd -MM-yyyy") : null, @class = " form-control", @type = "text", @readonly = "readonly" } })
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                    @Html.ValidationMessageFor(m => m.letterdate, "", new { @class = "text-danger " })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.withgovtticket, htmlAttributes: new { @class = "labelNormal required " })
+                                                    @Html.Editor("txtwithgovtticket", new { htmlAttributes = new { @Value = Model.objModifiedLeave.withgovtticket, @class = " form-control", @readonly = "readonly" } })
+                                                    @Html.ValidationMessageFor(model => model.withgovtticket, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row ">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                                    @Html.Editor("txtremarks", new { htmlAttributes = new { @Value = Model.objModifiedLeave.remarks, @class = " form-control", @readonly = "readonly" } })
+                                                    @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <br />
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Rejoining Letter No", htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.returnletterno, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.returnletterno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Rejoining Letter Date", htmlAttributes: new { @class = "labelNormal required  " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.returnletterdate, new { htmlAttributes = new { @Value = Model.returnletterdate != null ? Convert.ToDateTime(Model.returnletterdate).ToString("dd-MM-yyyy") : null, @class = " form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.returnletterdate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Rejoining Date", htmlAttributes: new { @class = "labelNormal  required " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.returndate, new { htmlAttributes = new { @Value = Model.returndate != null ? Convert.ToDateTime(Model.returndate).ToString("dd-MM-yyyy") : null, @class = " form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.returndate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateHrLeaveReturn" class="btn btn-primary btn-md btnUpdateHrLeaveReturn"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<script>
+    //filecontrol addons
+    function CalcActualDays(date1, date2) {
+        if (date1 != null && date2 != null) {
+            var Difference_In_Time = new Date(date2).getTime() - new Date(date1).getTime();
+
+            // To calculate the no. of days between two dates
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+            $("#leavedays").val(Difference_In_Days + 1);
+        }
+    }
+
+    function LoadLeaveBal() {
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "HrLeaveReturnNew",
+                currenturl: window.location.href,
+
+                HRBasicID: $("#hrbasicid").val(),
+                LeaveTypeID: $("#leavetypeid").val(),
+                LeaveStartDate: GetDateFromTextBox($('#leavestartdate').val())
+            });
+
+            $.ajax({
+                url: baseurl + "HrLeaveReturn/GetLeaveBalance",
+                type: 'POST',
+                data: input,
+                success: function (response) {
+                    $("#txtbalance").val(response.data[0].TotalBalance);
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    $(document).ready(function () {
+        //initializedatetimepicker();
+        LoadLeaveBal();
+
+        //$('#frmHr_LeaveInfoEdit').data("validator").settings.rules["returnletterno"].email = false;
+        // CalcActualDays(GetDateFromTextBox($j("#leavestartdate").val()), GetDateFromTextBox($j("#leaveenddate").val()));
+
+        $("#leavetypeid").change(function () {
+
+            LoadLeaveBal();
+
+        });
+
+        $j('#fromdateactual').datetimepicker(
+            {
+                format: 'DD-MM-YYYY'
+            });
+
+
+        $j('#todateactual').datetimepicker(
+            {
+                useCurrent: false,
+                format: 'DD-MM-YYYY'
+            });
+
+        $j("#fromdateactual").on("dp.change", function (e) {
+            if ($j("#leavestartdate").val().length > 0) {
+                var result = new Date(e.date);
+                result.setHours(0, 0, 0, 0);
+                $j('#todateactual').data("DateTimePicker").minDate(result);
+
+                if ($("#txtbalance").val().length > 0) {
+
+                    result.setDate(result.getDate() + parseInt($("#txtbalance").val()) - 1);
+                    // var maxdate = result.getDate() + parseInt($("#txtbalance").val());
+                    $j('#todateactual').data("DateTimePicker").maxDate(result);
+
+                }
+
+                CalcActualDays(GetDateFromTextBox($j("#leavestartdate").val()), GetDateFromTextBox($j("#leaveenddate").val()));
+            }
+        });
+        $j("#todateactual").on("dp.change", function (e) {
+            if ($j("#leaveenddate").val().length > 0) {
+                var result = new Date(e.date);
+                result.setHours(0, 0, 0, 0);
+                $j('#fromdateactual').data("DateTimePicker").maxDate(result);
+                CalcActualDays(GetDateFromTextBox($j("#leavestartdate").val()), GetDateFromTextBox($j("#leaveenddate").val()));
+            }
+        });
+
+
+
+        $j('#fromdateapprx').datetimepicker(
+            {
+                format: 'DD-MM-YYYY'
+            });
+
+        $j('.dateonly').datetimepicker(
+            {
+                format: 'DD-MM-YYYY'
+            });
+
+
+        $j('#todateapprx').datetimepicker(
+            {
+                useCurrent: false,
+                format: 'DD-MM-YYYY'
+            });
+
+        $j("#fromdateapprx").on("dp.change", function (e) {
+            if ($j("#startdate").val().length > 0) {
+                var result = new Date(e.date);
+                result.setHours(0, 0, 0, 0);
+                $j('#fromdateactual').data("DateTimePicker").minDate(result);
+
+                if ($("#txtbalance").val().length > 0) {
+                    result.setDate(result.getDate() + parseInt($("#txtbalance").val()) + 17);
+                    $j('#todateapprx').data("DateTimePicker").maxDate(result);
+
+                }
+
+            }
+        });
+        $j("#todateapprx").on("dp.change", function (e) {
+            //if ($j("#enddate").val().length > 0) {
+            //    var result = new Date(e.date);
+            //    result.setHours(0, 0, 0, 0);
+            //    $j('#fromdateactual').data("DateTimePicker").maxDate(result);
+
+            //}
+        });
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+
+

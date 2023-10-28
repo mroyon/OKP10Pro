@@ -1,0 +1,331 @@
+﻿@model KAF.BusinessDataObjects.hr_flightinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 0px;
+    }
+
+    .form-control {
+       height:31px;
+    }
+
+    .input-group-addon {
+        padding: 3px 12px;
+    }
+
+    .panel {
+        margin-bottom: 5px;
+    }
+
+    .panel-body {
+        padding: 7px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_FlightInfoNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            Flight Information: @KAF.MsgContainer._hr_flightinfo.flightinfoCreate
+            <div class="col-lg-3" style="float:right;text-align:right;">
+                <button type="button" id="btnModalCloseNew" class="close btnModalCloseNew" aria-label="Close"
+                        style="opacity:1.0;opacity: 1.0; margin-top: -11px; color: white;  margin-right: -20px;  font-size: 39px;">
+                    <span aria-hidden="true" class=" btnModalCloseNew">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.flightid)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            @{Html.RenderAction("LoadPTAReceivedLetterNoByDate", "Common", new { area = "", selectid = "PTIID", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                        </div>
+                        <div class="col-md-6">
+                            <button style="margin-top: 73px;" type="submit" id="btnSearch" class="btn btn-primary btn-md btnSearch"><i class="fa fa-search"> </i> @KAF.MsgContainer._Common._btnSearch</button>
+                            <button style="margin-top: 73px;margin-left:10px;" onclick="clearAllform();" type="button" id="btnClear" class="btn btn-primary btn-md btnClear"><i class="fa fa-close"> </i> @KAF.MsgContainer._Common._btnClear</button>
+
+                        </div>
+                    </div>
+
+                    <div id="dvInfoDetail" class="hidden">
+
+                        <div class="row " style="margin-top: 10px;">
+                            <div class="col-md-6">
+                                <input id="chknewassign" type="checkbox" checked="checked" class="chkAssign" name="chkAssign" value="assignnew" style="margin-left: 11px;"> Assign New Letter No
+                                <input id="chkupdassign" type="checkbox" name="vehicle1" value="updateexisting" class="chkAssign" style="margin-left:20px;"> Update Existing Letter No
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel panel-primary list-panel hidden" id="dvexistingletterno">
+                            <div class="panel-body">
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        @{Html.RenderAction("LoadFlightLetterNo", "Common", new { area = "", selectid = "existingflightid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true });}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-primary list-panel" id="dvrecinfo">
+                            <div class="panel-body">
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.flightdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                                @Html.EditorFor(model => model.flightdate, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.flightdate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.airlinesid, htmlAttributes: new { @class = "labelNormal  " })
+                                            @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_airlinesEntity[0].ToString(), selectid = "airlinesid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.gen_acrgrade, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true });}
+                                            @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.flightletterdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                            <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                                @Html.EditorFor(model => model.flightletterdate, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                            @Html.ValidationMessageFor(m => m.flightletterdate, "", new { @class = "text-danger " })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.flightletterno, htmlAttributes: new { @class = "labelNormal required " })
+                                            @Html.EditorFor(model => model.flightletterno, new { htmlAttributes = new { @class = " form-control" } })
+                                            @Html.ValidationMessageFor(model => model.flightletterno, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <table id="GenflightDt" class="table table-striped table-bordered dataTable no-footer dtr-inline" style="width:100%;" role="grid" aria-describedby="GenflightDt_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th rowspan="1" colspan="1" style='width:50px'>SL</th>
+                                            <th rowspan="1" colspan="1" style='width:460px'>Name/Passport/Appt</th>
+                                            <th rowspan="1" colspan="1">PTA Received Date</th>
+                                            <th rowspan="1" colspan="1">PTA Received Letter  Date/PTA Received Letter No</th>
+                                            <th>Status</th>
+                                            <th rowspan="1" colspan="1">
+                                                <input type="checkbox" value="Check All" id="chkAll" />
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="btn-toolbar">
+                            <button type="submit" id="btnSaveHrFlightInfo" class="btn btn-primary btn-md btnSaveHrFlightInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                            <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+    $(document).ready(function () {
+        $('.dateonly input').attr('placeholder', 'DD-MM-YYYY');
+        initiateCheckAll();
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+        $j('.dateonly').datetimepicker(
+            {
+                // format: 'L'
+                format: 'DD-MM-YYYY'
+            });
+
+        $("#btnSearch").click(function () {
+
+            if ($("#PTIID").val() != null) {
+                $("#dvInfoDetail").removeClass("hidden");
+                getPTIList(2);
+                $('#chknewassign').prop('checked', true);
+                $('#chkupdassign').prop('checked', false);
+            }
+            else {
+                $("#dvInfoDetail").addClass("hidden");
+            }
+        });
+
+        //$('input:checkbox').click(function () {
+        //    if ($(this).prop("checked") == true)
+        //        $('input:checkbox').not(this).prop('checked', false);
+        //    else
+        //        $('input:checkbox').not(this).prop('checked', true);
+        //});
+
+        $(".chkAssign").change(function () {
+            $("#existingflightid").val(null).trigger("change");
+            loadselectedvisaletterno("");
+            
+            if ($(this).prop('checked') == true && $(this).val() == "assignnew" && $("#PTIID").val() != null) {
+                $("#dvexistingletterno").addClass("hidden");
+                getPTIList(2);
+              
+            }
+            else if ($(this).prop('checked') == true && $(this).val() == "updateexisting" && $("#PTIID").val() != null) {
+                $("#dvexistingletterno").removeClass("hidden");
+                $("#GenflightDt").find("tr:gt(0)").remove();
+                LoadSelect2FlightLetterNo();
+            }
+        });
+
+    });
+    function loadselectedvisaletterno(val) {
+        if (val != "") {
+            $("#flightdate").val($("#existingflightid").select2('data')[0].flightdate);
+            $("#flightletterno").val($("#existingflightid").select2('data')[0].text);
+            $("#flightletterdate").val($("#existingflightid").select2('data')[0].flightletterdate);
+            $("#airlinesid").val($("#existingflightid").select2('data')[0].airlinesid);
+            $("#airlinesid").select2().trigger('change');
+            getPTIList(4);
+        }
+        else {
+            $("#flightdate").val('');
+            $("#flightletterno").val('');
+            $("#flightletterdate").val('');
+            $("#airlinesid").val(val);
+            //$("#airlinesid").select2('destroy');
+            $("#GenflightDt").find("tr:gt(0)").remove();
+
+        }
+    }
+    function getPTIList(type) {
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "HrReplacementInfoNew",
+                currenturl: window.location.href,
+                FlightID: $("#existingflightid").val(),
+                PTIID: $("#PTIID").val(),
+                IsAll: type
+            });
+
+            $.ajax({
+                url: $("#txtBaseUrl").val() + "Common/GetPTAReceivedListByPTAReceiveID",
+                type: 'POST',
+                data: input,
+                success: function (response) {
+
+                    $("#GenflightDt").find("tr:gt(0)").remove();
+
+                    if (response.status = "success" && response.totalrows > 0) {
+                       
+                        var rowindex = 0;
+                        $(response.data).each(function (index) {
+
+                            var letterstat = "<td class='lblletterstat'>New</td>";
+
+                           // if ($("#existingflightid").length > 0 && $("#existingflightid").val() != null) {
+                                letterstat = "<td class='lblletterstat'>" + response.data[index].LetterStatus + "</td>";
+                          //  }
+
+                            rowindex++;
+                            // console.log(index + ": " + $(this).text());
+                            var ischcked = response.data[index].FlightDetlID != null ? "checked='checked'" : "";
+                            var strdisabled = response.data[index].LetterStatus != null & response.data[index].LetterStatus != "" && parseInt($( response.data[index].LetterStatus).attr("leterstatusid")) > 8 ? "disabled='disabled'" : "";
+
+                            $('#GenflightDt tr:last').after("<tr role='row'>" +
+                                "<td>" + rowindex + " </td>" +
+                                "<td style='width:460px'>" + response.data[index].NewFullName + "/" + response.data[index].PassportNoNew + "/" + response.data[index].KuwaitiTrade +
+                                " <input class='hidden txtdetailinfo' value='" + response.data[index].MilNoKW + "' detailid='" + response.data[index].FlightDetlID + "' ptidetlid='" + response.data[index].PTIDetlID + "'  type='text' class='form-control txtMilNo'  hrbasicid='" + response.data[index].NewHrBasicID + "' hrsvcid='" + response.data[index].NewHrSvcID + "'></td>" +
+                                "<td ><input disabled='disabled'  type='text' value='" + datetoStr(response.data[index].PTAReceivedDate) + "' class='form-control ' ></td>" +
+                                "<td><input disabled='disabled' type='text' value='" + datetoStr(response.data[index].PTAReceivedLetterDate) + "/" + response.data[index].PTAReceivedLetterNo + "' class='form-control ' ></td>" +
+                                letterstat+
+                                "<td class='tdSelect'><input  type='checkbox' class='chkSelect' class='chkSelect'  " + ischcked + strdisabled + "' ></td>" +
+                                "</tr>");
+                        });
+
+                    }
+                    else {
+
+                    }
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+
+    function datetoStr(data) {
+        if (data != null) {
+            var regex = /-?\d+/;
+            var match = regex.exec(data);
+            var pubdate = new Date(parseInt(match[0]));
+
+            var dd = pubdate.getDate(); var mm = pubdate.getMonth() + 1;
+            var yyyy = pubdate.getFullYear();
+
+            if (dd < 10) { dd = '0' + dd }
+
+            if (mm < 10) { mm = '0' + mm }
+
+            var today = dd + '/' + mm + '/' + yyyy;// + ' ' + pubdate.getHours() + ':' + pubdate.getMinutes() + ':' + pubdate.getSeconds();
+            return today;
+        }
+        else {
+            return "";
+        }
+    }
+</script>
+
+
+

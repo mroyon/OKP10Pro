@@ -1,0 +1,169 @@
+﻿@model List<KAF.BusinessDataObjects.BusinessDataObjectsPartials.rpt_ManpoewrStateByStatusEntity>
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+
+<div class="panel panel-primary list-panel" id="list-panel">
+    <div class="panel-heading list-panel-heading">
+        Details
+    </div>
+  
+
+    <div class="panel-body">
+        <div style="max-height:450px;overflow-y: scroll;">
+            <table id="ManpowerStateDetail" class="table table-striped table-bordered" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Military No</th>
+                        <th>Rank</th>
+                        <th>Name</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ var SL = 1;}
+                    @foreach (var objsingle in Model)
+                    {
+                        <tr>
+                            <td>@SL</td>
+                            <td>@objsingle.MilNoKW</td>
+                            <td>@objsingle.RankName</td>
+                            <td>@objsingle.FullName</td>
+
+                        </tr>
+
+                        SL++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+       
+       
+        <div class="btn-toolbar">
+            <button type="submit" id="btnModalCloseView" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnClose</button>
+        </div>
+    </div>
+</div>
+<div id="modalcontainerManpowerProcessDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcTranManpowerProcessDetail">
+        </div>
+    </div>
+</div>
+<script>
+    //filecontrol addons
+  
+
+    $(document).ready(function () {
+
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+
+        $('#btnManpowerForward').click(function (event) {
+            try {
+                event.preventDefault();
+                var form = $('#frmManpowerStateNew');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+
+                if (form.valid()) {
+
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrFamilyInfoCreate",
+                        currenturl: window.location.href,
+
+                        manpowerstateid: $('#hdManpowerStateID').val(),
+                        okpid: $('#hdOKPID').val(),
+                        manpowerstatedate: $('#hdManpowerStateDate').val(),
+                        //isprepared: $('#isprepared').val(),
+                        //prepareddate: GetDateFromTextBox($('#prepareddate').val()),
+                        //preparedby: $('#preparedby').val(),
+                        //reviewdate: GetDateFromTextBox($('#reviewdate').val()),
+                        //reviewremarks: $('#reviewremarks').val(),
+                        //isapproved: $('#isapproved').val(),
+                        //approvedate: GetDateFromTextBox($('#approvedate').val()),
+                        //approveby: $('#approveby').val(),
+                        //approveremarks: $('#approveremarks').val(),
+
+                    });
+
+
+                    confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                        if (answer == "true") {
+
+                            $.ajax({
+                                url: baseurl + "TranManpowerStateReview/TranManpowerStateReviewUpdate",
+                                data: input,
+                                type: 'POST',
+                                success: function (data) {
+                                    if (data.status === "success") {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+                                                //window.location.href =  baseurl + "TranManpowerStateReview/TranManpowerStateReview";
+                                                $('#mcTranManpowerStateReviewNew').html('');
+                                                $('#modal-container-TranManpowerStateReviewNew').modal('hide');
+                                                GetAllDataTranManpowerStateReview();
+                                            }
+
+                                        });
+
+                                    }
+
+                                    else {
+                                        return;
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    return;
+                }
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+     
+        $('#btnModalCloseView').click(function (event) {
+            try {
+                event.preventDefault();
+                $('#mcTranManpowerProcessDetail').html('');
+                $('#modalcontainerManpowerProcessDetail').modal('hide');
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+
+    });
+</script>
+
+
+

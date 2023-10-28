@@ -1,0 +1,799 @@
+﻿
+@model KAF.BusinessDataObjects.rptm_allreportinfoEntity
+@{
+    ViewBag.Title = "Report Panel";
+}
+<style>
+    .detailheading {
+        background-color: darkgray !important;
+    }
+
+    .buttonpanelcenter {
+        text-align: center;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+@{
+    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower() == "ar-kw")
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: left;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: right;
+            }
+        </style>
+    }
+}
+
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmRPTMAllReportInfo", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    Report Data
+                </div>
+                <div class="panel-body">
+
+                    <div id="" class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Report Type", htmlAttributes: new { @class = "labelNormal " })
+                                <select id="drpReportType" class="form-control">
+                                    <option value="0">Select Report</option>
+                                    <option value="1">New Demand </option>
+                                    <option value="2">Replacement Demand</option>
+                                    <option value="3">Issue of Visa and PTA - New Demand</option>
+                                    <option value="4">Issue of Visa and PTA - Replacement Demand</option>
+                                    <option value="5">Visa Received Personnel</option>
+                                    <option value="6">Arrival Report - New Demand</option>
+                                    <option value="7">Arrival Report - Replacement Demand</option>
+                                    <option value="8">PTA Demand for Visa Received Personnel</option>
+                                  
+                                    <option value="10">Individual Status Info</option>
+                                    <option value="11">Passport Held in SPAB for Visa</option>
+                                   
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="dv_personenquiry" class="row hidden row-report">
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassNumbr" placeholder="Passport Number">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Military Number KW", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtkumilitarynmbr" placeholder="Military Number KW">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_demand" class="row hidden row-report">
+                        <div class="col-md-3">
+                            @{Html.RenderAction("LoadDemandLetterNo", "Common", new { area = "", selectid = "newdemandid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_NewDemandLetterNo, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber1" placeholder="Passport Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_replacement" class="row hidden row-report">
+                        <div class="col-md-3">
+                            @{Html.RenderAction("LoadRepPassportLetterNo", "Common", new { area = "", selectid = "replacementid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber2" placeholder="Passport Number">
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                            <div class="form-group">
+                                @Html.Label("Military Number(KW)", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtMilitaryNumber1" placeholder="Military Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_visa_pta_demand" class="row hidden row-report">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Letter No", htmlAttributes: new { @class = "labelNormal " })
+                                <span class="field-validation-valid text-danger" data-valmsg-for="visaptademandid" data-valmsg-replace="true">*</span>
+                                @{Html.RenderAction("LoadVisaIssueLetterNoNewDemand", "Common", new { area = "", selectid = "visaptademandid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true, demandtype = 2 });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber3" placeholder="Passport Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_visa_pta_replacement" class="row hidden row-report">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Letter No", htmlAttributes: new { @class = "labelNormal " })
+                                <span class="field-validation-valid text-danger" data-valmsg-for="visaptareplacementid" data-valmsg-replace="true">*</span>
+                                @{Html.RenderAction("LoadVisaIssueLetterNoReplacement", "Common", new { area = "", selectid = "visaptareplacementid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true, demandtype = 1 });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber4" placeholder="Passport Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_visa_received_personnel" class="row hidden row-report">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Letter No", htmlAttributes: new { @class = "labelNormal " })
+                                <span class="field-validation-valid text-danger" data-valmsg-for="VisaSentID" data-valmsg-replace="true">*</span>
+                                @{Html.RenderAction("LoadVisaSentLetterNo", "Common", new { area = "", selectid = "VisaSentID", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber5" placeholder="Passport Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_arrival_demand" class="row hidden row-report">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Letter No", htmlAttributes: new { @class = "labelNormal " })
+                                <span class="field-validation-valid text-danger" data-valmsg-for="demandarrivalid" data-valmsg-replace="true">*</span>
+                                @{Html.RenderAction("LoadArrivalLetterNoNewDemand", "Common", new { area = "", selectid = "demandarrivalid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber6" placeholder="Passport Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_arrival_replacement" class="row hidden row-report">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Letter No", htmlAttributes: new { @class = "labelNormal " })
+                                <span class="field-validation-valid text-danger" data-valmsg-for="replacementarrivalid" data-valmsg-replace="true">*</span>
+                                @{Html.RenderAction("LoadArrivalLetterNoReplacement", "Common", new { area = "", selectid = "replacementarrivalid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber7" placeholder="Passport Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_pta_demand" class="row hidden row-report">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Letter No", htmlAttributes: new { @class = "labelNormal " })
+                                <span class="field-validation-valid text-danger" data-valmsg-for="PTAReceivedID" data-valmsg-replace="true">*</span>
+                                @{Html.RenderAction("LoadPTAReceivedLetterNo", "Common", new { area = "", selectid = "PTAReceivedID", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_replacement, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="display: none;">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber8" placeholder="Passport Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dv_profile" class="row hidden row-report">
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.Label("Passport Number", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtPassportNumber9" placeholder="Passport Number">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.Label("Military Number(KW)", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control" id="txtMilitaryNumber2" placeholder="Military Number">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.Label("OKP", htmlAttributes: new { @class = "labelNormal " })
+
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "ddlokp", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = false, IsRequired = true });}
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            @*1-Selected, 2-Canceled, 3-Active, 4-Repatriated, 5- Arrived*@
+                            <div class="form-group">
+                                @Html.Label("Status", htmlAttributes: new { @class = "labelNormal " })
+                                <div class="row" id="dvchks">
+                                    <div class="col-md-2">
+                                        <div class="">
+                                            <input type="checkbox" value="1" checked="checked" class="form-check-input tablecolumns chkcolumn" />
+                                            <label class="form-check-label" for="flexCheckDisabled"> Selected</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="">
+                                            <input type="checkbox" value="2" checked="checked" class="form-check-input tablecolumns chkcolumn" />
+                                            <label class="form-check-label" for="flexCheckDisabled"> Canceled</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="">
+                                            <input type="checkbox" value="5" checked="checked" class="form-check-input tablecolumns chkcolumn" />
+                                            <label class="form-check-label" for="flexCheckDisabled"> Arrived</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="">
+                                            <input type="checkbox" value="3" checked="checked" class="form-check-input tablecolumns chkcolumn" />
+                                            <label class="form-check-label" for="flexCheckDisabled"> Active</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="">
+                                            <input type="checkbox" value="4" checked="checked" class="form-check-input tablecolumns chkcolumn" />
+                                            <label class="form-check-label" for="flexCheckDisabled"> Repatriated</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dv_SPABHELD" class="row hidden row-report">
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("From Date", htmlAttributes: new { @class = "labelNormal " })
+
+
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @Html.Editor("txtFromDate", new { htmlAttributes = new { @placeholder = "From Date", @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("To Date", htmlAttributes: new { @class = "labelNormal " })
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @Html.Editor("txtToDate", new { htmlAttributes = new { @placeholder = "To Date", @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dvbtn" class="row hidden">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <button type="button" id="btnSearch" class="btn btn-raised btn-primary btn-block">Load Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row hidden" id="divReport">
+
+    </div>
+
+
+}
+
+
+@section Scripts {
+    <script>
+        function GetDateFromTextBox(strdate) {
+            if (strdate != "" && typeof strdate !== 'undefined') {
+                if (strdate.indexOf('T') != -1)
+                    strdate = strdate.substring(0, strdate.indexOf('T') - 1).trim();
+
+                var dtspl1 = strdate.split("-");
+                var retdate = new Date(dtspl1[2], dtspl1[1] - 1, dtspl1[0]);
+                retdate = retdate.toISOString();
+                //var retdate = $(strdate).val();
+                return retdate;
+            }
+        }
+        $(document).ready(function () {
+            LoadSelect2DemandtLetterNo();
+            LoadSelect2RepPassportLetterNoById();
+            LoadSelect2VisaIssueLetterNoByID_NewDemand('visaptademandid');
+            LoadSelect2VisaIssueLetterNoByID_Replacement('visaptareplacementid');
+            LoadSelect2VisaSentLetterNoByID('VisaSentID');
+            LoadSelect2ArrivalLetterNoById_NewDemand('demandarrivalid');
+            LoadSelect2ArrivalLetterNoById_Replacement('replacementarrivalid');
+            LoadSelect2PTILetterNoById('PTAReceivedID');
+            $("#drpReportType").change(function () {
+                $(".select2-hidden-accessible").val(null).trigger('change');
+                $("#dvbtn").removeClass("hidden");
+
+                if ($("#drpReportType").val() == "1") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_demand").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "2") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_replacement").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "3") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_visa_pta_demand").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "4") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_visa_pta_replacement").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "5") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_visa_received_personnel").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "6") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_arrival_demand").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "7") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_arrival_replacement").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "8") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_pta_demand").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "9") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_profile").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "10") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_personenquiry").removeClass("hidden");
+                }
+                else if ($("#drpReportType").val() == "11") {
+                    $("div.row-report").each(function () {
+                        $(this).addClass("hidden");
+                    });
+                    $("#dv_SPABHELD").removeClass("hidden");
+                }
+            });
+
+            $('#btnSearch').click(function () {
+
+                var searchText = "";
+                var isval = 1;
+                if ($("#drpReportType").val() == "1") {
+                    searchText += "reporttype=1";
+
+                    if ($("#newdemandid").val() == null && $("#txtPassportNumber1").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select any Demand Letter", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#newdemandid").val() != null)
+                            searchText += "&letterno=" + $("#newdemandid").select2('data')[0].text + "&letterid=" + $("#newdemandid").select2('data')[0].id;
+                        if ($("#txtPassportNumber1").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber1").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "2") {
+                    searchText += "reporttype=2";
+
+                    if ($("#replacementid").val() == null && $("#txtPassportNumber2").val().length == 0 && $("#txtMilitaryNumber1").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select any Replacement Letter", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#replacementid").val() != null)
+                            searchText += "&letterno=" + $("#replacementid").select2('data')[0].text + "&letterid=" + $("#replacementid").select2('data')[0].id;;
+                        if ($("#txtPassportNumber2").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber2").val();
+                        if ($("#txtMilitaryNumber1").val().length > 0)
+                            searchText += "&militaryno=" + $("#txtMilitaryNumber1").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+                }
+                else if ($("#drpReportType").val() == "3") {
+                    searchText += "reporttype=3";
+
+                    if ($("#visaptademandid").val() == null && $("#txtPassportNumber3").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select Letter Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#visaptademandid").val() != null)
+                            searchText += "&letterno=" + $("#visaptademandid").select2('data')[0].text + "&letterid=" + $("#visaptademandid").select2('data')[0].id;
+                        if ($("#txtPassportNumber3").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber3").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "4") {
+                    searchText += "reporttype=4";
+
+                    if ($("#visaptareplacementid").val() == null && $("#txtPassportNumber4").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select Letter Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#visaptareplacementid").val() != null)
+                            searchText += "&letterno=" + $("#visaptareplacementid").select2('data')[0].text + "&letterid=" + $("#visaptareplacementid").select2('data')[0].id;
+                        if ($("#txtPassportNumber4").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber4").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "5") {
+                    searchText += "reporttype=5";
+
+                    if ($("#VisaSentID").val() == null && $("#txtPassportNumber5").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select Letter Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#VisaSentID").val() != null)
+                            searchText += "&letterno=" + $("#VisaSentID").select2('data')[0].text + "&letterid=" + $("#VisaSentID").select2('data')[0].id;
+                        if ($("#txtPassportNumber5").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber5").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "6") {
+                    searchText += "reporttype=6";
+
+                    if ($("#demandarrivalid").val() == null && $("#txtPassportNumber6").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select Letter Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#demandarrivalid").val() != null)
+                            searchText += "&letterno=" + $("#demandarrivalid").select2('data')[0].text + "&letterid=" + $("#demandarrivalid").select2('data')[0].id;
+                        if ($("#txtPassportNumber6").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber6").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "7") {
+                    searchText += "reporttype=7";
+
+                    if ($("#replacementarrivalid").val() == null && $("#txtPassportNumber7").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select Letter Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#replacementarrivalid").val() != null)
+                            searchText += "&letterno=" + $("#replacementarrivalid").select2('data')[0].text + "&letterid=" + $("#replacementarrivalid").select2('data')[0].id;
+                        if ($("#txtPassportNumber7").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber7").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "8") {
+                    searchText += "reporttype=8";
+
+                    if ($("#PTAReceivedID").val() == null && $("#txtPassportNumber8").val().length == 0) {
+                        $("#divReport").addClass("hidden");
+                        inforamtionDialog("Alert", "Please Select Letter Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#PTAReceivedID").val() != null)
+                            searchText += "&letterno=" + $("#PTAReceivedID").select2('data')[0].text + "&letterid=" + $("#PTAReceivedID").select2('data')[0].id;
+                        if ($("#txtPassportNumber8").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber8").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "9") {
+                    searchText += "reporttype=9";
+                    var strcols = "";
+                    $.each($("#dvchks .chkcolumn"), function (val, element) {
+
+                        if ($(element).prop('checked')) {
+                            strcols +=  $(element).val()+',';
+                        }
+
+                    });
+                    searchText += "&statuscol="+strcols;
+
+                    $("#divReport").addClass("hidden");
+                    if ($("#txtPassportNumber9").val().length == 0 && $("#txtMilitaryNumber2").val().length == 0 && $("#ddlokp").val() == null) {
+                        inforamtionDialog("Alert", "Please Provide Military Number or Provide Passport Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#txtPassportNumber9").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassportNumber9").val();
+
+                        if ($("#txtMilitaryNumber2").val().length > 0)
+                            searchText += "&militaryno=" + $("#txtMilitaryNumber2").val();
+
+                        if ($("#ddlokp").val() != null) {
+                            searchText += "&okpid=" + $("#ddlokp").val();
+                        }
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+
+                else if ($("#drpReportType").val() == "10") {
+                    searchText += "reporttype=10";
+                    $("#divReport").addClass("hidden");
+                    if ($("#txtPassNumbr").val().length == 0 && $("#txtkumilitarynmbr").val().length == 0) {
+                        inforamtionDialog("Alert", "Please Provide Military Number or Provide Passport Number", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+                    else {
+                        $("#divReport").removeClass("hidden");
+                        if ($("#txtPassNumbr").val().length > 0)
+                            searchText += "&passportno=" + $("#txtPassNumbr").val();
+
+                        if ($("#txtkumilitarynmbr").val().length > 0)
+                            searchText += "&militaryno=" + $("#txtkumilitarynmbr").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+                    }
+
+                }
+                else if ($("#drpReportType").val() == "11") {
+                    searchText += "reporttype=11";
+
+                    $("#divReport").removeClass("hidden");
+
+                    if ($("#txtFromDate").val().length > 0 && $("#txtToDate").val().length > 0) {
+
+
+                        searchText += "&fromdate=" + $("#txtFromDate").val() + "&todate=" + $("#txtToDate").val();
+
+                        var src = '../Reports/CustomerReport.aspx?';
+                        //We can add parameters here
+                        src = src + searchText
+
+                        var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                        $("#divReport").html(iframe);
+
+                    }
+                    else {
+                        inforamtionDialog("Alert", "Please Provide From Date and To Date", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            if (answer == "true") {
+                                isval = 0;
+                            }
+
+                        });
+                    }
+
+                }
+
+                else if ($("#drpReportType").val() == "12") {
+                   
+                    $("#divReport").removeClass("hidden");
+
+                    var src = '../Reports/CustomerReport.aspx?reporttype=12';
+                    //We can add parameters here
+                    src = src + searchText
+
+                    var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                    $("#divReport").html(iframe);
+                }
+
+            });
+
+        });
+        function loadselectedpassportletterno() { }
+    </script>
+
+}
+
+
+
+
+

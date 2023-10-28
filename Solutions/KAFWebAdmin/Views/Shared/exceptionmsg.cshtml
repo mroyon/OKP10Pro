@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Error";
+    var t = TempData["error"].ToString();
+}
+
+@{
+<script>
+    function OpenModal(titletext, bodytext) {
+        $('#exampleModal').modal('toggle');
+    }
+
+</script>
+    if (ViewBag.exceptionbody != null && ViewBag.exceptionbody != "")
+    {
+<script>
+    $(document).ready(function () {
+        $('#exampleModalLabel').append(ViewBag.exceptiontitle);
+        $('#exampleModalBody').append(ViewBag.exceptionbody);
+        $('#exampleModal').modal('toggle');
+        ViewBag.exceptionbody = "";
+        ViewBag.exceptiontitle = "";
+    });
+</script>
+    }
+}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#337ab7;">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:white;"></h5>
+            </div>
+            <div class="modal-body" id="exampleModalBody">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (TempData["error"] == null)
+{
+<script>
+    $(document).ready(function () {
+        alert("erererererererererererer");
+    });
+</script>
+}
+else
+{
+<script>
+    $(document).ready(function () {
+        alert("erererererererererererer");
+    });
+</script>
+}

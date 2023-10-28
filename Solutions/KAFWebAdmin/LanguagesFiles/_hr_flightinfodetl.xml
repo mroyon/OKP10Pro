@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="flightid" value="AR:  Flight ID"></resource>
+       <resource culture="ar-kw" name="flightidRequired" value="AR: Please provide  Flight ID"></resource>
+       <resource culture="ar-kw" name="ptidetlid" value="AR:  PTA Detl ID"></resource>
+       <resource culture="ar-kw" name="ptidetlidRequired" value="AR: Please provide  PTA Detl ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="iscancel" value="AR:  Is Cancel"></resource>
+       <resource culture="ar-kw" name="canceldate" value="AR:  Cancel Date"></resource>
+       <resource culture="ar-kw" name="cancelletterdate" value="AR:  Cancel Letter Date"></resource>
+       <resource culture="ar-kw" name="cancelletterno" value="AR:  Cancel Letter No"></resource>
+       <resource culture="ar-kw" name="reason" value="AR:  Reason"></resource>
+		<resource culture="ar-kw" name="flightinfodetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="flightinfodetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="flightinfodetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="flightinfodetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="flightid" value=" Flight ID"></resource>
+       <resource culture="en-us" name="flightidRequired" value="Please provide  Flight ID"></resource>
+       <resource culture="en-us" name="ptidetlid" value=" PTA Detl ID"></resource>
+       <resource culture="en-us" name="ptidetlidRequired" value="Please provide  PTA Detl ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="iscancel" value=" Is Cancel"></resource>
+       <resource culture="en-us" name="canceldate" value=" Cancel Date"></resource>
+       <resource culture="en-us" name="cancelletterdate" value=" Cancel Letter Date"></resource>
+       <resource culture="en-us" name="cancelletterno" value=" Cancel Letter No"></resource>
+       <resource culture="en-us" name="reason" value=" Reason"></resource>
+        <resource culture="en-us" name="flightinfodetlList" value="View All"></resource>
+		<resource culture="en-us" name="flightinfodetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="flightinfodetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="flightinfodetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

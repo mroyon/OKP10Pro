@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="userid" value="AR:  User Id"></resource>
+       <resource culture="ar-kw" name="useridRequired" value="AR: Please provide  User Id"></resource>
+       <resource culture="ar-kw" name="tsvtokenrequestdate" value="AR:  T S V Token Request Date"></resource>
+       <resource culture="ar-kw" name="tsvtokenrequestdateRequired" value="AR: Please provide  T S V Token Request Date"></resource>
+       <resource culture="ar-kw" name="tsvtoken" value="AR:  T S V Token"></resource>
+       <resource culture="ar-kw" name="tsvtokenRequired" value="AR: Please provide  T S V Token"></resource>
+       <resource culture="ar-kw" name="isvalid" value="AR:  Is Valid"></resource>
+       <resource culture="ar-kw" name="isvalidRequired" value="AR: Please provide  Is Valid"></resource>
+       <resource culture="ar-kw" name="varificationtried" value="AR:  Varification Tried"></resource>
+       <resource culture="ar-kw" name="varificationtriedRequired" value="AR: Please provide  Varification Tried"></resource>
+       <resource culture="ar-kw" name="validdate" value="AR:  Valid Date"></resource>
+       <resource culture="ar-kw" name="usersessionid" value="AR:  User Session ID"></resource>
+       <resource culture="ar-kw" name="usersessionidRequired" value="AR: Please provide  User Session ID"></resource>
+       <resource culture="ar-kw" name="_requestaft" value="AR:  Request A F T"></resource>
+		<resource culture="ar-kw" name="tsvList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="tsvCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="tsvUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="tsvDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="userid" value=" User Id"></resource>
+       <resource culture="en-us" name="useridRequired" value="Please provide  User Id"></resource>
+       <resource culture="en-us" name="tsvtokenrequestdate" value=" T S V Token Request Date"></resource>
+       <resource culture="en-us" name="tsvtokenrequestdateRequired" value="Please provide  T S V Token Request Date"></resource>
+       <resource culture="en-us" name="tsvtoken" value=" T S V Token"></resource>
+       <resource culture="en-us" name="tsvtokenRequired" value="Please provide  T S V Token"></resource>
+       <resource culture="en-us" name="isvalid" value=" Is Valid"></resource>
+       <resource culture="en-us" name="isvalidRequired" value="Please provide  Is Valid"></resource>
+       <resource culture="en-us" name="varificationtried" value=" Varification Tried"></resource>
+       <resource culture="en-us" name="varificationtriedRequired" value="Please provide  Varification Tried"></resource>
+       <resource culture="en-us" name="validdate" value=" Valid Date"></resource>
+       <resource culture="en-us" name="usersessionid" value=" User Session ID"></resource>
+       <resource culture="en-us" name="usersessionidRequired" value="Please provide  User Session ID"></resource>
+       <resource culture="en-us" name="_requestaft" value=" Request A F T"></resource>
+        <resource culture="en-us" name="tsvList" value="View All"></resource>
+		<resource culture="en-us" name="tsvCreate" value="Create"></resource>
+		<resource culture="en-us" name="tsvUpdate" value="Update"></resource>
+		<resource culture="en-us" name="tsvDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

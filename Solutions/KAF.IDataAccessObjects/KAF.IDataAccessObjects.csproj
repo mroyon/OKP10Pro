@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54392614-2388-4C16-98E8-324CFDF04A26}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KAF.IDataAccessObjects</RootNamespace>
+    <AssemblyName>KAF.IDataAccessObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_attachmentinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_basicprofileDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_demanddetlpassportDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_documentuploadDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_hospitaladmissioninfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_newdemandDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_newdemanddetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_okptransferinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_passportinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_personalinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_svcinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\IKAFDataCacheDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\IKAFUserSecurityDataAccess.cs" />
+    <Compile Include="IDataAccessObjectsPartial\Iowin_rolepermissionDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\IReportExtensionDataAccess.cs" />
+    <Compile Include="IDataAccessObjectsPartial\Istp_organizationentityDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\Iowin_userDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_addresschangeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_attachmentinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_documentuploadDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_okptransferinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\ParadeState\Ihr_deathinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\ParadeState\Ihr_leaveinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\ParadeState\Ihr_leavemodificationDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\ParadeState\Itran_manpowerstateDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\ParadeState\Itran_manpowerstatedetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\ParadeState\Itran_manpowerstatedetl_historyDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\ParadeState\Itran_manpowerstate_historyDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Payment\Icnf_paymentitemDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Payment\Icnf_rankpayconfigDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Payment\Igen_currencyexchagerateDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Payment\Igen_grouprankDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_authorizestrengthDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_campDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_documenttypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_leaveconfigDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_leavetypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_monthDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Payment\Itran_cuttinginfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Payment\Itran_cuttinginfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_arrivalinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_arrivalinfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_bankaccountinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_bankloaninfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_basicfileDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_basicprofileDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_demanddetlpassportDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_emergencycontactDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_extensioninfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_familyinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_familyjobinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_flightinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_flightinfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_hospitaladmissioninfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_languageproficiencyDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_medicalinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_newdemandDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_newdemanddetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_passportinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_personalinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_promotioninfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_punishmentinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_repatriationinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_ptademandDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_ptademanddetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_ptareceivedDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_ptareceiveddetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_replacementinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_replacementinfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_reppassportinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_reppassportinfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_residentvisaDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_rewardinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_svcinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_visademandinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_visademandinfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_visaissueinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_visaissueinfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_visasentinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Process\Ihr_visasentinfodetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\RPTM\Irptm_allreportinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\RPTM\Irptm_reportdatasourceDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\RPTM\Irptm_reportparameterDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_reportpermissionDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_reportroleDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_reportroletemplateDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_tsvDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userroledetlentityprofilemapDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\IuseraccountsprofDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_formactionDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_forminfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_lastworkingpageDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_roleDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_rolepermissionDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userlogintrailDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userpasswordresetinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userprefferencessettingsDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userroleDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userroledetlDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userroledetlentitymapDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Security\Iowin_userstatuschangehistoryDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_airlinesDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_armsDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_bankbranchDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_bankDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_bloodgroupDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_buildingDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_countryDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_divisiondistrictDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_filetypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_freedomfighttypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_genderDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_govcityDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_issuetypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_languageDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_languageproficiencyDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_maritalstatusDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_movementtypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_okpcoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_okpDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_penaltytypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_postofficeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_promotiontypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_rankDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_ranktypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_relationshipDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_religionDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_servicestatusDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_subunitDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_thanaDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Igen_tradeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Istp_countrycityDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Istp_countryDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Istp_organizationDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Istp_organizationentityDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Istp_organizationentitytypeDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\ISelectTwoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\Setup\Istp_passpolicyDataAccessObjects.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KAF.BusinessDataObjects\KAF.BusinessDataObjects.csproj">
+      <Project>{ef8dae61-781c-41d2-8290-c01419a273c9}</Project>
+      <Name>KAF.BusinessDataObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IDOTemplates\DTOGenerator.csp" />
+    <None Include="IDOTemplates\IDaoGenerator.csp" />
+    <None Include="IDOTemplates\IDaoGenerator.cst" />
+    <None Include="IDOTemplates\IDataAccess.cst" />
+    <None Include="IDOTemplates\IDataAccessEx.cst" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

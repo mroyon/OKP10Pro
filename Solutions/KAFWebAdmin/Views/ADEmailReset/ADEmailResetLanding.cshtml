@@ -1,0 +1,115 @@
+﻿@model KAF.BusinessDataObjects.owin_ademailresetEntity
+@{
+    ViewBag.Title = "ADEmailResetLanding";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .footablecusheadercolor {
+        background-color: aliceblue;
+    }
+
+    select.select2 {
+        color: #444;
+        background-color: #FFF;
+        border: 1px solid #AAA;
+        border-radius: 4px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        height: 28px;
+        padding-left: 5px;
+        font: unset;
+    }
+
+    input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
+
+<div class="panel panel-primary list-panel" id="list-panel">
+    <div class="panel-heading list-panel-heading">
+        @KAF.MsgContainer._hr_basicprofile.basicprofileCreate
+    </div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmADEmailResetSearch", @class = "frmADEmailResetSearch form-horizontal", enctype = "multipart/form-data" }))
+        {
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+            HtmlHelper.ClientValidationEnabled = true;
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Name/ Military ID", htmlAttributes: new { @class = "labelNormal " })
+                        @Html.EditorFor(model => model.strValue1, new { htmlAttributes = new { @class = " form-control" } })
+                        @*@{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "masteruserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preOwin_userid, multiple = false, isReadOnly = false, IsRequired = false });}*@
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.entitykey, htmlAttributes: new { @class = "labelNormal    " })
+
+
+                        @{Html.RenderAction("LoadUnitTreeSearch", "Common", new
+                            {
+                                area = "",
+                                selectid = "entitykey",
+                                minimumInputLength = 0,
+                                delay = 250,
+                                preloaded = ViewBag.preStp_OrganizationEntityTo,
+                                multiple = false,
+                                isReadOnly = false,
+                                IsRequired = false
+                            });}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="btn-toolbar">
+                            <button type="submit" id="btnSearchADEmailReset" class="btn btn-danger btn-md search"><i class="fa fa-search"></i> @KAF.MsgContainer._Common._btnSearch</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+        <table id="candidateDt" class="table table-striped table-bordered" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Military ID</th>
+                    <th>User Name</th>
+                    <th>Rank</th>
+                    <th>Unit</th>
+                    <th>Position</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div id="modal-container-ADEmailResetEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:60%!important; top:150px;">
+        <div class="modal-content" id="mcADEmailResetEdit">
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/DesignsAndScripts/PageWise/Security/ADEmailReset/ADEmailResetLanding.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/Security/ADEmailReset/ADEmailResetEdit.js"></script>
+
+}

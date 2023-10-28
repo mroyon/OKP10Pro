@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="religion" value="AR:  Religion"></resource>
+       <resource culture="ar-kw" name="religionRequired" value="AR: Please provide  Religion"></resource>
+       <resource culture="ar-kw" name="priority" value="AR:  Priority"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="religionList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="religionCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="religionUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="religionDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="religion" value=" Religion"></resource>
+       <resource culture="en-us" name="religionRequired" value="Please provide  Religion"></resource>
+       <resource culture="en-us" name="priority" value=" Priority"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="religionList" value="View All"></resource>
+		<resource culture="en-us" name="religionCreate" value="Create"></resource>
+		<resource culture="en-us" name="religionUpdate" value="Update"></resource>
+		<resource culture="en-us" name="religionDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

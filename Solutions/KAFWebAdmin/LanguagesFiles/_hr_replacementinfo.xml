@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="letterno" value="AR:  Letter No"></resource>
+       <resource culture="ar-kw" name="letternoRequired" value="AR: Please provide  Letter No"></resource>
+       <resource culture="ar-kw" name="letterdate" value="AR:  Letter Date"></resource>
+       <resource culture="ar-kw" name="letterdateRequired" value="AR: Please provide  Letter Date"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="replacementinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="replacementinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="replacementinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="replacementinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="letterno" value=" Letter No"></resource>
+       <resource culture="en-us" name="letternoRequired" value="Please provide  Letter No"></resource>
+       <resource culture="en-us" name="letterdate" value=" Letter Date"></resource>
+       <resource culture="en-us" name="letterdateRequired" value="Please provide  Letter Date"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="replacementinfoList" value="View All"></resource>
+		<resource culture="en-us" name="replacementinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="replacementinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="replacementinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

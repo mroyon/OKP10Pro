@@ -1,0 +1,210 @@
+﻿@{
+    string selectid = ViewBag.selectid;
+    int delay = ViewBag.delay;
+    int minimumInputLength = ViewBag.minimumInputLength;
+    bool isReadOnly = ViewBag.isReadOnly;
+    bool multiple = ViewBag.multiple;
+    string strisReadOnly = isReadOnly.ToString().ToLower();
+    string strmultiple = multiple.ToString().ToLower();
+    string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower();
+    bool isRequired = ViewBag.isRequired;
+
+    if (isRequired == true)
+    {
+        <select name="@selectid" id="@selectid" class="form-control @selectid" style="width:100%;display:block;box-sizing:border-box"
+                data-val="true" data-val-required="Please Select Trade"></select>
+        <span class="text-danger field-validation-error" data-valmsg-for="@selectid" data-valmsg-replace="true"></span>}
+    else
+    {
+        <select name="@selectid" id="@selectid" class="form-control @selectid" style="width:100%;display:block;box-sizing:border-box"></select>
+    }
+
+}
+@if (ViewBag.data != null)
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectid').select2(
+             {
+                 placeholder: 'Enter Trade (BD)',
+                 minimumInputLength: @minimumInputLength,
+                 allowClear: true,
+                 //maximumSelectionSize: 2,
+                 multiple: @strmultiple,
+                 ajax: {
+                     url: webapiurl + 'api/Trade/getTradeBDData',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                         return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                             param: '@lang'
+                         };
+                     },
+                     processResults: function (data, params) {
+                         var res = data.result.Results;
+                         var total = data.result.Total;
+                        // console.log(res, total);
+
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+
+                        // console.log(params, more);
+
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,initSelection: function (element, callback) {
+                     callback(@Html.Raw(ViewBag.data));
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnly==true)
+         {
+             <Text>
+                 $("#@selectid").prop("disabled", true);
+                 $("#@selectid-multi").prop("disabled", true);
+            </Text>
+         }
+
+         var dat =@Html.Raw(ViewBag.data);
+         for (i = 0; i < dat.length; i++) {
+             //console.log(dat[i]);
+             $('#@selectid').append('<option value="' + dat[i].Id + '" selected="selected">' + dat[i].Text + '</option>');
+         }
+
+         $('#@selectid').on('select2:select', function (e) {
+             var data = e.params.data;
+             var value = $("#@selectid").val();
+                if (value != "") {
+                    $('#@selectid-error').text(''); 
+                }
+				
+				
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectid");*@
+         });
+
+         $('#@selectid').on('select2:unselect', function (e) {
+             var data = e.params.data;
+             value = $("#@selectid").val();
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectid");*@
+         });
+     });
+    </script>
+}
+else
+{
+    <script>
+        var webapiurl= '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+
+     $(document).ready(function () {
+         //var webapiurl = "http://localhost:1839/";
+         var headerauth = $("#txtwebapitoken").val();
+
+         $('#@selectid').select2(
+             {
+                 placeholder: 'Enter Trade (BD)',
+                 minimumInputLength: @minimumInputLength,
+                 allowClear: true,
+                 multiple: @strmultiple,
+                 ajax: {
+                     url: webapiurl + 'api/Trade/getTradeBDData',
+                     headers: {
+                         "Authorization": headerauth,
+                         "Content-Type": "application/json",
+                     },
+                     type: "get",
+                     dataType: 'json',
+                     delay: @delay,
+                     data: function (params) {
+                         return {
+                             pageSize: 10,
+                             pageNum: params.page || 1,
+                             searchTerm: params.term || null,
+                             //custom value from client side if needed.
+                             param: '@lang'
+                         };
+                     },
+                     processResults: function (data, params) {
+                         //var res = data.result.Results;
+                         //console.log(res);
+                         params.page = params.page || 1;
+                         var more = (params.page * 10) < data.result.Total;
+                         return {
+                             results: $.map(data.result.Results, function (obj) {
+                                 return { id: obj.Id, text: obj.Text };
+                             })
+                             ,
+                             pagination: {
+                                 more: (params.page * 10) < data.result.Total
+                             }
+                         };
+                     }
+                 }
+                 ,transport: function (params, success, failure) {
+                     var $request = $.ajax(params);
+                     $request.then(success);
+                     $request.fail(failure);
+                     return $request;
+                 }
+             });
+
+         @if (isReadOnly==true)
+         {
+             <Text>
+                 $("#@selectid").prop("disabled", true);
+                 $("#@selectid-multi").prop("disabled", true);
+            </Text>
+         }
+
+        $('#@selectid').on('select2:select', function (e) {
+             var data = e.params.data;
+             var value = $("#@selectid").val();
+                if (value != "") {
+                    $('#@selectid-error').text(''); 
+                }
+				
+				
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectid");*@
+         });
+
+         $('#@selectid').on('select2:unselect', function (e) {
+             var data = e.params.data;
+             value = $("#@selectid").val();
+             @*var formid = $(this).closest('form').attr('id');
+             $('#' + formid).validate().element("#@selectid");*@
+         });
+
+     });
+    </script>
+}

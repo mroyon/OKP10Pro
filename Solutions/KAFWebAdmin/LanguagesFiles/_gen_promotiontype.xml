@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="promotiontype" value="AR:  Promotion Type"></resource>
+       <resource culture="ar-kw" name="promotiontypeRequired" value="AR: Please provide  Promotion Type"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="promotiontypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="promotiontypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="promotiontypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="promotiontypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="promotiontype" value=" Promotion Type"></resource>
+       <resource culture="en-us" name="promotiontypeRequired" value="Please provide  Promotion Type"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="promotiontypeList" value="View All"></resource>
+		<resource culture="en-us" name="promotiontypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="promotiontypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="promotiontypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

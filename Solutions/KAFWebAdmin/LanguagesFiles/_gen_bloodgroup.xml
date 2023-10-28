@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="bloodgroup" value="AR:  Blood Group"></resource>
+       <resource culture="ar-kw" name="bloodgroupRequired" value="AR: Please provide  Blood Group"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="bloodgroupList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="bloodgroupCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="bloodgroupUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="bloodgroupDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="bloodgroup" value=" Blood Group"></resource>
+       <resource culture="en-us" name="bloodgroupRequired" value="Please provide  Blood Group"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="bloodgroupList" value="View All"></resource>
+		<resource culture="en-us" name="bloodgroupCreate" value="Create"></resource>
+		<resource culture="en-us" name="bloodgroupUpdate" value="Update"></resource>
+		<resource culture="en-us" name="bloodgroupDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

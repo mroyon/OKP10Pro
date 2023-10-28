@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="rankname" value="AR:  Rank Name"></resource>
+       <resource culture="ar-kw" name="ranknameRequired" value="AR: Please provide  Rank Name"></resource>
+       <resource culture="ar-kw" name="ranktypeid" value="AR:  Rank Type ID"></resource>
+       <resource culture="ar-kw" name="ranktypeidRequired" value="AR: Please provide  Rank Type ID"></resource>
+       <resource culture="ar-kw" name="countryid" value="AR:  Country ID"></resource>
+       <resource culture="ar-kw" name="countryidRequired" value="AR: Please provide  Country ID"></resource>
+       <resource culture="ar-kw" name="typepriority" value="AR:  Type Priority"></resource>
+       <resource culture="ar-kw" name="priority" value="AR:  Priority"></resource>
+       <resource culture="ar-kw" name="comments" value="AR:  Comments"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="rankList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="rankCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="rankUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="rankDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="rankname" value=" Rank Name"></resource>
+       <resource culture="en-us" name="ranknameRequired" value="Please provide  Rank Name"></resource>
+       <resource culture="en-us" name="ranktypeid" value=" Rank Type ID"></resource>
+       <resource culture="en-us" name="ranktypeidRequired" value="Please provide  Rank Type ID"></resource>
+       <resource culture="en-us" name="countryid" value=" Country ID"></resource>
+       <resource culture="en-us" name="countryidRequired" value="Please provide  Country ID"></resource>
+       <resource culture="en-us" name="typepriority" value=" Type Priority"></resource>
+       <resource culture="en-us" name="priority" value=" Priority"></resource>
+       <resource culture="en-us" name="comments" value=" Comments"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="rankList" value="View All"></resource>
+		<resource culture="en-us" name="rankCreate" value="Create"></resource>
+		<resource culture="en-us" name="rankUpdate" value="Update"></resource>
+		<resource culture="en-us" name="rankDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

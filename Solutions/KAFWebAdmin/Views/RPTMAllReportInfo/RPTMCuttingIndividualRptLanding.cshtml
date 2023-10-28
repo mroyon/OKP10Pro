@@ -1,0 +1,157 @@
+﻿
+@model KAF.BusinessDataObjects.rptm_allreportinfoEntity
+@{
+    ViewBag.Title = "Report Panel";
+}
+<style>
+    .detailheading {
+        background-color: darkgray !important;
+    }
+
+    .buttonpanelcenter {
+        text-align: center;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+@{
+    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower() == "ar-kw")
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: left;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: right;
+            }
+        </style>
+    }
+}
+
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmRPTMAllReportInfo", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    Report Data
+                </div>
+                <div class="panel-body">
+
+
+
+                    <div class="row">
+
+                       
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Military ID", htmlAttributes: new { @class = "labelNormal " })
+
+                                <input type="text" class="form-control txtmilid" id="txtmilid" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="dvbtn" class="row ">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <button type="button" PayAllceID="4" class="btnSearch btn btn-raised btn-primary btn-block">Reg Cutting Report</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" PayAllceID="3" class="btnSearch btn btn-raised btn-primary btn-block">10% Cutting Report</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" PayAllceID="5" class="btnSearch btn btn-raised btn-primary btn-block">Service Charge Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row hidden" id="divReport">
+
+    </div>
+
+
+}
+
+
+@section Scripts {
+    <script>
+        function GetDateFromTextBox(strdate) {
+            if (strdate != "" && typeof strdate !== 'undefined') {
+                if (strdate.indexOf('T') != -1)
+                    strdate = strdate.substring(0, strdate.indexOf('T') - 1).trim();
+
+                var dtspl1 = strdate.split("-");
+                var retdate = new Date(dtspl1[2], dtspl1[1] - 1, dtspl1[0]);
+                retdate = retdate.toISOString();
+                //var retdate = $(strdate).val();
+                return retdate;
+            }
+        }
+        $(document).ready(function () {
+
+            $(".select2-selection__placeholder").text('ALL OKP');
+
+            $('.btnSearch').click(function () {
+
+                var searchText = "";
+                var reporttype = "";
+                var payallceid = "";
+
+                if ($("#txtmilid").val().length==0) {
+                    inforamtionDialog("Alert", "Please Provide Military ID", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                        if (answer == "true") {
+                        }
+                    });
+                    return;
+                }
+               
+                payallceid = $(this).attr("PayAllceID");
+
+                if ($("#txtmilid").val().length > 0)
+                    searchText += "&milid=" + $("#txtmilid").val();
+
+                $("#divReport").removeClass("hidden");
+
+                var src = '../Reports/CuttingSummaryReports.aspx?reporttype=6&payallceid=' + payallceid;
+                //We can add parameters here
+                src = src + searchText
+
+                var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                $("#divReport").html(iframe);
+
+                //window.location = baseurl + "RPTMAllReportInfo/Export?MilitaryNoKW=" + $('#txtmilid').val() + "&PayAllceID=" + $(this).attr("PayAllceID");
+
+
+
+
+            });
+
+        });
+        function loadselectedpassportletterno() { }
+    </script>
+
+}
+
+
+
+
+

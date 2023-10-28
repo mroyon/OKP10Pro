@@ -1,0 +1,265 @@
+﻿@model List<KAF.BusinessDataObjects.BusinessDataObjectsPartials.KAFProcess_ManpoewrStateEntity>
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    #list-panel_det .panel-body {
+        padding: 5px;
+    }
+</style>
+
+
+<div class="panel panel-primary list-panel" id="list-panel_det">
+    <div class="panel-heading list-panel-heading">
+       
+    </div>
+
+    <input type="hidden" id="hdManpowerStateID" value="@Model.Where(p=>p.ManpowerStateID !=null).FirstOrDefault().ManpowerStateID" />
+   
+    <input type="hidden" id="hdOKPID" value="@Model.Where(p=>p.ManpowerStateID !=null).FirstOrDefault().OkpID" />
+ 
+    <div class="panel-body">
+        <table id="ManpowerStateDt" class="table table-striped table-bordered" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th style="width:100px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var objsingle in Model)
+                {
+                    <tr>
+                        <td>@objsingle.ManPowerStatus</td>
+                        <td>@objsingle.Total</td>
+
+                        <td>
+                            @if (objsingle.Total > 0)
+                            {
+                                <input class="clsview btn btn-primary btn-md" ManpowerStateID='@objsingle.ManpowerStateID' ManpowerStatusID='@objsingle.ManpowerStatusID' value="View" />
+
+                            }
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>Total</td>
+                    <td>@Model.Sum(p => p.Total)</td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @*@readonly = "readonly",*@
+                    @Html.Label("Approve Remarks", htmlAttributes: new { @class = "labelNormal required " })
+                    @Html.Editor("txtApproveRemarks", new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-toolbar dvforward">
+            <button type="button" id="btnManpowerApprove" class="btn btn-primary btn-md btnManpowerApprove"><i class="fa fa-save"> </i> Aprrove</button>
+
+            <button type="button" id="btnManpowerApproveRollback" class="btn btn-primary btn-md btnManpowerReviewRollback "><i class="fa fa-save"> </i> Rollback</button>
+
+            <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+
+        </div>
+    </div>
+</div>
+<div id="modalcontainerManpowerProcessDetail" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcTranManpowerProcessDetail">
+        </div>
+    </div>
+</div>
+<script>
+    //filecontrol addons
+
+
+    $(document).ready(function () {
+
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+        if ($('#IsProcess').val() == "0") {
+            $(".dvforward").css("display", "none");
+            $("#txtApproveRemarks").val($("#ex_nvarchar1").val());
+        }
+
+        $('#btnManpowerApprove').click(function (event) {
+            try {
+                event.preventDefault();
+                var form = $('#frmManpowerStateApproveEdit');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+
+                if (form.valid()) {
+
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrFamilyInfoCreate",
+                        currenturl: window.location.href,
+
+                        manpowerstateid: $('#hdManpowerStateID').val(),
+                        okpid: $('#OkpID').val(),
+                        manpowerstatedate: GetDateFromTextBox($('#ManpowerStateDate').val()),
+
+                        isapproved: true,
+                        approveremarks: $('#txtApproveRemarks').val(),
+                        //isprepared: $('#isprepared').val(),
+                        //prepareddate: GetDateFromTextBox($('#prepareddate').val()),
+                        //preparedby: $('#preparedby').val(),
+                        //reviewdate: GetDateFromTextBox($('#reviewdate').val()),
+                        //reviewremarks: $('#reviewremarks').val(),
+                        //isapproved: $('#isapproved').val(),
+                        //approvedate: GetDateFromTextBox($('#approvedate').val()),
+                        //approveby: $('#approveby').val(),
+                        //approveremarks: $('#approveremarks').val(),
+
+                    });
+
+
+                    confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                        if (answer == "true") {
+
+                            $.ajax({
+                                url: baseurl + "TranManpowerStateApprove/TranManpowerStateApproveUpdate",
+                                data: input,
+                                type: 'POST',
+                                success: function (data) {
+                                    if (data.status === "success") {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+                                                //window.location.href =  baseurl + "TranManpowerStateApprove/TranManpowerStateApprove";
+                                                $('#mcTranManpowerStateApproveEdit').html('');
+                                                $('#modal-container-TranManpowerStateApproveEdit').modal('hide');
+                                                GetAllDataTranManpowerStateApprove();
+                                            }
+
+                                        });
+
+                                    }
+
+                                    else {
+                                        return;
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    return;
+                }
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        $('#btnManpowerApproveRollback').click(function (event) {
+            try {
+                event.preventDefault();
+                var form = $('#frmManpowerStateApproveEdit');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+
+                if (form.valid()) {
+
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrFamilyInfoCreate",
+                        currenturl: window.location.href,
+
+                        manpowerstateid: $('#hdManpowerStateID').val(),
+                        okpid: $('#OkpID').val(),
+                        manpowerstatedate: GetDateFromTextBox($('#ManpowerStateDate').val()),
+
+                        isapproved: false,
+                       
+                        //isprepared: $('#isprepared').val(),
+                        //prepareddate: GetDateFromTextBox($('#prepareddate').val()),
+                        //preparedby: $('#preparedby').val(),
+                        //reviewdate: GetDateFromTextBox($('#reviewdate').val()),
+                        //reviewremarks: $('#reviewremarks').val(),
+                        //isapproved: $('#isapproved').val(),
+                        //approvedate: GetDateFromTextBox($('#approvedate').val()),
+                        //approveby: $('#approveby').val(),
+                        //approveremarks: $('#approveremarks').val(),
+
+                    });
+
+
+                    confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                        if (answer == "true") {
+
+                            $.ajax({
+                                url: baseurl + "TranManpowerStateApprove/TranManpowerStateApproveUpdate",
+                                data: input,
+                                type: 'POST',
+                                success: function (data) {
+                                    if (data.status === "success") {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+                                                //window.location.href =  baseurl + "TranManpowerStateApprove/TranManpowerStateApprove";
+                                                $('#mcTranManpowerStateApproveEdit').html('');
+                                                $('#modal-container-TranManpowerStateApproveEdit').modal('hide');
+                                                GetAllDataTranManpowerStateApprove();
+                                            }
+
+                                        });
+
+                                    }
+
+                                    else {
+                                        return;
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    return;
+                }
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+
+    });
+</script>
+
+
+

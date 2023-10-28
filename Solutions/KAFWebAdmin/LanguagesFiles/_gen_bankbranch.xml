@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="bankid" value="AR:  Bank ID"></resource>
+       <resource culture="ar-kw" name="bankidRequired" value="AR: Please provide  Bank ID"></resource>
+       <resource culture="ar-kw" name="branchname" value="AR:  Branch Name"></resource>
+       <resource culture="ar-kw" name="branchnameRequired" value="AR: Please provide  Branch Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="bankbranchList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="bankbranchCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="bankbranchUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="bankbranchDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="bankid" value=" Bank ID"></resource>
+       <resource culture="en-us" name="bankidRequired" value="Please provide  Bank ID"></resource>
+       <resource culture="en-us" name="branchname" value=" Branch Name"></resource>
+       <resource culture="en-us" name="branchnameRequired" value="Please provide  Branch Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="bankbranchList" value="View All"></resource>
+		<resource culture="en-us" name="bankbranchCreate" value="Create"></resource>
+		<resource culture="en-us" name="bankbranchUpdate" value="Update"></resource>
+		<resource culture="en-us" name="bankbranchDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = KAF.MsgContainer._hr_visaissueinfo.visaissueinfoList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission("HrVisaIssueInfo/HrVisaIssueInfoNew"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewHrVisaIssueInfo">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+            <div class="panel-body">
+                <table id="HrVisaIssueInfoDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>@KAF.MsgContainer._hr_visaissueinfo.visaissueletterno</th>
+                            <th>@KAF.MsgContainer._hr_visaissueinfo.visaissueletterdate</th>
+                            <th>@KAF.MsgContainer._hr_visaissueinfo.visaissuedate</th>
+                            <th>Total Peson</th>
+                            <th>Status</th>
+
+                            <th ></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrVisaIssueInfoNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrVisaIssueInfoNew">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrVisaIssueInfoEdit" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrVisaIssueInfoEdit">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-HrVisaIssueInfoDetail" class="modal fade hidden-print reportmodal" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrVisaIssueInfoDetail">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrVisaIssueInfo/LandingHrVisaIssueInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrVisaIssueInfo/NewHrVisaIssueInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrVisaIssueInfo/EditHrVisaIssueInfo.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrVisaIssueInfo/DetailHrVisaIssueInfo.js"></script>
+    <script>
+        var addlink = '@ViewBag.addlink';
+    </script>
+}
+
+
+

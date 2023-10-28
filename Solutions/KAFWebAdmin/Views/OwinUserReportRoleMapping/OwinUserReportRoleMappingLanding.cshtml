@@ -1,0 +1,57 @@
+﻿@model KAF.BusinessDataObjects.owin_reportpermissionEntity
+@{
+    ViewBag.Title = "User Report Role Mapping";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+<style>
+    .form-horizontal .form-group {
+        margin-left: 1px;
+    }
+</style>
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmOwinUserReportRoleMapping", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._owin_reportrole.reportroleCreate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.masteruserid, htmlAttributes: new { @class = "labelNormal required " })
+                                @{Html.RenderAction("LoadUserSearch", "Common", new { area = "", selectid = "masteruserid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preOwin_userid, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.reportroleid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.owin_reportrole[0].ToString(), selectid = "reportroleid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Course, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true });}
+                                <h4><label id="ddlroleVal" class="label label-danger" hidden="hidden"></label></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveOwinUserReportRole" class="btn btn-primary btn-md btnSaveOwinReportRole"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/DesignsAndScripts/PageWise/Security/OwinUserReportRoleMapping/NewOwinUserReportRoleMapping.js"></script>
+}
+
+
+
+

@@ -1,0 +1,231 @@
+﻿
+
+@model KAF.BusinessDataObjects.stp_organizationentityEntity
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmUpdateStpOrgEntity", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.organizationkey)
+    @Html.HiddenFor(m => m.entirytypekey)
+    @Html.HiddenFor(m => m.entitykey)
+    @Html.HiddenFor(m => m.parentkey)
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.parentkey, htmlAttributes: new { @class = "labelNormal  required ", @Value = "Parent" })
+                @Html.Editor("txtParent1", new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.entirytypekey, htmlAttributes: new { @class = "labelNormal   required " })
+                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationentitytypeEntity[0].ToString(), selectid = "ddl_entirytypekey", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedstp_orgentitytypelist, multiple = false, isReadOnly = false, IsRequired = true, isStatic = true, selectedvalue = Model.entirytypekey });}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.entityname, htmlAttributes: new { @class = "labelNormal  required " })
+                @Html.EditorFor(model => model.entityname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.entityname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.entitylevel, htmlAttributes: new { @class = "labelNormal  required " })
+                @Html.EditorFor(model => model.entitylevel, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.entitylevel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "labelNormal " })
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row" id="divisactive">
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.isactive, htmlAttributes: new { @class = "labelNormal " })
+                @Html.EditorFor(model => model.isactive, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.isactive, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="btn-toolbar" style="margin-bottom: 15px;">
+        <button type="submit" id="btnUpdateStpOrganizationEntity" class="btn btn-primary btn-md btnUpdateStpOrganizationEntity"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+        <button type="submit" id="btnUpdateCancel" class="btn btn-info btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+        <button type="submit" id="btnDelete" class="btn btn-danger btn-md btnDelete"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnDelete</button>
+
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+
+        $('#btnDelete').on('click', function (event) {
+            try {
+                event.preventDefault();
+                var form = $('#frmUpdateStpOrgEntity');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+                if (form.valid()) {
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "StpOrganizationEntityDelete",
+                        currenturl: window.location.href,
+
+                        entitykey: $('#entitykey').val()
+                    });
+                    confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_updateConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                        if (answer == "true") {
+                            $.ajax({
+                                url: "StpOrganizationEntityDelete",
+                                data: input,
+                                type: 'POST',
+                                success: function (data) {
+
+                                    if (data.status === "success") {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            $('frmUpdateStpOrgEntity').removeData('validator');
+                                            $('frmUpdateStpOrgEntity').removeData('unobtrusiveValidation');
+                                            $.validator.unobtrusive.parse('#frmUpdateStpOrgEntity');
+
+                                            $("#treeview_all_unit").jstree("refresh");
+                                            $("#orgunitContent1").html('');
+
+                                            clearvalues();
+
+                                            $('.nav-tabs a[href="#orgunitContent2"]').tab('show');
+                                        });
+                                    }
+                                    else {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    return;
+                }
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+        $('#btnUpdateStpOrganizationEntity').on('click', function (event) {
+            try {
+                event.preventDefault();
+                var form = $('#frmUpdateStpOrgEntity');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+                if (form.valid()) {
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "StpOrganizationEntityUpdate",
+                        currenturl: window.location.href,
+
+                        entitykey: $('#entitykey').val(),
+                        organizationkey: $('#organizationkey').val(),
+                        parentkey: $('#parentkey').val(),
+                        entirytypekey: $('#ddl_entirytypekey').val(),
+                        entitylevel: parseInt($('#entitylevel').val()) + 1,
+                        seqfirstindex: $('#seqfirstindex').val(),
+                        seqfullindex: $('#seqfullindex').val(),
+                        entitycpde: $('#entitycpde').val(),
+                        entityname: $('#entityname').val(),
+                        description: $('#description').val(),
+                        isactive: $('#isactive').val()
+                    });
+
+                    $.ajax({
+                        url: "StpOrganizationEntityUpdate",
+                        data: input,
+                        type: 'POST',
+                        success: function (data) {
+
+                            if (data.status === "success") {
+                                inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                    $('frmUpdateStpOrgEntity').removeData('validator');
+                                    $('frmUpdateStpOrgEntity').removeData('unobtrusiveValidation');
+                                    $.validator.unobtrusive.parse('#frmUpdateStpOrgEntity');
+                                    clearvalues();
+                                    $("#treeview_all_unit").jstree("refresh");
+                                    $("#orgunitContent1").html('');
+                                    $('.nav-tabs a[href="#orgunitContent2"]').tab('show');
+                                });
+                            }
+                            else {
+                                inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                    if (answer == "true") {
+
+                                    }
+                                });
+                            }
+                        }
+                    });
+
+                }
+                else {
+                    return;
+                }
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        $('#btnUpdateCancel').on('click', function (event) {
+            $("#treeview_all_unit").jstree().deselect_all(true);
+
+            $("#orgunitContent1").html('');
+            $('.nav-tabs a[href="#orgunitContent2"]').tab('show');
+        });
+
+        $('#ddl_entirytypekey').select2().val($("#entirytypekey").val()).trigger("change");
+    });
+</script>
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="relationshipname" value="AR:  Relationship Name"></resource>
+       <resource culture="ar-kw" name="relationshipnameRequired" value="AR: Please provide  Relationship Name"></resource>
+       <resource culture="ar-kw" name="priority" value="AR:  Priority"></resource>
+       <resource culture="ar-kw" name="forself" value="AR:  For Self"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="relationshipList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="relationshipCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="relationshipUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="relationshipDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="relationshipname" value=" Relationship Name"></resource>
+       <resource culture="en-us" name="relationshipnameRequired" value="Please provide  Relationship Name"></resource>
+       <resource culture="en-us" name="priority" value=" Priority"></resource>
+       <resource culture="en-us" name="forself" value=" For Self"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="relationshipList" value="View All"></resource>
+		<resource culture="en-us" name="relationshipCreate" value="Create"></resource>
+		<resource culture="en-us" name="relationshipUpdate" value="Update"></resource>
+		<resource culture="en-us" name="relationshipDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

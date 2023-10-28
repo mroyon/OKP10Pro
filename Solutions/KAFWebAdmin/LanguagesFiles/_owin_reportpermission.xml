@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="masteruserid" value="AR:  Master User ID"></resource>
+       <resource culture="ar-kw" name="masteruseridRequired" value="AR: Please provide  Master User ID"></resource>
+       <resource culture="ar-kw" name="userid" value="AR:  User ID"></resource>
+       <resource culture="ar-kw" name="useridRequired" value="AR: Please provide  User ID"></resource>
+       <resource culture="ar-kw" name="reportroleid" value="AR:  Report Role ID"></resource>
+       <resource culture="ar-kw" name="reportroleidRequired" value="AR: Please provide  Report Role ID"></resource>
+       <resource culture="ar-kw" name="reportid" value="AR:  Report ID"></resource>
+       <resource culture="ar-kw" name="reportidRequired" value="AR: Please provide  Report ID"></resource>
+       <resource culture="ar-kw" name="isaccessible" value="AR:  Is Accessible"></resource>
+       <resource culture="ar-kw" name="isaccessibleRequired" value="AR: Please provide  Is Accessible"></resource>
+       <resource culture="ar-kw" name="isprintable" value="AR:  Is Printable"></resource>
+       <resource culture="ar-kw" name="isprintableRequired" value="AR: Please provide  Is Printable"></resource>
+		<resource culture="ar-kw" name="reportpermissionList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="reportpermissionCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="reportpermissionUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="reportpermissionDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="masteruserid" value=" Master User ID"></resource>
+       <resource culture="en-us" name="masteruseridRequired" value="Please provide  Master User ID"></resource>
+       <resource culture="en-us" name="userid" value=" User ID"></resource>
+       <resource culture="en-us" name="useridRequired" value="Please provide  User ID"></resource>
+       <resource culture="en-us" name="reportroleid" value=" Report Role ID"></resource>
+       <resource culture="en-us" name="reportroleidRequired" value="Please provide  Report Role ID"></resource>
+       <resource culture="en-us" name="reportid" value=" Report ID"></resource>
+       <resource culture="en-us" name="reportidRequired" value="Please provide  Report ID"></resource>
+       <resource culture="en-us" name="isaccessible" value=" Is Accessible"></resource>
+       <resource culture="en-us" name="isaccessibleRequired" value="Please provide  Is Accessible"></resource>
+       <resource culture="en-us" name="isprintable" value=" Is Printable"></resource>
+       <resource culture="en-us" name="isprintableRequired" value="Please provide  Is Printable"></resource>
+        <resource culture="en-us" name="reportpermissionList" value="View All"></resource>
+		<resource culture="en-us" name="reportpermissionCreate" value="Create"></resource>
+		<resource culture="en-us" name="reportpermissionUpdate" value="Update"></resource>
+		<resource culture="en-us" name="reportpermissionDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

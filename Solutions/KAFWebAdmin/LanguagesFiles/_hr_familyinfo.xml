@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="relationshipid" value="AR:  Relationship ID"></resource>
+       <resource culture="ar-kw" name="relationshipidRequired" value="AR: Please provide  Relationship ID"></resource>
+       <resource culture="ar-kw" name="parenthrfamilyid" value="AR:  Parent Hr Family ID"></resource>
+       <resource culture="ar-kw" name="familycivilid" value="AR:  Family Civil ID"></resource>
+       <resource culture="ar-kw" name="familynationalid" value="AR:  Family National ID"></resource>
+       <resource culture="ar-kw" name="familyname1" value="AR:  Family Name 1"></resource>
+       <resource culture="ar-kw" name="familyname1Required" value="AR: Please provide  Family Name 1"></resource>
+       <resource culture="ar-kw" name="familyname2" value="AR:  Family Name 2"></resource>
+       <resource culture="ar-kw" name="familyname2Required" value="AR: Please provide  Family Name 2"></resource>
+       <resource culture="ar-kw" name="familyname3" value="AR:  Family Name 3"></resource>
+       <resource culture="ar-kw" name="familyname4" value="AR:  Family Name 4"></resource>
+       <resource culture="ar-kw" name="familyname5" value="AR:  Family Name 5"></resource>
+       <resource culture="ar-kw" name="familyfullname" value="AR:  Family Full Name"></resource>
+       <resource culture="ar-kw" name="familyfullnameRequired" value="AR: Please provide  Family Full Name"></resource>
+       <resource culture="ar-kw" name="familygenderid" value="AR:  Family Gender ID"></resource>
+       <resource culture="ar-kw" name="familygenderidRequired" value="AR: Please provide  Family Gender ID"></resource>
+       <resource culture="ar-kw" name="familyreligionid" value="AR:  Family Religion ID"></resource>
+       <resource culture="ar-kw" name="familybloodgroupid" value="AR:  Family Blood Group ID"></resource>
+       <resource culture="ar-kw" name="familybirthdate" value="AR:  Family Birth Date"></resource>
+       <resource culture="ar-kw" name="familybirthdocno" value="AR:  Family Birth Doc No"></resource>
+       <resource culture="ar-kw" name="familybirthdocdate" value="AR:  Family Birth Doc Date"></resource>
+       <resource culture="ar-kw" name="familycountryid" value="AR:  Family Country ID"></resource>
+       <resource culture="ar-kw" name="familynationalityid" value="AR:  Family Nationality ID"></resource>
+       <resource culture="ar-kw" name="familymaritalstatusid" value="AR:  Family Marital Status ID"></resource>
+       <resource culture="ar-kw" name="familycuraddressflatno" value="AR:  Family Cur Address Flat No"></resource>
+       <resource culture="ar-kw" name="familycuraddresshouseno" value="AR:  Family Cur Address House No"></resource>
+       <resource culture="ar-kw" name="familycuraddressstreet" value="AR:  Family Cur Address Street"></resource>
+       <resource culture="ar-kw" name="familycuradrressblock" value="AR:  Family Cur Adrress Block"></resource>
+       <resource culture="ar-kw" name="familycurcountryid" value="AR:  Family Cur Country ID"></resource>
+       <resource culture="ar-kw" name="familycurgovnerid" value="AR:  Family Cur Govner ID"></resource>
+       <resource culture="ar-kw" name="familycurareaid" value="AR:  Family Cur Area ID"></resource>
+       <resource culture="ar-kw" name="familymobile1" value="AR:  Family Mobile 1"></resource>
+       <resource culture="ar-kw" name="familytelephone1" value="AR:  Family Telephone 1"></resource>
+       <resource culture="ar-kw" name="familyperaddressflatno" value="AR:  Family Per Address Flat No"></resource>
+       <resource culture="ar-kw" name="familyperaddresshouseno" value="AR:  Family Per Address House No"></resource>
+       <resource culture="ar-kw" name="familyperaddressstreet" value="AR:  Family Per Address Street"></resource>
+       <resource culture="ar-kw" name="familyperadrresspo" value="AR:  Family Per Adrress P O"></resource>
+       <resource culture="ar-kw" name="familyperadrressps" value="AR:  Family Per Adrress P S"></resource>
+       <resource culture="ar-kw" name="familyperaddressdist" value="AR:  Family Per Address Dist"></resource>
+       <resource culture="ar-kw" name="familyperaddresscountryid" value="AR:  Family Per Address Country ID"></resource>
+       <resource culture="ar-kw" name="familymarriagedate" value="AR:  Family Marriage Date"></resource>
+       <resource culture="ar-kw" name="familymarriagedocno" value="AR:  Family Marriage Doc No"></resource>
+       <resource culture="ar-kw" name="familymarriagedocdate" value="AR:  Family Marriage Doc Date"></resource>
+       <resource culture="ar-kw" name="marriagefiledescription" value="AR:  Marriage File Description"></resource>
+       <resource culture="ar-kw" name="marriagefilepath" value="AR:  Marriage File Path"></resource>
+       <resource culture="ar-kw" name="marriagefilename" value="AR:  Marriage File Name"></resource>
+       <resource culture="ar-kw" name="marriagefiletype" value="AR:  Marriage File Type"></resource>
+       <resource culture="ar-kw" name="marriagefileextension" value="AR:  Marriage File Extension"></resource>
+       <resource culture="ar-kw" name="marriageserialno" value="AR:  Marriage Serial No"></resource>
+       <resource culture="ar-kw" name="divorcedate" value="AR:  Divorce Date"></resource>
+       <resource culture="ar-kw" name="divorcedocno" value="AR:  Divorce Doc No"></resource>
+       <resource culture="ar-kw" name="divorcedocdate" value="AR:  Divorce Doc Date"></resource>
+       <resource culture="ar-kw" name="divorcefiledescription" value="AR:  Divorce File Description"></resource>
+       <resource culture="ar-kw" name="divorcefilepath" value="AR:  Divorce File Path"></resource>
+       <resource culture="ar-kw" name="divorcefilename" value="AR:  Divorce File Name"></resource>
+       <resource culture="ar-kw" name="divorcefiletype" value="AR:  Divorce File Type"></resource>
+       <resource culture="ar-kw" name="divorcefileextension" value="AR:  Divorce File Extension"></resource>
+       <resource culture="ar-kw" name="fatherstatusid" value="AR:  Father Status ID"></resource>
+       <resource culture="ar-kw" name="isservedinmilitary" value="AR:  Is Served In Military"></resource>
+       <resource culture="ar-kw" name="fathermilitarynokw" value="AR:  Father Military No K W"></resource>
+       <resource culture="ar-kw" name="fathermilitarynobd" value="AR:  Father Military No B D"></resource>
+       <resource culture="ar-kw" name="workplace" value="AR:  Work Place"></resource>
+       <resource culture="ar-kw" name="workdesignation" value="AR:  Work Designation"></resource>
+       <resource culture="ar-kw" name="familydeathdate" value="AR:  Family Death Date"></resource>
+       <resource culture="ar-kw" name="familydeathdocno" value="AR:  Family Death Doc No"></resource>
+       <resource culture="ar-kw" name="familydeathdocdate" value="AR:  Family Death Doc Date"></resource>
+       <resource culture="ar-kw" name="familydeathfiledescription" value="AR:  Family Death File Description"></resource>
+       <resource culture="ar-kw" name="familydeathfilepath" value="AR:  Family Death File Path"></resource>
+       <resource culture="ar-kw" name="familydeathfilename" value="AR:  Family Death File Name"></resource>
+       <resource culture="ar-kw" name="familydeathfiletype" value="AR:  Family Death File Type"></resource>
+       <resource culture="ar-kw" name="familydeathfileextension" value="AR:  Family Death File Extension"></resource>
+       <resource culture="ar-kw" name="separetiondate" value="AR:  Separetion Date"></resource>
+       <resource culture="ar-kw" name="separetionreason" value="AR:  Separetion Reason"></resource>
+       <resource culture="ar-kw" name="separetiondocno" value="AR:  Separetion Doc No"></resource>
+       <resource culture="ar-kw" name="separetiondocdate" value="AR:  Separetion Doc Date"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+		<resource culture="ar-kw" name="familyinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="familyinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="familyinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="familyinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="relationshipid" value=" Relationship ID"></resource>
+       <resource culture="en-us" name="relationshipidRequired" value="Please provide  Relationship ID"></resource>
+       <resource culture="en-us" name="parenthrfamilyid" value=" Parent Hr Family ID"></resource>
+       <resource culture="en-us" name="familycivilid" value=" Family Civil ID"></resource>
+       <resource culture="en-us" name="familynationalid" value=" Family National ID"></resource>
+       <resource culture="en-us" name="familyname1" value=" Family Name 1"></resource>
+       <resource culture="en-us" name="familyname1Required" value="Please provide  Family Name 1"></resource>
+       <resource culture="en-us" name="familyname2" value=" Family Name 2"></resource>
+       <resource culture="en-us" name="familyname2Required" value="Please provide  Family Name 2"></resource>
+       <resource culture="en-us" name="familyname3" value=" Family Name 3"></resource>
+       <resource culture="en-us" name="familyname4" value=" Family Name 4"></resource>
+       <resource culture="en-us" name="familyname5" value=" Family Name 5"></resource>
+       <resource culture="en-us" name="familyfullname" value=" Family Full Name"></resource>
+       <resource culture="en-us" name="familyfullnameRequired" value="Please provide  Family Full Name"></resource>
+       <resource culture="en-us" name="familygenderid" value=" Family Gender ID"></resource>
+       <resource culture="en-us" name="familygenderidRequired" value="Please provide  Family Gender ID"></resource>
+       <resource culture="en-us" name="familyreligionid" value=" Family Religion ID"></resource>
+       <resource culture="en-us" name="familybloodgroupid" value=" Family Blood Group ID"></resource>
+       <resource culture="en-us" name="familybirthdate" value=" Family Birth Date"></resource>
+       <resource culture="en-us" name="familybirthdocno" value=" Family Birth Doc No"></resource>
+       <resource culture="en-us" name="familybirthdocdate" value=" Family Birth Doc Date"></resource>
+       <resource culture="en-us" name="familycountryid" value=" Family Country ID"></resource>
+       <resource culture="en-us" name="familynationalityid" value=" Family Nationality ID"></resource>
+       <resource culture="en-us" name="familymaritalstatusid" value=" Family Marital Status ID"></resource>
+       <resource culture="en-us" name="familycuraddressflatno" value=" Family Cur Address Flat No"></resource>
+       <resource culture="en-us" name="familycuraddresshouseno" value=" Family Cur Address House No"></resource>
+       <resource culture="en-us" name="familycuraddressstreet" value=" Family Cur Address Street"></resource>
+       <resource culture="en-us" name="familycuradrressblock" value=" Family Cur Adrress Block"></resource>
+       <resource culture="en-us" name="familycurcountryid" value=" Family Cur Country ID"></resource>
+       <resource culture="en-us" name="familycurgovnerid" value=" Family Cur Govner ID"></resource>
+       <resource culture="en-us" name="familycurareaid" value=" Family Cur Area ID"></resource>
+       <resource culture="en-us" name="familymobile1" value=" Family Mobile 1"></resource>
+       <resource culture="en-us" name="familytelephone1" value=" Family Telephone 1"></resource>
+       <resource culture="en-us" name="familyperaddressflatno" value=" Family Per Address Flat No"></resource>
+       <resource culture="en-us" name="familyperaddresshouseno" value=" Family Per Address House No"></resource>
+       <resource culture="en-us" name="familyperaddressstreet" value=" Family Per Address Street"></resource>
+       <resource culture="en-us" name="familyperadrresspo" value=" Family Per Adrress P O"></resource>
+       <resource culture="en-us" name="familyperadrressps" value=" Family Per Adrress P S"></resource>
+       <resource culture="en-us" name="familyperaddressdist" value=" Family Per Address Dist"></resource>
+       <resource culture="en-us" name="familyperaddresscountryid" value=" Family Per Address Country ID"></resource>
+       <resource culture="en-us" name="familymarriagedate" value=" Family Marriage Date"></resource>
+       <resource culture="en-us" name="familymarriagedocno" value=" Family Marriage Doc No"></resource>
+       <resource culture="en-us" name="familymarriagedocdate" value=" Family Marriage Doc Date"></resource>
+       <resource culture="en-us" name="marriagefiledescription" value=" Marriage File Description"></resource>
+       <resource culture="en-us" name="marriagefilepath" value=" Marriage File Path"></resource>
+       <resource culture="en-us" name="marriagefilename" value=" Marriage File Name"></resource>
+       <resource culture="en-us" name="marriagefiletype" value=" Marriage File Type"></resource>
+       <resource culture="en-us" name="marriagefileextension" value=" Marriage File Extension"></resource>
+       <resource culture="en-us" name="marriageserialno" value=" Marriage Serial No"></resource>
+       <resource culture="en-us" name="divorcedate" value=" Divorce Date"></resource>
+       <resource culture="en-us" name="divorcedocno" value=" Divorce Doc No"></resource>
+       <resource culture="en-us" name="divorcedocdate" value=" Divorce Doc Date"></resource>
+       <resource culture="en-us" name="divorcefiledescription" value=" Divorce File Description"></resource>
+       <resource culture="en-us" name="divorcefilepath" value=" Divorce File Path"></resource>
+       <resource culture="en-us" name="divorcefilename" value=" Divorce File Name"></resource>
+       <resource culture="en-us" name="divorcefiletype" value=" Divorce File Type"></resource>
+       <resource culture="en-us" name="divorcefileextension" value=" Divorce File Extension"></resource>
+       <resource culture="en-us" name="fatherstatusid" value=" Father Status ID"></resource>
+       <resource culture="en-us" name="isservedinmilitary" value=" Is Served In Military"></resource>
+       <resource culture="en-us" name="fathermilitarynokw" value=" Father Military No K W"></resource>
+       <resource culture="en-us" name="fathermilitarynobd" value=" Father Military No B D"></resource>
+       <resource culture="en-us" name="workplace" value=" Work Place"></resource>
+       <resource culture="en-us" name="workdesignation" value=" Work Designation"></resource>
+       <resource culture="en-us" name="familydeathdate" value=" Family Death Date"></resource>
+       <resource culture="en-us" name="familydeathdocno" value=" Family Death Doc No"></resource>
+       <resource culture="en-us" name="familydeathdocdate" value=" Family Death Doc Date"></resource>
+       <resource culture="en-us" name="familydeathfiledescription" value=" Family Death File Description"></resource>
+       <resource culture="en-us" name="familydeathfilepath" value=" Family Death File Path"></resource>
+       <resource culture="en-us" name="familydeathfilename" value=" Family Death File Name"></resource>
+       <resource culture="en-us" name="familydeathfiletype" value=" Family Death File Type"></resource>
+       <resource culture="en-us" name="familydeathfileextension" value=" Family Death File Extension"></resource>
+       <resource culture="en-us" name="separetiondate" value=" Separetion Date"></resource>
+       <resource culture="en-us" name="separetionreason" value=" Separetion Reason"></resource>
+       <resource culture="en-us" name="separetiondocno" value=" Separetion Doc No"></resource>
+       <resource culture="en-us" name="separetiondocdate" value=" Separetion Doc Date"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+        <resource culture="en-us" name="familyinfoList" value="View All"></resource>
+		<resource culture="en-us" name="familyinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="familyinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="familyinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

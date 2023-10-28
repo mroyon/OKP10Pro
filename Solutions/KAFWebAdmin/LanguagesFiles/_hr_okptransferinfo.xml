@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hrbasic"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hrbasic"></resource>
+       <resource culture="ar-kw" name="fromkopid" value="AR:  From Kop"></resource>
+       <resource culture="ar-kw" name="fromkopidRequired" value="AR: Please provide  From Kop"></resource>
+       <resource culture="ar-kw" name="tookpid" value="AR:  To Okp"></resource>
+       <resource culture="ar-kw" name="tookpidRequired" value="AR: Please provide  To Okp"></resource>
+       <resource culture="ar-kw" name="subunitid" value="AR:  Sub Unit"></resource>
+       <resource culture="ar-kw" name="subunitidRequired" value="AR: Please provide  Sub Unit"></resource>
+       <resource culture="ar-kw" name="campid" value="AR:  Camp"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp"></resource>
+       <resource culture="ar-kw" name="transferdate" value="AR:  Transfer Date"></resource>
+       <resource culture="ar-kw" name="transferdateRequired" value="AR: Please provide  Transfer Date"></resource>
+       <resource culture="ar-kw" name="reason" value="AR:  Reason"></resource>
+       <resource culture="ar-kw" name="letterno" value="AR:  Letter N O"></resource>
+       <resource culture="ar-kw" name="letterdate" value="AR:  Letter Date"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="okptransferinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="okptransferinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="okptransferinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="okptransferinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hrbasic"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hrbasic"></resource>
+       <resource culture="en-us" name="fromkopid" value=" From Kop"></resource>
+       <resource culture="en-us" name="fromkopidRequired" value="Please provide  From Kop"></resource>
+       <resource culture="en-us" name="tookpid" value=" To Okp"></resource>
+       <resource culture="en-us" name="tookpidRequired" value="Please provide  To Okp"></resource>
+       <resource culture="en-us" name="subunitid" value=" Sub Unit"></resource>
+       <resource culture="en-us" name="subunitidRequired" value="Please provide  Sub Unit"></resource>
+       <resource culture="en-us" name="campid" value=" Camp"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp"></resource>
+       <resource culture="en-us" name="transferdate" value=" Transfer Date"></resource>
+       <resource culture="en-us" name="transferdateRequired" value="Please provide  Transfer Date"></resource>
+       <resource culture="en-us" name="reason" value=" Reason"></resource>
+       <resource culture="en-us" name="letterno" value=" Letter N O"></resource>
+       <resource culture="en-us" name="letterdate" value=" Letter Date"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="okptransferinfoList" value="View All"></resource>
+		<resource culture="en-us" name="okptransferinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="okptransferinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="okptransferinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

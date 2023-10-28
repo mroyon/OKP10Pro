@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="promotiondate" value="AR:  Promotion Date"></resource>
+       <resource culture="ar-kw" name="promotiondateRequired" value="AR: Please provide  Promotion Date"></resource>
+       <resource culture="ar-kw" name="promotiontypeid" value="AR:  Promotion Type ID"></resource>
+       <resource culture="ar-kw" name="promotiontypeidRequired" value="AR: Please provide  Promotion Type ID"></resource>
+       <resource culture="ar-kw" name="torankid" value="AR:  To Rank Id"></resource>
+       <resource culture="ar-kw" name="torankidRequired" value="AR: Please provide  To Rank Id"></resource>
+       <resource culture="ar-kw" name="promotionno" value="AR:  Promotion No"></resource>
+       <resource culture="ar-kw" name="promotiondesignation" value="AR:  Promotion Designation"></resource>
+       <resource culture="ar-kw" name="promotiondelayreason" value="AR:  Promotion Delay Reason"></resource>
+       <resource culture="ar-kw" name="promotiondelaydocno" value="AR:  Promotion Delay Doc No"></resource>
+       <resource culture="ar-kw" name="promotiondelaydocdate" value="AR:  Promotion Delay Doc Date"></resource>
+       <resource culture="ar-kw" name="promotiondelaystartdate" value="AR:  Promotion Delay Start Date"></resource>
+       <resource culture="ar-kw" name="promotiondelayperiod" value="AR:  Promotion Delay Period"></resource>
+       <resource culture="ar-kw" name="orderno" value="AR:  Order No"></resource>
+       <resource culture="ar-kw" name="orderdate" value="AR:  Order Date"></resource>
+       <resource culture="ar-kw" name="orderfiledescription" value="AR:  Order File Description"></resource>
+       <resource culture="ar-kw" name="orderfilepath" value="AR:  Order File Path"></resource>
+       <resource culture="ar-kw" name="orderfilename" value="AR:  Order File Name"></resource>
+       <resource culture="ar-kw" name="orderfiletype" value="AR:  Order File Type"></resource>
+       <resource culture="ar-kw" name="orderextension" value="AR:  Order Extension"></resource>
+       <resource culture="ar-kw" name="orderfileno" value="AR:  Order File No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="promotioninfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="promotioninfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="promotioninfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="promotioninfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic Id"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic Id"></resource>
+       <resource culture="en-us" name="promotiondate" value=" Promotion Date"></resource>
+       <resource culture="en-us" name="promotiondateRequired" value="Please provide  Promotion Date"></resource>
+       <resource culture="en-us" name="promotiontypeid" value=" Promotion Type ID"></resource>
+       <resource culture="en-us" name="promotiontypeidRequired" value="Please provide  Promotion Type ID"></resource>
+       <resource culture="en-us" name="torankid" value=" To Rank Id"></resource>
+       <resource culture="en-us" name="torankidRequired" value="Please provide  To Rank Id"></resource>
+       <resource culture="en-us" name="promotionno" value=" Promotion No"></resource>
+       <resource culture="en-us" name="promotiondesignation" value=" Promotion Designation"></resource>
+       <resource culture="en-us" name="promotiondelayreason" value=" Promotion Delay Reason"></resource>
+       <resource culture="en-us" name="promotiondelaydocno" value=" Promotion Delay Doc No"></resource>
+       <resource culture="en-us" name="promotiondelaydocdate" value=" Promotion Delay Doc Date"></resource>
+       <resource culture="en-us" name="promotiondelaystartdate" value=" Promotion Delay Start Date"></resource>
+       <resource culture="en-us" name="promotiondelayperiod" value=" Promotion Delay Period"></resource>
+       <resource culture="en-us" name="orderno" value=" Order No"></resource>
+       <resource culture="en-us" name="orderdate" value=" Order Date"></resource>
+       <resource culture="en-us" name="orderfiledescription" value=" Order File Description"></resource>
+       <resource culture="en-us" name="orderfilepath" value=" Order File Path"></resource>
+       <resource culture="en-us" name="orderfilename" value=" Order File Name"></resource>
+       <resource culture="en-us" name="orderfiletype" value=" Order File Type"></resource>
+       <resource culture="en-us" name="orderextension" value=" Order Extension"></resource>
+       <resource culture="en-us" name="orderfileno" value=" Order File No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="promotioninfoList" value="View All"></resource>
+		<resource culture="en-us" name="promotioninfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="promotioninfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="promotioninfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

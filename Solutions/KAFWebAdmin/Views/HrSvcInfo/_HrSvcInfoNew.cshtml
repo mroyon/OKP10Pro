@@ -1,0 +1,423 @@
+﻿@model KAF.BusinessDataObjects.hr_svcinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_SvcInfoNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+           Service Information: @KAF.MsgContainer._hr_svcinfo.svcinfoCreate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.hrsvcid)
+                    </div>
+                    @*<img src="~/Uploads/ProfileImages/arif_blue.jpg" />*@
+                    @*<img src="~/DesignsAndScripts/Images/NoProfileImage.png" />*@
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <div class="row">
+                                    <button id="btnAttachment" title="Change Profile Image" class="btn btn-primary start btnAttachment" style="background-color: white; width: 200px;height: 150px;" type="button">
+                                        <img id="imgprofile" src="@ViewBag.UserProfilePhoto" style="height:100%;" />
+                                    </button>
+                                    <br />
+                                </div>
+                                <div class="row">
+                                    <button type="button" id="btnRemoveImage" class="btn btn-primary btn-xs btnRemoveImage ">Remove <i class="fa fa-trash-o"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @class = "militarynokw form-control required" } })
+                                @Html.ValidationMessageFor(model => model.militarynokw, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Military No (BD)", htmlAttributes: new { @class = "labelNormal  required" })
+                                @Html.EditorFor(model => model.militarynobd, new { htmlAttributes = new { @class = "militarynobd form-control required" } })
+                                @Html.ValidationMessageFor(model => model.militarynobd, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.civilid, htmlAttributes: new { @class = "labelNormal  required" })
+                                @Html.EditorFor(model => model.civilid, new { htmlAttributes = new { @maxlength = "12", @class = "civilid form-control required" } })
+                                @Html.ValidationMessageFor(model => model.civilid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.passportno, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.passportno, new { htmlAttributes = new { @class = "passportno form-control required" } })
+                                @Html.ValidationMessageFor(model => model.passportno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name1, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.name1, new { htmlAttributes = new { @class = " form-control required" } })
+                                @Html.ValidationMessageFor(model => model.name1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.name2, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.name2, new { htmlAttributes = new { @class = " form-control required" } })
+                                @Html.ValidationMessageFor(model => model.name2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @readonly = "readonly", @class = " form-control required fullname" } })
+                                @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.dateofbirth, htmlAttributes: new { @class = "labelNormal  required " })
+                                <div class='input-group date fromdate' id='fromdate' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.dateofbirth, new { htmlAttributes = new { @Value = Model.dateofbirth != null ? Convert.ToDateTime(Model.dateofbirth).ToString("dd-MM-yyyy") : null, @class = "form-control required", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.dateofbirth, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.joindatekw, htmlAttributes: new { @class = "labelNormal  required " })
+                                <div class='input-group date todate' id='todate' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.joindatekw, new { htmlAttributes = new { @Value = Model.joindatekw != null ? Convert.ToDateTime(Model.joindatekw).ToString("dd-mm-yyyy") : null, @class = "form-control required", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.joindatekw, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Expected TOD End Dt", htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.expectedretiredatekw, new { htmlAttributes = new { @readonly = "readonly", @Value = Model.expectedretiredatekw != null ? Convert.ToDateTime(Model.expectedretiredatekw).ToString("dd-MM-yyyy") : null, @class = "form-control required", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.expectedretiredatekw, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Force Name", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_organizationEntity[0].ToString(), selectid = "organizationkey", minimumInputLength = 0, delay = 250, preloaded = ViewBag.prestp_organizationkey, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Arms/ Branch", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_armsEntity[0].ToString(), selectid = "armsid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.pregen_arms, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Rank (KW)", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadRankKWSearch", "Common", new { area = "", selectid = "rankidkw", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_RankKW, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Rank (BD)", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadRankBDSearch", "Common", new { area = "", selectid = "rankidbd", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_RankBD, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Trade (KW)", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadTradeKWSearch", "Common", new { area = "", selectid = "tradeidkw", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_TradeKW, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Trade (BD)", htmlAttributes: new { @class = "labelNormal  required   " })
+                                @{Html.RenderAction("LoadTradeBDSearch", "Common", new { area = "", selectid = "tradeidbd", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_TradeBD, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Unit Name", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadUnitSearch", "Common", new { area = "", selectid = "entitykey", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedstp_organizationentity, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("OKP", htmlAttributes: new { @class = "labelNormal   required  " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.pregen_arms, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Group", htmlAttributes: new { @class = "labelNormal   required " })
+                                @Html.DropDownListFor(model=> model.groupid,
+                                new SelectList (
+                                    (
+                                    KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.Group>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.Group))), "paramvalue", "paramname"),
+                                "Please Select",
+                                new {@class= "form-control required" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Status", htmlAttributes: new { @class = "labelNormal   required " })
+                                @Html.DropDownListFor(model=> model.status,
+                                new SelectList (
+                                    (
+                                    KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.ServiceStatus>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.ServiceStatus))), "paramvalue", "paramname"),
+                                "Please Select",
+                                new {@disabled = "disabled",@class ="form-control"})
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveHrSvcInfo" class="btn btn-primary btn-md btnSaveHrSvcInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="file" id="attachment" name="attachment" style="display:none" />
+}
+
+
+<script>
+
+    $(document).ready(function () {
+        $('input[id=name1]').on("change", function () {
+            $('.fullname').val('');
+            $('.fullname').val($('#name1').val() + " " + $('#name2').val());
+        })
+        $('input[id=name2]').on("change", function () {
+            $('.fullname').val('');
+            $('.fullname').val($('#name1').val() + " " + $('#name2').val());
+        })
+        //$('#groupid').on("change", function () {
+
+        //    if ($('#groupid').val() == 1) $("#expectedretiredatekw").val(expectedRetiredDate(8));
+        //    else $("#expectedretiredatekw").val(expectedRetiredDate(4));
+        //});
+        $('#joindatekw').focusout(function () {
+            //if ($('#groupid').val() == 1) $("#expectedretiredatekw").val(expectedRetiredDate(8));
+            //else if ($('#groupid').val() == 2) $("#expectedretiredatekw").val(expectedRetiredDate(4));
+
+            $("#expectedretiredatekw").val(expectedRetiredDate(4));
+        });
+     
+        $('input[id=civilid]').change(function () {
+
+            if (!checkexists($(".civilid").val(), '')) {
+                var dob = GetDOBFromCivilID($(".civilid").val());
+                if (dob != null) {
+                    $('#dateofbirth').val(dob);
+                }
+                else
+                    $('#dateofbirth').val('');
+            }
+
+        });
+        $('input[id=passportno]').change(function () {
+           checkexists('', $(".passportno").val());
+        });
+
+        $('input[id=militarynokw]').change(function () {
+            checkexistsServiceInfo($(".militarynokw").val(),'');
+        });
+
+        $('input[id=militarynobd]').change(function () {
+            checkexistsServiceInfo('',$(".militarynobd").val());
+        });
+    });
+
+    function expectedRetiredDate(addYears) {
+        if ($('#joindatekw').val() != "") {
+            var joindate = $('#joindatekw').val();
+
+            var new_date = joindate.split('-');
+            var nJoinDate = new Date(parseInt(new_date[2]), parseInt(new_date[1] - 1), parseInt(new_date[0]));
+            var nYear = nJoinDate.getFullYear();
+            var nMonth = nJoinDate.getMonth();
+            var nDay = nJoinDate.getDate();
+
+            var nDate = new Date(nYear + addYears, nMonth, nDay - 1);
+
+            nYear = nDate.getFullYear();
+            nMonth = nDate.getMonth() + 1;
+            nDay = nDate.getDate();
+
+            var exDate = pad(nDay, 2) + "-" + pad(nMonth, 2) + "-" + nYear;
+
+            return exDate;
+        }
+        else return null;
+    }
+    function pad(str, max) {
+        str = str.toString();
+        return str.length < max ? pad("0" + str, max) : str;
+    }
+    var webapiurl = '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+    var headerauth = $("#txtwebapitoken").val();
+    function checkexists(civilid, passportno) {
+
+        $.ajax({
+            url: webapiurl + "api/HrMilitaryProfile/GetMilitaryInfoData?civilid=" + civilid + "&passportno=" + passportno,
+            headers: {
+                "Authorization": headerauth,
+                "Content-Type": "application/json",
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: _getCookieForLanguage("dataAlreadyExist"),
+                    type: 'red'
+                });
+
+                if (civilid != '') {
+                    $("#civilid").val('');
+                    $("#civilid").focus();
+                }
+
+                if (passportno != '')
+                    $("#passportno").val('');
+                $("#passportno").focus();
+
+            },
+            error: function (xhr, status, error) {
+            }
+        });
+
+
+    }
+
+    function checkexistsServiceInfo(militarynokw, militarynobd) {
+
+        $.ajax({
+            url: webapiurl + "api/HrMilitaryProfile/GetMilitaryServiceInfoData?militarynokw=" + militarynokw + "&militarynobd=" + militarynobd,
+            headers: {
+                "Authorization": headerauth,
+                "Content-Type": "application/json",
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: _getCookieForLanguage("dataAlreadyExist"),
+                    type: 'red'
+                });
+
+                if (militarynokw != '') {
+                    $(".militarynokw").val('');
+                    $(".militarynokw").focus();
+                }
+                if (militarynobd != '') {
+                    $(".militarynobd").val('');
+                    $(".militarynobd").focus();
+                    console.log(militarynobd);
+                }
+            },
+            error: function (xhr, status, error) {
+            }
+        });
+
+
+    }
+
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            //format: 'DD-MM-YYYY'
+        });
+
+
+    $j('#fromdate').datetimepicker(
+        {
+            //format: 'L'
+            format: 'DD-MM-YYYY',
+            maxDate: moment()
+        });
+    $j('#todate').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        //format: 'L'
+        format: 'DD-MM-YYYY',
+        maxDate: moment()
+    });
+    $j("#fromdate").on("dp.change", function (e) {
+        $j('#todate').data("DateTimePicker").minDate(e.date);
+    });
+    $j("#todate").on("dp.change", function (e) {
+        $j('#fromdate').data("DateTimePicker").maxDate(e.date);
+    });
+
+</script>
+
+
+
+

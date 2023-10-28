@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="gender" value="AR:  Gender"></resource>
+       <resource culture="ar-kw" name="genderRequired" value="AR: Please provide  Gender"></resource>
+       <resource culture="ar-kw" name="priority" value="AR:  Priority"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="genderList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="genderCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="genderUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="genderDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="gender" value=" Gender"></resource>
+       <resource culture="en-us" name="genderRequired" value="Please provide  Gender"></resource>
+       <resource culture="en-us" name="priority" value=" Priority"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="genderList" value="View All"></resource>
+		<resource culture="en-us" name="genderCreate" value="Create"></resource>
+		<resource culture="en-us" name="genderUpdate" value="Update"></resource>
+		<resource culture="en-us" name="genderDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

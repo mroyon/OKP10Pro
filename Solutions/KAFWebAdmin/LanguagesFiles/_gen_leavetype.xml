@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="leavetype" value="AR:  Leave Type"></resource>
+       <resource culture="ar-kw" name="leavetypeRequired" value="AR: Please provide  Leave Type"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+  <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+		<resource culture="ar-kw" name="leavetypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="leavetypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="leavetypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="leavetypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="leavetype" value=" Leave Type"></resource>
+       <resource culture="en-us" name="leavetypeRequired" value="Please provide  Leave Type"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+  <resource culture="en-us" name="isactive" value="Is Active"></resource>
+        <resource culture="en-us" name="leavetypeList" value="View All"></resource>
+		<resource culture="en-us" name="leavetypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="leavetypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="leavetypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="countryid" value="AR:  Country ID"></resource>
+       <resource culture="ar-kw" name="countryidRequired" value="AR: Please provide  Country ID"></resource>
+       <resource culture="ar-kw" name="bankname" value="AR:  Bank Name"></resource>
+       <resource culture="ar-kw" name="banknameRequired" value="AR: Please provide  Bank Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="bankList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="bankCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="bankUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="bankDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="countryid" value=" Country ID"></resource>
+       <resource culture="en-us" name="countryidRequired" value="Please provide  Country ID"></resource>
+       <resource culture="en-us" name="bankname" value=" Bank Name"></resource>
+       <resource culture="en-us" name="banknameRequired" value="Please provide  Bank Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="bankList" value="View All"></resource>
+		<resource culture="en-us" name="bankCreate" value="Create"></resource>
+		<resource culture="en-us" name="bankUpdate" value="Update"></resource>
+		<resource culture="en-us" name="bankDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

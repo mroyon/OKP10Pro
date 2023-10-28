@@ -1,0 +1,453 @@
+﻿@model IEnumerable<KAF.BusinessDataObjects.cor_foldercontentsEntity>
+
+
+<link href="~/DesignsAndScripts/Scripts/plugins/fancybox/jquery_fancybox_min.css" rel="stylesheet" />
+<div class="row">
+    @Html.Label("الملف موجود مسبقاً", new { @class = "labelControl" })
+</div>
+<table id="DocumentsDt" class="table">
+    <tr>
+        @*<th>
+            Thumbnail
+        </th>*@
+        <td>
+            معلومات الملف
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.userfilename)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.createdbyusername)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.BaseSecurityParam.createddate)
+        </th>*@
+
+
+
+
+        <th>اسم الحالة</th>
+    </tr>
+
+    @{int index = 0; }
+    @foreach (var item in Model)
+    {
+        KAF.WebFramework.clsPrivateKeys objClsPrivate = new KAF.WebFramework.clsPrivateKeys();
+        <tr>
+            <td>
+                @if (item.extension.IndexOf("jpg") != -1 || item.extension.IndexOf("jpeg") != -1 || item.extension.IndexOf("gif") != -1 || item.extension.IndexOf("bmp") != -1 ||
+item.extension.IndexOf("bmp") != -1 || item.extension.IndexOf("png") != -1)
+                {
+                    <div class="tab_container">
+                        <a class="fancybox-thumb" rel="fancybox-thumb" href="@Url.Content(item.filepath + item.filename + item.extension)" title="@{index.ToString();}">
+                            <img id="img@{index.ToString();}" src="@Url.Content(item.filepath + item.filename + item.extension)" alt="Image" />
+                        </a>
+                    </div>
+                }
+                else if (item.extension.IndexOf("doc") != -1)
+                {
+
+                    <a class="gallerywordd" value="@item.extension" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href="">  <i class="fa fa-file-word-o" filepath="@Url.Content(item.filepath + item.filename + item.extension)" style="font-size: 48px; color: red"></i></a>
+                }
+                else if (item.extension.IndexOf("odt") != -1)
+
+                {
+                    <a class="galleryodt" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href="@Url.Content(item.filepath + item.filename + item.extension)"> <i class="fa fa-file-pdf-o " style="font-size:48px; color: red"></i></a>
+                }
+                else if (item.extension.IndexOf("pdf") != -1)
+
+                {
+                    <a class="gallerypdf" data-fancybox-type="iframe" href="@Url.Content(item.filepath + item.filename + item.extension)"> <i class="fa fa-file-pdf-o " style="font-size:48px; color: red"></i></a>
+                }
+                else if (item.extension.IndexOf("xls") != -1)
+                {
+                    <a class="galleryexcell" value="@item.extension" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href=""> <i class="fa fa-file-excel-o" style="font-size:48px; color: red" filepath="@Url.Content(item.filepath + item.filename + item.extension)"></i></a>
+                }
+                else if (item.extension.IndexOf("ppt") != -1)
+                {
+                    <a class="gallerypresentation" value="@item.extension" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href=""> <i class="fa fa-file-powerpoint-o" style="font-size:48px; color: red" filepath="@Url.Content(item.filepath + item.filename + item.extension)"></i></a>
+                }
+                else if (item.extension.IndexOf("txt") != -1)
+                {
+                    <a class="gallerytxt" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href=""><i class="fa fa-file-text-o" style="font-size: 48px; color: red" filepath="@Url.Content(item.filepath + item.filename + item.extension)"></i></a>
+                }
+                else
+                {
+                    <i class="fa fa-files-o" style="font-size: 48px; color: red" filepath="@Url.Content(item.filepath + item.filename + item.extension)"></i>
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tablename)-@Html.DisplayFor(modelItem => item.coulumnname)
+            </td>
+            <td>
+
+                @if (item.extension.IndexOf("jpg") != -1 || item.extension.IndexOf("jpeg") != -1 || item.extension.IndexOf("gif") != -1 || item.extension.IndexOf("bmp") != -1 ||
+item.extension.IndexOf("bmp") != -1 || item.extension.IndexOf("png") != -1)
+                {
+                    <div class="tab_container">
+                        <a class="fancybox-thumb" rel="fancybox-thumb" href="@Url.Content(item.filepath + item.filename + item.extension)" title="@{index.ToString();}">
+                            @Html.DisplayFor(modelItem => item.userfilename)@Html.DisplayFor(modelItem => item.filesize)
+                        </a>
+                    </div>
+                }
+                else if (item.extension.IndexOf("doc") != -1)
+                {
+
+                    <a class="gallerywordd" value="@item.extension" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href="">  @Html.DisplayFor(modelItem => item.userfilename) (@Html.DisplayFor(modelItem => item.filesize))</a>
+                }
+                else if (item.extension.IndexOf("odt") != -1)
+
+                {
+                    <a class="galleryodt" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href="@Url.Content(item.filepath + item.filename + item.extension)"> @Html.DisplayFor(modelItem => item.userfilename) (@Html.DisplayFor(modelItem => item.filesize))</a>
+                }
+                else if (item.extension.IndexOf("pdf") != -1)
+
+                {
+                    <a class="gallerypdf" data-fancybox-type="iframe" href="@Url.Content(item.filepath + item.filename + item.extension)">@Html.DisplayFor(modelItem => item.userfilename) (@Html.DisplayFor(modelItem => item.filesize))</a>
+                }
+                else if (item.extension.IndexOf("xls") != -1)
+                {
+                    <a class="galleryexcell" value="@item.extension" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href=""> @Html.DisplayFor(modelItem => item.userfilename) (@Html.DisplayFor(modelItem => item.filesize))</a>
+                }
+                else if (item.extension.IndexOf("ppt") != -1)
+                {
+                    <a class="gallerypresentation" value="@item.extension" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href=""> @Html.DisplayFor(modelItem => item.userfilename) (@Html.DisplayFor(modelItem => item.filesize))</a>
+                }
+                else if (item.extension.IndexOf("txt") != -1)
+                {
+                    <a class="gallerytxt" onclick="DetailsDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", (item.filepath + item.filename + item.extension).ToString())&quot;)" data-fancybox-type="iframe" href="">@Html.DisplayFor(modelItem => item.userfilename) (@Html.DisplayFor(modelItem => item.filesize))</a>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.userfilename)@Html.DisplayFor(modelItem => item.filesize)
+                }
+
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.createdbyusername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseSecurityParam.createddate)
+            </td>
+         
+            <td>
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission(HttpContext.Current.User.Identity as System.Security.Claims.ClaimsIdentity, "CORTaskMaster/CORTaskMasterDelete"))
+                    {
+                        <button type="submit" value="@item.foldercontentid" class="foldercontentid" onclick="DeleteDocument(&quot;@objClsPrivate.BuildUrlMVCOnlyParams("filename", @item.filename.ToString())&quot;)" style="background-color: #FFFFFF; border:none;" data-url="@PageData["baseUrl"]@Url.Action("DeleteDocument", "Common",new { id=item.foldercontentid.GetValueOrDefault(-99) })">
+                            <span style="color: red" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+
+                    }
+                }
+            </td>
+
+        </tr>
+    }
+
+
+
+
+</table>
+
+<div class="row">
+    @Html.Label("تم الانشاء ", new { @class = "labelControl" })
+</div>
+<table id="DocumentsDtDraft" class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.userfilename)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.createdbyusername)
+        </th>*@
+
+
+        <th>اسم الحالة</th>
+   
+    
+</tr>
+
+
+
+</table>
+@*@section Scripts {
+
+        <script src="~/DesignsAndScripts/Scripts/plugins/fancybox/jquery_fancybox_min.js"></script>
+
+    }*@
+<style>
+    .imgsize {
+        height: 70px;
+    }
+
+    .clscursur {
+        cursor: pointer;
+    }
+
+    .tab_container {
+        clear: both;
+        overflow: hidden;
+        /*margin-bottom: 24px;*/
+    }
+
+        .tab_container a {
+            display: inline-block;
+        }
+
+            .tab_container a img {
+                display: block;
+                /*margin-bottom: 4px;*/
+                max-width: 70px;
+                max-height: 70px;
+            }
+</style>
+<script>
+
+    function loadDraftDocuments(files) {
+        var totalstrhtml = ""; var UserName = ""; var uploadtime = ""; var fileext = "";
+        $(files).each(function (index, val) {
+            $("#DocumentsDtDraft tbody").append("<tr>" +
+
+                "<td>" +
+                val.userfilename  + "(" + val.filesize + ")" +
+                " </td>" +
+
+                "<td> " +
+                $("#txtUserNameSTK").val() +
+                " </td> " +
+
+
+                "<td> " +
+                "<button type = 'submit' value = 'val'  onclick = \"DeleteDraftDocument(this,'" + val.filename+"','"+ val.extension + "')\" style = 'background-color: #FFFFFF; border:none;'> " +
+                "<span style = 'color: red' class='glyphicon glyphicon-trash' ari -hidden='true' ></span> " +
+                "</button>" +
+
+                "</td> " +
+
+                "</tr> ");
+        });
+    }
+    function DeleteDraftDocument(cntrl,filename,extension) {
+        try {
+            confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_deleteConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                if (answer == "true") {
+
+                    AddAntiForgeryToken = function (data) {
+                        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                        return data;
+                    };
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "CORTaskMasterDelete",
+                        currenturl: window.location.href,
+                        filename: filename,
+                        extension: extension
+
+
+                    });
+
+
+                    $.ajax({
+                        url: baseurl + "Common/DeleteDraftDocument",
+                        data: input,
+                        type: 'POST',
+                        success: function (response) {
+                            if (response.status == "success") {
+
+                                inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) { 
+                                    uplaodedfiledetails.splice(uplaodedfiledetails.findIndex(item => item.filename === filename), 1);
+
+                                    $(cntrl).parent().parent().remove();     
+                                });
+                            }
+                            else {
+                                inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    function DeleteDocument(val) {
+        try {
+            confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_deleteConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                if (answer == "true") {
+
+                    AddAntiForgeryToken = function (data) {
+                        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                        return data;
+                    };
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "CORTaskMasterDelete",
+                        currenturl: window.location.href,
+                        foldercontentid: $(".foldercontentid").val()
+
+                    });
+
+
+                    $.ajax({
+                        url: baseurl + "Common/DeleteDocument",
+                        data: input,
+                        type: 'POST',
+                        success: function (response) {
+                            if (response.status == "success") {
+                                inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                                    loadDocuments();
+                                });
+                            }
+                            else {
+                                inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    function DetailsDocument(val) {
+        try {
+
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+
+
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "CORTaskMasterDetails",
+                currenturl: window.location.href,
+                filename: val,
+
+            });
+
+            $.ajax({
+                url: $("#txtBaseUrl").val() + "Common/ViewDocument",
+                type: 'POST',
+                data: input,
+                success: function (response) {
+                    if (response.status = "success") {
+
+                        localStorage.setItem('tabnumber', '2');
+                    }
+                }
+            });
+        }
+        catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    //$(".gallerypdf").fancybox({
+    //    openEffect: 'elastic',
+    //    closeEffect: 'elastic',
+    //    autoSize: true,
+    //    type: 'iframe',
+    //    iframe: {
+    //        preload: false // fixes issue with iframe and IE
+    //    }
+    //});
+    //$(".galleryodt").fancybox({
+    //    openEffect: 'elastic',
+    //    closeEffect: 'elastic',
+    //    autoSize: true,
+    //    type: 'iframe',
+    //    iframe: {
+    //        preload: false // fixes issue with iframe and IE
+    //    }
+    //});
+
+    //$(".galleryexcel").fancybox({
+    //    openEffect: 'elastic',
+    //    closeEffect: 'elastic',
+    //    autoSize: true,
+    //    type: 'iframe',
+    //    iframe: {
+    //        preload: false // fixes issue with iframe and IE
+    //    }
+    //});
+    //$(".galleryword").fancybox({
+    //    openEffect: 'elastic',
+    //    closeEffect: 'elastic',
+    //    autoSize: true,
+    //    type: 'iframe',
+    //    iframe: {
+    //        preload: false // fixes issue with iframe and IE
+    //    }
+    //});
+    //$(".gallerytxt").fancybox({
+    //    openEffect: 'elastic',
+    //    closeEffect: 'elastic',
+    //    autoSize: true,
+    //    type: 'iframe',
+    //    iframe: {
+    //        preload: false // fixes issue with iframe and IE
+    //    }
+    //});
+
+    $(document).ready(function () {
+        //$(".fancybox-thumb").fancybox({
+        //    prevEffect: 'none',
+        //    nextEffect: 'none',
+        //    helpers: {
+        //        title: {
+        //            type: 'outside'
+        //        },
+        //        thumbs: {
+        //            width: 50,
+        //            height: 50
+        //        }
+        //    },
+        //    afterShow: function () {
+        //        //$("img").removeClass("imgsize");
+        //    },
+        //    afterClose: function () {
+        //        //$("img").addClass("imgsize");
+        //    }
+        //});
+
+        DetailsDocument();
+
+    }); //  ready
+</script>

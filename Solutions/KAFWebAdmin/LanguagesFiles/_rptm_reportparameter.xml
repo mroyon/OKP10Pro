@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="reportid" value="AR:  Report ID"></resource>
+       <resource culture="ar-kw" name="reportidRequired" value="AR: Please provide  Report ID"></resource>
+       <resource culture="ar-kw" name="reportparamname" value="AR:  Report Param Name"></resource>
+       <resource culture="ar-kw" name="reportparamnameRequired" value="AR: Please provide  Report Param Name"></resource>
+       <resource culture="ar-kw" name="reportparamdatatype" value="AR:  Report Param Datatype"></resource>
+       <resource culture="ar-kw" name="reportparamdescription" value="AR:  Report Param Description"></resource>
+       <resource culture="ar-kw" name="reportparamoptionalid" value="AR:  Report Param Optional ID"></resource>
+       <resource culture="ar-kw" name="reportparamoptionalidRequired" value="AR: Please provide  Report Param Optional ID"></resource>
+		<resource culture="ar-kw" name="reportparameterList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="reportparameterCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="reportparameterUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="reportparameterDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="reportid" value=" Report ID"></resource>
+       <resource culture="en-us" name="reportidRequired" value="Please provide  Report ID"></resource>
+       <resource culture="en-us" name="reportparamname" value=" Report Param Name"></resource>
+       <resource culture="en-us" name="reportparamnameRequired" value="Please provide  Report Param Name"></resource>
+       <resource culture="en-us" name="reportparamdatatype" value=" Report Param Datatype"></resource>
+       <resource culture="en-us" name="reportparamdescription" value=" Report Param Description"></resource>
+       <resource culture="en-us" name="reportparamoptionalid" value=" Report Param Optional ID"></resource>
+       <resource culture="en-us" name="reportparamoptionalidRequired" value="Please provide  Report Param Optional ID"></resource>
+        <resource culture="en-us" name="reportparameterList" value="View All"></resource>
+		<resource culture="en-us" name="reportparameterCreate" value="Create"></resource>
+		<resource culture="en-us" name="reportparameterUpdate" value="Update"></resource>
+		<resource culture="en-us" name="reportparameterDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

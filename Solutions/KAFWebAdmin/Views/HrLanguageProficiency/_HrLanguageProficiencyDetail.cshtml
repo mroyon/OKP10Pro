@@ -1,0 +1,92 @@
+﻿@model KAF.BusinessDataObjects.hr_languageproficiencyEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_LanguageProficiencyDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_languageproficiency.hr_languageproficiencyDetails
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.languageproficiencyid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.hrbasicid, htmlAttributes: new { @class = "labelNormal required " })
+							 @Html.EditorFor(model => model.hrbasicid, new { htmlAttributes = new {  @readonly = "readonly",  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.hrbasicid, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.languageid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_language[0].ToString(), selectid = "languageid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Language, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.readingproficiencyid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_languageproficiency[0].ToString(), selectid = "readingproficiencyid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_LanguageProficiency, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.writingproficiencyid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_languageproficiency[0].ToString(), selectid = "writingproficiencyid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_LanguageProficiency, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.speakingproficiencyid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_languageproficiency[0].ToString(), selectid = "speakingproficiencyid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_LanguageProficiency, multiple = false, isReadOnly = true, IsRequired = true, isStatic = false });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+
+
+
+
+</script>
+    
+
+
+

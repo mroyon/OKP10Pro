@@ -1,0 +1,166 @@
+﻿@model KAF.BusinessDataObjects.hr_passportinfoEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_PassportInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            Passport Information: @KAF.MsgContainer._hr_passportinfo.passportinfoUpdate
+        </div>
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.passportid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                        @Html.HiddenFor(m => m.hrbasicid)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @readonly = "readonly", @class = "militarynokw form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.passportno, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.passportno, new { htmlAttributes = new { @class = "passportno form-control" } })
+                                @Html.ValidationMessageFor(model => model.passportno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.passportissuedate, htmlAttributes: new { @class = "labelNormal   required  " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.passportissuedate, new { htmlAttributes = new { @Value = Model.passportissuedate != null ? Convert.ToDateTime(Model.passportissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control required ", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.passportissuedate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.passportexpirydate, htmlAttributes: new { @class = "labelNormal  required   " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.passportexpirydate, new { htmlAttributes = new { @Value = Model.passportexpirydate != null ? Convert.ToDateTime(Model.passportexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control required ", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.passportexpirydate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateHrPassportInfo" class="btn btn-primary btn-md btnUpdateHrPassportInfo"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+ @*var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));*@
+
+
+$('.footable').footable({
+	 calculateWidthOverride: function () {
+		 return { width: $(window).width() };
+	 }
+});
+
+
+
+@*$(document).ready(function () {
+	 var _passportfiledescriptionupld = $('#passportfiledescriptionupld').kaffileUploader({
+		 _tableid: 'tbl_passportfiledescription', 
+		 _colname: 'passportfiledescription',
+		 _tabname: 'Hr_PassportInfo',
+		 _fileuploadbuttontext: 'Upload files',
+		 _modelid: 'File_upload_for_Passport_Document',
+		 _modeltext: 'File upload for Passport Document',
+		 _fileinputname: 'inpfilepassportfiledescription',
+		 _containeruploadpreview: 'passportfiledescriptionuploadpreview',
+		 _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
+		 _ismultiple: true,
+		 _fileobject: fileobject
+
+		 _passportfiledescriptionupld.loadpreloaddata(fileobject, $("#passportfiledescriptionuploadpreview"), '@KAF.MsgContainer._Common._btnDelete', 'passportfiledescription');
+
+});*@
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+
+    $('input[id=passportno]').change(function () {
+             checkexists('', $(".passportno").val());
+         });
+
+     var webapiurl = '@System.Configuration.ConfigurationManager.AppSettings["webapi"]';
+     var headerauth = $("#txtwebapitoken").val();
+
+    function checkexists(civilid, passportno) {
+
+        $.ajax({
+            url: webapiurl + "api/HrMilitaryProfile/GetMilitaryInfoData?civilid=" + civilid + "&passportno=" + passportno,
+            headers: {
+                "Authorization": headerauth,
+                "Content-Type": "application/json",
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: _getCookieForLanguage("dataAlreadyExist"),
+                    type: 'red'
+                });
+
+                if (civilid != '') {
+                    $("#civilid").val('');
+                    $("#civilid").focus();
+                }
+
+                if (passportno != '')
+                    $(".passportno").val('');
+                $(".passportno").focus();
+            },
+            error: function (xhr, status, error) {
+            }
+        });
+
+
+    }
+
+</script>
+
+
+
+
+
+

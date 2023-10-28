@@ -1,0 +1,78 @@
+﻿
+
+@{
+    ViewBag.Title = KAF.MsgContainer._stp_passpolicy.passpolicyList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                @{
+                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                    if (objSecPanel.checkButtonPermission(HttpContext.Current.User.Identity as System.Security.Claims.ClaimsIdentity, "StpPassPolicy/StpPassPolicyCreate"))
+                    {
+                        <button type="submit" class="btn btn-primary btn-md" data-url="@PageData["baseUrl"]@Url.Action("StpPassPolicyCreate", "StpPassPolicy")" id="btnCreateStpPassPolicy">
+                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                        </button>
+                    }
+                }
+            </div>
+
+            <div class="panel-body">
+                <table id="StpPassPolicyDt" class="table table-striped table-bordered" style="width:100%;">
+                    <thead>
+                        <tr>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.categoryid</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passexpiredays</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passexpiredaysis</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passmaxlength</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passminlength</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passmcontainchar</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passmcontainuchar</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passmcontainnum</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.passmcontainspchar</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.oldpasscom</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.newpasscomoldpass</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.regpasscontainchar</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.regpasscontainuchar</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.regpasscontainnum</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.regpasscontainspchar</th>
+                                                <th>@KAF.MsgContainer._stp_passpolicy.organizationkey</th>
+								<th style="width:250px;"></th>
+						</tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-container-StpPassPolicyedit" class="modal fade hidden-print" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" id="StpPassPolicyeditdatacontainer">
+        </div>
+    </div>
+</div>
+
+<div id="modal-container-StpPassPolicyview" class="modal fade hidden-print" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" id="StpPassPolicyviewdatacontainer">
+        </div>
+    </div>
+</div>
+
+
+@*<input type="hidden" value="@PageData["baseUrl"]" id="txtBaseUrl" />*@
+
+@*@Html.Action("AdvancedSearch")*@
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/StpPassPolicy/LoadStpPassPolicy.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/StpPassPolicy/UpdateStpPassPolicy.js"></script>
+}	
+	

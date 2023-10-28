@@ -1,0 +1,47 @@
+﻿
+
+a:focus {
+    outline: none;
+}
+
+#panelsearchbasic {
+    background: #fff;
+    height: 100%;
+    display: none;
+    width: 100%;
+    float: left;
+}
+
+
+.slidesearchbasic {
+    margin: 0;
+    padding: 0;
+    border-top: solid 4px #422410;
+    height: 30px;
+    background: no-repeat center top;
+    width: 100%;
+}
+
+
+.btn-slidesearchbasic {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 10px 10px 0px 0;
+    margin: 0 auto;
+    display: block;
+    font: bold 120%/100% Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-decoration: none;
+    color: aliceblue;
+    background: #222d32;
+}
+
+    .btn-slidesearchbasic img {
+        height: 24px;
+        padding-right: 50px;
+    }
+
+.activesearchbasic {
+    background-position: right 12px;
+}

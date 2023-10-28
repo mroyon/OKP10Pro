@@ -1,0 +1,239 @@
+﻿
+@model KAF.BusinessDataObjects.rptm_allreportinfoEntity
+@{
+    ViewBag.Title = "Report Panel";
+}
+<style>
+    .detailheading {
+        background-color: darkgray !important;
+    }
+
+    .buttonpanelcenter {
+        text-align: center;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+@{
+    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower() == "ar-kw")
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: left;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            .actionbuttonletright {
+                text-align: right;
+            }
+        </style>
+    }
+}
+
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmRPTMAllReportInfo", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    Daily Held State
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("OKP", htmlAttributes: new { @class = "labelNormal     " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = false, Is = true, isStatic = true });}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Is Admitted", htmlAttributes: new { @class = "labelNormal     " })
+                                <input type="checkbox" id="chkIsadmitted" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Country", htmlAttributes: new { @class = "labelNormal  " })
+                                @{Html.RenderAction("LoadCountrySearch", "Common", new { area = "", selectid = "countryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_country, multiple = false, isReadOnly = false, IsRequired = true });}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Admission Date From", htmlAttributes: new { @class = "labelNormal " })
+
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @Html.Editor("admissiondatefrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Admission Date To", htmlAttributes: new { @class = "labelNormal " })
+
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @Html.Editor("admissiondateto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Release Date From", htmlAttributes: new { @class = "labelNormal " })
+
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @Html.Editor("releasedatefrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Release Date To", htmlAttributes: new { @class = "labelNormal " })
+
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
+                                    @Html.Editor("releasedateto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dvbtn" class="row ">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <button type="button" id="btnSearch" class="btn btn-raised btn-primary btn-block">Load Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row " id="divReport">
+
+    </div>
+
+
+}
+
+
+@section Scripts {
+    <script>
+        function GetDateFromTextBox(strdate) {
+            if (strdate != "" && typeof strdate !== 'undefined') {
+                if (strdate.indexOf('T') != -1)
+                    strdate = strdate.substring(0, strdate.indexOf('T') - 1).trim();
+
+                var dtspl1 = strdate.split("-");
+                var retdate = new Date(dtspl1[2], dtspl1[1] - 1, dtspl1[0]);
+                retdate = retdate.toISOString();
+                //var retdate = $(strdate).val();
+                return retdate;
+            }
+        }
+        $(document).ready(function () {
+
+            $j('.dateonly').datetimepicker(
+                {
+                    // format: 'L'
+                    format: 'DD-MM-YYYY'
+                });
+
+            $(".select2-selection__placeholder").text('ALL OKP');
+
+            $('#btnSearch').click(function () {
+
+                var searchText = "";
+               
+                if ($("#okpid").val().length > 0)
+                    searchText = "&okpid=" + $("#okpid").val();
+
+                if ($("#chkIsadmitted").prop("checked") == true)
+                    searchText = "&Isadmitted=1";
+
+                if ($("#countryid").val()!=null)
+                    searchText = "&countryid=" + $("#countryid").val();
+
+                if ($("#admissiondatefrom").val().length > 0)
+                    searchText = "&admissiondatefrom=" + $("#admissiondatefrom").val();
+
+                if ($("#admissiondateto").val().length > 0)
+                    searchText = "&admissiondateto=" + $("#admissiondateto").val();
+
+                if ($("#releasedatefrom").val().length > 0)
+                    searchText = "&releasedatefrom=" + $("#releasedatefrom").val();
+
+                if ($("#releasedateto").val().length > 0)
+                    searchText = "&releasedateto=" + $("#releasedateto").val();
+
+
+                //else {
+                //    inforamtionDialog("Alert", "Date is Required", _getCookieForLanguage("_btnOK")).then(function (answer) {
+                //        if (answer == "true") {
+                            
+                //        }
+                //    });
+                //}
+
+                $("#divReport").removeClass("hidden");
+
+                var src = '../Reports/ParadeStateReport.aspx?reporttype=4';
+                //We can add parameters here
+                src = src + searchText
+
+                var iframe = '<iframe id="myReportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + src + '" allowfullscreen></iframe>';
+                $("#divReport").html(iframe);
+
+
+            });
+
+        });
+        function loadselectedpassportletterno() { }
+    </script>
+
+}
+
+
+
+
+

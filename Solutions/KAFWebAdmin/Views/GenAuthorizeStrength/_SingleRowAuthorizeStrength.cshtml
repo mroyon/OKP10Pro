@@ -1,0 +1,54 @@
+﻿@model KAF.BusinessDataObjects.gen_authorizestrengthEntity
+
+@if (Model.authstrengthid != null && Model.okpid != null)
+{
+    <tr role="row">
+
+        <td style="width:250px">
+            @{Html.RenderAction("LoadRankKWSearch", "Common", new { area = "", selectid = "rankidkw" + Model.authstrengthid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Rank, multiple = false, isReadOnly = true, IsRequired = true });}
+        </td>
+
+        <td>
+
+            @Html.DropDownListFor(model => model.groupid,
+                new SelectList(
+                    (
+                    KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.Group>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.Group))), "paramvalue", "paramname"),
+                "Please Select",
+                new { @disabled = "disabled", @id = "groupid" + Model.authstrengthid, @class = "required form-control" })
+        </td>
+
+        <td style="width:180px">
+            @Html.EditorFor(model => model.authstrength, new { htmlAttributes = new { @id = "authstrength" + Model.authstrengthid, @class = "required authstrength form-control", @type = "number" } })
+
+        </td>
+        @Html.HiddenFor(m => m.authstrengthid, new { @class = "authstrengthid", @id = "authstrengthid" + Model.authstrengthid, @Name = "authstrengthid" + Model.authstrengthid })
+    </tr>
+}
+else
+{
+    <tr role="row">
+        <td style="width:250px">
+            @{Html.RenderAction("LoadRankKWSearch", "Common", new { area = "", selectid = "rankidkw" + Model.authstrengthid, minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Rank, multiple = false, isReadOnly = false, IsRequired = true });}
+        </td>
+        <td>
+
+            @Html.DropDownListFor(model => model.groupid,
+                                new SelectList(
+                                    (
+                                    KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.Group>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.Group))), "paramvalue", "paramname"),
+                                "Please Select",
+                                new { @id = "groupid" + Model.authstrengthid, @class = "required form-control" })
+        </td>
+        <td style="width:180px">
+            @Html.EditorFor(model => model.authstrength, new { htmlAttributes = new { @id = "authstrength" + Model.authstrengthid, @class = "required authstrength form-control", @type = "number" } })
+        </td>
+        <td>
+            <div class="btn-toolbar pull-right singleRowAuthorizeStrength" role="toolbar">
+                <button class="btn btn-primary btn-md btnnerow btnadd" onclick="GenAuthorizeStrengthNewRow(this)"><i class="fa fa-plus"></i> Add</button>
+                <button class="btn btn-danger btn-md btndelete" onclick="AuthorizeStrengthRowDelete(this)"><i class="fa fa-trash"></i> Delete</button>
+            </div>
+        </td>
+        @Html.HiddenFor(m => m.authstrengthid, new { @class = "authstrengthid", @id = "authstrengthid" + Model.authstrengthid, @Name = "authstrengthid" + Model.authstrengthid })
+    </tr>
+}

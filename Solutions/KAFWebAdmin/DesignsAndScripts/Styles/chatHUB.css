@@ -1,0 +1,60 @@
+﻿@import url(../fonts/font_googleapis_family_Open_Sans_300_400.css);
+
+.container {
+    width: 100%;
+    padding: 1px;
+}
+
+.message-blue {
+    position: relative;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    padding: 3px;
+    background-color: #A8DDFD;
+    width: 100%;
+    text-align: left;
+    color: black;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #97C6E3;
+    border-radius: 5px;
+}
+
+.message-orange {
+    position: relative;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    padding: 3px;
+    background-color: #f8e896;
+    width: 100%;
+    text-align: right;
+    color: black;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #dfd087;
+    border-radius: 5px;
+}
+
+.message-content {
+    padding: 0;
+    margin: 0;
+}
+
+.message-timestamp-right {
+    font-size: .85em;
+    font-weight: 300;
+    bottom: 5px;
+    right: 5px;
+}
+
+.message-timestamp-left {
+    font-size: .85em;
+    font-weight: 300;
+    bottom: 5px;
+    left: 5px;
+}
+
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+
+
+

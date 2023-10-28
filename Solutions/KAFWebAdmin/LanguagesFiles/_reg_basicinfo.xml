@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="civilid" value="AR:  Civil ID"></resource>
+       <resource culture="ar-kw" name="civilidRequired" value="AR: Please provide  Civil ID"></resource>
+       <resource culture="ar-kw" name="passportno" value="AR:  Passport No"></resource>
+       <resource culture="ar-kw" name="fullname" value="AR:  Full Name"></resource>
+       <resource culture="ar-kw" name="fullnameRequired" value="AR: Please provide  Full Name"></resource>
+       <resource culture="ar-kw" name="name1" value="AR:  Name 1"></resource>
+       <resource culture="ar-kw" name="name1Required" value="AR: Please provide  Name 1"></resource>
+       <resource culture="ar-kw" name="name2" value="AR:  Name 2"></resource>
+       <resource culture="ar-kw" name="name2Required" value="AR: Please provide  Name 2"></resource>
+       <resource culture="ar-kw" name="name3" value="AR:  Name 3"></resource>
+       <resource culture="ar-kw" name="name4" value="AR:  Name 4"></resource>
+       <resource culture="ar-kw" name="name5" value="AR:  Name 5"></resource>
+       <resource culture="ar-kw" name="dob" value="AR:  D O B"></resource>
+       <resource culture="ar-kw" name="joindate" value="AR:  Join Date"></resource>
+       <resource culture="ar-kw" name="joindateRequired" value="AR: Please provide  Join Date"></resource>
+       <resource culture="ar-kw" name="mob1" value="AR:  Mob 1"></resource>
+       <resource culture="ar-kw" name="mob1Required" value="AR: Please provide  Mob 1"></resource>
+       <resource culture="ar-kw" name="mob2" value="AR:  Mob 2"></resource>
+       <resource culture="ar-kw" name="email" value="AR: email"></resource>
+       <resource culture="ar-kw" name="studentid" value="AR:  Student ID"></resource>
+       <resource culture="ar-kw" name="studentcode" value="AR:  Student Code"></resource>
+       <resource culture="ar-kw" name="filepath" value="AR:  File Path"></resource>
+       <resource culture="ar-kw" name="filename" value="AR:  File Name"></resource>
+       <resource culture="ar-kw" name="filetype" value="AR:  File Type"></resource>
+       <resource culture="ar-kw" name="extension" value="AR:  Extension"></resource>
+       <resource culture="ar-kw" name="batchid" value="AR:  Batch ID"></resource>
+       <resource culture="ar-kw" name="batchidRequired" value="AR: Please provide  Batch ID"></resource>
+       <resource culture="ar-kw" name="platoonid" value="AR:  Platoon ID"></resource>
+       <resource culture="ar-kw" name="platoonidRequired" value="AR: Please provide  Platoon ID"></resource>
+       <resource culture="ar-kw" name="armsid" value="AR:  Arms Id"></resource>
+       <resource culture="ar-kw" name="isgraduated" value="AR:  Is Graduated"></resource>
+       <resource culture="ar-kw" name="graduationdate" value="AR:  Graduation Date"></resource>
+       <resource culture="ar-kw" name="filedescription" value="AR:  File Description"></resource>
+       <resource culture="ar-kw" name="filepath1" value="AR:  File Path 1"></resource>
+       <resource culture="ar-kw" name="filename1" value="AR:  File Name 1"></resource>
+       <resource culture="ar-kw" name="filetype1" value="AR:  File Type 1"></resource>
+       <resource culture="ar-kw" name="extension1" value="AR:  Extension 1"></resource>
+		<resource culture="ar-kw" name="basicinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="basicinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="basicinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="basicinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="civilid" value=" Civil ID"></resource>
+       <resource culture="en-us" name="civilidRequired" value="Please provide  Civil ID"></resource>
+       <resource culture="en-us" name="passportno" value=" Passport No"></resource>
+       <resource culture="en-us" name="fullname" value=" Full Name"></resource>
+       <resource culture="en-us" name="fullnameRequired" value="Please provide  Full Name"></resource>
+       <resource culture="en-us" name="name1" value=" Name 1"></resource>
+       <resource culture="en-us" name="name1Required" value="Please provide  Name 1"></resource>
+       <resource culture="en-us" name="name2" value=" Name 2"></resource>
+       <resource culture="en-us" name="name2Required" value="Please provide  Name 2"></resource>
+       <resource culture="en-us" name="name3" value=" Name 3"></resource>
+       <resource culture="en-us" name="name4" value=" Name 4"></resource>
+       <resource culture="en-us" name="name5" value=" Name 5"></resource>
+       <resource culture="en-us" name="dob" value=" D O B"></resource>
+       <resource culture="en-us" name="joindate" value=" Join Date"></resource>
+       <resource culture="en-us" name="joindateRequired" value="Please provide  Join Date"></resource>
+       <resource culture="en-us" name="mob1" value=" Mob 1"></resource>
+       <resource culture="en-us" name="mob1Required" value="Please provide  Mob 1"></resource>
+       <resource culture="en-us" name="mob2" value=" Mob 2"></resource>
+       <resource culture="en-us" name="email" value="email"></resource>
+       <resource culture="en-us" name="studentid" value=" Student ID"></resource>
+       <resource culture="en-us" name="studentcode" value=" Student Code"></resource>
+       <resource culture="en-us" name="filepath" value=" File Path"></resource>
+       <resource culture="en-us" name="filename" value=" File Name"></resource>
+       <resource culture="en-us" name="filetype" value=" File Type"></resource>
+       <resource culture="en-us" name="extension" value=" Extension"></resource>
+       <resource culture="en-us" name="batchid" value=" Batch ID"></resource>
+       <resource culture="en-us" name="batchidRequired" value="Please provide  Batch ID"></resource>
+       <resource culture="en-us" name="platoonid" value=" Platoon ID"></resource>
+       <resource culture="en-us" name="platoonidRequired" value="Please provide  Platoon ID"></resource>
+       <resource culture="en-us" name="armsid" value=" Arms Id"></resource>
+       <resource culture="en-us" name="isgraduated" value=" Is Graduated"></resource>
+       <resource culture="en-us" name="graduationdate" value=" Graduation Date"></resource>
+       <resource culture="en-us" name="filedescription" value=" File Description"></resource>
+       <resource culture="en-us" name="filepath1" value=" File Path 1"></resource>
+       <resource culture="en-us" name="filename1" value=" File Name 1"></resource>
+       <resource culture="en-us" name="filetype1" value=" File Type 1"></resource>
+       <resource culture="en-us" name="extension1" value=" Extension 1"></resource>
+        <resource culture="en-us" name="basicinfoList" value="View All"></resource>
+		<resource culture="en-us" name="basicinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="basicinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="basicinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="firstname" value="AR:  First Name"></resource>
+       <resource culture="ar-kw" name="firstnameRequired" value="AR: Please provide  First Name"></resource>
+       <resource culture="ar-kw" name="middlename" value="AR:  Middle Name"></resource>
+       <resource culture="ar-kw" name="lastname" value="AR:  Last Name"></resource>
+       <resource culture="ar-kw" name="lastnameRequired" value="AR: Please provide  Last Name"></resource>
+       <resource culture="ar-kw" name="photo" value="AR:  Photo"></resource>
+       <resource culture="ar-kw" name="organizationkey" value="AR:  Organization Key"></resource>
+       <resource culture="ar-kw" name="organizationkeyRequired" value="AR: Please provide  Organization Key"></resource>
+       <resource culture="ar-kw" name="entitykey" value="AR:  Entity Key"></resource>
+       <resource culture="ar-kw" name="entitykeyRequired" value="AR: Please provide  Entity Key"></resource>
+		<resource culture="ar-kw" name="useraccountsprofList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="useraccountsprofCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="useraccountsprofUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="useraccountsprofDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="firstname" value=" First Name"></resource>
+       <resource culture="en-us" name="firstnameRequired" value="Please provide  First Name"></resource>
+       <resource culture="en-us" name="middlename" value=" Middle Name"></resource>
+       <resource culture="en-us" name="lastname" value=" Last Name"></resource>
+       <resource culture="en-us" name="lastnameRequired" value="Please provide  Last Name"></resource>
+       <resource culture="en-us" name="photo" value=" Photo"></resource>
+       <resource culture="en-us" name="organizationkey" value=" Organization Key"></resource>
+       <resource culture="en-us" name="organizationkeyRequired" value="Please provide  Organization Key"></resource>
+       <resource culture="en-us" name="entitykey" value=" Entity Key"></resource>
+       <resource culture="en-us" name="entitykeyRequired" value="Please provide  Entity Key"></resource>
+        <resource culture="en-us" name="useraccountsprofList" value="View All"></resource>
+		<resource culture="en-us" name="useraccountsprofCreate" value="Create"></resource>
+		<resource culture="en-us" name="useraccountsprofUpdate" value="Update"></resource>
+		<resource culture="en-us" name="useraccountsprofDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

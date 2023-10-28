@@ -1,0 +1,86 @@
+﻿@model KAF.BusinessDataObjects.gen_govcityEntity
+
+<style>
+        .form-horizontal .form-group {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmGen_GovCityDetail", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._gen_govcity.govcityDetails
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.cityid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.countryid, htmlAttributes: new { @class = "labelNormal   required " })
+                                @{Html.RenderAction("LoadCountrySearch", "Common", new { area = "", selectid = "countryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_country, multiple = false, isReadOnly = true, IsRequired = true });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Governorate", htmlAttributes: new { @class = "labelNormal     " })
+                                @{Html.RenderAction("LoadGovCitySearch", "Common", new { area = "", selectid = "parentid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedgen_govcity, multiple = false, isReadOnly = true, IsRequired = true });}
+                                @Html.ValidationMessageFor(model => model.parentid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.cityname, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.cityname, new { htmlAttributes = new { @readonly = "readonly", @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.cityname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.isgov, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.isgov, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.isgov, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @readonly = "readonly",  @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnModalCloseDetail" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+//filecontrol addons
+
+
+
+
+</script>
+    
+
+
+

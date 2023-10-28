@@ -1,0 +1,113 @@
+﻿@model KAF.BusinessDataObjects.gen_leaveconfigEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmGen_LeaveConfigEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._gen_leaveconfig.leaveconfigUpdate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.leaveconfigid)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.leavetypeid, htmlAttributes: new { @class = "labelNormal required " })
+                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_leavetypeEntity[0].ToString(), selectid = "leavetypeid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_leavetype, multiple = false, isReadOnly = true, IsRequired = true });}
+
+                                @*@Html.EditorFor(model => model.leavetypeid, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.leavetypeid, "", new { @class = "text-danger" })*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.startdate, htmlAttributes: new { @class = "labelNormal  required " })
+                                <div class='input-group date dateonly dpstartdate' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.startdate, new { htmlAttributes = new { @Value = Model.startdate != null ? Convert.ToDateTime(Model.startdate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.startdate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.enddate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly dpenddate' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.enddate, new { htmlAttributes = new { @Value = Model.enddate != null ? Convert.ToDateTime(Model.enddate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.enddate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.noofdays, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.noofdays, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.noofdays, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnUpdateGenLeaveConfig" class="btn btn-primary btn-md btnUpdateGenLeaveConfig"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                        <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+    <script>
+        $(document).ready(function () {
+
+            $j('.dateonly').datetimepicker(
+                {
+                    // format: 'L'
+                    format: 'DD-MM-YYYY'
+                });
+            //filecontrol addons
+            $j(".dpstartdate").on("dp.change", function (e) {
+                $j('.dpenddate').data("DateTimePicker").minDate(e.date);
+            });
+            $j(".dpenddate").on("dp.change", function (e) {
+                $j('.dpstartdate').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+    </script>
+
+
+
+
+

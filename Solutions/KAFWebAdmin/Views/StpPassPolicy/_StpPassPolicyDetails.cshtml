@@ -1,0 +1,206 @@
+﻿
+@model KAF.BusinessDataObjects.stp_passpolicyEntity
+
+
+<!-- Modal -->
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @KAF.MsgContainer._stp_passpolicy.passpolicyDetails
+            </div>
+
+            @using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "" }, new { @id = "frmViewStpPassPolicy", @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="panel-body">
+                    <div>
+
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+
+                                <div class="row">
+                                @Html.HiddenFor(model => model.serialnopolicykey)
+                              
+                            </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.categoryid, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.categoryid, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passexpiredays, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passexpiredays, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passexpiredaysis, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passexpiredaysis, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passmaxlength, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passmaxlength, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passminlength, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passminlength, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passmcontainchar, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passmcontainchar, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passmcontainuchar, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passmcontainuchar, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passmcontainnum, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passmcontainnum, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.passmcontainspchar, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.passmcontainspchar, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.oldpasscom, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.oldpasscom, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.newpasscomoldpass, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.newpasscomoldpass, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.regpasscontainchar, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.regpasscontainchar, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.regpasscontainuchar, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.regpasscontainuchar, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.regpasscontainnum, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.regpasscontainnum, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.regpasscontainspchar, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                            <div class="col-md-8 help-block with-errors">
+                                                                @Html.DisplayFor(model => model.regpasscontainspchar, new { htmlAttributes = new { @class = "form-control" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.organizationkey,  htmlAttributes: new { @class = "labelNormal required" })
+                                                            @{Html.RenderAction("LoadCombo", "Common", new { ddlId = "ddl_passpolicy", ddlName = KAF.CustomHelper.HelperClasses.clsDataCache.stp_passpolicyEntity, type = typeof(KAF.BusinessDataObjects.stp_passpolicy), selectedvalue = "-99", cssclass = "form-control", enable = true, validatedyn = true });}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="btn btn-primary btn-md" data-dismiss="modal">@KAF.MsgContainer._Common._btnClose <i class="fa fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+
+	

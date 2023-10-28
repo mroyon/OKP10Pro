@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="postofficename" value="AR:  Post Office Name"></resource>
+       <resource culture="ar-kw" name="postofficenameRequired" value="AR: Please provide  Post Office Name"></resource>
+       <resource culture="ar-kw" name="thanaid" value="AR:  Thana ID"></resource>
+       <resource culture="ar-kw" name="thanaidRequired" value="AR: Please provide  Thana ID"></resource>
+       <resource culture="ar-kw" name="postofficecode" value="AR:  Post Office Code"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="postofficeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="postofficeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="postofficeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="postofficeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="postofficename" value=" Post Office Name"></resource>
+       <resource culture="en-us" name="postofficenameRequired" value="Please provide  Post Office Name"></resource>
+       <resource culture="en-us" name="thanaid" value=" Thana ID"></resource>
+       <resource culture="en-us" name="thanaidRequired" value="Please provide  Thana ID"></resource>
+       <resource culture="en-us" name="postofficecode" value=" Post Office Code"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="postofficeList" value="View All"></resource>
+		<resource culture="en-us" name="postofficeCreate" value="Create"></resource>
+		<resource culture="en-us" name="postofficeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="postofficeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

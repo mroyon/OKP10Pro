@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="replacementid" value="AR:  Replacement ID"></resource>
+       <resource culture="ar-kw" name="replacementidRequired" value="AR: Please provide  Replacement ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="replacementinfodetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="replacementinfodetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="replacementinfodetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="replacementinfodetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="replacementid" value=" Replacement ID"></resource>
+       <resource culture="en-us" name="replacementidRequired" value="Please provide  Replacement ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="replacementinfodetlList" value="View All"></resource>
+		<resource culture="en-us" name="replacementinfodetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="replacementinfodetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="replacementinfodetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

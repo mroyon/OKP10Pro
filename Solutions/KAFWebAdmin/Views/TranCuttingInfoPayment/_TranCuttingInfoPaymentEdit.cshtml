@@ -1,0 +1,672 @@
+﻿@model KAF.BusinessDataObjects.BusinessDataObjectsPartials.tran_cuttinginfo_GAPgListView_ExtEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .panelhdr {
+        background-color: #337ab7;
+        border-color: #337ab7;
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .btnspl {
+        font-size: 16px;
+        font-weight: bold;
+        color: #f5e29c;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmCuttingInfoEdit", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading" style="height:60px;">
+            Payment Information Update
+            <div class="col-lg-3" style="float: right; text-align: right;">
+                <button type="button" data-dismiss="modal" aria-label="Close" id="btnModalCloseEdit" class="close btnModalCloseEdit"
+                        style="opacity: 1.0; opacity: 1.0; margin-top: -11px; color: white; margin-right: -20px; font-size: 39px;">
+                    <span aria-hidden="true" data-dismiss="modal" class=" btnModalCloseEdit">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.CuttingInfoID)
+                        @Html.HiddenFor(m => m.strModelPrimaryKey)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OkpID, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.OkpName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MonthID, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.month, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.Label("Total Processed", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.Editor("txtTotal", new { htmlAttributes = new { @Value = Model.Total, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.Label("Total Paid", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.Editor("txtTotalPaid", new { htmlAttributes = new { @Value = Model.TotalPaid, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.Label("Total Not Paid", htmlAttributes: new { @class = "labelNormal   " })
+
+                                @Html.Editor("txtTotalNotPaid", new { htmlAttributes = new { @Value = Model.TotalNotPaid, @class = "form-control", @type = "text", @readonly = "readonly" } })
+
+                            </div>
+                        </div>
+                    </div>
+                  
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-primary list-panel" id="list-panel">
+                                <div class="panelhdr" style="height:100px;">
+                                    <div class="row">
+                                        <div class="col col-lg-2">
+                                            <label style="margin-top: 8px; color: #fff;">Payment Date</label>
+                                        </div>
+                                        <div class="col col-lg-2">
+                                            <div class='input-group date dateonly' id='' style='width:100%;'>
+                                                @Html.Editor("txtPaidDate", new { htmlAttributes = new { @Value = DateTime.Now.ToString("dd-MM-yyyy"), @class = "form-control", @type = "text" } })
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col col-lg-2">
+                                            <button type="button" id="btnUpdateAllPaid" class="btn btn-primary btn-md btnUpdateAllPaid btnspl"><i class="fa fa-edit"> </i> Execute All Paid</button>
+
+                                        </div>
+                                        <div class="col col-lg-2">
+                                            @Html.Editor("txtUnpaidReamrks", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+                                        </div>
+                                        <div class="col col-lg-2">
+                                            <button type="button" id="btnUpdateAllUnPaid" class="btn btn-primary btn-md btnUpdateAllUnPaid btnspl"><i class="fa fa-edit"> </i> Execute All Un-Paid</button>
+
+                                        </div>
+                                        <div class="col col-lg-1" style="float:right;">
+                                            <input type="text" class="form-control" readonly="readonly" id="txtTotalAmount" style="text-align:right;" />
+                                        </div>
+                                        <div class="col col-lg-1" style="float:right;text-align:right;">
+                                            <label class="labelNormal" style="margin-top: 8px;color: #fff;">Total </label>
+                                        </div>
+
+                                    </div>
+                                    <div class="row " style=" margin-top: 9px;">
+                                        <div class="col col-lg-2">
+                                            <label style="margin-top: 8px; color: #fff;">Filter Data</label>
+                                        </div>
+                                        <div class="col-md-3">
+
+
+                                          
+                                            <select class="form-control" id="drpFilterData">
+                                                <option value="-99">------ALL-------</option>
+                                                <option value="1">Paid</option>
+                                                <option value="2">Un-Paid</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <table id="TranCuttingInfoPaymentDetailDt" class="table table-striped table-bordered" style="width:100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Group</th>
+                                                <th>Rank</th>
+                                                <th>Mil No(KW)</th>
+                                                <th>Name</th>
+                                                <th>Prev Due</th>
+                                                <th>Total Payable</th>
+                                                <th>Is Paid</th>
+                                                <th>Payment Date</th>
+                                                <th>Unpaid Remarks</th>
+                                                <th style="width:100px;"></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="btn-toolbar">
+                            <button type="button" id="btnUpdateTranCuttingInfoPayment" class="btn btn-primary btn-md btnUpdateTranCuttingInfoPayment"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
+                            <button type="button" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    //filecontrol addons
+    $(document).ready(function () {
+        $j('.dateonly').datetimepicker(
+            {
+                // format: 'L'
+                format: 'DD-MM-YYYY'
+            });
+        GetSummary();
+        GetAllDataTranCuttingInfoPaymentDetail(null);
+
+        $('#btnIsFinal').click(function (event) {
+            try {
+                event.preventDefault();
+
+                var form = $('#frmCuttingInfoEdit');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+
+
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "HrFamilyInfoCreate",
+                    currenturl: window.location.href,
+
+                    cuttinginfoid: $('#CuttingInfoID').val(),
+                    isreviewed: true
+
+                });
+
+                confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                    if (answer == "true") {
+
+                        $.ajax({
+                            url: baseurl + "TranCuttingInfoPayment/TranCuttingInfoPaymentUpdate",
+                            data: input,
+                            type: 'POST',
+                            success: function (data) {
+                                if (data.status === "success") {
+                                    inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+                                            //   GetAllDataTranCuttingInfoPaymentDetail();
+                                            // GetSummary();
+
+                                            GetAllDataTranCuttingInfoPayment();
+                                        }
+
+                                    });
+
+                                }
+
+                                else {
+                                    inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+
+                                        }
+
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+
+
+
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        $("#drpFilterData").change(function () {
+            if ($("#drpFilterData").val() == "1")
+                GetAllDataTranCuttingInfoPaymentDetail(true);
+            else if ($("#drpFilterData").val() == "2")
+                GetAllDataTranCuttingInfoPaymentDetail(false);
+            else
+                GetAllDataTranCuttingInfoPaymentDetail(null);
+
+        });
+
+        $('#btnUpdateAllPaid').click(function (event) {
+            try {
+                event.preventDefault();
+
+                var form = $('#frmCuttingInfoEdit');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+                if (form.valid()) {
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrFamilyInfoCreate",
+                        currenturl: window.location.href,
+
+                        cuttinginfoid: $('#CuttingInfoID').val(),
+                        paymenttype: 1, //pay all as paid by cuttingid
+                        paiddate: GetDateFromTextBox($('#txtPaidDate').val()),
+                        ispaid: true
+                    });
+
+                    confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                        if (answer == "true") {
+
+                            $.ajax({
+                                url: baseurl + "TranCuttingInfoPayment/TranCuttingInfoPaymentUpdatePayment",
+                                data: input,
+                                type: 'POST',
+                                success: function (data) {
+                                    if (data.status === "success") {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+                                                GetAllDataTranCuttingInfoPaymentDetail();
+                                                GetSummary();
+                                            }
+
+                                        });
+
+                                    }
+
+                                    else {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+
+                                            }
+
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+
+                }
+                else {
+                    return;
+                }
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        $('#btnUpdateAllUnPaid').click(function (event) {
+            try {
+                event.preventDefault();
+
+                $("#txtUnpaidReamrks").css("border-color", "#d2d6de");
+
+                if ($("#txtUnpaidReamrks").val().length == 0) {
+                    $("#txtUnpaidReamrks").css("border-color", "red");
+                    return;
+                }
+
+                var form = $('#frmCuttingInfoEdit');
+                jQuery.validator.unobtrusive.parse();
+                jQuery.validator.unobtrusive.parse(form);
+
+                if (form.valid()) {
+
+                    var input = AddAntiForgeryToken({
+                        token: $(".txtUserSTK").val(),
+                        userinfo: $(".txtServerUtilObj").val(),
+                        useripaddress: $(".txtuserip").val(),
+                        sessionid: $(".txtUserSes").val(),
+                        methodname: "HrFamilyInfoCreate",
+                        currenturl: window.location.href,
+
+                        cuttinginfoid: $('#CuttingInfoID').val(),
+                        paymenttype: 3, //pay all as un-paid by cuttingid
+                        paiddate: null,
+                        ispaid: false,
+                        unpaidremarks: $("#txtUnpaidReamrks").val()
+                    });
+
+                    confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                        if (answer == "true") {
+
+                            $.ajax({
+                                url: baseurl + "TranCuttingInfoPayment/TranCuttingInfoPaymentUpdatePayment",
+                                data: input,
+                                type: 'POST',
+                                success: function (data) {
+                                    if (data.status === "success") {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+                                                GetAllDataTranCuttingInfoPaymentDetail();
+                                                GetSummary();
+                                            }
+
+                                        });
+
+                                    }
+
+                                    else {
+                                        inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                            if (answer == "true") {
+
+                                            }
+
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+
+                }
+                else {
+                    return;
+                }
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+
+        $('.btnModalCloseEdit').click(function (event) {
+            GetAllDataTranCuttingInfoPayment();
+            try {
+                event.preventDefault();
+                $('#mcTranCuttingInfoPaymentEdit').html('');
+                $('#modal-container-TranCuttingInfoPaymentEdit').modal('hide');
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+        });
+    });
+    function makechanges(chk) {
+        if ($(chk).prop("checked") == true) {
+
+            $(chk).parent().parent().find(".unpaidremarks").val('');
+        }
+        else {
+            $(chk).parent().parent().find(".txtsinglepayDate").val('');
+        }
+    }
+
+    function GetSummary() {
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "TranCuttingInfoPaymentDetail",
+            currenturl: window.location.href,
+            cuttinginfoid: $("#CuttingInfoID").val()
+        });
+
+        $.ajax({
+            url: baseurl + "TranCuttingInfoPayment/GetSummaryData",
+            type: 'POST',
+            data: input,
+            success: function (response) {
+                // var str = response;
+                if (response.status == "success") {
+                    $("#txtTotalPaid").val(response.data.TotalPaid);
+                    $("#txtTotalAmount").val(response.data.TotalPaidAmount);
+                    $("#txtTotalNotPaid").val(response.data.TotalNotPaid);
+                }
+            }
+        });
+    }
+    function UpdatePaymentInfo(val, btn) {
+        try {
+            // event.preventDefault();
+            $(btn).parent().parent().parent().find(".unpaidremarks").css("border-color", "green");
+
+
+            if ($(btn).parent().parent().parent().find(".chkispaid").prop("checked") == false) {
+
+                $(btn).parent().parent().parent().find(".txtsinglepayDate").val('');
+
+                if ($(btn).parent().parent().parent().find(".unpaidremarks").val().length == 0) {
+                    $(btn).parent().parent().parent().find(".unpaidremarks").css("border-color", "red");
+                    return;
+                }
+
+
+            }
+            else {
+                $(btn).parent().parent().parent().find(".unpaidremarks").val('');
+            }
+
+            var form = $('#frmCuttingInfoEdit');
+            jQuery.validator.unobtrusive.parse();
+            jQuery.validator.unobtrusive.parse(form);
+
+            if (form.valid()) {
+
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "HrFamilyInfoCreate",
+                    currenturl: window.location.href,
+
+                    //cuttinginfoid: $('#CuttingInfoID').val(),
+                    strModelPrimaryKey: val,
+                    paymenttype: 2, //uppay single item
+                    paiddate: $(btn).parent().parent().parent().find(".chkispaid").prop("checked") == true ? GetDateFromTextBox($(btn).parent().parent().parent().find(".txtsinglepayDate").val()) : null,
+                    ispaid: $(btn).parent().parent().parent().find(".chkispaid").prop("checked"),
+                    unpaidremarks: $(btn).parent().parent().parent().find(".unpaidremarks").val()
+                });
+
+                confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
+                    if (answer == "true") {
+
+                        $.ajax({
+                            url: baseurl + "TranCuttingInfoPayment/TranCuttingInfoPaymentUpdatePayment",
+                            data: input,
+                            type: 'POST',
+                            success: function (data) {
+                                if (data.status === "success") {
+                                    inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+                                            // GetAllDataTranCuttingInfoPayment();
+                                            GetSummary();
+                                        }
+
+                                    });
+
+                                }
+
+                                else {
+                                    inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                                        if (answer == "true") {
+
+                                        }
+
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+
+
+            }
+            else {
+                return;
+            }
+
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e.message,
+                type: 'red'
+            });
+        }
+    }
+    function GetAllDataTranCuttingInfoPaymentDetail(ispaid) {
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "TranCuttingInfoPaymentTableData",
+                currenturl: window.location.href,
+
+                cuttingid: $("#CuttingInfoID").val(),
+                ispaid: ispaid
+
+            });
+
+            $('#TranCuttingInfoPaymentDetailDt').DataTable({
+                "pageLength": 25,
+                "destroy": true,
+                "bFilter": true,
+                "columnDefs": [{
+                    "targets": 0,
+                    "searchable": true,
+                    "orderable": true
+                }],
+                "language":
+                {
+                    "processing": "<div class='overlay custom-loader-background'><i class='fa fa-cog fa-spin custom-loader-color'></i></div>"
+                },
+                "processing": true,
+                "serverSide": true,
+                "autoWidth": false,
+                "responsive": true,
+                "ajax": {
+                    "url": baseurl + "TranCuttingInfoPayment/TranCuttingInfoPaymentDetailTableData",
+                    "type": "POST",
+                    "data": input
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: jqXHR.responseJSON.Error,
+                        type: 'red'
+                    });
+                },
+                "columns": [
+
+                    { "data": "GroupName", "searchable": true, "sortable": true, "orderable": true },
+                    { "data": "rankname", "searchable": true, "sortable": true, "orderable": true },
+                    { "data": "milnokw", "searchable": true, "sortable": true, "orderable": true },
+                    { "data": "fullname", "searchable": true, "sortable": true, "orderable": true },
+
+                    { "data": "prevbalgovtcutting", "searchable": true, "sortable": true, "orderable": true },
+                    { "data": "totalpayable", "searchable": true, "sortable": true, "orderable": true },
+                    { "data": "strpaid", "searchable": true, "sortable": true, "orderable": true },
+                    { "data": "strpaiddate", "searchable": true, "sortable": true, "orderable": true },
+                    //  { "data": "unpaidremarks", "searchable": true, "sortable": true, "orderable": true },
+                    {
+                        "data": "strunpaidremarks",
+                        "render": function (data, type, full, meta) {
+                            return data;
+                        }
+                    },
+
+
+                    {
+                        "data": "ex_nvarchar1",
+                        "render": function (data, type, full, meta) {
+                            return data;
+                        }
+                    }
+                ],
+                "drawCallback": function (settings) {
+                    $j('.dateonly').datetimepicker(
+                        {
+                            // format: 'L'
+                            format: 'DD-MM-YYYY'
+                        });
+                    if (Math.ceil((this.fnSettings().fnRecordsDisplay()) / this.fnSettings()._iDisplayLength) > 1) {
+                        $('#TranCuttingInfoPaymentDt_paginate').css("display", "block");
+                    } else {
+                        $('#TranCuttingInfoPaymentDt_paginate').css("display", "none");
+                    }
+
+                }
+            });
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e,
+                type: 'red'
+            });
+        }
+    }
+
+
+</script>
+
+
+
+
+
+

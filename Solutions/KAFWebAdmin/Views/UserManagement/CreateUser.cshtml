@@ -1,0 +1,261 @@
+﻿<style>
+    .centeralign {
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+</style>
+@model KAF.BusinessDataObjects.owin_userEntity
+
+@{
+    ViewBag.Title = KAF.MsgContainer._Common.createtext;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "" }, new { @id = "frmCreateUser", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+
+<div class="row ">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel " id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                Create User
+            </div>
+            <div class="panel-body centeralign">
+                <div class="container MainPageCnt" role="main">
+                    <div class='ms-bodyareacell clearfix'>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6" style="text-align:center;">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <button id="btnAttachment" title="Change Profile Image" class="btn btn-primary start btnAttachment" style="background-color: white; width: 200px;height: 150px;" type="button">
+                                                <img id="imgprofile" src="~/DesignsAndScripts/Images/NoProfileImage.png" style="width: 100%;height:100%;" />
+                                            </button> @*"@ViewBag.UserProfilePhoto"*@
+                                            <br />
+                                        </div>
+                                        <div class="row">
+                                            <button type="submit" id="btnRemoveImage" class="btn btn-primary btn-xs btnRemoveImage hidden">Remove <i class="fa fa-trash-o"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="progress CustomProgress">
+                                        <div id="FileProgress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="row">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.roleid, KAF.MsgContainer._owin_role.rolename, htmlAttributes: new { @class = "labelNormal" })
+
+                <div class="form-group">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    @{
+                    var list = (List<KAF.BusinessDataObjects.BusinessDataObjectsPartials.KAFGenericComboEntity>
+                        )ViewBag.rolelist;
+                        int count = 1;
+                        }
+                        @foreach (KAF.BusinessDataObjects.BusinessDataObjectsPartials.KAFGenericComboEntity a in list)
+                        {
+                        <div class="col-lg-3">
+                            @{ string chk_id = "chk_role" + count.ToString();}
+                            <input type="checkbox" id='@chk_id' class="chkclass" value="@a.comId" /> @a.comText
+                            @{
+                            count = count + 1;
+                            }
+
+                        </div>
+                        }
+
+                </div>
+            </div>
+        </div>*@
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.roleid, KAF.MsgContainer._owin_role.rolename, htmlAttributes: new { @class = "labelNormal required" })
+
+                                        @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.owin_role[0].ToString(), selectid = "roleid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Role, multiple = true, isReadOnly = false, IsRequired = true, isStatic = true });}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("OKP Name", htmlAttributes: new { @class = "labelNormal" })
+                                        @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = false, IsRequired = false });}
+                                         <div class="help-block with-errors">
+                                            @Html.ValidationMessage("okpid", "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "labelNormal required" })
+
+                                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.loweredusername, htmlAttributes: new { @class = "labelNormal required" })
+
+                                        @Html.EditorFor(model => model.loweredusername, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.loweredusername, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.emailaddress, htmlAttributes: new { @class = "labelNormal required" })
+
+                                        @Html.EditorFor(model => model.emailaddress, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.emailaddress, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.mobilenumber, htmlAttributes: new { @class = "labelNormal required" })
+
+
+                                        @Html.EditorFor(model => model.mobilenumber, new { htmlAttributes = new { @type = "number", @class = "form-control" } })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.mobilenumber, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "labelNormal required" })
+
+                                        @Html.PasswordFor(model => model.password, new { @class = "form-control" })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.passwordkey, htmlAttributes: new { @class = "labelNormal required" })
+
+                                        @Html.PasswordFor(model => model.passwordkey, new { @class = "form-control" })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.passwordkey, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.passwordquestion, htmlAttributes: new { @class = "labelNormal required" })
+
+
+                                        @Html.DropDownListFor(model => model.passwordquestion, (List<SelectListItem>
+                                            )ViewBag.SecQuestns, new { @class = "form-control" })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.passwordquestion, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.passwordanswer, htmlAttributes: new { @class = "labelNormal required" })
+
+
+                                        @Html.EditorFor(model => model.passwordanswer, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.passwordanswer, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+
+                            @*<div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.approved,  htmlAttributes: new { @class = "labelNormal required" })
+
+
+                    @Html.EditorFor(model => model.approved, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="help-block with-errors">
+                        @Html.ValidationMessageFor(model => model.approved, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.locked, htmlAttributes: new { @class = "labelNormal required" })
+
+
+                    @Html.EditorFor(model => model.locked, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="help-block with-errors">
+                        @Html.ValidationMessageFor(model => model.locked, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button type="submit" id="btnSaveUser" class="btn btn-primary btn-md btnSaveUser"> @KAF.MsgContainer._Common._btnSave <i class="fa fa-sign-in"></i></button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" id="btnUserReturn" class="btn btn-primary btn-md cancel"> @KAF.MsgContainer._Common._btnReset <i class="fa fa-arrow-left"></i></button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="file" id="attachment" name="attachment" style="display:none" />
+}
+
+
+@section Scripts {
+    <script src="~/DesignsAndScripts/PageWise/Security/UserManagement/UserCreate.js"></script>
+}
+

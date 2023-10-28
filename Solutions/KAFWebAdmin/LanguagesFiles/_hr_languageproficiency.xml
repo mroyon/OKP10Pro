@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="languageid" value="AR:  Language ID"></resource>
+       <resource culture="ar-kw" name="languageidRequired" value="AR: Please provide  Language ID"></resource>
+       <resource culture="ar-kw" name="readingproficiencyid" value="AR:  Reading Proficiency ID"></resource>
+       <resource culture="ar-kw" name="readingproficiencyidRequired" value="AR: Please provide  Reading Proficiency ID"></resource>
+       <resource culture="ar-kw" name="writingproficiencyid" value="AR:  Writing Proficiency ID"></resource>
+       <resource culture="ar-kw" name="writingproficiencyidRequired" value="AR: Please provide  Writing Proficiency ID"></resource>
+       <resource culture="ar-kw" name="speakingproficiencyid" value="AR:  Speaking Proficiency ID"></resource>
+       <resource culture="ar-kw" name="speakingproficiencyidRequired" value="AR: Please provide  Speaking Proficiency ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="languageproficiencyList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="languageproficiencyCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="languageproficiencyUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="languageproficiencyDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="languageid" value=" Language ID"></resource>
+       <resource culture="en-us" name="languageidRequired" value="Please provide  Language ID"></resource>
+       <resource culture="en-us" name="readingproficiencyid" value=" Reading Proficiency ID"></resource>
+       <resource culture="en-us" name="readingproficiencyidRequired" value="Please provide  Reading Proficiency ID"></resource>
+       <resource culture="en-us" name="writingproficiencyid" value=" Writing Proficiency ID"></resource>
+       <resource culture="en-us" name="writingproficiencyidRequired" value="Please provide  Writing Proficiency ID"></resource>
+       <resource culture="en-us" name="speakingproficiencyid" value=" Speaking Proficiency ID"></resource>
+       <resource culture="en-us" name="speakingproficiencyidRequired" value="Please provide  Speaking Proficiency ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="languageproficiencyList" value="View All"></resource>
+		<resource culture="en-us" name="languageproficiencyCreate" value="Create"></resource>
+		<resource culture="en-us" name="languageproficiencyUpdate" value="Update"></resource>
+		<resource culture="en-us" name="languageproficiencyDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

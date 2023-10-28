@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="languagename" value="AR:  Language Name"></resource>
+       <resource culture="ar-kw" name="languagenameRequired" value="AR: Please provide  Language Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="languageList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="languageCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="languageUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="languageDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="languagename" value=" Language Name"></resource>
+       <resource culture="en-us" name="languagenameRequired" value="Please provide  Language Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="languageList" value="View All"></resource>
+		<resource culture="en-us" name="languageCreate" value="Create"></resource>
+		<resource culture="en-us" name="languageUpdate" value="Update"></resource>
+		<resource culture="en-us" name="languageDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

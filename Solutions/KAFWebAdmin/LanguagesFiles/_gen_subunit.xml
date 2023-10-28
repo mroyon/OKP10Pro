@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="subunit" value="AR:  Sub Unit"></resource>
+       <resource culture="ar-kw" name="subunitRequired" value="AR: Please provide  Sub Unit"></resource>
+       <resource culture="ar-kw" name="okpid" value="AR:  Okp I D"></resource>
+       <resource culture="ar-kw" name="okpidRequired" value="AR: Please provide  Okp I D"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="subunitList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="subunitCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="subunitUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="subunitDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="subunit" value=" Sub Unit"></resource>
+       <resource culture="en-us" name="subunitRequired" value="Please provide  Sub Unit"></resource>
+       <resource culture="en-us" name="okpid" value=" Okp I D"></resource>
+       <resource culture="en-us" name="okpidRequired" value="Please provide  Okp I D"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="subunitList" value="View All"></resource>
+		<resource culture="en-us" name="subunitCreate" value="Create"></resource>
+		<resource culture="en-us" name="subunitUpdate" value="Update"></resource>
+		<resource culture="en-us" name="subunitDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+  
+  <resource culture="ar-kw" name="outsidekuwait" value="Is Outside Kuwait?"></resource>
+  <resource culture="en-us" name="outsidekuwait" value="Is Outside Kuwait?"></resource>
+  
+
+</resources>        

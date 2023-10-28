@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hospitalname" value="AR:  Hospital Name"></resource>
+       <resource culture="ar-kw" name="hospitalnameRequired" value="AR: Please provide  Hospital Name"></resource>
+       <resource culture="ar-kw" name="diseareleasenotesename" value="AR:  Disease Name"></resource>
+       <resource culture="ar-kw" name="diseasenameRequired" value="AR: Please provide  Disease Name"></resource>
+       <resource culture="ar-kw" name="hospitaladmissiondate" value="AR:  Hospital Admission Date"></resource>
+       <resource culture="ar-kw" name="hospitaladmissiondateRequired" value="AR: Please provide  Hospital Admission Date"></resource>
+       <resource culture="ar-kw" name="hospitalreleasedate" value="AR:  Hospital Release Date"></resource>
+       <resource culture="ar-kw" name="hospitalcountryid" value="AR:  Hospital Country"></resource>
+       <resource culture="ar-kw" name="hospitalcountryidRequired" value="AR: Please provide  Hospital Country"></resource>
+       <resource culture="ar-kw" name="description" value="AR:  Description"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+        <resource culture="ar-kw" name="releasenote" value="Release Note"></resource>
+        <resource culture="ar-kw" name="passportno" value="Passport No"></resource>
+
+
+  <resource culture="ar-kw" name="hospitaladmissioninfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="hospitaladmissioninfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="hospitaladmissioninfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="hospitaladmissioninfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hospitalname" value=" Hospital Name"></resource>
+       <resource culture="en-us" name="hospitalnameRequired" value="Please provide  Hospital Name"></resource>
+       <resource culture="en-us" name="diseasename" value=" Disease Name"></resource>
+       <resource culture="en-us" name="diseasenameRequired" value="Please provide  Disease Name"></resource>
+       <resource culture="en-us" name="hospitaladmissiondate" value=" Hospital Admission Date"></resource>
+       <resource culture="en-us" name="hospitaladmissiondateRequired" value="Please provide  Hospital Admission Date"></resource>
+       <resource culture="en-us" name="hospitalreleasedate" value=" Hospital Release Date"></resource>
+       <resource culture="en-us" name="hospitalcountryid" value=" Hospital Country"></resource>
+       <resource culture="en-us" name="hospitalcountryidRequired" value="Please provide  Hospital Country"></resource>
+       <resource culture="en-us" name="description" value=" Description"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="releasenote" value="Release Note"></resource>
+        <resource culture="en-us" name="passportno" value="Passport No"></resource>
+
+  <resource culture="en-us" name="hospitaladmissioninfoList" value="View All"></resource>
+		<resource culture="en-us" name="hospitaladmissioninfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="hospitaladmissioninfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="hospitaladmissioninfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

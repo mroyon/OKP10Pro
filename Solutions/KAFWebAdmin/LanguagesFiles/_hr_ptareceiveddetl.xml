@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="ptidemanddetlid" value="AR:  PTA Demand Detl ID"></resource>
+       <resource culture="ar-kw" name="ptidemanddetlidRequired" value="AR: Please provide  PTA Demand Detl ID"></resource>
+       <resource culture="ar-kw" name="ptademandid" value="AR:  PTA ID"></resource>
+       <resource culture="ar-kw" name="ptademandidRequired" value="AR: Please provide  PTA ID"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic ID"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc ID"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="letterstatus" value="AR:  Letter Status"></resource>
+		<resource culture="ar-kw" name="ptareceiveddetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="ptareceiveddetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="ptareceiveddetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="ptareceiveddetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="ptidemanddetlid" value=" PTA Demand Detl ID"></resource>
+       <resource culture="en-us" name="ptidemanddetlidRequired" value="Please provide  PTA Demand Detl ID"></resource>
+       <resource culture="en-us" name="ptademandid" value=" PTA ID"></resource>
+       <resource culture="en-us" name="ptademandidRequired" value="Please provide  PTA ID"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic ID"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc ID"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc ID"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="letterstatus" value=" Letter Status"></resource>
+        <resource culture="en-us" name="ptareceiveddetlList" value="View All"></resource>
+		<resource culture="en-us" name="ptareceiveddetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="ptareceiveddetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="ptareceiveddetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

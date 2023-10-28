@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="airlinesname" value="AR:  Airlines Name"></resource>
+       <resource culture="ar-kw" name="airlinesnameRequired" value="AR: Please provide  Airlines Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="airlinesList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="airlinesCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="airlinesUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="airlinesDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="airlinesname" value=" Airlines Name"></resource>
+       <resource culture="en-us" name="airlinesnameRequired" value="Please provide  Airlines Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="airlinesList" value="View All"></resource>
+		<resource culture="en-us" name="airlinesCreate" value="Create"></resource>
+		<resource culture="en-us" name="airlinesUpdate" value="Update"></resource>
+		<resource culture="en-us" name="airlinesDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

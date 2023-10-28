@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="organizationkey" value="AR:  Organization Key"></resource>
+       <resource culture="ar-kw" name="organizationkeyRequired" value="AR: Please provide  Organization Key"></resource>
+       <resource culture="ar-kw" name="entirytypecode" value="AR:  Entiry Type Code"></resource>
+       <resource culture="ar-kw" name="entirytypecodeRequired" value="AR: Please provide  Entiry Type Code"></resource>
+       <resource culture="ar-kw" name="entirytype" value="AR:  Entiry Type"></resource>
+       <resource culture="ar-kw" name="entirytypeRequired" value="AR: Please provide  Entiry Type"></resource>
+       <resource culture="ar-kw" name="entirytypeeng" value="AR:  Entiry Type Eng"></resource>
+       <resource culture="ar-kw" name="description" value="AR:  Description"></resource>
+       <resource culture="ar-kw" name="entitylevel" value="AR:  Entity Level"></resource>
+       <resource culture="ar-kw" name="entitylevelRequired" value="AR: Please provide  Entity Level"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+		<resource culture="ar-kw" name="organizationentitytypeList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="organizationentitytypeCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="organizationentitytypeUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="organizationentitytypeDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="organizationkey" value=" Organization Key"></resource>
+       <resource culture="en-us" name="organizationkeyRequired" value="Please provide  Organization Key"></resource>
+       <resource culture="en-us" name="entirytypecode" value=" Entiry Type Code"></resource>
+       <resource culture="en-us" name="entirytypecodeRequired" value="Please provide  Entiry Type Code"></resource>
+       <resource culture="en-us" name="entirytype" value=" Entiry Type"></resource>
+       <resource culture="en-us" name="entirytypeRequired" value="Please provide  Entiry Type"></resource>
+       <resource culture="en-us" name="entirytypeeng" value=" Entiry Type Eng"></resource>
+       <resource culture="en-us" name="description" value=" Description"></resource>
+       <resource culture="en-us" name="entitylevel" value=" Entity Level"></resource>
+       <resource culture="en-us" name="entitylevelRequired" value="Please provide  Entity Level"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+        <resource culture="en-us" name="organizationentitytypeList" value="View All"></resource>
+		<resource culture="en-us" name="organizationentitytypeCreate" value="Create"></resource>
+		<resource culture="en-us" name="organizationentitytypeUpdate" value="Update"></resource>
+		<resource culture="en-us" name="organizationentitytypeDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

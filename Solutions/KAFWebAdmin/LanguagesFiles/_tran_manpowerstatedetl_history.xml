@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="manpowerstatedetlid" value="AR:  Manpower State Detl I D"></resource>
+       <resource culture="ar-kw" name="manpowerstatedetlidRequired" value="AR: Please provide  Manpower State Detl I D"></resource>
+       <resource culture="ar-kw" name="manpowerstateid" value="AR:  Manpower State I D"></resource>
+       <resource culture="ar-kw" name="manpowerstateidRequired" value="AR: Please provide  Manpower State I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrsvcid" value="AR:  Hr Svc I D"></resource>
+       <resource culture="ar-kw" name="hrsvcidRequired" value="AR: Please provide  Hr Svc I D"></resource>
+       <resource culture="ar-kw" name="rankid" value="AR:  Rank I D"></resource>
+       <resource culture="ar-kw" name="rankidRequired" value="AR: Please provide  Rank I D"></resource>
+       <resource culture="ar-kw" name="groupid" value="AR:  Group I D"></resource>
+       <resource culture="ar-kw" name="groupidRequired" value="AR: Please provide  Group I D"></resource>
+       <resource culture="ar-kw" name="subunitid" value="AR:  Sub Unit I D"></resource>
+       <resource culture="ar-kw" name="subunitidRequired" value="AR: Please provide  Sub Unit I D"></resource>
+       <resource culture="ar-kw" name="campid" value="AR:  Camp I D"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp I D"></resource>
+       <resource culture="ar-kw" name="manpowerstatusid" value="AR:  Manpower Status I D"></resource>
+       <resource culture="ar-kw" name="manpowerstatusidRequired" value="AR: Please provide  Manpower Status I D"></resource>
+		<resource culture="ar-kw" name="manpowerstatedetlList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="manpowerstatedetlCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="manpowerstatedetlUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="manpowerstatedetlDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="manpowerstatedetlid" value=" Manpower State Detl I D"></resource>
+       <resource culture="en-us" name="manpowerstatedetlidRequired" value="Please provide  Manpower State Detl I D"></resource>
+       <resource culture="en-us" name="manpowerstateid" value=" Manpower State I D"></resource>
+       <resource culture="en-us" name="manpowerstateidRequired" value="Please provide  Manpower State I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrsvcid" value=" Hr Svc I D"></resource>
+       <resource culture="en-us" name="hrsvcidRequired" value="Please provide  Hr Svc I D"></resource>
+       <resource culture="en-us" name="rankid" value=" Rank I D"></resource>
+       <resource culture="en-us" name="rankidRequired" value="Please provide  Rank I D"></resource>
+       <resource culture="en-us" name="groupid" value=" Group I D"></resource>
+       <resource culture="en-us" name="groupidRequired" value="Please provide  Group I D"></resource>
+       <resource culture="en-us" name="subunitid" value=" Sub Unit I D"></resource>
+       <resource culture="en-us" name="subunitidRequired" value="Please provide  Sub Unit I D"></resource>
+       <resource culture="en-us" name="campid" value=" Camp I D"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp I D"></resource>
+       <resource culture="en-us" name="manpowerstatusid" value=" Manpower Status I D"></resource>
+       <resource culture="en-us" name="manpowerstatusidRequired" value="Please provide  Manpower Status I D"></resource>
+        <resource culture="en-us" name="manpowerstatedetlList" value="View All"></resource>
+		<resource culture="en-us" name="manpowerstatedetlCreate" value="Create"></resource>
+		<resource culture="en-us" name="manpowerstatedetlUpdate" value="Update"></resource>
+		<resource culture="en-us" name="manpowerstatedetlDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

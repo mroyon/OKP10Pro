@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0591D23-3C4E-4ACA-BD0D-88497940E28B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KAF.AppConfiguration</RootNamespace>
+    <AssemblyName>KAF.AppConfiguration</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\ArgumentValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\BreadCrumb.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\clsCaptchaGenerator.cs" />
+    <Compile Include="Configuration\clsConversion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ClsSQLCSV.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\clsTextMasking.cs" />
+    <Compile Include="Configuration\ConfigurationSectionHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\Context.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\Crypto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\CSVReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\CSVReaderExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\DataSet1.Designer.cs" />
+    <Compile Include="Configuration\dsPostData1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPostData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\EncryptionHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\EnumHelper.cs" />
+    <Compile Include="Configuration\FileHandler.cs" />
+    <Compile Include="Configuration\ImageHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\LoggingService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\Mailer.cs" />
+    <Compile Include="Configuration\MailManager.cs" />
+    <Compile Include="Configuration\ObjectEncrypter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\PostData.cs" />
+    <Compile Include="Configuration\PostDataHelper.cs" />
+    <Compile Include="Configuration\SendSMSHelper.cs" />
+    <Compile Include="Configuration\Serializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\SetProperties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\Settings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\StringConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\StringHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\TransactionCodeGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\TypeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\UniqueIDHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\UserMachineInfoHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\UserNumberFormat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\WebSerTKC.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\WorkFlowMailHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EncryptionHandler\clsCryptography.cs" />
+    <Compile Include="EncryptionHandler\clsDecrypt.cs" />
+    <Compile Include="EncryptionHandler\clsEncryptBussiness.cs" />
+    <Compile Include="EncryptionHandler\clsEncryptEngine.cs" />
+    <Compile Include="EncryptionHandler\CryptoHelp.cs" />
+    <Compile Include="EncryptionHandler\EncDec.cs" />
+    <Compile Include="EncryptionHandler\JSAESEncrytDecry.cs" />
+    <Compile Include="EncryptionHandler\PCryptography.cs" />
+    <Compile Include="EncryptionHandler\TrippleDESCryptoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configuration\dsPostData.xsc">
+      <DependentUpon>dsPostData.xsd</DependentUpon>
+    </None>
+    <None Include="Configuration\dsPostData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPostData1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Configuration\dsPostData.xss">
+      <DependentUpon>dsPostData.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KAF.BusinessDataObjects\KAF.BusinessDataObjects.csproj">
+      <Project>{ef8dae61-781c-41d2-8290-c01419a273c9}</Project>
+      <Name>KAF.BusinessDataObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,148 @@
+﻿
+@model KAF.BusinessDataObjects.BusinessDataObjectsPartials.UploadLinkDocsEntity
+
+
+<link href="~/DesignsAndScripts/Styles/jstree_style.min.css" rel="stylesheet" />
+<div class="row fileupload-buttonbar" style="margin: 5px;">
+    <div class="col-lg-12">
+        <!-- The fileinput-button span is used to style the file input field as button -->
+
+        @Html.HiddenFor(model => model.FolderType)
+        @Html.HiddenFor(model => model.Task_Corr_Meet_Not_ID)
+        <button type="button" id="btnLink" class="btn btn-primary start">
+            <i class="glyphicon glyphicon-upload"></i>
+            <span>Link Other Document</span>
+        </button>
+
+    </div>
+
+</div>
+<div id="jstree_directory" style="    margin: 15px;">
+    <ul>
+        @{
+
+            var folderlist = Model.SharedFileList.GroupBy(test => test.FilePath)
+                               .Select(grp => grp.First())
+                               .ToList();
+        }
+
+        @foreach (var item in folderlist)
+        {
+
+
+            <li>
+                <a href="#" folderid="@Model.SharedFileList.Where(p=>p.FilePath==item.FilePath).FirstOrDefault().FolderID">  @Model.SharedFileList.Where(p => p.FilePath == item.FilePath).FirstOrDefault().Title</a>
+                <ul>
+                    @foreach (KAF.BusinessDataObjects.BusinessDataObjectsPartials.KAF_Get_SharedFileDetailsEntity objfile in Model.SharedFileList.Where(p => p.FilePath == item.FilePath))
+                    {
+                        string strfilepath = DomainUrl.GetDomainUrl() + "/DesignsAndScripts/Images/file.png";
+                    <li data-jstree='{"checked": true }' foldercontentid="@objfile.FolderContentID">
+                        @*<a href="#" class="jstree-clicked">@objfile.UserFileName</a>*@  @objfile.UserFileName
+                    </li>
+                    }
+                </ul>
+
+            </li>
+
+        }
+    </ul>
+</div>
+
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="@BundleTable.Bundles.ResolveBundleUrl("~/Bundles/js")">\x3C/script>');
+    }
+
+
+</script>
+
+<script>
+
+    //save link documents
+
+
+    $(document).ready(function () {
+
+
+
+        $('#jstree_directory').jstree(
+            {
+                'core': {
+                    "multiple": true,
+                    "themes": {
+                        "theme": "classic",
+                        "dots": true,
+                        "variant": "small",
+                        "icons": false,
+                    }
+                },
+                "checkbox": {
+                    "keep_selected_style": false
+                },
+                "plugins": ["wholerow", "checkbox"],
+            }
+        );
+
+        $('#btnLink').click(function (event) {
+
+            var foldercontentids = '';
+            $.each($("#jstree_directory").jstree("get_checked", true), function (index, value) {
+                if (typeof value.li_attr.foldercontentid != undefined && value.li_attr.foldercontentid != null) {
+                    //console.log('aaa-' + value.li_attr.foldercontentid);
+                    foldercontentids += value.li_attr.foldercontentid + ',';
+
+                }
+                   
+            });
+
+            try {
+
+                var input = AddAntiForgeryToken({
+                    token: $(".txtUserSTK").val(),
+                    userinfo: $(".txtServerUtilObj").val(),
+
+                    useripaddress: $(".txtuserip").val(),
+                    sessionid: $(".txtUserSes").val(),
+                    methodname: "UploadDocumentLoadUploadedFiles",
+                    currenturl: window.location.href,
+                    foldertype: $("#foldertype").val(),//1 Task,2-corr,3-meeting,4-notification
+                    task_corr_meet_noti_id: $('#task_corr_meet_noti_id').val(),
+                    foldercontentids: foldercontentids,
+                    ex_bigint1: $("#FolderType").val(),
+                    ex_bigint2: $("#Task_Corr_Meet_Not_ID").val()
+
+                });
+                $.ajax({
+                    url: baseurl + "Common/LinkUploadedFiles",
+                    type: 'POST',
+                    data: input,
+                    success: function (response) {
+                        if (response.status == "success") {
+                            inforamtionDialog(response.title,"Documents are linked", _getCookieForLanguage("_btnOK")).then(function (answer) {
+
+                            });
+                        }
+                        else {
+                            inforamtionDialog(response.title, response.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
+                            });
+                        }
+
+
+                    }
+                });
+                //window.location.href = baseurl + "CurrentActivity/CurrentActivityUpdate?input=" + val;
+
+            } catch (e) {
+                $.alert({
+                    title: _getCookieForLanguage("_informationTitle"),
+                    content: e.message,
+                    type: 'red'
+                });
+            }
+
+        });
+    });
+
+
+</script>
+

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="parentid" value="AR:  Parent ID"></resource>
+       <resource culture="ar-kw" name="cityname" value="AR:  City Name"></resource>
+       <resource culture="ar-kw" name="citynameRequired" value="AR: Please provide  City Name"></resource>
+       <resource culture="ar-kw" name="citynamear" value="AR:  City Name Ar"></resource>
+       <resource culture="ar-kw" name="isgov" value="AR:  Is Gov"></resource>
+       <resource culture="ar-kw" name="countryid" value="AR:  Country ID"></resource>
+       <resource culture="ar-kw" name="countryidRequired" value="AR: Please provide  Country ID"></resource>
+       <resource culture="ar-kw" name="area_code_paci" value="AR:  A R E A C O D E P A C I"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="govcityList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="govcityCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="govcityUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="govcityDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="parentid" value=" Parent ID"></resource>
+       <resource culture="en-us" name="cityname" value=" City Name"></resource>
+       <resource culture="en-us" name="citynameRequired" value="Please provide  City Name"></resource>
+       <resource culture="en-us" name="citynamear" value=" City Name Ar"></resource>
+       <resource culture="en-us" name="isgov" value=" Is Gov"></resource>
+       <resource culture="en-us" name="countryid" value=" Country ID"></resource>
+       <resource culture="en-us" name="countryidRequired" value="Please provide  Country ID"></resource>
+       <resource culture="en-us" name="area_code_paci" value=" A R E A C O D E P A C I"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="govcityList" value="View All"></resource>
+		<resource culture="en-us" name="govcityCreate" value="Create"></resource>
+		<resource culture="en-us" name="govcityUpdate" value="Update"></resource>
+		<resource culture="en-us" name="govcityDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

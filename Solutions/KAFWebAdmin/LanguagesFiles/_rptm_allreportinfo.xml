@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+  <resource culture="ar-kw" name="modulename" value="AR:  Module Name"></resource>
+       <resource culture="ar-kw" name="reportname" value="AR:  Report Name"></resource>
+       <resource culture="ar-kw" name="reportnameRequired" value="AR: Please provide  Report Name"></resource>
+       <resource culture="ar-kw" name="reportnameeng" value="AR:  Report Name Eng"></resource>
+       <resource culture="ar-kw" name="reporturl" value="AR:  Report U R L"></resource>
+       <resource culture="ar-kw" name="reportspname" value="AR:  Report S P Name"></resource>
+       <resource culture="ar-kw" name="reportspnameRequired" value="AR: Please provide  Report S P Name"></resource>
+       <resource culture="ar-kw" name="reportspnameeng" value="AR:  Report S P Name Eng"></resource>
+       <resource culture="ar-kw" name="reportdescription" value="AR:  Report Description"></resource>
+		<resource culture="ar-kw" name="allreportinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="allreportinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="allreportinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="allreportinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+  <resource culture="en-us" name="modulename" value=" Module Name"></resource>
+       <resource culture="en-us" name="reportname" value=" Report Name"></resource>
+       <resource culture="en-us" name="reportnameRequired" value="Please provide  Report Name"></resource>
+       <resource culture="en-us" name="reportnameeng" value=" Report Name Eng"></resource>
+       <resource culture="en-us" name="reporturl" value=" Report U R L"></resource>
+       <resource culture="en-us" name="reportspname" value=" Report S P Name"></resource>
+       <resource culture="en-us" name="reportspnameRequired" value="Please provide  Report S P Name"></resource>
+       <resource culture="en-us" name="reportspnameeng" value=" Report S P Name Eng"></resource>
+       <resource culture="en-us" name="reportdescription" value=" Report Description"></resource>
+        <resource culture="en-us" name="allreportinfoList" value="View All"></resource>
+		<resource culture="en-us" name="allreportinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="allreportinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="allreportinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

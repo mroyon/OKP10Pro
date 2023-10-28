@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="proficiencyname" value="AR:  Proficiency Name"></resource>
+       <resource culture="ar-kw" name="proficiencynameRequired" value="AR: Please provide  Proficiency Name"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="languageproficiencyList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="languageproficiencyCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="languageproficiencyUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="languageproficiencyDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="proficiencyname" value=" Proficiency Name"></resource>
+       <resource culture="en-us" name="proficiencynameRequired" value="Please provide  Proficiency Name"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="languageproficiencyList" value="View All"></resource>
+		<resource culture="en-us" name="languageproficiencyCreate" value="Create"></resource>
+		<resource culture="en-us" name="languageproficiencyUpdate" value="Update"></resource>
+		<resource culture="en-us" name="languageproficiencyDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

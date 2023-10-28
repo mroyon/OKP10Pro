@@ -1,0 +1,12 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+@model KAF.CustomHelper.HelperClasses.ReportingServicesReportViewModel
+<div style="display: table; width: 100%;">
+    @{
+        if (Model.ReportPath != null)
+        {   @Html.Partial("RemoteReportViewer", Model)
+        }
+     }
+</div>

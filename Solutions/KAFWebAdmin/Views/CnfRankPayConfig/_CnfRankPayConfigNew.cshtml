@@ -1,0 +1,188 @@
+﻿@model KAF.BusinessDataObjects.cnf_rankpayconfigEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmRankPayConfigNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            Create
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.payconfigid)
+                       
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Payment Type", htmlAttributes: new { @class = "labelNormal   " })
+                               
+                                @Html.DropDownListFor(m=>m.payallceid, KAF.FacadeCreatorObjects.cnf_paymentitemFCC.GetFacadeCreate().GetAll(
+                               new KAF.BusinessDataObjects.cnf_paymentitemEntity { }).Select(i => new SelectListItem()
+                               {
+                                   Text = i.itemname,
+                                   Value = i.payallceid.ToString()
+                               }), "Select Payment Type", new { @class = "form-control",@disabled="disabled" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Group", htmlAttributes: new { @class = "labelNormal   " })
+                                @Html.DropDownListFor(model => model.groupid,
+                                new SelectList(
+                                    (
+                                    KAF.CustomHelper.HelperClasses.clsUtil.ToSelectList<KAF.ConstantTypes.clsSystemConstantTypes.Group>(typeof(KAF.ConstantTypes.clsSystemConstantTypes.Group))), "paramvalue", "paramname"),
+                                "Please Select",
+                                new { @class = "form-control required" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table id="CnfRankGroupDt" class="table table-striped table-bordered" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>Group</th>
+                                    <th>Rank</th>
+
+                                    <th>Amount</th>
+
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveCnfRankPayConfig" class="btn btn-primary btn-md btnSaveCnfRankPayConfig"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    //filecontrol addons
+
+    $(document).ready(function () {
+
+        $("#groupid").change(function () {
+            GetAllRankByGroupID();
+        });
+    });
+
+    function GetAllRankByGroupID() {
+        try {
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+
+            var input = AddAntiForgeryToken({
+                token: $(".txtUserSTK").val(),
+                userinfo: $(".txtServerUtilObj").val(),
+                useripaddress: $(".txtuserip").val(),
+                sessionid: $(".txtUserSes").val(),
+                methodname: "CnfRankPayConfigTableData",
+                currenturl: window.location.href,
+                GroupID: $("#groupid").val()
+            });
+
+            $('#CnfRankGroupDt').DataTable({
+                "destroy": true,
+                "bPaginate": false,
+                "bFilter": true,
+                "columnDefs": [{
+                    "targets": 0,
+                    "searchable": false,
+                    "orderable": false
+                }],
+                "language":
+                {
+                    "processing": "<div class='overlay custom-loader-background'><i class='fa fa-cog fa-spin custom-loader-color'></i></div>"
+                },
+                "processing": true,
+                "serverSide": true,
+                "autoWidth": false,
+                "responsive": true,
+                "ajax": {
+                    "url": baseurl + "CnfRankPayConfig/CnfGroupRankTableData",
+                    "type": "POST",
+                    "data": input
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: jqXHR.responseJSON.Error,
+                        type: 'red'
+                    });
+                },
+                "columns": [
+
+
+                   
+                    { "data": "strgroup", "searchable": true, "sortable": true, "orderable": true },
+                    { "data": "RankName", "searchable": true, "sortable": true, "orderable": true },
+                    {
+                        "data": "txtamount",
+                        "render": function (data, type, full, meta) {
+                            return data;
+                        }
+                    },
+                   
+                   
+                    {
+                        "data": "ex_nvarchar1",
+                        "render": function (data, type, full, meta) {
+                            return data;
+                        }
+                    }
+                ],
+                "drawCallback": function (settings) {
+
+                    /*show pager if only necessary
+                    //console.log(this.fnSettings());*/
+                    //if (Math.ceil((this.fnSettings().fnRecordsDisplay()) / this.fnSettings()._iDisplayLength) > 1) {
+                    //    $('#CnfRankPayConfigDt_paginate').css("display", "block");
+                    //} else {
+                    //    $('#CnfRankPayConfigDt_paginate').css("display", "none");
+                    //}
+
+                }
+            });
+        } catch (e) {
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: e,
+                type: 'red'
+            });
+        }
+    }
+
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+</script>
+
+
+
+
