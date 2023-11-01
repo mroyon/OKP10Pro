@@ -331,6 +331,7 @@
     <Compile Include="Controllers\HR\HrAddressChangeController.cs" />
     <Compile Include="Controllers\HR\HrAttachmentInfoController.cs" />
     <Compile Include="Controllers\HR\HrAttachmentReturnController.cs" />
+    <Compile Include="Controllers\HR\HrCivilIDInfoController.cs" />
     <Compile Include="Controllers\HR\HrDocumentUploadController.cs" />
     <Compile Include="Controllers\HR\HrOkpTransferInfoController.cs" />
     <Compile Include="Controllers\ParadeState\HrDeathInfoController.cs" />
@@ -1083,6 +1084,10 @@
     <Content Include="DesignsAndScripts\PageWise\HRJS\HRBasicProfile\EditHRBasicProfile.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HRBasicProfile\LandingHRBasicProfile.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HRBasicProfile\NewHRBasicProfile.js" />
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrCivilIDInfo\DetailHrCivilIDInfo.js" />
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrCivilIDInfo\EditHrCivilIDInfo.js" />
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrCivilIDInfo\LandingHrCivilIDInfo.js" />
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrCivilIDInfo\NewHrCivilIDInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrDemandDetlPassport\DetailHrDemandDetlPassport.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrDemandDetlPassport\EditHrDemandDetlPassport.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrDemandDetlPassport\LandingHrDemandDetlPassport.js" />
@@ -1741,6 +1746,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="LanguagesFiles\_hr_attachmentinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_hr_civilidinfo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="LanguagesFiles\_hr_deathinfo.xml">
@@ -3162,6 +3170,10 @@
     <Content Include="Views\HrDocumentUpload\_HrDocumentUploadDetail.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\HrCivilIDInfo\HrCivilIDInfoLanding.cshtml" />
+    <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoDetail.cshtml" />
+    <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoEdit.cshtml" />
+    <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\UploadTemp\" />

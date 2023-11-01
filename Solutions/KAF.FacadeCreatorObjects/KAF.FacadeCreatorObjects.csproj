@@ -57,6 +57,7 @@
     <Compile Include="FacadeCreatorObjects\HR\hr_addresschangeFacadeCreatorObjects.cs" />
     <Compile Include="FacadeCreatorObjects\HR\hr_attachmentinfoFacadeCreatorObjects.cs" />
     <Compile Include="FacadeCreatorObjects\HR\hr_bankaccountinfoFacadeCreatorObjects.cs" />
+    <Compile Include="FacadeCreatorObjects\HR\hr_civilidinfoFacadeCreatorObjects.cs" />
     <Compile Include="FacadeCreatorObjects\HR\hr_documentuploadFacadeCreatorObjects.cs" />
     <Compile Include="FacadeCreatorObjects\HR\hr_okptransferinfoFacadeCreatorObjects.cs" />
     <Compile Include="FacadeCreatorObjects\ParadeState\hr_deathinfoFacadeCreatorObjects.cs" />

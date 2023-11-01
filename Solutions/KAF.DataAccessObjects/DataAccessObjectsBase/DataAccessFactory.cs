@@ -960,6 +960,18 @@ namespace KAF.DataAccessObjects
         }
         #endregion hr_basicprofile
 
+        #region hr_civilidinfo
+        [DebuggerStepThrough()]
+        public override Ihr_civilidinfoDataAccessObjects Createhr_civilidinfoDataAccess()
+        {
+            string type = typeof(hr_civilidinfoDataAccessObjects).ToString();
+            if (!CurrentContext.Contains(type))
+            {
+                CurrentContext[type] = new hr_civilidinfoDataAccessObjects(CurrentContext);
+            }
+            return (Ihr_civilidinfoDataAccessObjects)CurrentContext[type];
+        }
+        #endregion hr_civilidinfo
 
         #region hr_demanddetlpassport
         [DebuggerStepThrough()]

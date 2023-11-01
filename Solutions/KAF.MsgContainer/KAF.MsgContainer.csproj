@@ -111,6 +111,7 @@
     <Compile Include="_UnityEntityClasses\_hr_bankloaninfo.cs" />
     <Compile Include="_UnityEntityClasses\_hr_basicfile.cs" />
     <Compile Include="_UnityEntityClasses\_hr_basicprofile.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_civilidinfo.cs" />
     <Compile Include="_UnityEntityClasses\_hr_deathinfo.cs" />
     <Compile Include="_UnityEntityClasses\_hr_deathinfo_history.cs" />
     <Compile Include="_UnityEntityClasses\_hr_demanddetlpassport.cs" />

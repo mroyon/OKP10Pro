@@ -67,6 +67,10 @@ namespace KAF.DataAccessObjects
 
         #region Factory Methods 
 
+        #region hr_civilidinfo
+        public abstract Ihr_civilidinfoDataAccessObjects Createhr_civilidinfoDataAccess();
+        #endregion hr_civilidinfo
+
         #region hr_attachmentinfo
         public abstract Ihr_attachmentinfoDataAccessObjects Createhr_attachmentinfoDataAccess();
         #endregion hr_attachmentinfo

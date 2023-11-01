@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="IDataAccessObjectsPartial\HR\Ihr_attachmentinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjectsPartial\HR\Ihr_basicprofileDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjectsPartial\HR\Ihr_civilidinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjectsPartial\HR\Ihr_demanddetlpassportDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjectsPartial\HR\Ihr_documentuploadDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjectsPartial\HR\Ihr_hospitaladmissioninfoDataAccessObjects.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="IDataAccessObjectsPartial\Iowin_userDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\HR\Ihr_addresschangeDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\HR\Ihr_attachmentinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_civilidinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\HR\Ihr_documentuploadDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\HR\Ihr_okptransferinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\ParadeState\Ihr_deathinfoDataAccessObjects.cs" />
