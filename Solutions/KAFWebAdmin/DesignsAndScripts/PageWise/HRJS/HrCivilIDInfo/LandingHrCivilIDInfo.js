@@ -347,7 +347,9 @@ function HrCivilIDInfoEdit(val) {
             success: function (response) {
                 $('#mcHrCivilIDInfoEdit').html('');
                 $('#mcHrCivilIDInfoEdit').html(response);
-                $('#modal-container-HrCivilIDInfoEdit').modal({backdrop: 'static',keyboard: false});
+                $('#modal-container-HrCivilIDInfoEdit').modal({ backdrop: 'static', keyboard: false });
+
+
             }
         });
     } catch (e) {
