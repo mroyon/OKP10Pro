@@ -317,6 +317,14 @@ namespace KAF.BusinessDataObjects
                 if (!reader.IsDBNull(reader.GetOrdinal("Remarks"))) _remarks = reader.GetString(reader.GetOrdinal("Remarks"));
                 if (!reader.IsDBNull(reader.GetOrdinal("ForReview"))) _forreview = reader.GetInt32(reader.GetOrdinal("ForReview"));
                 if (!reader.IsDBNull(reader.GetOrdinal("IsCurrent"))) _iscurrent = reader.GetBoolean(reader.GetOrdinal("IsCurrent"));
+
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileDescription_2"))) _passportfiledescription_2 = reader.GetString(reader.GetOrdinal("PassportFileDescription_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFilePath_2"))) _passportfilepath_2 = reader.GetString(reader.GetOrdinal("PassportFilePath_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileName_2"))) _passportfilename_2 = reader.GetString(reader.GetOrdinal("PassportFileName_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileType_2"))) _passportfiletype_2 = reader.GetString(reader.GetOrdinal("PassportFileType_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportExtension_2"))) _passportextension_2 = reader.GetString(reader.GetOrdinal("PassportExtension_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileID_2"))) _passportfileid_2 = reader.GetGuid(reader.GetOrdinal("PassportFileID_2"));
+
                 if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date1"))) _ex_date1 = reader.GetDateTime(reader.GetOrdinal("Ex_Date1"));
                 if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date2"))) _ex_date2 = reader.GetDateTime(reader.GetOrdinal("Ex_Date2"));
                 if (!reader.IsDBNull(reader.GetOrdinal("Ex_Nvarchar1"))) _ex_nvarchar1 = reader.GetString(reader.GetOrdinal("Ex_Nvarchar1"));
