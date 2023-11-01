@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using KAF.BusinessDataObjects.BusinessDataObjectsBase;
 using System.Collections.Generic;
 using KAF.BusinessDataObjects.BusinessDataObjectsPartials;
+using System.Web;
 
 namespace KAF.BusinessDataObjects
 {
@@ -153,7 +154,7 @@ namespace KAF.BusinessDataObjects
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
     }
-    
+
     public partial class hr_civilpromotionEntity
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
@@ -266,6 +267,9 @@ namespace KAF.BusinessDataObjects
     public partial class hr_passportinfoEntity
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+        public HttpPostedFileBase file1 { get; set; }
+        public HttpPostedFileBase file2 { get; set; }
+
     }
     public partial class hr_relativesworkinginmodEntity
     {
@@ -362,7 +366,7 @@ namespace KAF.BusinessDataObjects
         public string strdemandtype { get; set; }
 
     }
-    
+
 
     public partial class hr_visaissueinfoEntity
     {

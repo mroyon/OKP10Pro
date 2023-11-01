@@ -11,41 +11,47 @@ namespace KAF.BusinessDataObjects
     public partial class hr_passportinfoEntity : BaseEntity
     {
         #region Properties
-    
-        protected long ? _passportid;
-        protected long ? _hrbasicid;
+
+        protected long? _passportid;
+        protected long? _hrbasicid;
         protected string _passportno;
-        protected DateTime ? _passportissuedate;
-        protected DateTime ? _passportexpirydate;
-        protected long ? _passportissuecountryid;
-        protected bool ? _isfamilypassport;
+        protected DateTime? _passportissuedate;
+        protected DateTime? _passportexpirydate;
+        protected long? _passportissuecountryid;
+        protected bool? _isfamilypassport;
         protected string _passportfiledescription;
         protected string _passportfilepath;
         protected string _passportfilename;
         protected string _passportfiletype;
         protected string _passportextension;
-        protected Guid ? _passportfileid;
+        protected Guid? _passportfileid;
         protected string _remarks;
-        protected int ? _forreview;
-        protected bool ? _iscurrent;
-                
-        
+        protected int? _forreview;
+        protected bool? _iscurrent;
+
+        protected string _passportfiledescription_2;
+        protected string _passportfilepath_2;
+        protected string _passportfilename_2;
+        protected string _passportfiletype_2;
+        protected string _passportextension_2;
+        protected Guid? _passportfileid_2;
+
         [DataMember]
-        public long ? passportid
+        public long? passportid
         {
             get { return _passportid; }
             set { _passportid = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "hrbasicid", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
         [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_passportinfo), ErrorMessageResourceName = "hrbasicidRequired")]
-        public long ? hrbasicid
+        public long? hrbasicid
         {
             get { return _hrbasicid; }
             set { _hrbasicid = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [MaxLength(100)]
         [Display(Name = "passportno", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
@@ -55,39 +61,39 @@ namespace KAF.BusinessDataObjects
             get { return _passportno; }
             set { _passportno = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "passportissuedate", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
-        public DateTime ? passportissuedate
+        public DateTime? passportissuedate
         {
             get { return _passportissuedate; }
             set { _passportissuedate = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "passportexpirydate", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
-        public DateTime ? passportexpirydate
+        public DateTime? passportexpirydate
         {
             get { return _passportexpirydate; }
             set { _passportexpirydate = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "passportissuecountryid", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
-        public long ? passportissuecountryid
+        public long? passportissuecountryid
         {
             get { return _passportissuecountryid; }
             set { _passportissuecountryid = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "isfamilypassport", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
-        public bool ? isfamilypassport
+        public bool? isfamilypassport
         {
             get { return _isfamilypassport; }
             set { _isfamilypassport = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [MaxLength(550)]
         [Display(Name = "passportfiledescription", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
@@ -96,7 +102,7 @@ namespace KAF.BusinessDataObjects
             get { return _passportfiledescription; }
             set { _passportfiledescription = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [MaxLength(250)]
         [Display(Name = "passportfilepath", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
@@ -105,7 +111,7 @@ namespace KAF.BusinessDataObjects
             get { return _passportfilepath; }
             set { _passportfilepath = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [MaxLength(250)]
         [Display(Name = "passportfilename", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
@@ -114,7 +120,7 @@ namespace KAF.BusinessDataObjects
             get { return _passportfilename; }
             set { _passportfilename = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [MaxLength(250)]
         [Display(Name = "passportfiletype", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
@@ -123,7 +129,7 @@ namespace KAF.BusinessDataObjects
             get { return _passportfiletype; }
             set { _passportfiletype = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [MaxLength(250)]
         [Display(Name = "passportextension", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
@@ -132,15 +138,15 @@ namespace KAF.BusinessDataObjects
             get { return _passportextension; }
             set { _passportextension = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "passportfileid", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
-        public Guid ? passportfileid
+        public Guid? passportfileid
         {
             get { return _passportfileid; }
             set { _passportfileid = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [MaxLength(550)]
         [Display(Name = "remarks", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
@@ -149,42 +155,93 @@ namespace KAF.BusinessDataObjects
             get { return _remarks; }
             set { _remarks = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "forreview", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
-        public int ? forreview
+        public int? forreview
         {
             get { return _forreview; }
             set { _forreview = value; this.OnChnaged(); }
         }
-        
+
         [DataMember]
         [Display(Name = "iscurrent", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
-        public bool ? iscurrent
+        public bool? iscurrent
         {
             get { return _iscurrent; }
             set { _iscurrent = value; this.OnChnaged(); }
         }
-        
-        
+
+        [DataMember]
+        [MaxLength(550)]
+        [Display(Name = "passportfiledescription_2", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
+        public string passportfiledescription_2
+        {
+            get { return _passportfiledescription_2; }
+            set { _passportfiledescription_2 = value; this.OnChnaged(); }
+        }
+
+        [DataMember]
+        [MaxLength(250)]
+        [Display(Name = "passportfilepath_2", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
+        public string passportfilepath_2
+        {
+            get { return _passportfilepath_2; }
+            set { _passportfilepath_2 = value; this.OnChnaged(); }
+        }
+
+        [DataMember]
+        [MaxLength(250)]
+        [Display(Name = "passportfilename_2", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
+        public string passportfilename_2
+        {
+            get { return _passportfilename_2; }
+            set { _passportfilename_2 = value; this.OnChnaged(); }
+        }
+
+        [DataMember]
+        [MaxLength(250)]
+        [Display(Name = "passportfiletype_2", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
+        public string passportfiletype_2
+        {
+            get { return _passportfiletype_2; }
+            set { _passportfiletype_2 = value; this.OnChnaged(); }
+        }
+
+        [DataMember]
+        [MaxLength(250)]
+        [Display(Name = "passportextension_2", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
+        public string passportextension_2
+        {
+            get { return _passportextension_2; }
+            set { _passportextension_2 = value; this.OnChnaged(); }
+        }
+
+        [DataMember]
+        [Display(Name = "passportfileid_2", ResourceType = typeof(KAF.MsgContainer._hr_passportinfo))]
+        public Guid? passportfileid_2
+        {
+            get { return _passportfileid_2; }
+            set { _passportfileid_2 = value; this.OnChnaged(); }
+        }
         #endregion
-    
+
         #region Constructor
-    
-        public hr_passportinfoEntity():base()
+
+        public hr_passportinfoEntity() : base()
         {
         }
-        
+
         public hr_passportinfoEntity(IDataReader reader)
         {
             this.LoadFromReader(reader);
         }
-        
-         public hr_passportinfoEntity(IDataReader reader, bool IsListViewShow)
+
+        public hr_passportinfoEntity(IDataReader reader, bool IsListViewShow)
         {
             this.LoadFromReader(reader, IsListViewShow);
         }
-        
+
         protected void LoadFromReader(IDataReader reader)
         {
             if (reader != null && !reader.IsClosed)
@@ -206,6 +263,14 @@ namespace KAF.BusinessDataObjects
                 if (!reader.IsDBNull(reader.GetOrdinal("Remarks"))) _remarks = reader.GetString(reader.GetOrdinal("Remarks"));
                 if (!reader.IsDBNull(reader.GetOrdinal("ForReview"))) _forreview = reader.GetInt32(reader.GetOrdinal("ForReview"));
                 if (!reader.IsDBNull(reader.GetOrdinal("IsCurrent"))) _iscurrent = reader.GetBoolean(reader.GetOrdinal("IsCurrent"));
+
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileDescription_2"))) _passportfiledescription_2 = reader.GetString(reader.GetOrdinal("PassportFileDescription_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFilePath_2"))) _passportfilepath_2 = reader.GetString(reader.GetOrdinal("PassportFilePath_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileName_2"))) _passportfilename_2 = reader.GetString(reader.GetOrdinal("PassportFileName_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileType_2"))) _passportfiletype_2 = reader.GetString(reader.GetOrdinal("PassportFileType_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportExtension_2"))) _passportextension_2 = reader.GetString(reader.GetOrdinal("PassportExtension_2"));
+                if (!reader.IsDBNull(reader.GetOrdinal("PassportFileID_2"))) _passportfileid_2 = reader.GetGuid(reader.GetOrdinal("PassportFileID_2"));
+
                 if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date1"))) _ex_date1 = reader.GetDateTime(reader.GetOrdinal("Ex_Date1"));
                 if (!reader.IsDBNull(reader.GetOrdinal("Ex_Date2"))) _ex_date2 = reader.GetDateTime(reader.GetOrdinal("Ex_Date2"));
                 if (!reader.IsDBNull(reader.GetOrdinal("Ex_Nvarchar1"))) _ex_nvarchar1 = reader.GetString(reader.GetOrdinal("Ex_Nvarchar1"));
