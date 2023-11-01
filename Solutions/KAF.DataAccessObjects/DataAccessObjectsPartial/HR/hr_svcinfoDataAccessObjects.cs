@@ -167,7 +167,9 @@ namespace KAF.DataAccessObjects
 					{
                         while (reader.Read())
                         {
-                            itemList.Add(new hr_svcinfoEntity(reader, true, true));
+                            var obj = new hr_svcinfoEntity(reader, true, true);
+                            if (!reader.IsDBNull(reader.GetOrdinal("ResidencyNumber"))) obj.ResidencyNumber = reader.GetString(reader.GetOrdinal("ResidencyNumber"));
+                            itemList.Add(obj);
                         }
                         reader.Close();
 					}
