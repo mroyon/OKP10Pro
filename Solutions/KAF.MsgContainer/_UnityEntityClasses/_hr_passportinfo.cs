@@ -1,5 +1,5 @@
-﻿using  KAF.MsgContainer.Abstract;
-using  KAF.MsgContainer.Concrete;
+﻿using KAF.MsgContainer.Abstract;
+using KAF.MsgContainer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,12 +11,12 @@ using KAF.MsgContainer;
 
 namespace KAF.MsgContainer
 {
-    
-    public  class _hr_passportinfo : _Common
+
+    public class _hr_passportinfo : _Common
     {
-         private static IResourceProvider resourceProvider_hr_passportinfo = new XmlResourceProvider(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"bin\LanguagesFiles\_hr_passportinfo.xml"));//DbResourceProvider(); //  
-         
-         
+        private static IResourceProvider resourceProvider_hr_passportinfo = new XmlResourceProvider(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"bin\LanguagesFiles\_hr_passportinfo.xml"));//DbResourceProvider(); //  
+
+
         public static string passportinfoList
         {
             get
@@ -45,9 +45,9 @@ namespace KAF.MsgContainer
                 return resourceProvider_hr_passportinfo.GetResource("passportinfoDetails", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         
-     
-         public static string hrbasicid
+
+
+        public static string hrbasicid
         {
             get
             {
@@ -61,7 +61,7 @@ namespace KAF.MsgContainer
                 return resourceProvider_hr_passportinfo.GetResource("hrbasicidRequired", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportno
+        public static string passportno
         {
             get
             {
@@ -75,98 +75,139 @@ namespace KAF.MsgContainer
                 return resourceProvider_hr_passportinfo.GetResource("passportnoRequired", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportissuedate
+        public static string passportissuedate
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportissuedate", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportexpirydate
+        public static string passportexpirydate
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportexpirydate", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportissuecountryid
+        public static string passportissuecountryid
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportissuecountryid", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string isfamilypassport
+        public static string isfamilypassport
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("isfamilypassport", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportfiledescription
+        public static string passportfiledescription
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportfiledescription", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportfilepath
+        public static string passportfilepath
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportfilepath", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportfilename
+        public static string passportfilename
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportfilename", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportfiletype
+        public static string passportfiletype
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportfiletype", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportextension
+        public static string passportextension
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportextension", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string passportfileid
+        public static string passportfileid
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("passportfileid", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string remarks
+        public static string remarks
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("remarks", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string forreview
+        public static string forreview
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("forreview", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-         public static string iscurrent
+        public static string iscurrent
         {
             get
             {
                 return resourceProvider_hr_passportinfo.GetResource("iscurrent", CultureInfo.CurrentUICulture.Name) as String;
             }
         }
-        
-      
+
+        public static string passportfiledescription_2
+        {
+            get
+            {
+                return resourceProvider_hr_passportinfo.GetResource("passportfiledescription_2", CultureInfo.CurrentUICulture.Name) as String;
+            }
+        }
+        public static string passportfilepath_2
+        {
+            get
+            {
+                return resourceProvider_hr_passportinfo.GetResource("passportfilepath_2", CultureInfo.CurrentUICulture.Name) as String;
+            }
+        }
+        public static string passportfilename_2
+        {
+            get
+            {
+                return resourceProvider_hr_passportinfo.GetResource("passportfilename_2", CultureInfo.CurrentUICulture.Name) as String;
+            }
+        }
+        public static string passportfiletype_2
+        {
+            get
+            {
+                return resourceProvider_hr_passportinfo.GetResource("passportfiletype_2", CultureInfo.CurrentUICulture.Name) as String;
+            }
+        }
+        public static string passportextension_2
+        {
+            get
+            {
+                return resourceProvider_hr_passportinfo.GetResource("passportextension_2", CultureInfo.CurrentUICulture.Name) as String;
+            }
+        }
+        public static string passportfileid_2
+        {
+            get
+            {
+                return resourceProvider_hr_passportinfo.GetResource("passportfileid_2", CultureInfo.CurrentUICulture.Name) as String;
+            }
+        }
     }
 }
