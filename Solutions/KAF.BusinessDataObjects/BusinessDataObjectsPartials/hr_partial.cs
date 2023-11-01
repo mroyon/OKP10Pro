@@ -73,6 +73,47 @@ namespace KAF.BusinessDataObjects
 
         public string strgender { get; set; }
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+
+
+        protected long? _militarynokw;
+        protected string _militarynobd;
+        protected long? _civilid;
+        protected string _fullname;
+
+
+        [DataMember]
+        public long? militarynokw
+        {
+            get { return _militarynokw; }
+            set { _militarynokw = value; this.OnChnaged(); }
+        }
+        [DataMember]
+        [Display(Name = "civilid", ResourceType = typeof(KAF.MsgContainer._hr_basicprofile))]
+        public long? civilid
+        {
+            get { return _civilid; }
+            set { _civilid = value; this.OnChnaged(); }
+        }
+
+
+        [DataMember]
+        [MaxLength(550)]
+        [Display(Name = "fullname", ResourceType = typeof(KAF.MsgContainer._hr_basicprofile))]        
+        public string fullname
+        {
+            get { return _fullname; }
+            set { _fullname = value; this.OnChnaged(); }
+        }
+        
+
+        [DataMember]
+        //[Display(Name = "militaryno", ResourceType = typeof(KAF.MsgContainer._hr_basicprofile))]
+        public string militarynobd
+        {
+            get { return _militarynobd; }
+            set { _militarynobd = value; this.OnChnaged(); }
+        }
+
     }
     public partial class hr_militarycoursesEntity
     {

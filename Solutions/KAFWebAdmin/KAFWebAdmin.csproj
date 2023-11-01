@@ -2923,10 +2923,18 @@
     <Content Include="Views\HrRepPassportInfo\_HrRepPassportInfoDetail.cshtml" />
     <Content Include="Views\HrRepPassportInfo\_HrRepPassportInfoEdit.cshtml" />
     <Content Include="Views\HrRepPassportInfo\_HrRepPassportInfoNew.cshtml" />
-    <Content Include="Views\HrResidentVisa\HrResidentVisaLanding.cshtml" />
-    <Content Include="Views\HrResidentVisa\_HrResidentVisaDetail.cshtml" />
-    <Content Include="Views\HrResidentVisa\_HrResidentVisaEdit.cshtml" />
-    <Content Include="Views\HrResidentVisa\_HrResidentVisaNew.cshtml" />
+    <Content Include="Views\HrResidentVisa\HrResidentVisaLanding.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrResidentVisa\_HrResidentVisaDetail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrResidentVisa\_HrResidentVisaEdit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrResidentVisa\_HrResidentVisaNew.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\HrRewardInfo\HrRewardInfoLanding.cshtml" />
     <Content Include="Views\HrRewardInfo\_HrRewardInfoDetail.cshtml" />
     <Content Include="Views\HrRewardInfo\_HrRewardInfoEdit.cshtml" />
@@ -3174,6 +3182,7 @@
     <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoDetail.cshtml" />
     <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoEdit.cshtml" />
     <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoNew.cshtml" />
+    <Content Include="Views\Shared\_Select2PassportInfoByBasicIdSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\UploadTemp\" />
