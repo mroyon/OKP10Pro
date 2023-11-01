@@ -52,7 +52,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.passportissuedate, htmlAttributes: new { @class = "labelNormal   required " })
-                                <div class='input-group date  fromdate' id='fromdate' style="width: 100 %; ">
+                                <div class='input-group date  fromdate' id='fromdate' style="width: 100%; ">
                                     @Html.EditorFor(model => model.passportissuedate, new { htmlAttributes = new { @Value = Model.passportissuedate != null ? Convert.ToDateTime(Model.passportissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control required", @type = "text" } })
                                     <span class="input-group-addon ">
                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -64,7 +64,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.passportexpirydate, htmlAttributes: new { @class = "labelNormal   required " })
-                                <div class='input-group date  todate' id='todate' style="width: 100 %; ">
+                                <div class='input-group date  todate' id='todate' style="width: 100%; ">
                                     @Html.EditorFor(model => model.passportexpirydate, new { htmlAttributes = new { @Value = Model.passportexpirydate != null ? Convert.ToDateTime(Model.passportexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control required", @type = "text" } })
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>

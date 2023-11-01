@@ -47,7 +47,7 @@ $(document).ready(function () {
                 //    frmdata.append('photo[' + i + ']', file);
                 //});
 
-                console.log(model);
+                //console.log(model);
 
                 var input = AddAntiForgeryToken({
                     token: $(".txtUserSTK").val(),
