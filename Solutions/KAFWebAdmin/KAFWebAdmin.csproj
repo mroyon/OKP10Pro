@@ -1743,6 +1743,9 @@
     <Content Include="LanguagesFiles\_hr_attachmentinfo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LanguagesFiles\_hr_civilidinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="LanguagesFiles\_hr_deathinfo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

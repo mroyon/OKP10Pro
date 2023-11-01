@@ -222,6 +222,7 @@
     <Compile Include="BusinessDataObjects\GEN\gen_tradeEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_addresschangeEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_attachmentinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_civilidinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_documentuploadEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_okptransferinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\ParadeState\hr_deathinfoEntity.cs" />

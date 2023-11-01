@@ -441,4 +441,9 @@ namespace KAF.BusinessDataObjects
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
     }
 
+    public partial class hr_civilidinfoEntity
+    {
+        public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+    }
+
 }

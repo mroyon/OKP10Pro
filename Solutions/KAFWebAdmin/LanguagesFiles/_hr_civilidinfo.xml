@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="civilidno" value="AR:  Civil I D No"></resource>
+       <resource culture="ar-kw" name="civilidnoRequired" value="AR: Please provide  Civil I D No"></resource>
+       <resource culture="ar-kw" name="civilidissuedate" value="AR:  Civil I D Issue Date"></resource>
+       <resource culture="ar-kw" name="civilidexpirydate" value="AR:  Civil I D Expiry Date"></resource>
+       <resource culture="ar-kw" name="civilidfiledescription" value="AR:  Civil I D File Description"></resource>
+       <resource culture="ar-kw" name="civilidfilepath" value="AR:  Civil I D File Path"></resource>
+       <resource culture="ar-kw" name="civilidfilename" value="AR:  Civil I D File Name"></resource>
+       <resource culture="ar-kw" name="civilidfiletype" value="AR:  Civil I D File Type"></resource>
+       <resource culture="ar-kw" name="civilidextension" value="AR:  Civil I D Extension"></resource>
+       <resource culture="ar-kw" name="civilidfileid" value="AR:  Civil I D File I D"></resource>
+       <resource culture="ar-kw" name="civilidfiledescription_2" value="AR:  Civil I D File Description 2"></resource>
+       <resource culture="ar-kw" name="civilidfilepath_2" value="AR:  Civil I D File Path 2"></resource>
+       <resource culture="ar-kw" name="civilidfilename_2" value="AR:  Civil I D File Name 2"></resource>
+       <resource culture="ar-kw" name="civilidfiletype_2" value="AR:  Civil I D File Type 2"></resource>
+       <resource culture="ar-kw" name="civilidextension_2" value="AR:  Civil I D Extension 2"></resource>
+       <resource culture="ar-kw" name="civilidfileid_2" value="AR:  Civil I D File I D 2"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+       <resource culture="ar-kw" name="iscurrent" value="AR:  Is Current"></resource>
+		<resource culture="ar-kw" name="civilidinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="civilidinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="civilidinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="civilidinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="civilidno" value=" Civil I D No"></resource>
+       <resource culture="en-us" name="civilidnoRequired" value="Please provide  Civil I D No"></resource>
+       <resource culture="en-us" name="civilidissuedate" value=" Civil I D Issue Date"></resource>
+       <resource culture="en-us" name="civilidexpirydate" value=" Civil I D Expiry Date"></resource>
+       <resource culture="en-us" name="civilidfiledescription" value=" Civil I D File Description"></resource>
+       <resource culture="en-us" name="civilidfilepath" value=" Civil I D File Path"></resource>
+       <resource culture="en-us" name="civilidfilename" value=" Civil I D File Name"></resource>
+       <resource culture="en-us" name="civilidfiletype" value=" Civil I D File Type"></resource>
+       <resource culture="en-us" name="civilidextension" value=" Civil I D Extension"></resource>
+       <resource culture="en-us" name="civilidfileid" value=" Civil I D File I D"></resource>
+       <resource culture="en-us" name="civilidfiledescription_2" value=" Civil I D File Description 2"></resource>
+       <resource culture="en-us" name="civilidfilepath_2" value=" Civil I D File Path 2"></resource>
+       <resource culture="en-us" name="civilidfilename_2" value=" Civil I D File Name 2"></resource>
+       <resource culture="en-us" name="civilidfiletype_2" value=" Civil I D File Type 2"></resource>
+       <resource culture="en-us" name="civilidextension_2" value=" Civil I D Extension 2"></resource>
+       <resource culture="en-us" name="civilidfileid_2" value=" Civil I D File I D 2"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+       <resource culture="en-us" name="iscurrent" value=" Is Current"></resource>
+        <resource culture="en-us" name="civilidinfoList" value="View All"></resource>
+		<resource culture="en-us" name="civilidinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="civilidinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="civilidinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

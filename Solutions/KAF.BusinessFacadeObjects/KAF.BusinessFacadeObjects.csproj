@@ -57,6 +57,7 @@
     <Compile Include="BusinessFacadeObjectsBase\BaseFacade.cs" />
     <Compile Include="BusinessFacadeObjectsPartial\HR\hr_attachmentinfoFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjectsPartial\HR\hr_basicprofileFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjectsPartial\HR\hr_civilidinfoFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjectsPartial\HR\hr_demanddetlpassportFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjectsPartial\HR\hr_documentuploadFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjectsPartial\HR\hr_hospitaladmissioninfoFacadeObjects.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="BusinessFacadeObjectsPartial\owin_userFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjects\HR\hr_addresschangeFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjects\HR\hr_attachmentinfoFacadeObjects.cs" />
+    <Compile Include="BusinessFacadeObjects\HR\hr_civilidinfoFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjects\HR\hr_documentuploadFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjects\HR\hr_okptransferinfoFacadeObjects.cs" />
     <Compile Include="BusinessFacadeObjects\ParadeState\hr_deathinfoFacadeObjects.cs" />
