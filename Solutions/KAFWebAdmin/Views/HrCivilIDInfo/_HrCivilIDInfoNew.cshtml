@@ -7,7 +7,7 @@
     }
 </style>
 
-@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmCivilIDInfoNew", @class = "form-horizontal" }))
+@using (Ajax.BeginForm("", "", null, new AjaxOptions {  HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmCivilIDInfoNew", @class = "form-horizontal", @enctype = "multipart/form-data", }))
 {
     HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
     HtmlHelper.ClientValidationEnabled = true;
@@ -81,6 +81,26 @@
                                 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
                                 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
                                 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input class="custom-file-label" id="fileInput" type="file" multiple>
+                                    <label class="custom-file-label" for="fileInput" multiple>Choose file</label>
+                                </div>
+                                @*<table class="table" id="FilesList" style="visibility:hidden">
+                                    <tr>
+                                        <th>
+                                            Attachment(s)
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </table>*@
                             </div>
                         </div>
                     </div>

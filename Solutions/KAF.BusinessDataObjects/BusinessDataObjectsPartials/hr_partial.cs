@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using KAF.BusinessDataObjects.BusinessDataObjectsBase;
 using System.Collections.Generic;
 using KAF.BusinessDataObjects.BusinessDataObjectsPartials;
+using System.Web;
 
 namespace KAF.BusinessDataObjects
 {
@@ -444,6 +445,8 @@ namespace KAF.BusinessDataObjects
     public partial class hr_civilidinfoEntity
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+        public HttpPostedFileBase file1 { get; set; }
+        public HttpPostedFileBase file2 { get; set; }
     }
 
 }
