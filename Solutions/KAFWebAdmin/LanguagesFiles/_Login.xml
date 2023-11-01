@@ -2,7 +2,7 @@
 <resources>
 
   <!--  ar-kwabic (ar-kw) -->
-  <resource culture="ar-kw" name="headerText" value="BMC Automation" ></resource>
+  <resource culture="ar-kw" name="headerText" value="OKP-10 Automation" ></resource>
   <resource culture="ar-kw" name="usernamePlaceholder" value=" يرجى إدخال إسم المستخدم" ></resource>
   <resource culture="ar-kw" name="passwordPlaceholder" value=" يرجى إدخال كلمة المرور." ></resource>
   <resource culture="ar-kw" name="forgetPasswordLink" value=" فقدان كلمة المرور?" ></resource>
@@ -56,7 +56,7 @@
   <!--  ar-kwabic (ar-kw) -->
 
   <!--  English (en-US) -->
-  <resource culture="en-us" name="headerText" value="BMC Automation"></resource>
+  <resource culture="en-us" name="headerText" value="OKP-10 Automation"></resource>
 
   <resource culture="en-us" name="usernamePlaceholder" value="Please Enter Username"></resource>
   <resource culture="en-us" name="passwordPlaceholder" value="Please Provide Password."></resource>
