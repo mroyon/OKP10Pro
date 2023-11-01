@@ -115,7 +115,7 @@ namespace KAFWebAdmin.Controllers.HR
 									 t.iscurrent,                                   
                                    ex_nvarchar1 = objSecPanel.genButtonPanel(t.civilid.GetValueOrDefault(-99), "civilid", this.HttpContext.User.Identity as ClaimsIdentity,
                                    "HrCivilIDInfo/HrCivilIDInfoEdit", "HrCivilIDInfoEdit", 
-                                   "HrCivilIDInfo/HrCivilIDInfoDelete", "HrCivilIDInfoDelete",
+                                   "", "",
                                    "HrCivilIDInfo/HrCivilIDInfoDetail", "HrCivilIDInfoDetail")
                                }).ToList();
 
@@ -252,8 +252,9 @@ namespace KAFWebAdmin.Controllers.HR
             try
             {
                 ModelState.Clear();
-                hr_civilidinfoEntity model = new hr_civilidinfoEntity();
-                return PartialView("_HrCivilIDInfoNew", model);
+                //hr_civilidinfoEntity model = new hr_civilidinfoEntity();
+
+                return PartialView("_HrCivilIDInfoNew", input);
             }
             catch (Exception ex)
             {
@@ -280,28 +281,31 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 Int64 ret = 0;
                 SecurityCapsule sec = new SecurityCapsule();
-/*				 ModelState.Remove("civilid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("civilidno");
-				 ModelState.Remove("serialno");
-				 ModelState.Remove("civilidissuedate");
-				 ModelState.Remove("civilidexpirydate");
-				 ModelState.Remove("civilidfiledescription");
-				 ModelState.Remove("civilidfilepath");
-				 ModelState.Remove("civilidfilename");
-				 ModelState.Remove("civilidfiletype");
-				 ModelState.Remove("civilidextension");
-				 ModelState.Remove("civilidfileid");
-				 ModelState.Remove("civilidfiledescription_2");
-				 ModelState.Remove("civilidfilepath_2");
-				 ModelState.Remove("civilidfilename_2");
-				 ModelState.Remove("civilidfiletype_2");
-				 ModelState.Remove("civilidextension_2");
-				 ModelState.Remove("civilidfileid_2");
-				 ModelState.Remove("remarks");
-				 ModelState.Remove("forreview");
-				 ModelState.Remove("iscurrent");
-*/               
+                //ModelState.Remove("civilid");
+                //ModelState.Remove("hrbasicid");
+                //ModelState.Remove("civilidno");
+                //ModelState.Remove("serialno");
+                //ModelState.Remove("civilidissuedate");
+                //ModelState.Remove("civilidexpirydate");
+                //ModelState.Remove("civilidfiledescription");
+                //ModelState.Remove("civilidfilepath");
+                //ModelState.Remove("civilidfilename");
+                //ModelState.Remove("civilidfiletype");
+                //ModelState.Remove("civilidextension");
+                //ModelState.Remove("civilidfileid");
+                //ModelState.Remove("civilidfiledescription_2");
+                //ModelState.Remove("civilidfilepath_2");
+                //ModelState.Remove("civilidfilename_2");
+                //ModelState.Remove("civilidfiletype_2");
+                //ModelState.Remove("civilidextension_2");
+                //ModelState.Remove("civilidfileid_2");
+                //ModelState.Remove("remarks");
+                //ModelState.Remove("forreview");
+                //ModelState.Remove("iscurrent");
+
+                ModelState.Remove("fullname");
+                ModelState.Remove("hrbasicid");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
@@ -358,8 +362,8 @@ namespace KAFWebAdmin.Controllers.HR
                 var model = KAF.FacadeCreatorObjects.hr_civilidinfoFCC.GetFacadeCreate().GetAll(new hr_civilidinfoEntity { civilid = input.civilid }).SingleOrDefault();
                 model.strModelPrimaryKey = input.strModelPrimaryKey;
                 //PN: LOAD DATA FOR PRE-SELECT2 DROP DOWN
-                
-                
+                model.militarynokw = input.militarynokw;
+
 
                 ModelState.Clear();
                 return PartialView("_HrCivilIDInfoEdit", model);
@@ -389,30 +393,32 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 SecurityCapsule sec = new SecurityCapsule();
                 Int64 ret = 0;
-                
+
                 //PN: KEEP THE REQUIRED LINE AND REMOVE REST
-/*				 ModelState.Remove("civilid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("civilidno");
-				 ModelState.Remove("serialno");
-				 ModelState.Remove("civilidissuedate");
-				 ModelState.Remove("civilidexpirydate");
-				 ModelState.Remove("civilidfiledescription");
-				 ModelState.Remove("civilidfilepath");
-				 ModelState.Remove("civilidfilename");
-				 ModelState.Remove("civilidfiletype");
-				 ModelState.Remove("civilidextension");
-				 ModelState.Remove("civilidfileid");
-				 ModelState.Remove("civilidfiledescription_2");
-				 ModelState.Remove("civilidfilepath_2");
-				 ModelState.Remove("civilidfilename_2");
-				 ModelState.Remove("civilidfiletype_2");
-				 ModelState.Remove("civilidextension_2");
-				 ModelState.Remove("civilidfileid_2");
-				 ModelState.Remove("remarks");
-				 ModelState.Remove("forreview");
-				 ModelState.Remove("iscurrent");
-*/               
+                /*				 ModelState.Remove("civilid");
+                                 ModelState.Remove("hrbasicid");
+                                 ModelState.Remove("civilidno");
+                                 ModelState.Remove("serialno");
+                                 ModelState.Remove("civilidissuedate");
+                                 ModelState.Remove("civilidexpirydate");
+                                 ModelState.Remove("civilidfiledescription");
+                                 ModelState.Remove("civilidfilepath");
+                                 ModelState.Remove("civilidfilename");
+                                 ModelState.Remove("civilidfiletype");
+                                 ModelState.Remove("civilidextension");
+                                 ModelState.Remove("civilidfileid");
+                                 ModelState.Remove("civilidfiledescription_2");
+                                 ModelState.Remove("civilidfilepath_2");
+                                 ModelState.Remove("civilidfilename_2");
+                                 ModelState.Remove("civilidfiletype_2");
+                                 ModelState.Remove("civilidextension_2");
+                                 ModelState.Remove("civilidfileid_2");
+                                 ModelState.Remove("remarks");
+                                 ModelState.Remove("forreview");
+                                 ModelState.Remove("iscurrent");
+                */
+                ModelState.Remove("fullname");
+                ModelState.Remove("hrbasicid");
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
@@ -556,7 +562,52 @@ namespace KAFWebAdmin.Controllers.HR
             }
         }
         #endregion
-        
+
+
+        [SecurityFillerAttribute]
+        public async Task<ActionResult> GetAllHrBasicProfileData(long? militaryNo)
+        {
+            JsonResult result = new JsonResult();
+            SecurityCapsule sec = new SecurityCapsule();
+            sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
+            hr_svcinfoEntity objhr_svcinfo = new hr_svcinfoEntity();
+            objhr_svcinfo.militarynokw = militaryNo;
+
+            try
+            {
+                var data = KAF.FacadeCreatorObjects.hr_svcinfoFCC.GetFacadeCreate().GetAll_Ext(objhr_svcinfo).ToList();
+                if (data != null && data.Count > 0)
+                {
+                    if (sec.okpid != null && sec.okpid != data.FirstOrDefault().okpid)
+                    {
+                        return Json(new { data = data, status = KAF.MsgContainer._Status._statusFailed, title = KAF.MsgContainer._Status._titleGenericError, redirectUrl = "", responsetext = "Warning! Unauthorized search for Military No: " + militaryNo });
+                    }
+                    long totalRecords = data.FirstOrDefault().RETURN_KEY;
+
+                    var tut = (from t in data
+                               select new
+                               {
+                                   t.hrbasicid,
+                                   t.militarynokw,
+                                   t.militarynobd,
+                                   t.civilid,
+                                   t.passportno,
+                                   t.fullname
+                               }).ToList();
+
+                    result = this.Json(new { status = KAF.MsgContainer._Status._statusSuccess, recordsTotal = totalRecords, recordsFiltered = totalRecords, data = tut, responsetext = "" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    result = this.Json(new { status = KAF.MsgContainer._Status._statusFailed, recordsTotal = 0, recordsFiltered = 0, data = "", responsetext = "Data not found" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
     }
 }
 

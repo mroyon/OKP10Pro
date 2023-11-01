@@ -13,11 +13,27 @@ $(document).ready(function () {
             $('body').addClass('modal-open');
         }
     });
+    $('#HrCivilIDInfoDt tbody').empty();
+    $('#militarynokw').val('');
+    $('#militarynobd').val('');
+    $('#civilid').val('');
+    $('#passportno').val('');
+    $('#fullname').val('');
+    $('.btnClear').hide();
+    $('#militarynokw').prop('disabled', false);
+    //GetAllDataHrCivilIDInfo();
 
-    GetAllDataHrCivilIDInfo();
+    $('#militarynokw').keypress(function (e) {
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            $('#btnLandingSearch').trigger('click');
+            return false;
+        }
+    });
 });
 
-function GetAllDataHrCivilIDInfo() {
+function GetAllDataHrCivilIDInfo(hrbasicid) {
     try {
         AddAntiForgeryToken = function (data) {
             data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
@@ -30,9 +46,10 @@ function GetAllDataHrCivilIDInfo() {
             useripaddress: $(".txtuserip").val(),
             sessionid: $(".txtUserSes").val(),
             methodname: "HrCivilIDInfoTableData",
-            currenturl: window.location.href
+            currenturl: window.location.href,
+            hrbasicid: hrbasicid
         });
-        
+        console.log(input)
         $('#HrCivilIDInfoDt').DataTable({
             "destroy": true,
             "bFilter": true,
@@ -63,7 +80,17 @@ function GetAllDataHrCivilIDInfo() {
             },
             "columns": [
             
-				 { "data": "civilidno", "searchable": true, "sortable": true, "orderable": true },                {
+                { "data": "civilidno", "searchable": true, "sortable": true, "orderable": true },                {
+                    "data": "civilidissuedate", "searchable": true, "sortable": true, "orderable": true,
+                    "render": function (data, type, full, meta) {
+                        return datetoStr(data);
+                    }
+                },                {
+                    "data": "civilidexpirydate", "searchable": true, "sortable": true, "orderable": true,
+                    "render": function (data, type, full, meta) {
+                        return datetoStr(data);
+                    }
+                },                {
                     "data": "ex_nvarchar1",
                     "render": function (data, type, full, meta) {
                         return data;
@@ -103,7 +130,8 @@ $('body').on('click', '#btnNewHrCivilIDInfo', function (event) {
             useripaddress: $(".txtuserip").val(),
             sessionid: $(".txtUserSes").val(),
             methodname: "HrCivilIDInfoNew",
-            currenturl: window.location.href
+            currenturl: window.location.href,
+            militarynokw: $('#militarynokw').val()
         });
         
         $.ajax({
@@ -178,7 +206,122 @@ $('body').on('click', '#btnDeleteHrCivilIDInfo', function (event) {
     }
 });
 
+$('body').on('click', '#btnLandingSearch', function (event) {
+    try {
+        if ($.trim($("#militarynokw").val()) == '') {
+            isValid = false;
 
+            $('#militarynokw').each(function () {
+                $(this).css({
+                    "border": "1px solid red"
+                });
+            });
+
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: "Please enter Military No (KW).",
+                type: 'red'
+            });
+            return;
+        }
+        else {
+            isValid = true;
+            $('#militarynokw').each(function () {
+                $(this).css({
+                    "border": ""
+                });
+            });
+
+            $('#militarynokw').attr('disabled', 'disabled');
+            $('.btnNewHrPassportInfo').show();
+            $('.btnClearLandingSearch').show();
+
+            GetDataHrBasicProfile();
+
+
+        }
+    } catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e.message,
+            type: 'red'
+        });
+    }
+});
+$('body').on('click', '.btnClearLandingSearch', function (event) {
+    try {
+        event.preventDefault();
+        //$('#HrSvcInfoDt').DataTable().clear().draw();
+        //$('#HrSvcInfoDt').empty();
+        $('#HrCivilIDInfoDt tbody').empty();
+        $('#militarynokw').val('');
+        $('#militarynobd').val('');
+        $('#civilid').val('');
+        $('#passportno').val('');
+        $('#fullname').val('');
+        $('.btnClear').hide();
+        $('#militarynokw').prop('disabled', false);
+
+    } catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e.message,
+            type: 'red'
+        });
+    }
+});
+
+function GetDataHrBasicProfile() {
+    try {
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "HrPersonalInfoTableData",
+            currenturl: window.location.href,
+            militarynokw: $('#militarynokw').val()
+        });
+        $.ajax({
+            url: baseurl + "HrCivilIDInfo/GetAllHrBasicProfileData?militaryno=" + $('#militarynokw').val(),
+            type: 'POST',
+            data: null,
+            success: function (response) {
+                var data = response.data;
+                var status = response.status;
+                var msg = response.responsetext;
+
+                if (data != "" && status == "success") {
+                    $('#hrbasicid').val(data[0].hrbasicid);
+                    $('#militarynobd').val(data[0].militarynobd);
+                    $('#civilid').val(data[0].civilid);
+                    $('#passportno').val(data[0].passportno);
+                    $('#fullname').val(data[0].fullname);
+
+                    GetAllDataHrCivilIDInfo(data[0].hrbasicid);
+                }
+                else {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: msg,
+                        type: 'red'
+                    });
+                }
+            }
+        });
+    } catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e,
+            type: 'red'
+        });
+    }
+}
 
 function HrCivilIDInfoEdit(val) {
     try {
@@ -193,7 +336,8 @@ function HrCivilIDInfoEdit(val) {
             sessionid: $(".txtUserSes").val(),
             methodname: "HrCivilIDInfoEdit",
             currenturl: window.location.href,
-            strModelPrimaryKey: val
+            strModelPrimaryKey: val,
+            militarynokw: $('#militarynokw').val()
         });
         
         $.ajax({
