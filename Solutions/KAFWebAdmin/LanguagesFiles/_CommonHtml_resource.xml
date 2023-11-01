@@ -58,7 +58,7 @@
   
   <resource culture="ar-kw" name="_title" value="العنوان" ></resource>
   <resource culture="ar-kw" name="_homePageTitle" value="الصفحة الرئيسية" ></resource>
-  <resource culture="ar-kw" name="_titleAdminPanel" value="مرحبًا بك في لوحة إدارة BMC Automation" ></resource>
+  <resource culture="ar-kw" name="_titleAdminPanel" value="مرحبًا بك في لوحة إدارة OKP-10 Automation" ></resource>
   <!--  ar-kwabic (ar-kw) -->
 
   <!--  English (en-US) -->

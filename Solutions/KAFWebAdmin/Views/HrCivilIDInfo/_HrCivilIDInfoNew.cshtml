@@ -1,0 +1,134 @@
+﻿@model KAF.BusinessDataObjects.hr_civilidinfoEntity
+
+<style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions {  HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmCivilIDInfoNew", @class = "form-horizontal", @enctype = "multipart/form-data", }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_civilidinfo.civilidinfoCreate
+        </div>
+
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.civilid)
+                        @Html.HiddenFor(m => m.hrbasicid)
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @readonly = "readonly", @class = "militarynokw form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.civilidno, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.civilidno, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.civilidno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.serialno, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.serialno, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.serialno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.civilidissuedate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style='width: 100 %; '>
+                                    @Html.EditorFor(model => model.civilidissuedate, new { htmlAttributes = new { @Value = Model.civilidissuedate != null ? Convert.ToDateTime(Model.civilidissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.civilidissuedate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.civilidexpirydate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style='width: 100 %; '>
+                                    @Html.EditorFor(model => model.civilidexpirydate, new { htmlAttributes = new { @Value = Model.civilidexpirydate != null ? Convert.ToDateTime(Model.civilidexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.civilidexpirydate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input class="custom-file-label" id="fileInput" type="file" multiple>
+                                    <label class="custom-file-label" for="fileInput" multiple>Choose file</label>
+                                </div>
+                                @*<table class="table" id="FilesList" style="visibility:hidden">
+                                    <tr>
+                                        <th>
+                                            Attachment(s)
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </table>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveHrCivilIDInfo" class="btn btn-primary btn-md btnSaveHrCivilIDInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    //filecontrol addons
+
+
+
+
+
+    $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+</script>
+
+
+
+
