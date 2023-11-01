@@ -82,6 +82,7 @@ $(document).ready(function () {
                 form.append("iscurrent", $('#iscurrent').val());
 
                 form.append("file1", $("#fileInput")[0].files[0]);
+                form.append("file2", $("#fileInput2")[0].files[0]);
                 
 
 
