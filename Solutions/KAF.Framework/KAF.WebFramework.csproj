@@ -51,7 +51,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="QRCoder">
-      <HintPath>..\..\..\CorrespondanceCore\Solutions\Library\QRCoder.dll</HintPath>
+      <HintPath>..\Libraries\QRCoder.dll</HintPath>
     </Reference>
     <Reference Include="redis4net">
       <HintPath>..\..\Libraries\redis4net.dll</HintPath>
