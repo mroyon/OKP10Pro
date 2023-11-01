@@ -291,32 +291,38 @@ namespace KAFWebAdmin.Controllers.HR
                     input.expirydate = Convert.ToDateTime(Request.Form["expirydate"].ToString());
                     input.isfamilyvisa = Convert.ToBoolean(Request.Form["isfamilyvisa"].ToString());
 
-                    var militarynokw = Request.Form["militarynokw"].ToString();
-                    input.filename = $"{militarynokw}{DateTime.Now.ToString("MMddyyyyHHmmss")}{System.IO.Path.GetExtension(file.FileName).ToLower()}";
-                    input.filetype = file.ContentType;
-                    input.extension = Path.GetExtension(file.FileName).ToLower();
-
-
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
-                    input.BaseSecurityParam = sec;//new SecurityCapsule(); ;
+                    input.BaseSecurityParam = sec;//new SecurityCapsule();
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var militarynokw = Request.Form["militarynokw"].ToString();
+                        input.filename = $"{militarynokw}{DateTime.Now.ToString("MMddyyyyHHmmss")}{System.IO.Path.GetExtension(file.FileName).ToLower()}";
+                        input.filetype = file.ContentType;
+                        input.extension = Path.GetExtension(file.FileName).ToLower();
+
+
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["ResidentVisaDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        int iFileSize = file.ContentLength;
+                        string filefullName = file.FileName;
+                        string fileName = input.filename;//System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        file.SaveAs(filepath + fileName);
+
+                        input.filepath = fileUploadDir + fileName;
+                    }
+
+
 
                     ret = KAF.FacadeCreatorObjects.hr_residentvisaFCC.GetFacadeCreate().Add(input);
                     if (ret > 0)
                     {
-                        if (file != null && file.ContentLength > 0)
-                        {
-                            string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["ResidentVisaDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
-                            if (fileUploadDir[fileUploadDir.Length - 1] != '/')
-                                fileUploadDir = fileUploadDir + "/";
-                            int iFileSize = file.ContentLength;
-                            string filefullName = file.FileName;
-                            string fileName = input.filename;//System.IO.Path.GetFileNameWithoutExtension(filefullName);
-                            string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
-                            string filepath = Server.MapPath("~" + fileUploadDir);
-                            if (!Directory.Exists(filepath))
-                                Directory.CreateDirectory(filepath);
-                            file.SaveAs(filepath + fileName);
-                        }
+                        
                         ModelState.Clear();
                         return Json(new { status = KAF.MsgContainer._Status._statusSuccess, title = KAF.MsgContainer._Status._titleInformation, redirectUrl = redirectURL, responsetext = KAF.MsgContainer._Common._saveInformation });
                     }
@@ -445,9 +451,11 @@ namespace KAFWebAdmin.Controllers.HR
                     input.sessionid = Request.Form["sessionid"].ToString();
                     input.methodname = Request.Form["methodname"].ToString();
                     input.currenturl = Request.Form["currenturl"].ToString();
-
-
                     input.residentid = !string.IsNullOrEmpty(Request.Form["residentid"]) ? Convert.ToInt64(Request.Form["residentid"].ToString()) : (long?)null;
+                    
+                    input = KAF.FacadeCreatorObjects.hr_residentvisaFCC.GetFacadeCreate().GetSingle(new hr_residentvisaEntity() { residentid = input.residentid });
+
+
                     input.hrbasicid = Convert.ToInt64(Request.Form["hrbasicid"].ToString());
                     input.passportid = Convert.ToInt64(Request.Form["passportid"].ToString());
                     input.residencynumber = Convert.ToString(Request.Form["residencynumber"].ToString());
@@ -455,34 +463,46 @@ namespace KAFWebAdmin.Controllers.HR
                     input.expirydate = Convert.ToDateTime(Request.Form["expirydate"].ToString());
                     input.isfamilyvisa = Convert.ToBoolean(Request.Form["isfamilyvisa"].ToString());
 
-                    var militarynokw = Request.Form["militarynokw"].ToString();
-                    input.filename = $"{militarynokw}{DateTime.Now.ToString("MMddyyyyHHmmss")}{System.IO.Path.GetExtension(file.FileName).ToLower()}";
-                    input.filetype = file.ContentType;
-                    input.extension = Path.GetExtension(file.FileName).ToLower();
-
-
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;//new SecurityCapsule(); ;
+                 
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        if (!string.IsNullOrEmpty( input.filepath)) {
+                            string existingfilepath = Server.MapPath("~" + input.filepath);
+							try
+							{
+                                System.IO.File.Delete(existingfilepath);
+                            }
+                            catch (Exception)
+							{
 
+							}
+                        }
+                        var militarynokw = Request.Form["militarynokw"].ToString();
+                        input.filename = $"{militarynokw}{DateTime.Now.ToString("MMddyyyyHHmmss")}{System.IO.Path.GetExtension(file.FileName).ToLower()}";
+                        input.filetype = file.ContentType;
+                        input.extension = Path.GetExtension(file.FileName).ToLower();
+
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["ResidentVisaDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        int iFileSize = file.ContentLength;
+                        string filefullName = file.FileName;
+                        string fileName = input.filename;//System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        file.SaveAs(filepath + fileName);
+                        input.filepath = fileUploadDir + fileName;
+                    }
 
                     ret = KAF.FacadeCreatorObjects.hr_residentvisaFCC.GetFacadeCreate().Update(input);
 
                     if (ret > 0)
                     {
-                        if (file != null && file.ContentLength > 0)
-                        {
-                            string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["ResidentVisaDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
-                            if (fileUploadDir[fileUploadDir.Length - 1] != '/')
-                                fileUploadDir = fileUploadDir + "/";
-                            int iFileSize = file.ContentLength;
-                            string filefullName = file.FileName;
-                            string fileName = input.filename;//System.IO.Path.GetFileNameWithoutExtension(filefullName);
-                            string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
-                            string filepath = Server.MapPath("~" + fileUploadDir);
-                            if (!Directory.Exists(filepath))
-                                Directory.CreateDirectory(filepath);
-                            file.SaveAs(filepath + fileName);
-                        }
+                        
 
                         ModelState.Clear();
                         return Json(new { status = KAF.MsgContainer._Status._statusSuccess, title = KAF.MsgContainer._Status._titleInformation, redirectUrl = redirectURL, responsetext = KAF.MsgContainer._Common._saveInformation });
