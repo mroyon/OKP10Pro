@@ -32,8 +32,9 @@ namespace KAF.BusinessDataObjects
         protected string _remarks;
         protected int ? _forreview;
         protected bool ? _iscurrent;
-                
-        
+        protected long? _serialno;
+
+
         [DataMember]
         public long ? civilid
         {
@@ -206,12 +207,18 @@ namespace KAF.BusinessDataObjects
             get { return _iscurrent; }
             set { _iscurrent = value; this.OnChnaged(); }
         }
-        
-        
+
+
+        [DataMember]
+        public long? serialno
+        {
+            get { return _serialno; }
+            set { _serialno = value; this.OnChnaged(); }
+        }
         #endregion
-    
+
         #region Constructor
-    
+
         public hr_civilidinfoEntity():base()
         {
         }
@@ -234,6 +241,7 @@ namespace KAF.BusinessDataObjects
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilID"))) _civilid = reader.GetInt64(reader.GetOrdinal("CivilID"));
                 if (!reader.IsDBNull(reader.GetOrdinal("HrBasicID"))) _hrbasicid = reader.GetInt64(reader.GetOrdinal("HrBasicID"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDNo"))) _civilidno = reader.GetString(reader.GetOrdinal("CivilIDNo"));
+                if (!reader.IsDBNull(reader.GetOrdinal("SerialNo"))) _serialno = reader.GetInt64(reader.GetOrdinal("SerialNo"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDIssueDate"))) _civilidissuedate = reader.GetDateTime(reader.GetOrdinal("CivilIDIssueDate"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDExpiryDate"))) _civilidexpirydate = reader.GetDateTime(reader.GetOrdinal("CivilIDExpiryDate"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDFileDescription"))) _civilidfiledescription = reader.GetString(reader.GetOrdinal("CivilIDFileDescription"));
@@ -284,6 +292,7 @@ namespace KAF.BusinessDataObjects
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilID"))) _civilid = reader.GetInt64(reader.GetOrdinal("CivilID"));
                 if (!reader.IsDBNull(reader.GetOrdinal("HrBasicID"))) _hrbasicid = reader.GetInt64(reader.GetOrdinal("HrBasicID"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDNo"))) _civilidno = reader.GetString(reader.GetOrdinal("CivilIDNo"));
+                if (!reader.IsDBNull(reader.GetOrdinal("SerialNo"))) _serialno = reader.GetInt64(reader.GetOrdinal("SerialNo"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDIssueDate"))) _civilidissuedate = reader.GetDateTime(reader.GetOrdinal("CivilIDIssueDate"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDExpiryDate"))) _civilidexpirydate = reader.GetDateTime(reader.GetOrdinal("CivilIDExpiryDate"));
                 if (!reader.IsDBNull(reader.GetOrdinal("CivilIDFileDescription"))) _civilidfiledescription = reader.GetString(reader.GetOrdinal("CivilIDFileDescription"));

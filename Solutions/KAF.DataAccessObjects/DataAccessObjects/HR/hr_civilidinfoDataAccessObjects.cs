@@ -45,6 +45,8 @@ namespace KAF.DataAccessObjects
 				Database.AddInParameter(cmd, "@HrBasicID", DbType.Int64, hr_civilidinfo.hrbasicid);
 			if (!(string.IsNullOrEmpty(hr_civilidinfo.civilidno)))
 				Database.AddInParameter(cmd, "@CivilIDNo", DbType.String, hr_civilidinfo.civilidno);
+			if (hr_civilidinfo.serialno.HasValue)
+				Database.AddInParameter(cmd, "@SerialNo", DbType.String, hr_civilidinfo.serialno);
 			if ((hr_civilidinfo.civilidissuedate.HasValue))
 				Database.AddInParameter(cmd, "@CivilIDIssueDate", DbType.DateTime, hr_civilidinfo.civilidissuedate);
 			if ((hr_civilidinfo.civilidexpirydate.HasValue))
