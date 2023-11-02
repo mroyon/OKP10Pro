@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using KAF.BusinessDataObjects.BusinessDataObjectsBase;
 using System.Collections.Generic;
 using KAF.BusinessDataObjects.BusinessDataObjectsPartials;
+using System.Web;
 
 namespace KAF.BusinessDataObjects
 {
@@ -72,6 +73,47 @@ namespace KAF.BusinessDataObjects
 
         public string strgender { get; set; }
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+
+
+        protected long? _militarynokw;
+        protected string _militarynobd;
+        protected long? _civilid;
+        protected string _fullname;
+
+
+        [DataMember]
+        public long? militarynokw
+        {
+            get { return _militarynokw; }
+            set { _militarynokw = value; this.OnChnaged(); }
+        }
+        [DataMember]
+        [Display(Name = "civilid", ResourceType = typeof(KAF.MsgContainer._hr_basicprofile))]
+        public long? civilid
+        {
+            get { return _civilid; }
+            set { _civilid = value; this.OnChnaged(); }
+        }
+
+
+        [DataMember]
+        [MaxLength(550)]
+        [Display(Name = "fullname", ResourceType = typeof(KAF.MsgContainer._hr_basicprofile))]        
+        public string fullname
+        {
+            get { return _fullname; }
+            set { _fullname = value; this.OnChnaged(); }
+        }
+        
+
+        [DataMember]
+        //[Display(Name = "militaryno", ResourceType = typeof(KAF.MsgContainer._hr_basicprofile))]
+        public string militarynobd
+        {
+            get { return _militarynobd; }
+            set { _militarynobd = value; this.OnChnaged(); }
+        }
+
     }
     public partial class hr_militarycoursesEntity
     {
@@ -153,7 +195,7 @@ namespace KAF.BusinessDataObjects
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
     }
-    
+
     public partial class hr_civilpromotionEntity
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
@@ -266,6 +308,9 @@ namespace KAF.BusinessDataObjects
     public partial class hr_passportinfoEntity
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+        public HttpPostedFileBase file1 { get; set; }
+        public HttpPostedFileBase file2 { get; set; }
+
     }
     public partial class hr_relativesworkinginmodEntity
     {
@@ -362,7 +407,7 @@ namespace KAF.BusinessDataObjects
         public string strdemandtype { get; set; }
 
     }
-    
+
 
     public partial class hr_visaissueinfoEntity
     {
@@ -439,6 +484,13 @@ namespace KAF.BusinessDataObjects
     public partial class hr_documentuploadEntity
     {
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+    }
+
+    public partial class hr_civilidinfoEntity
+    {
+        public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+        public HttpPostedFileBase file1 { get; set; }
+        public HttpPostedFileBase file2 { get; set; }
     }
 
 }

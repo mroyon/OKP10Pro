@@ -24,7 +24,30 @@ $(document).ready(function () {
 
 
             if (form.valid()) {
+                var model = new FormData();
 
+                model.append("file1", $("#fileupload1")[0].files[0]);
+                model.append("file2", $("#fileupload2")[0].files[0]);
+                model.append("__RequestVerificationToken", $('input[name=__RequestVerificationToken]').val());
+                model.append("token", $(".txtUserSTK").val());
+                model.append("userinfo", $(".txtServerUtilObj").val());
+                model.append("useripaddress", $(".txtuserip").val());
+                model.append("sessionid", $(".txtUserSes").val());
+                model.append("methodname", "passportcreate");
+                model.append("currenturl", window.location.href);
+
+                model.append("passportid", $('#passportid').val());
+                model.append("hrbasicid", $('#hrbasicid').val());
+                model.append("passportno", $('.passportno').val());
+                model.append("passportissuedate", GetDateFromTextBox($('#passportissuedate').val()));
+                model.append("passportexpirydate", GetDateFromTextBox($('#passportexpirydate').val()));
+                model.append("iscurrent", true);
+
+                //jQuery.each($("#fileupload")[0].files, function (i, file) {
+                //    frmdata.append('photo[' + i + ']', file);
+                //});
+
+                //console.log(model);
 
                 var input = AddAntiForgeryToken({
                     token: $(".txtUserSTK").val(),
@@ -39,20 +62,19 @@ $(document).ready(function () {
                     passportno: $('.passportno').val(),
                     passportissuedate: GetDateFromTextBox($('#passportissuedate').val()),
                     passportexpirydate: GetDateFromTextBox($('#passportexpirydate').val()),
-                    
                     iscurrent: true
-                  
-
                 });
 
 
                 confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
                     if (answer == "true") {
-
                         $.ajax({
                             url: baseurl + "HrPassportInfo/HrPassportInfoInsert",
-                            data: input,
+                            data: model,
                             type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
                             success: function (data) {
                                 if (data.status === "success") {
                                     inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {

@@ -61,6 +61,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -98,6 +99,7 @@
     <Compile Include="BusinessDataObjectsPartials\FamilyPassportInfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\gen_govcityEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_attachmentinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_civilidinfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_demanddetlpassportEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_hospitaladmissioninfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_newdemanddetlEntity.cs" />
@@ -223,6 +225,7 @@
     <Compile Include="BusinessDataObjects\GEN\gen_tradeEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_addresschangeEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_attachmentinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_civilidinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_documentuploadEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_okptransferinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\ParadeState\hr_deathinfoEntity.cs" />

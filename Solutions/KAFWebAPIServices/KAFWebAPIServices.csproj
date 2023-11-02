@@ -318,6 +318,7 @@
     <Compile Include="Controllers\HrNewDemandPassportController.cs" />
     <Compile Include="Controllers\HrPTAReceivedController.cs" />
     <Compile Include="Controllers\HrPTADemandController.cs" />
+    <Compile Include="Controllers\HrPassportInfoController.cs" />
     <Compile Include="Controllers\HrVisaSentInfoController.cs" />
     <Compile Include="Controllers\HrVisaIssueInfoController.cs" />
     <Compile Include="Controllers\HrVisaDemandInfoController.cs" />

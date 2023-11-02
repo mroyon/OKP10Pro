@@ -361,7 +361,10 @@ namespace KAF.DataAccessObjects
 					{
                         while (reader.Read())
                         {
-                            itemList.Add(new hr_residentvisaEntity(reader));
+                            var obj = new hr_residentvisaEntity(reader);
+                            if (!reader.IsDBNull(reader.GetOrdinal("MilNoKW"))) obj.militarynokw = reader.GetInt64(reader.GetOrdinal("MilNoKW"));
+
+                            itemList.Add(obj);
                         }
                         reader.Close();
 					}

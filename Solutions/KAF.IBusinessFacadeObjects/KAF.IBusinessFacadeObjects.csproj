@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="IBusinessFacadeObjectsPartial\HR\Ihr_attachmentinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjectsPartial\HR\Ihr_basicprofileFacadeObjects.cs" />
+    <Compile Include="IBusinessFacadeObjectsPartial\HR\Ihr_civilidinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjectsPartial\HR\Ihr_demanddetlpassportFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjectsPartial\HR\Ihr_documentuploadFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjectsPartial\HR\Ihr_hospitaladmissioninfoFacadeObjects.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="IBusinessFacadeObjectsPartial\Iowin_userFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_addresschangeFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_attachmentinfoFacadeObjects.cs" />
+    <Compile Include="IBusinessFacadeObjects\HR\Ihr_civilidinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_documentuploadFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_okptransferinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\ParadeState\Ihr_deathinfoFacadeObjects.cs" />

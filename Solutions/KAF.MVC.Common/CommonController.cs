@@ -1331,5 +1331,21 @@ namespace KAF.MVC.Common
             return PartialView("_Select2VisaSentLetterNoSearchByDate");
         }
 
+
+
+        public PartialViewResult LoadPassportInfoByBasicId(string selectid, int delay, int minimumInputLength, string preloaded, long? basicId, bool isReadOnly = false, bool multiple = false, bool isRequired = false)
+        {
+            ViewBag.selectid = selectid;
+            ViewBag.delay = delay;
+            ViewBag.minimumInputLength = minimumInputLength;
+            ViewBag.data = preloaded;
+            ViewBag.isReadOnly = isReadOnly;
+            ViewBag.multiple = multiple;
+            ViewBag.isRequired = isRequired;
+            ViewBag.basicId = basicId;
+
+            return PartialView("_Select2PassportInfoByBasicIdSearch");
+        }
+
     }
 }

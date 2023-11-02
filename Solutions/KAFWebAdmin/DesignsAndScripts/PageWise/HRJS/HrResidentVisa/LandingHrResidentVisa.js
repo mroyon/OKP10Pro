@@ -13,11 +13,122 @@ $(document).ready(function () {
             $('body').addClass('modal-open');
         }
     });
+    $('.btnNewHrResidentVisa').hide();
+    $('.btnClearLandingSearch').hide();
 
-    GetAllDataHrResidentVisa();
+    $('#militarynokw').keypress(function (e) {
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            $('#btnLandingSearch').trigger('click');
+            return false;
+        }
+    });
+
+    //GetAllDataHrResidentVisa();
 });
 
-function GetAllDataHrResidentVisa() {
+$('body').on('click', '#btnLandingSearch', function (event) {
+    try {
+
+
+        //var isValid = true;
+
+        if ($.trim($("#militarynokw").val()) == '') {
+            isValid = false;
+
+            $('#militarynokw').each(function () {
+                $(this).css({
+                    "border": "1px solid red"
+                });
+            });
+
+            $.alert({
+                title: _getCookieForLanguage("_informationTitle"),
+                content: "Please enter Military No (KW).",
+                type: 'red'
+            });
+            return;
+        }
+        else {
+            isValid = true;
+            $('#militarynokw').each(function () {
+                $(this).css({
+                    "border": ""
+                });
+            });
+
+            $('#militarynokw').attr('disabled', 'disabled');
+            $('.btnNewHrResidentVisa').show();
+            $('.btnClearLandingSearch').show();
+
+            GetDataHrBasicProfile();
+
+
+        }
+    } catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e.message,
+            type: 'red'
+        });
+    }
+});
+
+function GetDataHrBasicProfile() {
+    try {
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "HrPersonalInfoTableData",
+            currenturl: window.location.href,
+            militarynokw: $('#militarynokw').val()
+        });
+        $.ajax({
+            url: baseurl + "HrResidentVisa/GetAllHrBasicProfileData?militaryno=" + $('#militarynokw').val(),
+            type: 'POST',
+            data: null,
+            success: function (response) {
+                var data = response.data;
+                var status = response.status;
+                var msg = response.responsetext;
+
+                if (data != "" && status == "success") {
+                    $('#hrbasicid').val(data[0].hrbasicid);
+                    $('#militarynobd').val(data[0].militarynobd);
+                    $('#civilid').val(data[0].civilid);
+                    $('#passportno').val(data[0].passportno);
+                    $('#fullname').val(data[0].fullname);
+                    $('#residencynumberSearch').val(data[0].ResidencyNumber);
+                    GetAllDataHrResidentVisa(data[0].hrbasicid);
+                    //console.log($('#hrbasicid').val());
+                }
+                else {
+                    $.alert({
+                        title: _getCookieForLanguage("_informationTitle"),
+                        content: msg,
+                        type: 'red'
+                    });
+                }
+            }
+        });
+    } catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e,
+            type: 'red'
+        });
+    }
+}
+
+function GetAllDataHrResidentVisa(val) {
     try {
         AddAntiForgeryToken = function (data) {
             data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
@@ -30,7 +141,9 @@ function GetAllDataHrResidentVisa() {
             useripaddress: $(".txtuserip").val(),
             sessionid: $(".txtUserSes").val(),
             methodname: "HrResidentVisaTableData",
-            currenturl: window.location.href
+            currenturl: window.location.href,
+            militarynokw: $('#militarynokw').val(),
+            hrbasicid: val
         });
         
         $('#HrResidentVisaDt').DataTable({
@@ -63,7 +176,21 @@ function GetAllDataHrResidentVisa() {
             },
             "columns": [
             
-				 { "data": "residencynumber", "searchable": true, "sortable": true, "orderable": true },                {
+                { "data": "residencynumber", "searchable": true, "sortable": true, "orderable": true },
+               
+                {
+                    "data": "issuedate",
+                    "render": function (data, type, full, meta) {
+                        return datetoStr(data);
+                    }
+                },
+                {
+                    "data": "expirydate",
+                    "render": function (data, type, full, meta) {
+                        return datetoStr(data);
+                    }
+                },
+                {
                     "data": "ex_nvarchar1",
                     "render": function (data, type, full, meta) {
                         return data;
@@ -103,7 +230,10 @@ $('body').on('click', '#btnNewHrResidentVisa', function (event) {
             useripaddress: $(".txtuserip").val(),
             sessionid: $(".txtUserSes").val(),
             methodname: "HrResidentVisaNew",
-            currenturl: window.location.href
+            currenturl: window.location.href,
+            militarynokw: $('#militarynokw').val(),
+            hrbasicid: $('#hrbasicid').val(),
+
         });
         
         $.ajax({

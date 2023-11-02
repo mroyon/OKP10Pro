@@ -12,7 +12,7 @@ $(document).ready(function () {
         return data;
     };
 
-    
+
 
     $('body').on('click', '#btnUpdateHrPassportInfo', function (event) {
         try {
@@ -22,18 +22,26 @@ $(document).ready(function () {
             jQuery.validator.unobtrusive.parse();
             jQuery.validator.unobtrusive.parse(form);
 
-			 //var kaffileUploader = $('#id').kaffileUploader();
-			 //var fileobjects_tbl_passportfiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_passportfiledescription');
-			 //var fileobjects = fileobjects_tbl_passportfiledescription;
 
-			 // $.each(fileobjects, function (key, valueObj) {
-				//	  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
-			 //  });
-
-
-
-            
             if (form.valid()) {
+                var model = new FormData();
+                model.append("file1", $("#fileupload1")[0].files[0]);
+                model.append("file2", $("#fileupload2")[0].files[0]);
+                model.append("__RequestVerificationToken", $('input[name=__RequestVerificationToken]').val());
+                model.append("token", $(".txtUserSTK").val());
+                model.append("userinfo", $(".txtServerUtilObj").val());
+                model.append("useripaddress", $(".txtuserip").val());
+                model.append("sessionid", $(".txtUserSes").val());
+                model.append("methodname", "passportcreate");
+                model.append("currenturl", window.location.href);
+
+                model.append("passportid", $('#passportid').val());
+                model.append("hrbasicid", $('#hrbasicid').val());
+                model.append("passportno", $('.passportno').val());
+                model.append("passportissuedate", GetDateFromTextBox($('#passportissuedate').val()));
+                model.append("passportexpirydate", GetDateFromTextBox($('#passportexpirydate').val()));
+                model.append("iscurrent", true);
+
 
                 var input = AddAntiForgeryToken({
                     token: $(".txtUserSTK").val(),
@@ -43,23 +51,23 @@ $(document).ready(function () {
                     methodname: "HrFamilyInfoCreate",
                     currenturl: window.location.href,
 
-							 passportid: $('#passportid').val(),
-							 hrbasicid: $('#hrbasicid').val(),
-							 passportno: $('.passportno').val(),
-							 passportissuedate: GetDateFromTextBox($('#passportissuedate').val()),
-							 passportexpirydate: GetDateFromTextBox($('#passportexpirydate').val()),
-							 //passportissuecountryid: $('#passportissuecountryid').val(),
-							 //isfamilypassport: $('#isfamilypassport').val(),
-							 //passportfiledescription: $('#passportfiledescription').val(),
-							 //passportfilepath: $('#passportfilepath').val(),
-							 //passportfilename: $('#passportfilename').val(),
-							 //passportfiletype: $('#passportfiletype').val(),
-							 //passportextension: $('#passportextension').val(),
-							 //passportfileid: $('#passportfileid').val(),
-							 //remarks: $('#remarks').val(),
-							 //forreview: $('#forreview').val(),
-							 iscurrent: $('#iscurrent').val()
-							 //cor_foldercontentsList: fileobjects
+                    passportid: $('#passportid').val(),
+                    hrbasicid: $('#hrbasicid').val(),
+                    passportno: $('.passportno').val(),
+                    passportissuedate: GetDateFromTextBox($('#passportissuedate').val()),
+                    passportexpirydate: GetDateFromTextBox($('#passportexpirydate').val()),
+                    //passportissuecountryid: $('#passportissuecountryid').val(),
+                    //isfamilypassport: $('#isfamilypassport').val(),
+                    //passportfiledescription: $('#passportfiledescription').val(),
+                    //passportfilepath: $('#passportfilepath').val(),
+                    //passportfilename: $('#passportfilename').val(),
+                    //passportfiletype: $('#passportfiletype').val(),
+                    //passportextension: $('#passportextension').val(),
+                    //passportfileid: $('#passportfileid').val(),
+                    //remarks: $('#remarks').val(),
+                    //forreview: $('#forreview').val(),
+                    iscurrent: $('#iscurrent').val()
+                    //cor_foldercontentsList: fileobjects
 
 
                 });
@@ -70,13 +78,16 @@ $(document).ready(function () {
 
                         $.ajax({
                             url: baseurl + "HrPassportInfo/HrPassportInfoUpdate",
-                            data: input,
+                            data: model,
                             type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
                             success: function (data) {
                                 if (data.status === "success") {
                                     inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
                                         if (answer == "true") {
-                                           window.location.href =  baseurl + "HrPassportInfo/HrPassportInfo";
+                                            window.location.href = baseurl + "HrPassportInfo/HrPassportInfo";
                                             $('#mcHrPassportInfoEdit').html('');
                                             $('#modal-container-HrPassportInfoEdit').modal('hide');
                                             //GetAllDataHrPassportInfo();
@@ -111,7 +122,7 @@ $(document).ready(function () {
             });
         }
     });
-    
+
     $('body').on('click', '#btnModalCloseEdit', function (event) {
         try {
             event.preventDefault();
@@ -125,7 +136,7 @@ $(document).ready(function () {
             });
         }
     });
-    
+
 
 });
 

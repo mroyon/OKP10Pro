@@ -73,6 +73,7 @@
     <Compile Include="DataAccessObjectsBase\SqlConstants.cs" />
     <Compile Include="DataAccessObjectsPartial\HR\hr_attachmentinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjectsPartial\HR\hr_basicprofileDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjectsPartial\HR\hr_civilidinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjectsPartial\HR\hr_demanddetlpassportDataAccessObjects.cs" />
     <Compile Include="DataAccessObjectsPartial\HR\hr_documentuploadDataAccessObjects.cs" />
     <Compile Include="DataAccessObjectsPartial\HR\hr_hospitaladmissioninfoDataAccessObjects.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="DataAccessObjects\HR\gen_documenttypeDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\HR\hr_addresschangeDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\HR\hr_attachmentinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_civilidinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\HR\hr_documentuploadDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\HR\hr_okptransferinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\ParadeState\hr_deathinfoDataAccessObjects.cs" />

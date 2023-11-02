@@ -1,18 +1,22 @@
 ﻿@model KAF.BusinessDataObjects.hr_passportinfoEntity
-
+@{
+    var baseurl = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.ApplicationPath.TrimEnd('/') + "/";
+    var imagesource1 = string.Empty;
+    var imagesource2 = string.Empty;
+}
 <style>
-        .form-horizontal .form-group {
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-    </style>
+    .form-horizontal .form-group {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
 
 @using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_PassportInfoEdit", @class = "form-horizontal" }))
 {
     HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
     HtmlHelper.ClientValidationEnabled = true;
     @Html.AntiForgeryToken()
-    
+
     <div class="panel panel-primary list-panel" id="list-panel">
         <div class="panel-heading list-panel-heading">
             Passport Information: @KAF.MsgContainer._hr_passportinfo.passportinfoUpdate
@@ -24,6 +28,7 @@
                         @Html.HiddenFor(m => m.passportid)
                         @Html.HiddenFor(m => m.strModelPrimaryKey)
                         @Html.HiddenFor(m => m.hrbasicid)
+                        @Html.HiddenFor(m => m.iscurrent)
                     </div>
                     <div class="row ">
                         <div class="col-md-6">
@@ -41,7 +46,7 @@
                                 @Html.ValidationMessageFor(model => model.passportno, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="row ">
                         <div class="col-md-6">
@@ -59,7 +64,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.passportexpirydate, htmlAttributes: new { @class = "labelNormal  required   " })
-                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                <div class='input-group date dateonly' id='' style="width: 100%; ">
                                     @Html.EditorFor(model => model.passportexpirydate, new { htmlAttributes = new { @Value = Model.passportexpirydate != null ? Convert.ToDateTime(Model.passportexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control required ", @type = "text" } })
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -69,7 +74,57 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="file" id="fileupload1" name="fileupload" class="fileupload" />
+                                <label id="custom-file-label" class="custom-file-label">choose file..</label>
+                                @if (Model.passportextension == ".pdf")
+                                {
+                                    imagesource1 = baseurl + "/DesignsAndScripts/Images/pdf-icon.png";
+                                }
+                                else if (Model.passportextension == ".jpg" || Model.passportextension == ".jpeg" || Model.passportextension == ".png")
+                                {
+                                    imagesource1 = Model.passportfilepath;
+                                }
+                                else if (Model.passportextension == ".doc" || Model.passportextension == ".docx")
+                                {
+                                    imagesource1 = baseurl + "/DesignsAndScripts/Images/word-icon.png";
+                                }
+                                else if (Model.passportextension == ".xls" || Model.passportextension == ".xlsx")
+                                {
+                                    imagesource1 = baseurl + "/DesignsAndScripts/Images/excel-icon.png";
+                                }
+                                <a download="@Model.passportfilepath" target="_blank" href="@Model.passportfilepath"> <img src="@imagesource1" style="width:40px; height:40px" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="file" id="fileupload2" name="fileupload" class="fileupload" />
+                                <label id="custom-file-label" class="custom-file-label">choose file..</label>
+                                @if (Model.passportextension_2 == ".pdf")
+                                {
+                                    imagesource2 = baseurl + "/DesignsAndScripts/Images/pdf-icon.png";
+                                }
+                                else if (Model.passportextension_2 == ".jpg" || Model.passportextension_2 == ".jpeg" || Model.passportextension_2 == ".png")
+                                {
+                                    imagesource2 = Model.passportfilepath_2;
+                                }
+                                else if (Model.passportextension_2 == ".doc" || Model.passportextension_2 == ".docx")
+                                {
+                                    imagesource2 = baseurl + "/DesignsAndScripts/Images/word-icon.png";
+                                }
+                                else if (Model.passportextension_2 == ".xls" || Model.passportextension_2 == ".xlsx")
+                                {
+                                    imagesource2 = baseurl + "/DesignsAndScripts/Images/excel-icon.png";
+                                }
+                                <a download="@Model.passportfilepath_2" target="_blank" href="@Model.passportfilepath_2"> <img src="@imagesource2" style="width:40px; height:40px" /></a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="btn-toolbar">
                         <button type="submit" id="btnUpdateHrPassportInfo" class="btn btn-primary btn-md btnUpdateHrPassportInfo"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
                         <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
@@ -96,7 +151,7 @@ $('.footable').footable({
 
 @*$(document).ready(function () {
 	 var _passportfiledescriptionupld = $('#passportfiledescriptionupld').kaffileUploader({
-		 _tableid: 'tbl_passportfiledescription', 
+		 _tableid: 'tbl_passportfiledescription',
 		 _colname: 'passportfiledescription',
 		 _tabname: 'Hr_PassportInfo',
 		 _fileuploadbuttontext: 'Upload files',

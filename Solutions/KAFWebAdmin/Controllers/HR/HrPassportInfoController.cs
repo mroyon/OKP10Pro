@@ -20,6 +20,8 @@ using KAF.CustomFilters.Filters;
 using KAF.MVC.Common;
 using KAF.BusinessDataObjects.BusinessDataObjectsPartials;
 using KAF.CustomHelper;
+using System.IO;
+using System.Drawing;
 
 namespace KAFWebAdmin.Controllers.HR
 {
@@ -289,62 +291,83 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 Int64 ret = 0;
                 SecurityCapsule sec = new SecurityCapsule();
-                /*				 ModelState.Remove("passportid");
-                                 ModelState.Remove("hrbasicid");
-                                 ModelState.Remove("passportno");
-                                 ModelState.Remove("passportissuedate");
-                                 ModelState.Remove("passportexpirydate");
-                                 ModelState.Remove("passportissuecountryid");
-                                 ModelState.Remove("isfamilypassport");
-                                 ModelState.Remove("passportfiledescription");
-                                 ModelState.Remove("passportfilepath");
-                                 ModelState.Remove("passportfilename");
-                                 ModelState.Remove("passportfiletype");
-                                 ModelState.Remove("passportextension");
-                                 ModelState.Remove("passportfileid");
-                                 ModelState.Remove("remarks");
-                                 ModelState.Remove("forreview");
-                                 ModelState.Remove("iscurrent");
-                */
+                ModelState.Remove("passportid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("passportno");
+                ModelState.Remove("passportissuedate");
+                ModelState.Remove("passportexpirydate");
+                ModelState.Remove("passportissuecountryid");
+                ModelState.Remove("isfamilypassport");
+                ModelState.Remove("passportfiledescription");
+                ModelState.Remove("passportfilepath");
+                ModelState.Remove("passportfilename");
+                ModelState.Remove("passportfiletype");
+                ModelState.Remove("passportextension");
+                ModelState.Remove("passportfileid");
+                ModelState.Remove("remarks");
+                ModelState.Remove("forreview");
+                ModelState.Remove("iscurrent");
                 ModelState.Remove("fullname");
                 ModelState.Remove("hrbasicid");
 
+                ModelState.Remove("file1");
+                ModelState.Remove("file2");
+                ModelState.Remove("token");
+                ModelState.Remove("userinfo");
+                ModelState.Remove("useripaddress");
+                ModelState.Remove("sessionid");
+                ModelState.Remove("methodname");
+                ModelState.Remove("currenturl");
 
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
-                    //RN: OPEN THIS LINE IF HR INVOLDED
-                    //input.hrbasicid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrbasicid", input.strAdditionalPrimaryKey));
 
-                    //START OF NO CHANGE REGION
-                    //string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-                    //input.strValue6 = userid;
-                    //input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-                    //Int64 ret = 0;
-                    //List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
-                    //objFileList = input.cor_foldercontentsList;
-                    //List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
-                    //END OF NO CHANGE REGION
-                    // CHANGE ThiS LINE TO MAKE A SAVE
-                    //retArray = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().Add_WithFiles(input).ToList();
+                    if (input.file1 != null && input.file1.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        int iFileSize = input.file1.ContentLength;
+                        string contenttype = input.file1.ContentType;
+                        string filefullName = input.file1.FileName;
+                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.file1.SaveAs(filepath + fileName);
 
-                    //START OF NO CHANGE REGION
-                    // if (retArray != null && retArray.Count > 0)
-                    //{
-                    // ret = 0;
-                    // KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
-                    // if (objFileList != null && objFileList.Count > 0)
-                    // {
-                    //	 foreach (cor_foldercontentsEntity file in objFileList)
-                    //	 {
-                    //		 byte[] imageBytes = Convert.FromBase64String(file.comment);
-                    //		 objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
-                    //	 }
-                    // }
-                    //ret = 1;
-                    //}
-                    //END OF NO CHANGE REGION
+                        input.passportfilepath = fileUploadDir;
+                        input.passportfilename = fileName;
+                        input.passportfiletype = contenttype;
+                        input.passportextension = fileExtension;
+                        input.passportfiledescription = "";
+                    }
+
+                    if (input.file2 != null && input.file2.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        int iFileSize = input.file2.ContentLength;
+                        string contenttype = input.file2.ContentType;
+                        string filefullName = input.file2.FileName;
+                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.file2.SaveAs(filepath + fileName + fileExtension);
+
+
+                        input.passportfilepath_2 = fileUploadDir;
+                        input.passportfilename_2 = fileName;
+                        input.passportfiletype_2 = contenttype;
+                        input.passportextension_2 = fileExtension;
+                        input.passportfiledescription_2 = "";
+                    }
 
                     ret = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().Add(input);
 
@@ -396,29 +419,16 @@ namespace KAFWebAdmin.Controllers.HR
                 var model = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().GetAll(new hr_passportinfoEntity { passportid = input.passportid }).SingleOrDefault();
                 model.strModelPrimaryKey = input.strModelPrimaryKey;
                 model.militarynokw = input.militarynokw;
-                //PN: LOAD DATA FOR PRE-SELECT2 DROP DOWN
-                //List<gen_countryEntity> listgen_country = KAF.FacadeCreatorObjects.gen_countryFCC.GetFacadeCreate().GetAll(new gen_countryEntity { countryid = model.passportissuecountryid }).ToList();
-                //var objgen_country = (from t in listgen_country
-                //select new
-                //{
-                //		 Id = t.countryid ,
-                //		 Text = t.countryname 
-                // }).ToList();
-                //ViewBag.preloadedGen_Country = JsonConvert.SerializeObject(objgen_country);
 
+                string domainURL = DomainUrl.GetDomainUrl();
+                string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();
 
+                string filepath1 = Path.Combine(domainURL, fileUploadDir, model.passportfilename + model.passportextension);
+                model.passportfilepath =  filepath1 ;
 
-                //string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-                //model.strValue6 = userid;
-                //model.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-                //model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
-                //model.cor_foldercontentsList = KAF.FacadeCreatorObjects.cor_foldercontentsFCC.GetFacadeCreate().GetAll(new cor_foldercontentsEntity
-                //{
-                //     tablename = "Hr_PassportInfo",
-                //     folderid = long.Parse(model.strValue5),
-                //     columnpkid = model.passportid
-                //}).ToList();
-                //END OF NO CHANGE REGION
+                string filepath2 = Path.Combine(domainURL, fileUploadDir, model.passportfilename_2 + model.passportextension_2);
+                model.passportfilepath_2 =  filepath2 ;
+
 
                 ModelState.Clear();
                 return PartialView("_HrPassportInfoEdit", model);
@@ -450,69 +460,114 @@ namespace KAFWebAdmin.Controllers.HR
                 Int64 ret = 0;
 
                 //PN: KEEP THE REQUIRED LINE AND REMOVE REST
-                /*				 ModelState.Remove("passportid");
-                                 ModelState.Remove("hrbasicid");
-                                 ModelState.Remove("passportno");
-                                 ModelState.Remove("passportissuedate");
-                                 ModelState.Remove("passportexpirydate");
-                                 ModelState.Remove("passportissuecountryid");
-                                 ModelState.Remove("isfamilypassport");
-                                 ModelState.Remove("passportfiledescription");
-                                 ModelState.Remove("passportfilepath");
-                                 ModelState.Remove("passportfilename");
-                                 ModelState.Remove("passportfiletype");
-                                 ModelState.Remove("passportextension");
-                                 ModelState.Remove("passportfileid");
-                                 ModelState.Remove("remarks");
-                                 ModelState.Remove("forreview");
-                                 ModelState.Remove("iscurrent");
-                */
+                ModelState.Remove("passportid");
+                ModelState.Remove("hrbasicid");
                 ModelState.Remove("passportno");
+                ModelState.Remove("passportissuedate");
+                ModelState.Remove("passportexpirydate");
+                ModelState.Remove("passportissuecountryid");
+                ModelState.Remove("isfamilypassport");
+                ModelState.Remove("passportfiledescription");
+                ModelState.Remove("passportfilepath");
+                ModelState.Remove("passportfilename");
+                ModelState.Remove("passportfiletype");
+                ModelState.Remove("passportextension");
+                ModelState.Remove("passportfileid");
+                ModelState.Remove("remarks");
+                ModelState.Remove("forreview");
+                ModelState.Remove("iscurrent");
                 ModelState.Remove("fullname");
+                ModelState.Remove("hrbasicid");
+
+                ModelState.Remove("file1");
+                ModelState.Remove("file2");
+                ModelState.Remove("token");
+                ModelState.Remove("userinfo");
+                ModelState.Remove("useripaddress");
+                ModelState.Remove("sessionid");
+                ModelState.Remove("methodname");
+                ModelState.Remove("currenturl");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
 
-                    ////START OF NO CHANGE REGION
-                    // string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-                    // input.strValue6 = userid;
-                    // input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-                    // //Int64 ret = 0;
-                    // List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
-                    // objFileList = input.cor_foldercontentsList.Where(p=> p.strValue1 == "deleted" || p.strValue1 == "added").ToList();
-                    // input.cor_foldercontentsList = objFileList;
-                    // List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
-                    // //END OF NO CHANGE REGION
-                    // // CHANGE ThiS LINE TO MAKE A SAVE
-                    // //retArray = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().Update_WithFiles(input).ToList();
+                    var model = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().GetAll(new hr_passportinfoEntity { passportid = input.passportid }).SingleOrDefault();
 
-                    // //START OF NO CHANGE REGION
-                    //  if (retArray != null && retArray.Count > 0)
-                    // {
-                    //	 ret = 0;
-                    //	 KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
-                    //	 if (objFileList != null && objFileList.Count > 0)
-                    //	 {
-                    //	 List<cor_foldercontentsEntity> objFileDeleteList = new List<cor_foldercontentsEntity>();
-                    //	 List<cor_foldercontentsEntity> objFileAddList = new List<cor_foldercontentsEntity>();
-                    //	 objFileDeleteList = objFileList.Where(p => p.strValue1 == "deleted").ToList();
-                    //	 objFileAddList = objFileList.Where(p => p.strValue1 == "added").ToList();
-                    //	 foreach (cor_foldercontentsEntity file in objFileAddList)
-                    //	 {
-                    //	    byte[] imageBytes = Convert.FromBase64String(file.comment);
-                    //	    objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
-                    //	 }
+                    if (input.file1 != null && input.file1.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        string filepath = Server.MapPath("~" + fileUploadDir);
 
+                        if (System.IO.File.Exists(filepath + model.passportfilename + model.passportextension))
+                        {
+                            System.IO.File.Delete(filepath + model.passportfilename + model.passportextension);
+                        }
 
-                    //	 foreach (cor_foldercontentsEntity file in objFileDeleteList)
-                    //	 {
-                    //	 objFTP.DeleteFileFTP(userid + "/Upload/", file.filename, file.extension);
-                    //	 }
-                    //	 }
-                    // ret = 1;
-                    // }
-                    // //END OF NO CHANGE REGION
+                        int iFileSize = input.file1.ContentLength;
+                        string contenttype = input.file1.ContentType;
+                        string filefullName = input.file1.FileName;
+                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.file1.SaveAs(filepath + fileName);
+
+                        input.passportfilepath = fileUploadDir;
+                        input.passportfilename = fileName;
+                        input.passportfiletype = contenttype;
+                        input.passportextension = fileExtension;
+                        input.passportfiledescription = "";
+                    }
+                    else
+                    {
+                        input.passportfilepath = model.passportfilepath;
+                        input.passportfilename = model.passportfilename;
+                        input.passportfiletype = model.passportfiletype;
+                        input.passportextension = model.passportextension;
+                        input.passportfiledescription = model.passportfiledescription;
+                    }
+
+                    if (input.file2 != null && input.file2.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+
+                        if (System.IO.File.Exists(filepath + model.passportfilename_2 + model.passportextension_2))
+                        {
+                            System.IO.File.Delete(filepath + model.passportfilename_2 + model.passportextension_2);
+                        }
+
+                        int iFileSize = input.file2.ContentLength;
+                        string contenttype = input.file1.ContentType;
+                        string filefullName = input.file2.FileName;
+                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.file2.SaveAs(filepath + fileName + fileExtension);
+
+                        input.passportfilepath_2 = fileUploadDir;
+                        input.passportfilename_2 = fileName;
+                        input.passportfiletype_2 = contenttype;
+                        input.passportextension_2 = fileExtension;
+                        input.passportfiledescription_2 = "";
+                    }
+                    else
+                    {
+                        input.passportfilepath_2 = model.passportfilepath_2;
+                        input.passportfilename_2 = model.passportfilename_2;
+                        input.passportfiletype_2 = model.passportfiletype_2;
+                        input.passportextension_2 = model.passportextension_2;
+                        input.passportfiledescription_2 = model.passportfiledescription_2;
+                    }
+
                     ret = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().Update_Ext(input);
 
                     if (ret > 0)
@@ -668,9 +723,16 @@ namespace KAFWebAdmin.Controllers.HR
             {
                 sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                 input.passportid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("passportid", input.strModelPrimaryKey).ToString());
-                var model = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().GetAll_Ext(input).SingleOrDefault();
+                var model = KAF.FacadeCreatorObjects.hr_passportinfoFCC.GetFacadeCreate().GetAll(input).SingleOrDefault();
 
-                ////END OF NO CHANGE REGION
+                string domainURL = DomainUrl.GetDomainUrl();
+                string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();
+
+                string filepath1 = Path.Combine(domainURL, fileUploadDir, model.passportfilename + model.passportextension);
+                model.passportfilepath = filepath1;
+
+                string filepath2 = Path.Combine(domainURL, fileUploadDir, model.passportfilename_2 + model.passportextension_2);
+                model.passportfilepath_2 = filepath2;
 
                 ModelState.Clear();
                 return PartialView("_HrPassportInfoDetail", model);

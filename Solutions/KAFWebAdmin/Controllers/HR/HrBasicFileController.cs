@@ -100,7 +100,8 @@ namespace KAFWebAdmin.Controllers.HR
 									 t.filename,
 									 t.filetype,
 									 t.extension,
-									 t.remarks,                                   
+									 t.remarks,
+                                   
                                    ex_nvarchar1 = objSecPanel.genButtonPanel(t.fileuploadid.GetValueOrDefault(-99), "fileuploadid", this.HttpContext.User.Identity as ClaimsIdentity,
                                    "HrBasicFile/HrBasicFileEdit", "HrBasicFileEdit", 
                                    "HrBasicFile/HrBasicFileDelete", "HrBasicFileDelete",
