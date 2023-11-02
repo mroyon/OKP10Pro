@@ -274,7 +274,10 @@ namespace KAFWebAdmin.Controllers.HR
 */               
                 if (input != null && ModelState.IsValid == true)
                 {
-                    HttpPostedFileBase file = Request.Files[0];
+                    HttpPostedFileBase file = null;
+                    if(Request.Files.Count>0)
+                        file=Request.Files[0];
+
                     input.token = Request.Form["token"].ToString();
                     input.userinfo = Request.Form["userinfo"].ToString();
                     input.useripaddress = Request.Form["useripaddress"].ToString();
@@ -444,7 +447,9 @@ namespace KAFWebAdmin.Controllers.HR
 */               
                 if (input != null && ModelState.IsValid == true)
                 {
-                    HttpPostedFileBase file = Request.Files[0];
+                    HttpPostedFileBase file = null;
+                    if (Request.Files.Count > 0)
+                        file = Request.Files[0];
                     input.token = Request.Form["token"].ToString();
                     input.userinfo = Request.Form["userinfo"].ToString();
                     input.useripaddress = Request.Form["useripaddress"].ToString();

@@ -94,7 +94,7 @@ $(document).ready(function () {
                                             //window.location.href =  baseurl + "HrResidentVisa/HrResidentVisa";
                                             $('#mcHrResidentVisaEdit').html('');
                                             $('#modal-container-HrResidentVisaEdit').modal('hide');
-                                            GetAllDataHrResidentVisa();
+                                            GetAllDataHrResidentVisa($("#hrbasicid").val());
                                         }
 
                                     });
