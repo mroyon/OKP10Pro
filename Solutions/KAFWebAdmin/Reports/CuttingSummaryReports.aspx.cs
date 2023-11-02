@@ -21,11 +21,15 @@ public partial class CuttingSummaryReports : Page
 
             string reporttype = "", masterid = "";
 
+            string MilNoBD = "";
+
             if (Request.QueryString["reporttype"] != null)
             {
                 reporttype = Request.QueryString["reporttype"].ToString();
+                MilNoBD = Request.QueryString["MilNoBD"].ToString();
 
-                LoadReport(reporttype);
+                LoadReport(reporttype, MilNoBD);
+                //LoadReport(reporttype);
 
             }
 
@@ -133,6 +137,31 @@ public partial class CuttingSummaryReports : Page
 
                 CustomerListReportViewer.LocalReport.DataSources.Add(rdc);
 
+                CustomerListReportViewer.LocalReport.Refresh();
+                CustomerListReportViewer.DataBind();
+            }
+        }
+
+
+
+    }
+    private void LoadReport(string reporttype, string MilNoKW)
+    {
+       
+        if (reporttype == "13") //10%
+        {
+       
+
+            var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().FamilyPassportInfoExpire(new EmployeeDocumentInfoEntity { MilNoKW = MilNoKW }).ToList();
+
+            if (list.Count > 0)
+            {
+
+                CustomerListReportViewer.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLC/OfficerPassportInfoExpire.rdlc");
+                CustomerListReportViewer.LocalReport.DataSources.Clear();
+                ReportDataSource rdc = new ReportDataSource("DataSet1", list);
+
+                CustomerListReportViewer.LocalReport.DataSources.Add(rdc);
                 CustomerListReportViewer.LocalReport.Refresh();
                 CustomerListReportViewer.DataBind();
             }

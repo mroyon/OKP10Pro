@@ -3186,6 +3186,7 @@
     <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoEdit.cshtml" />
     <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoNew.cshtml" />
     <Content Include="Views\Shared\_Select2PassportInfoByBasicIdSearch.cshtml" />
+    <Content Include="Views\RPTMAllReportInfo\DateExpireReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\UploadTemp\" />
@@ -3425,7 +3426,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\RDLC\FamilyPassportInfoExpire.rdlc" />
+    <EmbeddedResource Include="Reports\RDLC\OfficerPassportInfoExpire.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

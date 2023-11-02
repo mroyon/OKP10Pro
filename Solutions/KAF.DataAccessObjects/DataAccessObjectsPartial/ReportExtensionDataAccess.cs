@@ -1666,20 +1666,46 @@ namespace KAF.DataAccessObjects.DataAccessObjectsPartial
 		return itemList; 
 		}
 
-        public IList<FamilyPassportInfoEntity> FamilyPassportInfoExpire(FamilyPassportInfoEntity FamilyPassportInfo)
+        IList<EmployeeDocumentInfoEntity> IReportExtensionDataAccess.FamilyPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo)
         {
-            IList<FamilyPassportInfoEntity> itemList = new List<FamilyPassportInfoEntity>();
+            IList<EmployeeDocumentInfoEntity> itemList = new List<EmployeeDocumentInfoEntity>();
             try
             {
                 const string SP = "FamilyPassportInfoExpireReport";
                 using (DbCommand cmd = Database.GetStoredProcCommand(SP))
                 {
-                    Database.AddInParameter(cmd, "@CivilID", DbType.String, FamilyPassportInfo.FamilyCivilID);
+                    Database.AddInParameter(cmd, "@MilNoKW", DbType.String, FamilyPassportInfo.MilNoKW);
                     using (IDataReader reader = Database.ExecuteReader(cmd))
                     {
                         while (reader.Read())
                         {
-                            itemList.Add(new FamilyPassportInfoEntity(reader));
+                            itemList.Add(new EmployeeDocumentInfoEntity(reader));
+                        }
+                        reader.Dispose();
+                    }
+                    cmd.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw GetDataAccessException(ex, SourceOfException("IReportExtensionDataAccess.Get_rpt_ptareceivedwithflightinfo"));
+            }
+            return itemList;
+        }
+        IList<EmployeeDocumentInfoEntity> IReportExtensionDataAccess.OfficerPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo)
+        {
+            IList<EmployeeDocumentInfoEntity> itemList = new List<EmployeeDocumentInfoEntity>();
+            try
+            {
+                const string SP = "OfficerPassportInfoExpire";
+                using (DbCommand cmd = Database.GetStoredProcCommand(SP))
+                {
+                    Database.AddInParameter(cmd, "@CivilID", DbType.String, FamilyPassportInfo.CivilID);
+                    using (IDataReader reader = Database.ExecuteReader(cmd))
+                    {
+                        while (reader.Read())
+                        {
+                            itemList.Add(new EmployeeDocumentInfoEntity(reader));
                         }
                         reader.Dispose();
                     }

@@ -83,6 +83,17 @@ namespace KAFWebAdmin.Controllers.HR
             return View("RPTMProcessReportLanding");
         }
 
+        [LoggingFilterAttribute]
+        [SecurityFillerAttribute]
+        [AuthorizeFilterAttribute]
+        [AllowCrossSiteJsonAttribute]
+        [ExceptionFilterAttribute]
+        public async Task<ActionResult> DateExpireReport()
+        {
+
+            return View("DateExpireReport");
+        }
+
       
         public ActionResult Export(long? MilitaryNoKW, long? PayAllceID)
         {

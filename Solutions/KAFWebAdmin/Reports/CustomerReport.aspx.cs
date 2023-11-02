@@ -91,7 +91,7 @@ public partial class CustomerReport : Page
                     else if (reporttype == "12")
                     {
                         passportno = Request.QueryString["okpid"];
-                       
+
                     }
 
                     LoadReport(reporttype, passportno, letterno, militaryno, letterid);
@@ -145,10 +145,9 @@ public partial class CustomerReport : Page
 
         }
     }
-
     private void LoadReport(string reporttype, string passportno, string letterno, string militaryno, string letterid)
     {
-        if (reporttype == "1")
+        if (reporttype == "13")
         {
             //var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().GET_KAF_GetNewDemandInfo(new KAF_GetNewDemandInfoEntity { NewDemandID = Convert.ToInt64(letterid), DemandLetterNo = letterno, PassportNo = passportno }).ToList();
             var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().GET_rpt_newdemanddetails(new rpt_newdemanddetailsEntity { NewDemandID = Convert.ToInt64(letterid) }).ToList();
@@ -158,6 +157,24 @@ public partial class CustomerReport : Page
                 CustomerListReportViewer.LocalReport.DataSources.Clear();
                 ReportDataSource rdc = new ReportDataSource("DataSet1", list);
 
+                CustomerListReportViewer.LocalReport.DataSources.Add(rdc);
+                CustomerListReportViewer.LocalReport.Refresh();
+                CustomerListReportViewer.DataBind();
+            }
+            else
+            {
+                lblMessage.Text = "No Data Found";
+            }
+        }
+        else if (reporttype == "14")
+        {
+            //var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().GET_KAF_GetReplacementInfo(new KAF_GetReplacementInfoEntity { ReplacementID = Convert.ToInt64(letterid), ReplacementLetterNo = letterno, PassportNo = passportno }).ToList();
+            var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().GET_rpt_GetReplacementPassportInfo(new rpt_GetReplacementPassportInfoEntity { RepPassportID = Convert.ToInt64(letterid) }).ToList();
+            if (list.Count > 0)
+            {
+                CustomerListReportViewer.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLC/rdlc_ReplPassportReport.rdlc");
+                CustomerListReportViewer.LocalReport.DataSources.Clear();
+                ReportDataSource rdc = new ReportDataSource("DataSet1", list);
                 CustomerListReportViewer.LocalReport.DataSources.Add(rdc);
                 CustomerListReportViewer.LocalReport.Refresh();
                 CustomerListReportViewer.DataBind();
@@ -549,24 +566,7 @@ public partial class CustomerReport : Page
             //CustomerListReportViewer.LocalReport.Refresh();
 
         }
-        else if (reporttype == "13")
-        {
-            var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().GET_rpt_ptareceivedwithflightinfo(new rpt_ptareceivedwithflightinfoEntity { PTAReceivedID = Convert.ToInt64(letterid) }).ToList();
-            if (list.Count > 0)
-            {
-                CustomerListReportViewer.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLC/rdlc_pta_demand.rdlc");
-                CustomerListReportViewer.LocalReport.DataSources.Clear();
-                ReportDataSource rdc = new ReportDataSource("DataSet1", list);
-
-                CustomerListReportViewer.LocalReport.DataSources.Add(rdc);
-                CustomerListReportViewer.LocalReport.Refresh();
-                CustomerListReportViewer.DataBind();
-            }
-            else
-            {
-                lblMessage.Text = "No Data Found";
-            }
-        }
+        
 
     }
     protected void LocalReport_SubreportProcessingEventHandler(object sender, SubreportProcessingEventArgs e)

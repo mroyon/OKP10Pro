@@ -160,5 +160,9 @@ namespace KAF.IBusinessFacadeObjects.IBusinessFacadeObjectsPartial
 
 		[OperationContract]
 		IList<rpt_OkpWiseManpowerStateHeldAuthEntity> GET_rpt_OkpWiseManpowerStateHeldAuth(rpt_OkpWiseManpowerStateHeldAuthEntity rpt_OkpWiseManpowerStateHeldAuthEntity);
-	}
+		[OperationContract]
+        IList<EmployeeDocumentInfoEntity> FamilyPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo);
+		[OperationContract]
+        IList<EmployeeDocumentInfoEntity> OfficerPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo);
+    }
 }

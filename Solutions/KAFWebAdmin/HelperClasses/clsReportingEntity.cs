@@ -260,9 +260,9 @@ namespace KAFWebAdmin.HelperClasses
 			return db.ToList();
 		}
 
-		public List<FamilyPassportInfoEntity> FamilyPassportInfoExpire()
+		public List<EmployeeDocumentInfoEntity> OfficerPassportInfoExpire()
 		{
-			List<FamilyPassportInfoEntity> db = new List<FamilyPassportInfoEntity>();
+			List<EmployeeDocumentInfoEntity> db = new List<EmployeeDocumentInfoEntity>();
 			return db.ToList();
 		}
 	}

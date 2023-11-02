@@ -182,6 +182,7 @@
     <Compile Include="BusinessDataObjectsPartials\ReportEntity\rpt_visareceivedpersonnelEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\ReportEntity\tran_cuttinginfodetl_GAPgListView_ExtEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\ReportEntity\tran_cuttinginfo_GAPgListView_ExtEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\EmployeeDocumentInfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\UserHubModels.cs" />
     <Compile Include="BusinessDataObjects\Common\cor_foldercontentsEntity.cs" />
     <Compile Include="BusinessDataObjects\Common\cor_foldershareddataEntity.cs" />

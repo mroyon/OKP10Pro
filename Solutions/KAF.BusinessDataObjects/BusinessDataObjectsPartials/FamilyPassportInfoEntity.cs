@@ -36,7 +36,9 @@ namespace KAF.BusinessDataObjects.BusinessDataObjectsPartials
         public DateTime FamilyPassportExpiryDate { get; set; }
         [DataMember]
         public string FamilyPassportFileDescription { get; set; }
-
+        public FamilyPassportInfoEntity()
+        {            
+        }
 
         public FamilyPassportInfoEntity(IDataReader reader)
         {

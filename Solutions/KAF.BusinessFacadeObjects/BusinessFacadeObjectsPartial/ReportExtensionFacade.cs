@@ -880,5 +880,37 @@ namespace KAF.BusinessFacadeObjects.BusinessFacadeObjectsPartial
 				throw exx;
 			}
 		}
+
+		IList<EmployeeDocumentInfoEntity> IReportExtensionFacade.FamilyPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfoEntity)
+		{
+			try
+			{
+				return DataAccessFactory.CreateReportExtensionDataAccess().FamilyPassportInfoExpire(FamilyPassportInfoEntity).ToList();
+			}
+			catch (DataException ex)
+			{
+				throw GetFacadeException(ex, SourceOfException("IList<rpt_OkpWiseManpowerStateHeldAuthEntity> IReportExtensionFacade.rpt_rpt_OkpWiseManpowerStateHeldAuth"));
+			}
+			catch (Exception exx)
+			{  
+				throw exx;
+			}
+		}
+
+		IList<EmployeeDocumentInfoEntity> IReportExtensionFacade.OfficerPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfoEntity)
+		{
+			try
+			{
+				return DataAccessFactory.CreateReportExtensionDataAccess().OfficerPassportInfoExpire(FamilyPassportInfoEntity).ToList();
+			}
+			catch (DataException ex)
+			{
+				throw GetFacadeException(ex, SourceOfException("IList<rpt_OkpWiseManpowerStateHeldAuthEntity> IReportExtensionFacade.rpt_rpt_OkpWiseManpowerStateHeldAuth"));
+			}
+			catch (Exception exx)
+			{  
+				throw exx;
+			}
+		}
 	}
 }
