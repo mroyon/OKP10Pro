@@ -322,18 +322,24 @@ namespace KAFWebAdmin.Controllers.HR
                         int iFileSize = input.file1.ContentLength;
                         string contenttype = input.file1.ContentType;
                         string filefullName = input.file1.FileName;
-                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+
+                        Guid fileid = Guid.NewGuid(); 
+
+                        string fileName = fileid.ToString();
+                        //string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
                         string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
                         string filepath = Server.MapPath("~" + fileUploadDir);
                         if (!Directory.Exists(filepath))
                             Directory.CreateDirectory(filepath);
-                        input.file1.SaveAs(filepath + fileName);
+                        input.file1.SaveAs(filepath + fileName + fileExtension);
 
                         input.civilidfilepath = fileUploadDir;
                         input.civilidfilename = fileName;
                         input.civilidfiletype = contenttype;
                         input.civilidextension = fileExtension;
                         input.civilidfiledescription = "";
+
+                        input.civilidfileid = fileid;
                     }
 
                     if (input.file2 != null && input.file2.ContentLength > 0)
@@ -344,18 +350,24 @@ namespace KAFWebAdmin.Controllers.HR
                         int iFileSize = input.file2.ContentLength;
                         string contenttype = input.file2.ContentType;
                         string filefullName = input.file2.FileName;
-                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+
+                        Guid fileid = Guid.NewGuid();
+
+                        string fileName = fileid.ToString();
+                        //string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
                         string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
                         string filepath = Server.MapPath("~" + fileUploadDir);
                         if (!Directory.Exists(filepath))
                             Directory.CreateDirectory(filepath);
-                        input.file2.SaveAs(filepath + filefullName);
+                        input.file2.SaveAs(filepath + fileName + fileExtension);
 
                         input.civilidfilepath_2 = fileUploadDir;
                         input.civilidfilename_2 = fileName;
                         input.civilidfiletype_2 = contenttype;
                         input.civilidextension_2 = fileExtension;
                         input.civilidfiledescription_2 = "";
+
+                        input.civilidfileid_2 = fileid;
                     }
 
                     ret = KAF.FacadeCreatorObjects.hr_civilidinfoFCC.GetFacadeCreate().Add(input);
@@ -405,10 +417,18 @@ namespace KAFWebAdmin.Controllers.HR
                 sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                 input.civilid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("civilid", input.strModelPrimaryKey).ToString());
                 var model = KAF.FacadeCreatorObjects.hr_civilidinfoFCC.GetFacadeCreate().GetAll(new hr_civilidinfoEntity { civilid = input.civilid }).SingleOrDefault();
-                model.strModelPrimaryKey = input.strModelPrimaryKey;
-                //PN: LOAD DATA FOR PRE-SELECT2 DROP DOWN
-                model.militarynokw = input.militarynokw;
 
+                if (model != null)
+                {
+                    model.strModelPrimaryKey = input.strModelPrimaryKey;
+                    model.militarynokw = input.militarynokw;
+
+                    model.civilidfilename = model.civilidfilename + model.civilidextension;
+                    model.civilidfilename_2 = model.civilidfilename_2 + model.civilidextension_2;
+
+                    model.civilidfilepath = model.civilidfilepath + model.civilidfilename;
+                    model.civilidfilepath_2 =  model.civilidfilepath_2 + model.civilidfilename_2;
+                }
 
                 ModelState.Clear();
                 return PartialView("_HrCivilIDInfoEdit", model);
@@ -468,20 +488,30 @@ namespace KAFWebAdmin.Controllers.HR
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
+
+                    input.civilid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("civilid", input.strModelPrimaryKey).ToString());
+                    var model = KAF.FacadeCreatorObjects.hr_civilidinfoFCC.GetFacadeCreate().GetAll(new hr_civilidinfoEntity { civilid = input.civilid }).SingleOrDefault();
+
                     if (input.file1 != null && input.file1.ContentLength > 0)
                     {
                         string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
                         if (fileUploadDir[fileUploadDir.Length - 1] != '/')
                             fileUploadDir = fileUploadDir + "/";
+
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+
+                        if (System.IO.File.Exists(filepath + model.civilidfileid + model.civilidextension)) System.IO.File.Delete(filepath + model.civilidfileid + model.civilidextension);
+
                         int iFileSize = input.file1.ContentLength;
                         string contenttype = input.file1.ContentType;
                         string filefullName = input.file1.FileName;
-                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        //string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileName = input.civilidfileid.ToString();
                         string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
-                        string filepath = Server.MapPath("~" + fileUploadDir);
+
                         if (!Directory.Exists(filepath))
                             Directory.CreateDirectory(filepath);
-                        input.file1.SaveAs(filepath + fileName);
+                        input.file1.SaveAs(filepath + fileName + fileExtension);
 
                         input.civilidfilepath = fileUploadDir;
                         input.civilidfilename = fileName;
@@ -495,15 +525,20 @@ namespace KAFWebAdmin.Controllers.HR
                         string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
                         if (fileUploadDir[fileUploadDir.Length - 1] != '/')
                             fileUploadDir = fileUploadDir + "/";
+
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (System.IO.File.Exists(filepath + model.civilidfileid + model.civilidextension)) System.IO.File.Delete(filepath + model.civilidfileid + model.civilidextension);
+
                         int iFileSize = input.file2.ContentLength;
                         string contenttype = input.file2.ContentType;
                         string filefullName = input.file2.FileName;
-                        string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        //string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileName = input.civilidfileid_2.ToString();
                         string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
-                        string filepath = Server.MapPath("~" + fileUploadDir);
+
                         if (!Directory.Exists(filepath))
                             Directory.CreateDirectory(filepath);
-                        input.file2.SaveAs(filepath + filefullName);
+                        input.file2.SaveAs(filepath + fileName + fileExtension);
 
                         input.civilidfilepath_2 = fileUploadDir;
                         input.civilidfilename_2 = fileName;
