@@ -954,6 +954,7 @@
     <Content Include="DesignsAndScripts\Images\documents-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DesignsAndScripts\Images\OK-10_Logo.png" />
     <Content Include="DesignsAndScripts\Images\picture-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
