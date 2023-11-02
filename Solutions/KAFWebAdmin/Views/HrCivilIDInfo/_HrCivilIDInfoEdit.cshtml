@@ -24,6 +24,8 @@
                     <div class="row">
                         @Html.HiddenFor(m => m.civilid)
                         @Html.HiddenFor(m => m.hrbasicid)
+                        @Html.HiddenFor(m => m.civilidfileid)
+                        @Html.HiddenFor(m => m.civilidfileid_2)
                         @Html.HiddenFor(m => m.strModelPrimaryKey)
                     </div>
 
@@ -90,10 +92,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input class="custom-file-label" id="fileInput" type="file" multiple>
                                     <label class="custom-file-label" for="fileInput" multiple>Choose Civil Id Front Part</label>
+                                    <input class="custom-file-label" id="fileInput" type="file" multiple>
 
-                                    <table class="table" id="FilesList1" >
+                                    <table class="table" id="FilesList1">
                                         <tr>
                                             <th>
                                                 Attachment(s)
@@ -104,16 +106,16 @@
                                         </tr>
                                         @if (!string.IsNullOrEmpty(Model.civilidfilename))
                                         {
-                                        <tr id="trfile1">
-                                            <td>
-                                                @*@{ Path.Combine(@Model.civilidfilename_2, @Model.civilidextension_2)}*@
-                                                @Model.civilidfilename
-                                            </td>
-                                            <td>
-                                                <a href="#" onclick="DeleteFile('trfile1')"><span class='fa fa-times text-red' style="font-size: 25pt;"></span></a>
-                                                <a href="@Model.civilidfilepath" class="download" target="_blank" download><span class='fa fa-download red' style="font-size: 25pt;"></span></a>
-                                            </td>
-                                        </tr>
+                                            <tr id="trfile1">
+                                                <td>
+                                                    @*@{ Path.Combine(@Model.civilidfilename_2, @Model.civilidextension_2)}*@
+                                                    @Model.civilidfilename
+                                                </td>
+                                                <td>
+                                                    <a href="#" onclick="DeleteFile('trfile1')"><span class='fa fa-times text-red' style="font-size: 25pt;"></span></a>
+                                                    <a href="@Model.civilidfilepath" class="download" target="_blank" download><span class='fa fa-download red' style="font-size: 25pt;"></span></a>
+                                                </td>
+                                            </tr>
                                         }
                                     </table>
                                 </div>
@@ -122,8 +124,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input class="custom-file-label" id="fileInput2" type="file" multiple>
                                     <label class="custom-file-label" for="fileInput2" multiple>Choose Civil Id Back Part</label>
+                                    <input class="custom-file-label" id="fileInput2" type="file" multiple>
                                 </div>
                                 <table class="table" id="FilesList2">
                                     <tr>

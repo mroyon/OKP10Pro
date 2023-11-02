@@ -71,12 +71,12 @@ $(document).ready(function () {
                 form.append("serialno", $('#serialno').val());
                 form.append("civilidissuedate", GetDateFromTextBox($('#civilidissuedate').val()));
                 form.append("civilidexpirydate", GetDateFromTextBox($('#civilidexpirydate').val()));
-                form.append("civilidfiledescription", $('#civilidfiledescription').val());
-                form.append("civilidfilepath", $('#civilidfilepath').val());
-                form.append("civilidfilename", $('#civilidfilename').val());
-                form.append("civilidfiletype", $('#civilidfiletype').val());
-                form.append("civilidextension", $('#civilidextension').val());
-                form.append("civilidfileid", $('#civilidfileid').val());
+                //form.append("civilidfiledescription", $('#civilidfiledescription').val());
+                //form.append("civilidfilepath", $('#civilidfilepath').val());
+                //form.append("civilidfilename", $('#civilidfilename').val());
+                //form.append("civilidfiletype", $('#civilidfiletype').val());
+                //form.append("civilidextension", $('#civilidextension').val());
+                //form.append("civilidfileid", $('#civilidfileid').val());
                 form.append("remarks", $('#remarks').val());
                 form.append("forreview", $('#forreview').val());
                 form.append("iscurrent", $('#iscurrent').val());
