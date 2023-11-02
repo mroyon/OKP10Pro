@@ -59,7 +59,7 @@ $('body').on('click', '#btnLandingSearch', function (event) {
             });
 
             $('#militarynokw').attr('disabled', 'disabled');
-            $('.btnNewHrResidentVisa').show();
+          
             $('.btnClearLandingSearch').show();
 
             GetDataHrBasicProfile();
@@ -109,8 +109,10 @@ function GetDataHrBasicProfile() {
                     $('#residencynumberSearch').val(data[0].ResidencyNumber);
                     GetAllDataHrResidentVisa(data[0].hrbasicid);
                     //console.log($('#hrbasicid').val());
+                    $('.btnNewHrResidentVisa').show();
                 }
                 else {
+                    $('.btnNewHrResidentVisa').hide();
                     $.alert({
                         title: _getCookieForLanguage("_informationTitle"),
                         content: msg,
@@ -432,4 +434,19 @@ function HrResidentVisaDetail(val) {
     }
 }
 
+
+$('body').on('click', '#btnClearLandingSearch', function (event) {
+    $('#hrbasicid').val('');
+    $('#militarynokw').val('');
+    $('#militarynobd').val('');
+    $('#civilid').val('');
+    $('#passportno').val('');
+    $('#fullname').val('');
+    $('#residencynumberSearch').val('');
+    
+    $('#militarynokw').prop('disabled', false);
+    $('.btnClearLandingSearch').hide();
+    $('.btnNewHrResidentVisa').hide();
+    GetAllDataHrResidentVisa(-99)
+});
 

@@ -92,15 +92,26 @@
 
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label id="custom-file-label" for="fileupload" class="labelNormal">Choose file..</label>
-                                @{
-                                    if (@Model.filepath != null)
-                                    {
-                                        <embed src="@Model.filepath" width="100%" height="300px" />
-                                    }
+                            @{
+                                if (@Model.filepath != null)
+                                {
+                                    var url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+                                    <div class="form-group">
+                                        <label id="custom-file-label" for="fileupload" class="labelNormal">File..</label>
+                                        <a download="@Model.filename" target="_blank" href="@Model.filepath">Download</a>
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            @if (Model.extension == ".doc" || Model.extension == ".docx" || Model.extension == ".xls" || Model.extension == ".xlsx" || Model.extension == ".ppt" || Model.extension == ".pptx")
+                                            {
+                                                <embed src='https://view.officeapps.live.com/op/embed.aspx?src=@url@Model.filepath' class="embed-responsive-item" />
+                                            }
+                                            else if (Model.extension == ".pdf" || Model.extension == ".jpg" || Model.extension == ".jpeg" || Model.extension == ".png")
+                                            {
+                                                <embed src="@Model.filepath" class="embed-responsive-item" />
+                                            }
+                                        </div>
+                                    </div>
                                 }
-                            </div>
+                            }
                         </div>
                     </div>
                     <div class="row">
