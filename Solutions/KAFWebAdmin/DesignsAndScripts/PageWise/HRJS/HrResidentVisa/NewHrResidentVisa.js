@@ -97,12 +97,12 @@ $(document).ready(function () {
                                             //window.location.href =  baseurl + "HrResidentVisa/HrResidentVisa";
                                             $('#mcHrResidentVisaNew').html('');
                                             $('#modal-container-HrResidentVisaNew').modal('hide');
-                                            GetAllDataHrResidentVisa();
+                                            GetAllDataHrResidentVisa($("#hrbasicid").val());
                                         }
                                         else {
                                             $('#mcHrResidentVisaNew').html('');
                                             $('#modal-container-HrResidentVisaNew').modal('hide');
-                                            GetAllDataHrResidentVisa();
+                                            GetAllDataHrResidentVisa($("#hrbasicid").val());
                                         }
                                     });
                                 }
