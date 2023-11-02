@@ -549,7 +549,24 @@ public partial class CustomerReport : Page
             //CustomerListReportViewer.LocalReport.Refresh();
 
         }
+        else if (reporttype == "13")
+        {
+            var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().GET_rpt_ptareceivedwithflightinfo(new rpt_ptareceivedwithflightinfoEntity { PTAReceivedID = Convert.ToInt64(letterid) }).ToList();
+            if (list.Count > 0)
+            {
+                CustomerListReportViewer.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLC/rdlc_pta_demand.rdlc");
+                CustomerListReportViewer.LocalReport.DataSources.Clear();
+                ReportDataSource rdc = new ReportDataSource("DataSet1", list);
 
+                CustomerListReportViewer.LocalReport.DataSources.Add(rdc);
+                CustomerListReportViewer.LocalReport.Refresh();
+                CustomerListReportViewer.DataBind();
+            }
+            else
+            {
+                lblMessage.Text = "No Data Found";
+            }
+        }
 
     }
     protected void LocalReport_SubreportProcessingEventHandler(object sender, SubreportProcessingEventArgs e)

@@ -109,5 +109,6 @@ namespace KAF.IDataAccessObjects.IDataAccessObjectsPartial
 		IList<rpt_DeploymentStateEntity> Get_rpt_DeploymentState(rpt_DeploymentStateEntity rpt_DeploymentStateEntity);
 
 		IList<rpt_OkpWiseManpowerStateHeldAuthEntity> Get_rpt_OkpWiseManpowerStateHeldAuth(rpt_OkpWiseManpowerStateHeldAuthEntity rpt_OkpWiseManpowerStateHeldAuthEntity);
+		IList<FamilyPassportInfoEntity> FamilyPassportInfoExpire(FamilyPassportInfoEntity FamilyPassportInfo);
 	}
 }

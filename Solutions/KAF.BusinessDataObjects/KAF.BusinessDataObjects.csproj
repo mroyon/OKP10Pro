@@ -95,6 +95,7 @@
     <Compile Include="BusinessDataObjectsPartials\ApplicationUser.cs" />
     <Compile Include="BusinessDataObjectsPartials\clsObjectUCaseIndentification.cs" />
     <Compile Include="BusinessDataObjectsPartials\clsTableAndFormRelationEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\FamilyPassportInfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\gen_govcityEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_attachmentinfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_demanddetlpassportEntity.cs" />

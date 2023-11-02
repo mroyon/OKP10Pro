@@ -259,5 +259,11 @@ namespace KAFWebAdmin.HelperClasses
 			List<rpt_OkpWiseManpowerStateHeldAuthEntity> db = new List<rpt_OkpWiseManpowerStateHeldAuthEntity>();
 			return db.ToList();
 		}
+
+		public List<FamilyPassportInfoEntity> FamilyPassportInfoExpire()
+		{
+			List<FamilyPassportInfoEntity> db = new List<FamilyPassportInfoEntity>();
+			return db.ToList();
+		}
 	}
 }

@@ -1665,5 +1665,32 @@ namespace KAF.DataAccessObjects.DataAccessObjectsPartial
 			} 
 		return itemList; 
 		}
-	 }
+
+        public IList<FamilyPassportInfoEntity> FamilyPassportInfoExpire(FamilyPassportInfoEntity FamilyPassportInfo)
+        {
+            IList<FamilyPassportInfoEntity> itemList = new List<FamilyPassportInfoEntity>();
+            try
+            {
+                const string SP = "FamilyPassportInfoExpireReport";
+                using (DbCommand cmd = Database.GetStoredProcCommand(SP))
+                {
+                    Database.AddInParameter(cmd, "@CivilID", DbType.String, FamilyPassportInfo.FamilyCivilID);
+                    using (IDataReader reader = Database.ExecuteReader(cmd))
+                    {
+                        while (reader.Read())
+                        {
+                            itemList.Add(new FamilyPassportInfoEntity(reader));
+                        }
+                        reader.Dispose();
+                    }
+                    cmd.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw GetDataAccessException(ex, SourceOfException("IReportExtensionDataAccess.Get_rpt_ptareceivedwithflightinfo"));
+            }
+            return itemList;
+        }
+    }
  }
