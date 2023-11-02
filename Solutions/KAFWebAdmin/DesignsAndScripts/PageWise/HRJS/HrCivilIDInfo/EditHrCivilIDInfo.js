@@ -12,48 +12,16 @@ $(document).ready(function () {
         return data;
     };
 
-    
-
     $('body').on('click', '#btnUpdateHrCivilIDInfo', function (event) {
         try {
             event.preventDefault();
 
-            var form = $('#frmCivilIDInfoEdit');
-            jQuery.validator.unobtrusive.parse();
-            jQuery.validator.unobtrusive.parse(form);
-
-
-
-
+            //var form = $('#frmCivilIDInfoEdit');
+            //jQuery.validator.unobtrusive.parse();
+            //jQuery.validator.unobtrusive.parse(form);
             
-            if (form.valid()) {
+            //if (form.valid()) {
 
-        //        var input = AddAntiForgeryToken({
-        //            token: $(".txtUserSTK").val(),
-        //            userinfo: $(".txtServerUtilObj").val(),
-        //            useripaddress: $(".txtuserip").val(),
-        //            sessionid: $(".txtUserSes").val(),
-        //            methodname: "HrFamilyInfoCreate",
-        //            currenturl: window.location.href,
-
-							 //civilid: $('#civilid').val(),
-							 //hrbasicid: $('#hrbasicid').val(),
-							 //civilidno: $('#civilidno').val(),
-							 //serialno: $('#serialno').val(),
-							 //civilidissuedate: GetDateFromTextBox($('#civilidissuedate').val()),
-							 //civilidexpirydate: GetDateFromTextBox($('#civilidexpirydate').val()),
-							 //civilidfiledescription: $('#civilidfiledescription').val(),
-							 //civilidfilepath: $('#civilidfilepath').val(),
-							 //civilidfilename: $('#civilidfilename').val(),
-							 //civilidfiletype: $('#civilidfiletype').val(),
-							 //civilidextension: $('#civilidextension').val(),
-							 //civilidfileid: $('#civilidfileid').val(),
-							 //remarks: $('#remarks').val(),
-							 //forreview: $('#forreview').val(),
-							 //iscurrent: $('#iscurrent').val(),
-
-
-        //        });
                 var form = new FormData();
 
                 form.append("token", $(".txtUserSTK").val());
@@ -64,25 +32,27 @@ $(document).ready(function () {
                 form.append("currenturl", window.location.href);
                 form.append("__RequestVerificationToken", $('input[name=__RequestVerificationToken]').val());
 
+                form.append("strModelPrimaryKey", $('#strModelPrimaryKey').val());
                 form.append("civilid", $('#civilid').val());
                 form.append("hrbasicid", $('#hrbasicid').val());
                 form.append("civilidno", $('#civilidno').val());
                 form.append("serialno", $('#serialno').val());
                 form.append("civilidissuedate", GetDateFromTextBox($('#civilidissuedate').val()));
                 form.append("civilidexpirydate", GetDateFromTextBox($('#civilidexpirydate').val()));
-                form.append("civilidfiledescription", $('#civilidfiledescription').val());
-                form.append("civilidfilepath", $('#civilidfilepath').val());
-                form.append("civilidfilename", $('#civilidfilename').val());
-                form.append("civilidfiletype", $('#civilidfiletype').val());
-                form.append("civilidextension", $('#civilidextension').val());
+                //form.append("civilidfiledescription", $('#civilidfiledescription').val());
+                //form.append("civilidfilepath", $('#civilidfilepath').val());
+                //form.append("civilidfilename", $('#civilidfilename').val());
+                //form.append("civilidfiletype", $('#civilidfiletype').val());
+                //form.append("civilidextension", $('#civilidextension').val());
                 form.append("civilidfileid", $('#civilidfileid').val());
+                form.append("civilidfileid_2", $('#civilidfileid_2').val());
                 form.append("remarks", $('#remarks').val());
                 form.append("forreview", $('#forreview').val());
                 form.append("iscurrent", $('#iscurrent').val());
 
                 form.append("file1", $("#fileInput")[0].files[0]);
                 form.append("file2", $("#fileInput2")[0].files[0]);
-
+                console.log(form)
                 confirmationDialog(_getCookieForLanguage("_confirmationTitle"), _getCookieForLanguage("_saveConfirmation"), _getCookieForLanguage("_btnYes"), _getCookieForLanguage("_btnNo")).then(function (answer) {
                     if (answer == "true") {
 
@@ -90,6 +60,9 @@ $(document).ready(function () {
                             url: baseurl + "HrCivilIDInfo/HrCivilIDInfoUpdate",
                             data: form,
                             type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
                             success: function (data) {
                                 if (data.status === "success") {
                                     inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
@@ -111,10 +84,10 @@ $(document).ready(function () {
                         });
                     }
                 });
-            }
-            else {
-                return;
-            }
+            //}
+            //else {
+            //    return;
+            //}
 
         } catch (e) {
             $.alert({
@@ -138,7 +111,6 @@ $(document).ready(function () {
             });
         }
     });
-    
     
 });
 
