@@ -81,9 +81,9 @@
                                             <label id="custom-file-label" for="fileupload" class="labelNormal">File..</label>
                                             <a download="@Model.filename" target="_blank" href="@Model.filepath">Download</a>
                                             <div class="embed-responsive embed-responsive-16by9">
-                                                @if (Model.extension == ".doc" || Model.extension == ".docx" || Model.extension == ".xls" || Model.extension == ".xlsx")
+                                                @if (Model.extension == ".doc" || Model.extension == ".docx" || Model.extension == ".xls" || Model.extension == ".xlsx" || Model.extension == ".ppt" || Model.extension == ".pptx")
                                                 {
-                                                    <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=@url@Model.filepath' width='100%' height='650px' frameborder='0'></iframe>
+                                                    <embed src='https://view.officeapps.live.com/op/embed.aspx?src=@url@Model.filepath' class="embed-responsive-item" />
                                                 }
                                                 else if (Model.extension == ".pdf" || Model.extension == ".jpg" || Model.extension == ".jpeg" || Model.extension == ".png")
                                                 {
