@@ -912,5 +912,21 @@ namespace KAF.BusinessFacadeObjects.BusinessFacadeObjectsPartial
 				throw exx;
 			}
 		}
+
+		IList<rptOfficersExpiryInfoEntity> IReportExtensionFacade.OfficersExpiryInfoData(rptOfficersExpiryInfoEntity rptOfficersExpiryInfo)
+		{
+			try
+			{
+				return DataAccessFactory.CreateReportExtensionDataAccess().OfficersExpiryInfoData(rptOfficersExpiryInfo).ToList();
+			}
+			catch (DataException ex)
+			{
+				throw GetFacadeException(ex, SourceOfException("IList<rpt_OkpWiseManpowerStateHeldAuthEntity> IReportExtensionFacade.OfficersExpiryInfoData"));
+			}
+			catch (Exception exx)
+			{
+				throw exx;
+			}
+		}
 	}
 }

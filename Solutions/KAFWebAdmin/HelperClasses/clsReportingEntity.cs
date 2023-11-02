@@ -265,5 +265,11 @@ namespace KAFWebAdmin.HelperClasses
 			List<EmployeeDocumentInfoEntity> db = new List<EmployeeDocumentInfoEntity>();
 			return db.ToList();
 		}
+
+		public List<rptOfficersExpiryInfoEntity> rptOfficersExpiryInfo()
+		{
+			List<rptOfficersExpiryInfoEntity> db = new List<rptOfficersExpiryInfoEntity>();
+			return db.ToList();
+		}
 	}
 }

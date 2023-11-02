@@ -112,6 +112,8 @@ namespace KAF.IDataAccessObjects.IDataAccessObjectsPartial
 		IList<EmployeeDocumentInfoEntity> FamilyPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo);
 		IList<EmployeeDocumentInfoEntity> OfficerPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo);
 
-		
+		IList<rptOfficersExpiryInfoEntity> OfficersExpiryInfoData(rptOfficersExpiryInfoEntity FamilyPassportInfo);
+
+
 	}
 }

@@ -55,13 +55,10 @@
                     <div id="" class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                @Html.Label("Table", htmlAttributes: new { @class = "labelNormal " })
+                                @Html.Label("Type", htmlAttributes: new { @class = "labelNormal " })
                                 <select id="drpTable" class="form-control">
-
-
                                     <option value="13">Officer Document</option>
                                     <option value="14">Officer Family Document</option>
-
                                 </select>
                             </div>
                         </div>
@@ -73,6 +70,37 @@
                             </div>
 
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Expire WithIn", htmlAttributes: new { @class = "labelNormal " })
+                                <input type="text" class="form-control txtexpiredwithin" id="txtexpiredwithin" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="" class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Expire From", htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group  fromdate1' style="width: 100%; ">
+                                    @Html.Editor("expiredfrom", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.Label("Expire To", htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group  fromdate1' style="width: 100%; ">
+                                    @Html.Editor("expiredto", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                     <div id="dvtablecoulmns">  </div>
                     <br />
@@ -83,10 +111,10 @@
                         </div>
                         <div class="col-md-3">
                             <button type="button" id="btnPrint" class="btn  btn-success  btn-block btnPrint">Print</button>
-                           
+
                         </div>
                         <div class="col-md-3">
-                           
+
                             <button type="button" id="btnExport" class="btn  btn-info  btn-block btnExport">Export</button>
                         </div>
                     </div>
@@ -183,7 +211,8 @@
 
                     $("#divReport").removeClass("hidden");
 
-                    var src = '../Reports/CuttingSummaryReports.aspx?reporttype=' + 13 + '&MilNoBD=' + $('#txtmilid').val();
+                    var src = '../Reports/CuttingSummaryReports.aspx?reporttype=' + 13 + '&MilNoBD=' + $('#txtmilid').val() + '&ExpireWithin=' + $('#txtexpiredwithin').val()
+                        + '&ExpireFrom=' + $('#expiredfrom').val() + '&ExpireTo=' + $('#expiredto').val();
                     //We can add parameters here
                     src = src 
 

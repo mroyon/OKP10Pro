@@ -1718,5 +1718,36 @@ namespace KAF.DataAccessObjects.DataAccessObjectsPartial
             }
             return itemList;
         }
+
+        IList<rptOfficersExpiryInfoEntity> IReportExtensionDataAccess.OfficersExpiryInfoData(rptOfficersExpiryInfoEntity rptOfficersExpiryInfo)
+        {
+            IList<rptOfficersExpiryInfoEntity> itemList = new List<rptOfficersExpiryInfoEntity>();
+            try
+            {
+                const string SP = "rpt_ExpiryReport";
+                using (DbCommand cmd = Database.GetStoredProcCommand(SP))
+                {
+                    if(!string.IsNullOrEmpty(rptOfficersExpiryInfo.MilNoKW)) Database.AddInParameter(cmd, "@MilNoKW", DbType.String, rptOfficersExpiryInfo.MilNoKW);
+                    if(rptOfficersExpiryInfo.ExpiredWithIn.HasValue) Database.AddInParameter(cmd, "@ExpiredWithIn", DbType.Int64, rptOfficersExpiryInfo.ExpiredWithIn);
+                    if(rptOfficersExpiryInfo.ExpiredFrom.HasValue) Database.AddInParameter(cmd, "@ExpiredFrom", DbType.DateTime, rptOfficersExpiryInfo.ExpiredFrom);
+                    if(rptOfficersExpiryInfo.ExpiredTo.HasValue) Database.AddInParameter(cmd, "@ExpiredTo", DbType.DateTime, rptOfficersExpiryInfo.ExpiredTo);
+
+                    using (IDataReader reader = Database.ExecuteReader(cmd))
+                    {
+                        while (reader.Read())
+                        {
+                            itemList.Add(new rptOfficersExpiryInfoEntity(reader));
+                        }
+                        reader.Dispose();
+                    }
+                    cmd.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw GetDataAccessException(ex, SourceOfException("IReportExtensionDataAccess.Get_rpt_ptareceivedwithflightinfo"));
+            }
+            return itemList;
+        }
     }
  }

@@ -22,13 +22,19 @@ public partial class CuttingSummaryReports : Page
             string reporttype = "", masterid = "";
 
             string MilNoBD = "";
+            string ExpireWithin = "";
+            string ExpireFrom = "";
+            string ExpireTo = "";
 
             if (Request.QueryString["reporttype"] != null)
             {
                 reporttype = Request.QueryString["reporttype"].ToString();
                 MilNoBD = Request.QueryString["MilNoBD"].ToString();
+                ExpireWithin = Request.QueryString["ExpireWithin"].ToString();
+                ExpireFrom = Request.QueryString["ExpireFrom"].ToString();
+                ExpireTo = Request.QueryString["ExpireTo"].ToString();
 
-                LoadReport(reporttype, MilNoBD);
+                LoadReport(reporttype, MilNoBD, ExpireWithin, ExpireFrom, ExpireTo);
                 //LoadReport(reporttype);
 
             }
@@ -145,19 +151,27 @@ public partial class CuttingSummaryReports : Page
 
 
     }
-    private void LoadReport(string reporttype, string MilNoKW)
+    private void LoadReport(string reporttype, string MilNoKW, string ExpireWithin, string ExpireFrom, string ExpireTo)
     {
        
         if (reporttype == "13") //10%
         {
-       
+            long? _expirewithin = !string.IsNullOrEmpty(ExpireWithin) ? Convert.ToInt64(ExpireWithin) : (long?)null;
+            DateTime? _expirefrom = !string.IsNullOrEmpty(ExpireFrom) ? Convert.ToDateTime(ExpireFrom) : (DateTime?)null;
+            DateTime? _expireto = !string.IsNullOrEmpty(ExpireTo) ? Convert.ToDateTime(ExpireTo) : (DateTime?)null;
 
-            var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().FamilyPassportInfoExpire(new EmployeeDocumentInfoEntity { MilNoKW = MilNoKW }).ToList();
+            var list = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCReportExtension.GetFacadeCreate().OfficersExpiryInfoData(new rptOfficersExpiryInfoEntity 
+            { 
+                MilNoKW = MilNoKW,
+                ExpiredWithIn = _expirewithin,
+                ExpiredFrom = _expirefrom,
+                ExpiredTo = _expireto
+            }).ToList();
 
             if (list.Count > 0)
             {
 
-                CustomerListReportViewer.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLC/OfficerPassportInfoExpire.rdlc");
+                CustomerListReportViewer.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLC/OfficersNominalRollExpiryInfo.rdlc");
                 CustomerListReportViewer.LocalReport.DataSources.Clear();
                 ReportDataSource rdc = new ReportDataSource("DataSet1", list);
 

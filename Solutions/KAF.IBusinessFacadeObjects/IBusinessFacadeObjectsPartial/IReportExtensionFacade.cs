@@ -164,5 +164,8 @@ namespace KAF.IBusinessFacadeObjects.IBusinessFacadeObjectsPartial
         IList<EmployeeDocumentInfoEntity> FamilyPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo);
 		[OperationContract]
         IList<EmployeeDocumentInfoEntity> OfficerPassportInfoExpire(EmployeeDocumentInfoEntity FamilyPassportInfo);
-    }
+
+		[OperationContract]
+		IList<rptOfficersExpiryInfoEntity> OfficersExpiryInfoData(rptOfficersExpiryInfoEntity rptOfficersExpiryInfo);
+	}
 }

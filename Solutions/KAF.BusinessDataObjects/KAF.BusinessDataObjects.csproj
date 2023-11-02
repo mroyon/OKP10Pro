@@ -129,6 +129,7 @@
     <Compile Include="BusinessDataObjectsPartials\KAF_LoadPermissionToUseEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\KAF_OnlyUserAccWithNameEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\KAF_TransCodesEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\ReportEntity\rptOfficersExpiryInfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\ReportEntity\hr_flightcancelinfo_GAPgListView_ExtEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAFProcess_ManpoewrStateEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\ReportEntity\KAFProcess_UpdateLetterStatusEntity.cs" />
