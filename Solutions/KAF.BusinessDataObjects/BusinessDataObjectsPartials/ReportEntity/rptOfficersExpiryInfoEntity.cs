@@ -38,37 +38,37 @@ namespace KAF.BusinessDataObjects.BusinessDataObjectsPartials
         public string BD_Rank { get; set; }
 
         [DataMember]
-        public DateTime JoinDateKw { get; set; }
+        public DateTime? JoinDateKw { get; set; }
 
         [DataMember]
-        public DateTime ExpectedRetireDateKw { get; set; }
+        public DateTime? ExpectedRetireDateKw { get; set; }
 
         [DataMember]
         public string CivilIDNo { get; set; }
 
         [DataMember]
-        public DateTime CivilIDIssueDate { get; set; }
+        public DateTime? CivilIDIssueDate { get; set; }
 
         [DataMember]
-        public DateTime CivilIDExpiryDate { get; set; }
+        public DateTime? CivilIDExpiryDate { get; set; }
 
         [DataMember]
         public string PassportNo { get; set; }
 
         [DataMember]
-        public DateTime PassportIssueDate { get; set; }
+        public DateTime? PassportIssueDate { get; set; }
 
         [DataMember]
-        public DateTime PassportExpiryDate { get; set; }
+        public DateTime? PassportExpiryDate { get; set; }
 
         [DataMember]
         public string ResidencyNumber { get; set; }
 
         [DataMember]
-        public DateTime ResidencyIssueDate { get; set; }
+        public DateTime? ResidencyIssueDate { get; set; }
 
         [DataMember]
-        public DateTime ResidencyExpiryDate { get; set; }
+        public DateTime? ResidencyExpiryDate { get; set; }
 
         [DataMember]
         public DateTime? DobFrom { get; set; }
@@ -120,25 +120,3 @@ namespace KAF.BusinessDataObjects.BusinessDataObjectsPartials
     }
 
 }
-/*
-  SELECT Hr_BasicProfile.[HrBasicID], 
-               Hr_BasicProfile.FullName, 
-               Hr_SvcInfo.MilNoKW, 
-               dbo.HR_BasicProfile.MilNoBD, 
-               dbo.Hr_SvcInfo.RankIDKW, 
-               KWGen_Rank.RankName KW_Rank, 
-               dbo.Hr_SvcInfo.RankIDBD, 
-               BDGen_Rank.RankName BD_Rank, 
-               [JoinDateKw], 
-               [ExpectedRetireDateKw], 
-               vCivilID.[CivilIDNo] [CivilIDNo], 
-               vCivilID.[CivilIDIssueDate] [CivilIDIssueDate], 
-               vCivilID.[CivilIDExpiryDate] [CivilIDExpiryDate], 
-               vPassport.[PassportNo] [PassportNo], 
-               vPassport.[PassportIssueDate] [PassportIssueDate], 
-               vPassport.[PassportExpiryDate] [PassportExpiryDate], 
-               vResident.[ResidencyNumber] [ResidencyNumber], 
-               vResident.[IssueDate] [ResidencyIssueDate], 
-               vResident.[ExpiryDate] [ResidencyExpiryDate]
-        FROM Hr_BasicProfile
- */
