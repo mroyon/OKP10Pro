@@ -336,6 +336,9 @@
     <Compile Include="Controllers\HR\HrAttachmentReturnController.cs" />
     <Compile Include="Controllers\HR\HrCivilIDInfoController.cs" />
     <Compile Include="Controllers\HR\HrDocumentUploadController.cs" />
+    <Compile Include="Controllers\HR\HrFamilyCivilIDInfoController.cs" />
+    <Compile Include="Controllers\HR\HrFamilyPassportInfoController.cs" />
+    <Compile Include="Controllers\HR\HrFamilyResidentVisaController.cs" />
     <Compile Include="Controllers\HR\HrOkpTransferInfoController.cs" />
     <Compile Include="Controllers\ParadeState\HrDeathInfoController.cs" />
     <Compile Include="Controllers\ParadeState\HrLeaveModificationController.cs" />
@@ -1116,6 +1119,18 @@
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrExtensionInfo\EditHrExtensionInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrExtensionInfo\LandingHrExtensionInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrExtensionInfo\NewHrExtensionInfo.js" />
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyCivilIDInfo\DetailHrFamilyCivilIDInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyCivilIDInfo\EditHrFamilyCivilIDInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyCivilIDInfo\LandingHrFamilyCivilIDInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyCivilIDInfo\NewHrFamilyCivilIDInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyInfo\DetailHrFamilyInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyInfo\EditHrFamilyInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyInfo\LandingHrFamilyInfo.js" />
@@ -1124,6 +1139,30 @@
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyJobInfo\EditHrFamilyJobInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyJobInfo\LandingHrFamilyJobInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyJobInfo\NewHrFamilyJobInfo.js" />
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyPassportInfo\DetailHrFamilyPassportInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyPassportInfo\EditHrFamilyPassportInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyPassportInfo\LandingHrFamilyPassportInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyPassportInfo\NewHrFamilyPassportInfo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyResidentVisa\DetailHrFamilyResidentVisa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyResidentVisa\EditHrFamilyResidentVisa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyResidentVisa\LandingHrFamilyResidentVisa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DesignsAndScripts\PageWise\HRJS\HrFamilyResidentVisa\NewHrFamilyResidentVisa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFlightCancelReIssue\DetailHrFlightInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFlightCancelReIssue\EditHrFlightInfo.js" />
     <Content Include="DesignsAndScripts\PageWise\HRJS\HrFlightCancelReIssue\LandingHrFlightInfo.js" />
@@ -3197,6 +3236,42 @@
     <Content Include="Views\HrCivilIDInfo\_HrCivilIDInfoNew.cshtml" />
     <Content Include="Views\Shared\_Select2PassportInfoByBasicIdSearch.cshtml" />
     <Content Include="Views\RPTMAllReportInfo\DateExpireReport.cshtml" />
+    <Content Include="Views\HrFamilyCivilIDInfo\HrFamilyCivilIDInfoLanding.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyCivilIDInfo\_HrFamilyCivilIDInfoDetail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyCivilIDInfo\_HrFamilyCivilIDInfoEdit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyCivilIDInfo\_HrFamilyCivilIDInfoNew.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyPassportInfo\HrFamilyPassportInfoLanding.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyPassportInfo\_HrFamilyPassportInfoDetail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyPassportInfo\_HrFamilyPassportInfoEdit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyPassportInfo\_HrFamilyPassportInfoNew.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyResidentVisa\HrFamilyResidentVisaLanding.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyResidentVisa\_HrFamilyResidentVisaDetail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyResidentVisa\_HrFamilyResidentVisaEdit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HrFamilyResidentVisa\_HrFamilyResidentVisaNew.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\UploadTemp\" />

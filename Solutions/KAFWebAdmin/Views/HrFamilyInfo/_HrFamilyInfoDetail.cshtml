@@ -178,7 +178,7 @@
 						 <div class="col-md-6">
 							 <div class="form-group">
 								 @Html.LabelFor(model => model.familymaritalstatusid,  htmlAttributes: new { @class = "labelNormal     " })
-								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_maritalstatus[0].ToString(), selectid = "familymaritalstatusid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_MaritalStatus, multiple = false, isReadOnly = true, IsRequired = false, isStatic = false });}
+								 @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_maritalstatusEntity[0].ToString(), selectid = "familymaritalstatusid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_MaritalStatus, multiple = false, isReadOnly = true, IsRequired = false, isStatic = false });}
 							</div>
 						</div>
 						 <div class="col-md-6">

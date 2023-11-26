@@ -141,7 +141,7 @@ namespace KAF.BusinessDataObjects
         [DataMember]
         [MaxLength(150)]
         [Display(Name = "familyname1", ResourceType = typeof(KAF.MsgContainer._hr_familyinfo))]
-        [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_familyinfo), ErrorMessageResourceName = "familyname1Required")]
+        //[Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_familyinfo), ErrorMessageResourceName = "familyname1Required")]
         public string familyname1
         {
             get { return _familyname1; }
@@ -151,7 +151,7 @@ namespace KAF.BusinessDataObjects
         [DataMember]
         [MaxLength(150)]
         [Display(Name = "familyname2", ResourceType = typeof(KAF.MsgContainer._hr_familyinfo))]
-        [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_familyinfo), ErrorMessageResourceName = "familyname2Required")]
+        //[Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_familyinfo), ErrorMessageResourceName = "familyname2Required")]
         public string familyname2
         {
             get { return _familyname2; }

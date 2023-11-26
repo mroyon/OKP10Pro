@@ -493,4 +493,14 @@ namespace KAF.BusinessDataObjects
         public HttpPostedFileBase file2 { get; set; }
     }
 
+    public partial class hr_familypassportinfoEntity
+    {
+        public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+        public HttpPostedFileBase formfile { get; set; }
+    }
+    public partial class hr_familyresidentvisaEntity
+    {
+        public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+        public HttpPostedFileBase formfile { get; set; }
+    }
 }

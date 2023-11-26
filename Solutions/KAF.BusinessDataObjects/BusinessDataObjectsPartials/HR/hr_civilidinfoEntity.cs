@@ -24,7 +24,6 @@ namespace KAF.BusinessDataObjects
         [DataMember]
         [MaxLength(550)]
         [Display(Name = "fullname", ResourceType = typeof(KAF.MsgContainer._hr_basicprofile))]
-        [Required(ErrorMessageResourceType = typeof(KAF.MsgContainer._hr_basicprofile), ErrorMessageResourceName = "fullnameRequired")]
         public string fullname
         {
             get { return _fullname; }

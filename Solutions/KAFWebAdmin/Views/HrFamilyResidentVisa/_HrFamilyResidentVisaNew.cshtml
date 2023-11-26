@@ -1,0 +1,201 @@
+﻿@model KAF.BusinessDataObjects.hr_familyresidentvisaEntity
+
+<style>
+        .form-horizontal .form-group {3
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+    </style>
+
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_FamilyResidentVisaNew", @class = "form-horizontal" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+    HtmlHelper.ClientValidationEnabled = true;
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-primary list-panel" id="list-panel">
+        <div class="panel-heading list-panel-heading">
+            @KAF.MsgContainer._hr_familyresidentvisa.hr_familyresidentvisaCreate
+        </div>
+        
+        <div class="panel-body">
+            <div class="modal-body">
+                <div class="form-horizontal container">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.familyresidentid)
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.hrfamilyid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHr_FamilyInfoSearch", "Common", new { area = "", selectid = "hrfamilyid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_FamilyInfo, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.hrbasicid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHr_BasicProfileSearch", "Common", new { area = "", selectid = "hrbasicid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_BasicProfile, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.familypassportid,  htmlAttributes: new { @class = "labelNormal   required " })
+								 @{Html.RenderAction("LoadHr_FamilyPassportInfoSearch", "Common", new { area = "", selectid = "familypassportid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_FamilyPassportInfo, multiple = false, isReadOnly = false, IsRequired = true });}
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.residencynumber, htmlAttributes: new { @class = "labelNormal required " })
+								 @Html.EditorFor(model => model.residencynumber, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.residencynumber, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.issuedate, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.issuedate, new {  htmlAttributes = new {  @Value = Model.issuedate != null ? Convert.ToDateTime(Model.issuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.issuedate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.expirydate, htmlAttributes: new { @class = "labelNormal  required " }) 
+							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
+							 @Html.EditorFor(model => model.expirydate, new {  htmlAttributes = new {  @Value = Model.expirydate != null ? Convert.ToDateTime(Model.expirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+														 </div>
+							 @Html.ValidationMessageFor(m => m.expirydate, "", new { @class = "text-danger " })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 @Html.LabelFor(model => model.isfamilyvisa, htmlAttributes: new { @class = "labelNormal  " })
+							 @Html.EditorFor(model => model.isfamilyvisa, new { htmlAttributes = new {  @class = "form-control" } })
+							 @Html.ValidationMessageFor(model => model.isfamilyvisa, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.filedescription, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.filedescription, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.filedescription, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.filepath, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.filepath, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.filepath, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+
+					 <div class="row">
+						 <div class="col-md-12">
+							 <div class="form-group">
+								 <div id="filedescription"></div>
+							</div>
+						</div>
+					</div>
+
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.filename, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.filename, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.filename, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.filetype, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.filetype, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.filetype, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.extension, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.extension, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.extension, "", new { @class = "text-danger" })
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.fileno, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.fileno, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.fileno, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
+								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @class = " form-control" } })
+								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+							</div>
+						</div>
+					</div>
+                    <div class="btn-toolbar">
+                        <button type="submit" id="btnSaveHrFamilyResidentVisa" class="btn btn-primary btn-md btnSaveHrFamilyResidentVisa"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
+                        <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+//filecontrol addons
+ var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
+
+
+$('.footable').footable({
+	 calculateWidthOverride: function () {
+		 return { width: $(window).width() };
+	 }
+});
+
+
+
+$(document).ready(function () {
+	 $('#filedescriptionupld').kaffileUploader({
+		 _tableid: 'tbl_filedescription', 
+		 _colname: 'filedescription',
+		 _tabname: 'Hr_FamilyResidentVisa',
+		 _fileuploadbuttontext: 'Upload files',
+		 _modelid: 'File_upload_for__Document',
+		 _modeltext: 'File upload for  Document',
+		 _fileinputname: 'inpfilefiledescription',
+		 _containeruploadpreview: 'filedescriptionuploadpreview',
+		 _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
+		 _ismultiple: true,
+		 _fileobject: fileobject
+
+});
+
+
+ $j('.dateonly').datetimepicker(
+        {
+            // format: 'L'
+            format: 'DD-MM-YYYY'
+        });
+</script>
+
+
+
+

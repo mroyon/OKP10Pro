@@ -22,15 +22,15 @@ $(document).ready(function () {
             jQuery.validator.unobtrusive.parse();
             jQuery.validator.unobtrusive.parse(form);
 
-			 var kaffileUploader = $('#id').kaffileUploader();
-			 var fileobjects_tbl_marriagefiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_marriagefiledescription');
-			 var fileobjects_tbl_divorcefiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_divorcefiledescription');
-			 var fileobjects_tbl_familydeathfiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_familydeathfiledescription');
-			 var fileobjects = fileobjects_tbl_marriagefiledescription.concat(fileobjects_tbl_divorcefiledescription,fileobjects_tbl_familydeathfiledescription);
+			 //var kaffileUploader = $('#id').kaffileUploader();
+			 //var fileobjects_tbl_marriagefiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_marriagefiledescription');
+			 //var fileobjects_tbl_divorcefiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_divorcefiledescription');
+			 //var fileobjects_tbl_familydeathfiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_familydeathfiledescription');
+			 //var fileobjects = fileobjects_tbl_marriagefiledescription.concat(fileobjects_tbl_divorcefiledescription,fileobjects_tbl_familydeathfiledescription);
 
-			  $.each(fileobjects, function (key, valueObj) {
-					  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
-			   });
+			 // $.each(fileobjects, function (key, valueObj) {
+				//	  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+			 //  });
 
 
 
@@ -120,7 +120,7 @@ $(document).ready(function () {
 							 separetiondocdate: GetDateFromTextBox($('#separetiondocdate').val()),
 							 remarks: $('#remarks').val(),
 							 forreview: $('#forreview').val(),
-							 cor_foldercontentsList: fileobjects
+							 //cor_foldercontentsList: fileobjects
 
                 });
 

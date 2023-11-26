@@ -465,9 +465,9 @@ namespace KAFWebAdmin.Controllers.HR
             try
             {
                 ModelState.Clear();
-                hr_familyinfoEntity model = new hr_familyinfoEntity();
-				model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
-                return PartialView("_HrFamilyInfoNew", model);
+    //            hr_familyinfoEntity model = new hr_familyinfoEntity();
+				//model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
+                return PartialView("_HrFamilyInfoNew", input);
             }
             catch (Exception ex)
             {
@@ -494,7 +494,7 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 Int64 ret = 0;
                 SecurityCapsule sec = new SecurityCapsule();
-/*				 ModelState.Remove("hrfamilyid");
+				 ModelState.Remove("hrfamilyid");
 				 ModelState.Remove("hrbasicid");
 				 ModelState.Remove("relationshipid");
 				 ModelState.Remove("parenthrfamilyid");
@@ -568,43 +568,12 @@ namespace KAFWebAdmin.Controllers.HR
 				 ModelState.Remove("separetiondocdate");
 				 ModelState.Remove("remarks");
 				 ModelState.Remove("forreview");
-*/               
+              
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
-                    //RN: OPEN THIS LINE IF HR INVOLDED
-                    //input.hrbasicid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrbasicid", input.strAdditionalPrimaryKey));
-                    
-					//START OF NO CHANGE REGION
-					 string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-					 input.strValue6 = userid;
-					 input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-					 //Int64 ret = 0;
-					 List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
-					 objFileList = input.cor_foldercontentsList;
-					 List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
-					 //END OF NO CHANGE REGION
-					 // CHANGE ThiS LINE TO MAKE A SAVE
-					 //retArray = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().Add_WithFiles(input).ToList();
-					 
-					 //START OF NO CHANGE REGION
-					  if (retArray != null && retArray.Count > 0)
-					 {
-						 ret = 0;
-						 KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
-						 if (objFileList != null && objFileList.Count > 0)
-						 {
-							 foreach (cor_foldercontentsEntity file in objFileList)
-							 {
-								 byte[] imageBytes = Convert.FromBase64String(file.comment);
-								 objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
-							 }
-						 }
-					 ret = 1;
-					 }
-					 //END OF NO CHANGE REGION
-					 
+                    ret = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().Add(input);
                     if (ret > 0)
                     {
                         ModelState.Clear();
@@ -652,119 +621,116 @@ namespace KAFWebAdmin.Controllers.HR
                 input.hrfamilyid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrfamilyid", input.strModelPrimaryKey).ToString());
                 var model = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().GetAll(new hr_familyinfoEntity { hrfamilyid = input.hrfamilyid }).SingleOrDefault();
                 model.strModelPrimaryKey = input.strModelPrimaryKey;
+                if (model != null)
+                {
+                    model.militarynokw = input.militarynokw;
+                }
+
                 //PN: LOAD DATA FOR PRE-SELECT2 DROP DOWN
-					 //List<hr_basicprofileEntity> listhr_basicprofile = KAF.FacadeCreatorObjects.hr_basicprofileFCC.GetFacadeCreate().GetAll(new hr_basicprofileEntity { hrbasicid = model.hrbasicid }).ToList();
-					 //var objhr_basicprofile = (from t in listhr_basicprofile
-					 //select new
-					 //{
-						//		 Id = t.hrbasicid ,
-						//		 Text = t. 
-					 // }).ToList();
-					 //ViewBag.preloadedHR_BasicProfile = JsonConvert.SerializeObject(objhr_basicprofile);
+                //List<hr_basicprofileEntity> listhr_basicprofile = KAF.FacadeCreatorObjects.hr_basicprofileFCC.GetFacadeCreate().GetAll(new hr_basicprofileEntity { hrbasicid = model.hrbasicid }).ToList();
+                //var objhr_basicprofile = (from t in listhr_basicprofile
+                //select new
+                //{
+                //		 Id = t.hrbasicid ,
+                //		 Text = t. 
+                // }).ToList();
+                //ViewBag.preloadedHR_BasicProfile = JsonConvert.SerializeObject(objhr_basicprofile);
 
-					 List<gen_relationshipEntity> listgen_relationship = KAF.FacadeCreatorObjects.gen_relationshipFCC.GetFacadeCreate().GetAll(new gen_relationshipEntity { relationshipid = model.relationshipid }).ToList();
-					 var objgen_relationship = (from t in listgen_relationship
-					 select new
-					 {
-								 Id = t.relationshipid ,
-								 Text = t.relationshipname 
-					  }).ToList();
-					 ViewBag.preloadedGen_Relationship = JsonConvert.SerializeObject(objgen_relationship);
+                //List<gen_relationshipEntity> listgen_relationship = KAF.FacadeCreatorObjects.gen_relationshipFCC.GetFacadeCreate().GetAll(new gen_relationshipEntity { relationshipid = model.relationshipid }).ToList();
+                //var objgen_relationship = (from t in listgen_relationship
+                //                           select new
+                //                           {
+                //                               Id = t.relationshipid,
+                //                               Text = t.relationshipname
+                //                           }).ToList();
+                //ViewBag.preloadedGen_Relationship = JsonConvert.SerializeObject(objgen_relationship);
 
-					 //List<hr_familyinfoEntity> listhr_familyinfo = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().GetAll(new hr_familyinfoEntity { hrfamilyid = model.parenthrfamilyid }).ToList();
-					 //var objhr_familyinfo = (from t in listhr_familyinfo
-					 //select new
-					 //{
-						//		 Id = t.hrfamilyid ,
-						//		 Text = t. 
-					 // }).ToList();
-					 //ViewBag.preloadedHr_FamilyInfo = JsonConvert.SerializeObject(objhr_familyinfo);
+                var Cachegen_relationship = new DataCacheController().GetCacheData(clsDataCache.gen_relationshipEntity[0].ToString());
+                if (model.familygenderid != null)
+                {
+                    var objgen_relationship = Cachegen_relationship.Where(p => p.comId == model.relationshipid).Select(x => new { x.comId, x.comText }).ToList();
+                    ViewBag.preloadedGen_Relationship = JsonConvert.SerializeObject(objgen_relationship);
+                }
 
-					 List<gen_genderEntity> listgen_gender = KAF.FacadeCreatorObjects.gen_genderFCC.GetFacadeCreate().GetAll(new gen_genderEntity { genderid = model.familygenderid }).ToList();
-					 var objgen_gender = (from t in listgen_gender
-					 select new
-					 {
-								 Id = t.genderid ,
-								 Text = t.gender 
-					  }).ToList();
-					 ViewBag.preloadedGen_Gender = JsonConvert.SerializeObject(objgen_gender);
+                //List<hr_familyinfoEntity> listhr_familyinfo = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().GetAll(new hr_familyinfoEntity { hrfamilyid = model.parenthrfamilyid }).ToList();
+                //var objhr_familyinfo = (from t in listhr_familyinfo
+                //select new
+                //{
+                //		 Id = t.hrfamilyid ,
+                //		 Text = t. 
+                // }).ToList();
+                //ViewBag.preloadedHr_FamilyInfo = JsonConvert.SerializeObject(objhr_familyinfo);
 
-					 List<gen_religionEntity> listgen_religion = KAF.FacadeCreatorObjects.gen_religionFCC.GetFacadeCreate().GetAll(new gen_religionEntity { religionid = model.familyreligionid }).ToList();
-					 var objgen_religion = (from t in listgen_religion
-					 select new
-					 {
-								 Id = t.religionid ,
-								 Text = t.religion 
-					  }).ToList();
-					 ViewBag.preloadedGen_Religion = JsonConvert.SerializeObject(objgen_religion);
+                //List<gen_genderEntity> listgen_gender = KAF.FacadeCreatorObjects.gen_genderFCC.GetFacadeCreate().GetAll(new gen_genderEntity { genderid = model.familygenderid }).ToList();
+                //var objgen_gender = (from t in listgen_gender
+                //select new
+                //{
+                //		 Id = t.genderid ,
+                //		 Text = t.gender 
+                // }).ToList();
+                //ViewBag.preloadedGen_Gender = JsonConvert.SerializeObject(objgen_gender);
+                var Cachegen_gender = new DataCacheController().GetCacheData(clsDataCache.gen_genderEntity[0].ToString());
+                if (model.familygenderid != null)
+                {
+                    var objgen_gender = Cachegen_gender.Where(p => p.comId == model.familygenderid).Select(x => new { x.comId, x.comText }).ToList();
+                    ViewBag.preloadedGen_Gender = JsonConvert.SerializeObject(objgen_gender);
+                }
+                var Cachegen_religion = new DataCacheController().GetCacheData(clsDataCache.gen_religionEntity[0].ToString());
+                if (model.familyreligionid != null)
+                {
+                    var objgen_religion = Cachegen_religion.Where(p => p.comId == model.familyreligionid).Select(x => new { x.comId, x.comText }).ToList();
+                    ViewBag.preloadedGen_Religion = JsonConvert.SerializeObject(objgen_religion);
+                }
 
-					 List<gen_bloodgroupEntity> listgen_bloodgroup = KAF.FacadeCreatorObjects.gen_bloodgroupFCC.GetFacadeCreate().GetAll(new gen_bloodgroupEntity { bloodgroupid = model.familybloodgroupid }).ToList();
-					 var objgen_bloodgroup = (from t in listgen_bloodgroup
-					 select new
-					 {
-								 Id = t.bloodgroupid ,
-								 Text = t.bloodgroup 
-					  }).ToList();
-					 ViewBag.preloadedGen_BloodGroup = JsonConvert.SerializeObject(objgen_bloodgroup);
+                //          List<gen_religionEntity> listgen_religion = KAF.FacadeCreatorObjects.gen_religionFCC.GetFacadeCreate().GetAll(new gen_religionEntity { religionid = model.familyreligionid }).ToList();
+                //var objgen_religion = (from t in listgen_religion
+                //select new
+                //{
+                //		 Id = t.religionid ,
+                //		 Text = t.religion 
+                // }).ToList();
+                //ViewBag.preloadedGen_Religion = JsonConvert.SerializeObject(objgen_religion);
 
-					 List<gen_countryEntity> listgen_country = KAF.FacadeCreatorObjects.gen_countryFCC.GetFacadeCreate().GetAll(new gen_countryEntity { countryid = model.familycountryid }).ToList();
-					 var objgen_country = (from t in listgen_country
-					 select new
-					 {
-								 Id = t.countryid ,
-								 Text = t.countryname 
-					  }).ToList();
-					 ViewBag.preloadedGen_Country = JsonConvert.SerializeObject(objgen_country);
+                //List<gen_bloodgroupEntity> listgen_bloodgroup = KAF.FacadeCreatorObjects.gen_bloodgroupFCC.GetFacadeCreate().GetAll(new gen_bloodgroupEntity { bloodgroupid = model.familybloodgroupid }).ToList();
+                //var objgen_bloodgroup = (from t in listgen_bloodgroup
+                //select new
+                //{
+                //		 Id = t.bloodgroupid ,
+                //		 Text = t.bloodgroup 
+                // }).ToList();
+                //ViewBag.preloadedGen_BloodGroup = JsonConvert.SerializeObject(objgen_bloodgroup);
 
-					 //List<gen_countryEntity> listgen_country = KAF.FacadeCreatorObjects.gen_countryFCC.GetFacadeCreate().GetAll(new gen_countryEntity { countryid = model.familynationalityid }).ToList();
-					 //var objgen_country = (from t in listgen_country
-					 //select new
-					 //{
-						//		 Id = t.countryid ,
-						//		 Text = t.countryname 
-					 // }).ToList();
-					 //ViewBag.preloadedGen_Country = JsonConvert.SerializeObject(objgen_country);
+                //List<gen_countryEntity> listgen_country = KAF.FacadeCreatorObjects.gen_countryFCC.GetFacadeCreate().GetAll(new gen_countryEntity { countryid = model.familycountryid }).ToList();
+                //var objgen_country = (from t in listgen_country
+                //select new
+                //{
+                //		 Id = t.countryid ,
+                //		 Text = t.countryname 
+                // }).ToList();
+                //ViewBag.preloadedGen_Country = JsonConvert.SerializeObject(objgen_country);
 
-					 List<gen_maritalstatusEntity> listgen_maritalstatus = KAF.FacadeCreatorObjects.gen_maritalstatusFCC.GetFacadeCreate().GetAll(new gen_maritalstatusEntity { maritalstatusid = model.familymaritalstatusid }).ToList();
-					 var objgen_maritalstatus = (from t in listgen_maritalstatus
-					 select new
-					 {
-								 Id = t.maritalstatusid ,
-								 Text = t.maritalstatus 
-					  }).ToList();
-					 ViewBag.preloadedGen_MaritalStatus = JsonConvert.SerializeObject(objgen_maritalstatus);
-
-					 List<gen_govcityEntity> listgen_govcity = KAF.FacadeCreatorObjects.gen_govcityFCC.GetFacadeCreate().GetAll(new gen_govcityEntity { cityid = model.familycurgovnerid }).ToList();
-					 var objgen_govcity = (from t in listgen_govcity
-					 select new
-					 {
-								 Id = t.cityid ,
-								 Text = t.cityname 
-					  }).ToList();
-					 ViewBag.preloadedGen_GovCity = JsonConvert.SerializeObject(objgen_govcity);
-
-					 //List<gen_govcityEntity> listgen_govcity = KAF.FacadeCreatorObjects.gen_govcityFCC.GetFacadeCreate().GetAll(new gen_govcityEntity { cityid = model.familycurareaid }).ToList();
-					 //var objgen_govcity = (from t in listgen_govcity
-					 //select new
-					 //{
-						//		 Id = t.cityid ,
-						//		 Text = t.cityname 
-					 // }).ToList();
-					 //ViewBag.preloadedGen_GovCity = JsonConvert.SerializeObject(objgen_govcity);
-
-                
-                
-					 string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-					 model.strValue6 = userid;
-					 model.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-					 model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
-					 //model.cor_foldercontentsList = KAF.FacadeCreatorObjects.cor_foldercontentsFCC.GetFacadeCreate().GetAll(new cor_foldercontentsEntity
-					 //{
-					 //     tablename = "Hr_FamilyInfo",
-					 //     folderid = long.Parse(model.strValue5),
-					 //     columnpkid = model.hrfamilyid
-					 //}).ToList();
-					 //END OF NO CHANGE REGION
+                //List<gen_countryEntity> listgen_country = KAF.FacadeCreatorObjects.gen_countryFCC.GetFacadeCreate().GetAll(new gen_countryEntity { countryid = model.familynationalityid }).ToList();
+                //var objgen_country = (from t in listgen_country
+                //select new
+                //{
+                //		 Id = t.countryid ,
+                //		 Text = t.countryname 
+                // }).ToList();
+                //ViewBag.preloadedGen_Country = JsonConvert.SerializeObject(objgen_country);
+                var Cachegen_maritalstatus = new DataCacheController().GetCacheData(clsDataCache.gen_maritalstatusEntity[0].ToString());
+                if (model.familymaritalstatusid != null)
+                {
+                    var objgen_maritalstatus = Cachegen_maritalstatus.Where(p => p.comId == model.familymaritalstatusid).Select(x => new { x.comId, x.comText }).ToList();
+                    ViewBag.preloadedGen_MaritalStatus = JsonConvert.SerializeObject(objgen_maritalstatus);
+                }
+                //List<gen_maritalstatusEntity> listgen_maritalstatus = KAF.FacadeCreatorObjects.gen_maritalstatusFCC.GetFacadeCreate().GetAll(new gen_maritalstatusEntity { maritalstatusid = model.familymaritalstatusid }).ToList();
+                //var objgen_maritalstatus = (from t in listgen_maritalstatus
+                //select new
+                //{
+                //		 Id = t.maritalstatusid ,
+                //		 Text = t.maritalstatus 
+                // }).ToList();
+                //ViewBag.preloadedGen_MaritalStatus = JsonConvert.SerializeObject(objgen_maritalstatus);
 
                 ModelState.Clear();
                 return PartialView("_HrFamilyInfoEdit", model);
@@ -1251,7 +1217,51 @@ namespace KAFWebAdmin.Controllers.HR
             }
         }
         #endregion
-        
+
+
+        [SecurityFillerAttribute]
+        public async Task<ActionResult> GetAllHrBasicProfileData(long? militaryNo)
+        {
+            JsonResult result = new JsonResult();
+            SecurityCapsule sec = new SecurityCapsule();
+            sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
+            hr_svcinfoEntity objhr_svcinfo = new hr_svcinfoEntity();
+            objhr_svcinfo.militarynokw = militaryNo;
+
+            try
+            {
+                var data = KAF.FacadeCreatorObjects.hr_svcinfoFCC.GetFacadeCreate().GetAll_Ext(objhr_svcinfo).ToList();
+                if (data != null && data.Count > 0)
+                {
+                    if (sec.okpid != null && sec.okpid != data.FirstOrDefault().okpid)
+                    {
+                        return Json(new { data = data, status = KAF.MsgContainer._Status._statusFailed, title = KAF.MsgContainer._Status._titleGenericError, redirectUrl = "", responsetext = "Warning! Unauthorized search for Military No: " + militaryNo });
+                    }
+                    long totalRecords = data.FirstOrDefault().RETURN_KEY;
+
+                    var tut = (from t in data
+                               select new
+                               {
+                                   t.hrbasicid,
+                                   t.militarynokw,
+                                   t.militarynobd,
+                                   t.civilid,
+                                   t.passportno,
+                                   t.fullname
+                               }).ToList();
+
+                    result = this.Json(new { status = KAF.MsgContainer._Status._statusSuccess, recordsTotal = totalRecords, recordsFiltered = totalRecords, data = tut, responsetext = "" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    result = this.Json(new { status = KAF.MsgContainer._Status._statusFailed, recordsTotal = 0, recordsFiltered = 0, data = "", responsetext = "Data not found" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }
 
