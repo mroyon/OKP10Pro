@@ -1767,6 +1767,15 @@
     <Content Include="LanguagesFiles\_hr_extensioninfo_history.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LanguagesFiles\_hr_familycivilidinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_hr_familypassportinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_hr_familyresidentvisa.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="LanguagesFiles\_hr_hospitaladmissioninfo_history.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

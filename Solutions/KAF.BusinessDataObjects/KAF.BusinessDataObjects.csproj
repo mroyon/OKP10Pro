@@ -229,6 +229,9 @@
     <Compile Include="BusinessDataObjects\HR\hr_attachmentinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_civilidinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_documentuploadEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_familycivilidinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_familypassportinfoEntity.cs" />
+    <Compile Include="BusinessDataObjects\HR\hr_familyresidentvisaEntity.cs" />
     <Compile Include="BusinessDataObjects\HR\hr_okptransferinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\ParadeState\hr_deathinfoEntity.cs" />
     <Compile Include="BusinessDataObjects\ParadeState\hr_deathinfo_historyEntity.cs" />

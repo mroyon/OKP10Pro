@@ -1681,7 +1681,7 @@ namespace KAF.DataAccessObjects
         }
         #endregion tran_manpowerstatedetl_history
 
-
+          
 
         #region hr_documentupload
         [DebuggerStepThrough()]
@@ -1708,6 +1708,47 @@ namespace KAF.DataAccessObjects
             return (Igen_documenttypeDataAccessObjects)CurrentContext[type];
         }
         #endregion gen_documenttype
+
+        #region hr_familycivilidinfo
+        [DebuggerStepThrough()]
+        public override Ihr_familycivilidinfoDataAccessObjects Createhr_familycivilidinfoDataAccess()
+        {
+            string type = typeof(hr_familycivilidinfoDataAccessObjects).ToString();
+            if (!CurrentContext.Contains(type))
+            {
+                CurrentContext[type] = new hr_familycivilidinfoDataAccessObjects(CurrentContext);
+            }
+            return (Ihr_familycivilidinfoDataAccessObjects)CurrentContext[type];
+        }
+        #endregion hr_familycivilidinfo
+
+        #region hr_familypassportinfo
+        [DebuggerStepThrough()]
+        public override Ihr_familypassportinfoDataAccessObjects Createhr_familypassportinfoDataAccess()
+        {
+            string type = typeof(hr_familypassportinfoDataAccessObjects).ToString();
+            if (!CurrentContext.Contains(type))
+            {
+                CurrentContext[type] = new hr_familypassportinfoDataAccessObjects(CurrentContext);
+            }
+            return (Ihr_familypassportinfoDataAccessObjects)CurrentContext[type];
+        }
+        #endregion hr_familypassportinfo
+
+
+        #region hr_familyresidentvisa
+        [DebuggerStepThrough()]
+        public override Ihr_familyresidentvisaDataAccessObjects Createhr_familyresidentvisaDataAccess()
+        {
+            string type = typeof(hr_familyresidentvisaDataAccessObjects).ToString();
+            if (!CurrentContext.Contains(type))
+            {
+                CurrentContext[type] = new hr_familyresidentvisaDataAccessObjects(CurrentContext);
+            }
+            return (Ihr_familyresidentvisaDataAccessObjects)CurrentContext[type];
+        }
+        #endregion hr_familyresidentvisa
+
         #endregion Factory Methods 
 
     }

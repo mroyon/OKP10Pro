@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrfamilyid" value="AR:  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="hrfamilyidRequired" value="AR: Please provide  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="familycivilidno" value="AR:  Family Civil I D No"></resource>
+       <resource culture="ar-kw" name="familycivilidnoRequired" value="AR: Please provide  Family Civil I D No"></resource>
+       <resource culture="ar-kw" name="serialno" value="AR:  Serial No"></resource>
+       <resource culture="ar-kw" name="familycivilidissuedate" value="AR:  Family Civil I D Issue Date"></resource>
+       <resource culture="ar-kw" name="familycivilidexpirydate" value="AR:  Family Civil I D Expiry Date"></resource>
+       <resource culture="ar-kw" name="familycivilidfiledescription" value="AR:  Family Civil I D File Description"></resource>
+       <resource culture="ar-kw" name="familycivilidfilepath" value="AR:  Family Civil I D File Path"></resource>
+       <resource culture="ar-kw" name="familycivilidfilename" value="AR:  Family Civil I D File Name"></resource>
+       <resource culture="ar-kw" name="familycivilidfiletype" value="AR:  Family Civil I D File Type"></resource>
+       <resource culture="ar-kw" name="familycivilidextension" value="AR:  Family Civil I D Extension"></resource>
+       <resource culture="ar-kw" name="familycivilidfileid" value="AR:  Family Civil I D File I D"></resource>
+       <resource culture="ar-kw" name="familycivilidfiledescription_2" value="AR:  Family Civil I D File Description 2"></resource>
+       <resource culture="ar-kw" name="familycivilidfilepath_2" value="AR:  Family Civil I D File Path 2"></resource>
+       <resource culture="ar-kw" name="familycivilidfilename_2" value="AR:  Family Civil I D File Name 2"></resource>
+       <resource culture="ar-kw" name="familycivilidfiletype_2" value="AR:  Family Civil I D File Type 2"></resource>
+       <resource culture="ar-kw" name="familycivilidextension_2" value="AR:  Family Civil I D Extension 2"></resource>
+       <resource culture="ar-kw" name="familycivilidfileid_2" value="AR:  Family Civil I D File I D 2"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+       <resource culture="ar-kw" name="iscurrent" value="AR:  Is Current"></resource>
+		<resource culture="ar-kw" name="familycivilidinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="familycivilidinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="familycivilidinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="familycivilidinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrfamilyid" value=" Hr Family I D"></resource>
+       <resource culture="en-us" name="hrfamilyidRequired" value="Please provide  Hr Family I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="familycivilidno" value=" Family Civil I D No"></resource>
+       <resource culture="en-us" name="familycivilidnoRequired" value="Please provide  Family Civil I D No"></resource>
+       <resource culture="en-us" name="serialno" value=" Serial No"></resource>
+       <resource culture="en-us" name="familycivilidissuedate" value=" Family Civil I D Issue Date"></resource>
+       <resource culture="en-us" name="familycivilidexpirydate" value=" Family Civil I D Expiry Date"></resource>
+       <resource culture="en-us" name="familycivilidfiledescription" value=" Family Civil I D File Description"></resource>
+       <resource culture="en-us" name="familycivilidfilepath" value=" Family Civil I D File Path"></resource>
+       <resource culture="en-us" name="familycivilidfilename" value=" Family Civil I D File Name"></resource>
+       <resource culture="en-us" name="familycivilidfiletype" value=" Family Civil I D File Type"></resource>
+       <resource culture="en-us" name="familycivilidextension" value=" Family Civil I D Extension"></resource>
+       <resource culture="en-us" name="familycivilidfileid" value=" Family Civil I D File I D"></resource>
+       <resource culture="en-us" name="familycivilidfiledescription_2" value=" Family Civil I D File Description 2"></resource>
+       <resource culture="en-us" name="familycivilidfilepath_2" value=" Family Civil I D File Path 2"></resource>
+       <resource culture="en-us" name="familycivilidfilename_2" value=" Family Civil I D File Name 2"></resource>
+       <resource culture="en-us" name="familycivilidfiletype_2" value=" Family Civil I D File Type 2"></resource>
+       <resource culture="en-us" name="familycivilidextension_2" value=" Family Civil I D Extension 2"></resource>
+       <resource culture="en-us" name="familycivilidfileid_2" value=" Family Civil I D File I D 2"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+       <resource culture="en-us" name="iscurrent" value=" Is Current"></resource>
+        <resource culture="en-us" name="familycivilidinfoList" value="View All"></resource>
+		<resource culture="en-us" name="familycivilidinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="familycivilidinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="familycivilidinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

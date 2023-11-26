@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrfamilyid" value="AR:  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="hrfamilyidRequired" value="AR: Please provide  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic Id"></resource>
+       <resource culture="ar-kw" name="familypassportid" value="AR:  Family Passport I D"></resource>
+       <resource culture="ar-kw" name="familypassportidRequired" value="AR: Please provide  Family Passport I D"></resource>
+       <resource culture="ar-kw" name="residencynumber" value="AR:  Residency Number"></resource>
+       <resource culture="ar-kw" name="residencynumberRequired" value="AR: Please provide  Residency Number"></resource>
+       <resource culture="ar-kw" name="issuedate" value="AR:  Issue Date"></resource>
+       <resource culture="ar-kw" name="issuedateRequired" value="AR: Please provide  Issue Date"></resource>
+       <resource culture="ar-kw" name="expirydate" value="AR:  Expiry Date"></resource>
+       <resource culture="ar-kw" name="expirydateRequired" value="AR: Please provide  Expiry Date"></resource>
+       <resource culture="ar-kw" name="isfamilyvisa" value="AR:  Is Family V I S A"></resource>
+       <resource culture="ar-kw" name="filedescription" value="AR:  File Description"></resource>
+       <resource culture="ar-kw" name="filepath" value="AR:  File Path"></resource>
+       <resource culture="ar-kw" name="filename" value="AR:  File Name"></resource>
+       <resource culture="ar-kw" name="filetype" value="AR:  File Type"></resource>
+       <resource culture="ar-kw" name="extension" value="AR:  Extension"></resource>
+       <resource culture="ar-kw" name="fileno" value="AR:  File No"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="familyresidentvisaList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="familyresidentvisaCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="familyresidentvisaUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="familyresidentvisaDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrfamilyid" value=" Hr Family I D"></resource>
+       <resource culture="en-us" name="hrfamilyidRequired" value="Please provide  Hr Family I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic Id"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic Id"></resource>
+       <resource culture="en-us" name="familypassportid" value=" Family Passport I D"></resource>
+       <resource culture="en-us" name="familypassportidRequired" value="Please provide  Family Passport I D"></resource>
+       <resource culture="en-us" name="residencynumber" value=" Residency Number"></resource>
+       <resource culture="en-us" name="residencynumberRequired" value="Please provide  Residency Number"></resource>
+       <resource culture="en-us" name="issuedate" value=" Issue Date"></resource>
+       <resource culture="en-us" name="issuedateRequired" value="Please provide  Issue Date"></resource>
+       <resource culture="en-us" name="expirydate" value=" Expiry Date"></resource>
+       <resource culture="en-us" name="expirydateRequired" value="Please provide  Expiry Date"></resource>
+       <resource culture="en-us" name="isfamilyvisa" value=" Is Family V I S A"></resource>
+       <resource culture="en-us" name="filedescription" value=" File Description"></resource>
+       <resource culture="en-us" name="filepath" value=" File Path"></resource>
+       <resource culture="en-us" name="filename" value=" File Name"></resource>
+       <resource culture="en-us" name="filetype" value=" File Type"></resource>
+       <resource culture="en-us" name="extension" value=" Extension"></resource>
+       <resource culture="en-us" name="fileno" value=" File No"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="familyresidentvisaList" value="View All"></resource>
+		<resource culture="en-us" name="familyresidentvisaCreate" value="Create"></resource>
+		<resource culture="en-us" name="familyresidentvisaUpdate" value="Update"></resource>
+		<resource culture="en-us" name="familyresidentvisaDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

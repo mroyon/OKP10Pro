@@ -119,8 +119,11 @@
     <Compile Include="_UnityEntityClasses\_hr_emergencycontact.cs" />
     <Compile Include="_UnityEntityClasses\_hr_extensioninfo.cs" />
     <Compile Include="_UnityEntityClasses\_hr_extensioninfo_history.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_familycivilidinfo.cs" />
     <Compile Include="_UnityEntityClasses\_hr_familyinfo.cs" />
     <Compile Include="_UnityEntityClasses\_hr_familyjobinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_familypassportinfo.cs" />
+    <Compile Include="_UnityEntityClasses\_hr_familyresidentvisa.cs" />
     <Compile Include="_UnityEntityClasses\_hr_flightinfo.cs" />
     <Compile Include="_UnityEntityClasses\_hr_flightinfodetl.cs" />
     <Compile Include="_UnityEntityClasses\_hr_hospitaladmissioninfo.cs" />

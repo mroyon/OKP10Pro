@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="hrfamilyid" value="AR:  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="hrfamilyidRequired" value="AR: Please provide  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="familypassportno" value="AR:  Family Passport No"></resource>
+       <resource culture="ar-kw" name="familypassportnoRequired" value="AR: Please provide  Family Passport No"></resource>
+       <resource culture="ar-kw" name="familypassportissuedate" value="AR:  Family Passport Issue Date"></resource>
+       <resource culture="ar-kw" name="familypassportexpirydate" value="AR:  Family Passport Expiry Date"></resource>
+       <resource culture="ar-kw" name="familypassportissuecountryid" value="AR:  Family Passport Issue Country I D"></resource>
+       <resource culture="ar-kw" name="isfamilyfamilypassport" value="AR:  Is Family Family Passport"></resource>
+       <resource culture="ar-kw" name="familypassportfiledescription" value="AR:  Family Passport File Description"></resource>
+       <resource culture="ar-kw" name="familypassportfilepath" value="AR:  Family Passport File Path"></resource>
+       <resource culture="ar-kw" name="familypassportfilename" value="AR:  Family Passport File Name"></resource>
+       <resource culture="ar-kw" name="familypassportfiletype" value="AR:  Family Passport File Type"></resource>
+       <resource culture="ar-kw" name="familypassportextension" value="AR:  Family Passport Extension"></resource>
+       <resource culture="ar-kw" name="familypassportfileid" value="AR:  Family Passport File I D"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+       <resource culture="ar-kw" name="forreview" value="AR:  For Review"></resource>
+       <resource culture="ar-kw" name="iscurrent" value="AR:  Is Current"></resource>
+		<resource culture="ar-kw" name="familypassportinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="familypassportinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="familypassportinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="familypassportinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="hrfamilyid" value=" Hr Family I D"></resource>
+       <resource culture="en-us" name="hrfamilyidRequired" value="Please provide  Hr Family I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="familypassportno" value=" Family Passport No"></resource>
+       <resource culture="en-us" name="familypassportnoRequired" value="Please provide  Family Passport No"></resource>
+       <resource culture="en-us" name="familypassportissuedate" value=" Family Passport Issue Date"></resource>
+       <resource culture="en-us" name="familypassportexpirydate" value=" Family Passport Expiry Date"></resource>
+       <resource culture="en-us" name="familypassportissuecountryid" value=" Family Passport Issue Country I D"></resource>
+       <resource culture="en-us" name="isfamilyfamilypassport" value=" Is Family Family Passport"></resource>
+       <resource culture="en-us" name="familypassportfiledescription" value=" Family Passport File Description"></resource>
+       <resource culture="en-us" name="familypassportfilepath" value=" Family Passport File Path"></resource>
+       <resource culture="en-us" name="familypassportfilename" value=" Family Passport File Name"></resource>
+       <resource culture="en-us" name="familypassportfiletype" value=" Family Passport File Type"></resource>
+       <resource culture="en-us" name="familypassportextension" value=" Family Passport Extension"></resource>
+       <resource culture="en-us" name="familypassportfileid" value=" Family Passport File I D"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+       <resource culture="en-us" name="forreview" value=" For Review"></resource>
+       <resource culture="en-us" name="iscurrent" value=" Is Current"></resource>
+        <resource culture="en-us" name="familypassportinfoList" value="View All"></resource>
+		<resource culture="en-us" name="familypassportinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="familypassportinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="familypassportinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

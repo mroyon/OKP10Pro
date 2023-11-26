@@ -95,6 +95,9 @@
     <Compile Include="DataAccessObjects\HR\hr_attachmentinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\HR\hr_civilidinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\HR\hr_documentuploadDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_familycivilidinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_familypassportinfoDataAccessObjects.cs" />
+    <Compile Include="DataAccessObjects\HR\hr_familyresidentvisaDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\HR\hr_okptransferinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\ParadeState\hr_deathinfoDataAccessObjects.cs" />
     <Compile Include="DataAccessObjects\ParadeState\hr_leaveinfoDataAccessObjects.cs" />

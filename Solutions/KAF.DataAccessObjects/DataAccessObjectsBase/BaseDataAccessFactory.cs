@@ -648,7 +648,21 @@ namespace KAF.DataAccessObjects
         #region gen_documenttype
         public abstract Igen_documenttypeDataAccessObjects Creategen_documenttypeDataAccess();
         #endregion gen_documenttype
+
+        #region hr_familycivilidinfo
+        public abstract Ihr_familycivilidinfoDataAccessObjects Createhr_familycivilidinfoDataAccess();
+        #endregion hr_familycivilidinfo
+
+        #region hr_familypassportinfo
+        public abstract Ihr_familypassportinfoDataAccessObjects Createhr_familypassportinfoDataAccess();
+        #endregion hr_familypassportinfo
+
+        #region hr_familyresidentvisa
+        public abstract Ihr_familyresidentvisaDataAccessObjects Createhr_familyresidentvisaDataAccess();
+        #endregion hr_familyresidentvisa
         #endregion
+
+
 
     }
 }

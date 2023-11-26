@@ -70,6 +70,9 @@
     <Compile Include="IDataAccessObjects\HR\Ihr_attachmentinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\HR\Ihr_civilidinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\HR\Ihr_documentuploadDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_familycivilidinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_familypassportinfoDataAccessObjects.cs" />
+    <Compile Include="IDataAccessObjects\HR\Ihr_familyresidentvisaDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\HR\Ihr_okptransferinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\ParadeState\Ihr_deathinfoDataAccessObjects.cs" />
     <Compile Include="IDataAccessObjects\ParadeState\Ihr_leaveinfoDataAccessObjects.cs" />

@@ -74,6 +74,9 @@
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_attachmentinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_civilidinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_documentuploadFacadeObjects.cs" />
+    <Compile Include="IBusinessFacadeObjects\HR\Ihr_familycivilidinfoFacadeObjects.cs" />
+    <Compile Include="IBusinessFacadeObjects\HR\Ihr_familypassportinfoFacadeObjects.cs" />
+    <Compile Include="IBusinessFacadeObjects\HR\Ihr_familyresidentvisaFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\HR\Ihr_okptransferinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\ParadeState\Ihr_deathinfoFacadeObjects.cs" />
     <Compile Include="IBusinessFacadeObjects\ParadeState\Ihr_leaveinfoFacadeObjects.cs" />
