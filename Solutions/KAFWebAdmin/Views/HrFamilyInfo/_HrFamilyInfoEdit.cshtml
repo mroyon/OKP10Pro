@@ -122,67 +122,12 @@
 
 <script>
 //filecontrol addons
- var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
 
 
 $('.footable').footable({
 	 calculateWidthOverride: function () {
 		 return { width: $(window).width() };
 	 }
-});
-
-
-
-$(document).ready(function () {
-	 var _marriagefiledescriptionupld = $('#marriagefiledescriptionupld').kaffileUploader({
-		 _tableid: 'tbl_marriagefiledescription', 
-		 _colname: 'marriagefiledescription',
-		 _tabname: 'Hr_FamilyInfo',
-		 _fileuploadbuttontext: 'Upload files',
-		 _modelid: 'File_upload_for_Marriage_Document',
-		 _modeltext: 'File upload for Marriage Document',
-		 _fileinputname: 'inpfilemarriagefiledescription',
-		 _containeruploadpreview: 'marriagefiledescriptionuploadpreview',
-		 _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
-		 _ismultiple: true,
-		 _fileobject: fileobject
-
-		 _marriagefiledescriptionupld.loadpreloaddata(fileobject, $("#marriagefiledescriptionuploadpreview"), '@KAF.MsgContainer._Common._btnDelete', 'marriagefiledescription');
-
-});
-$(document).ready(function () {
-	 var _divorcefiledescriptionupld = $('#divorcefiledescriptionupld').kaffileUploader({
-		 _tableid: 'tbl_divorcefiledescription', 
-		 _colname: 'divorcefiledescription',
-		 _tabname: 'Hr_FamilyInfo',
-		 _fileuploadbuttontext: 'Upload files',
-		 _modelid: 'File_upload_for_Divorce_Document',
-		 _modeltext: 'File upload for Divorce Document',
-		 _fileinputname: 'inpfiledivorcefiledescription',
-		 _containeruploadpreview: 'divorcefiledescriptionuploadpreview',
-		 _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
-		 _ismultiple: true,
-		 _fileobject: fileobject
-
-		 _divorcefiledescriptionupld.loadpreloaddata(fileobject, $("#divorcefiledescriptionuploadpreview"), '@KAF.MsgContainer._Common._btnDelete', 'divorcefiledescription');
-
-});
-$(document).ready(function () {
-	 var _familydeathfiledescriptionupld = $('#familydeathfiledescriptionupld').kaffileUploader({
-		 _tableid: 'tbl_familydeathfiledescription', 
-		 _colname: 'familydeathfiledescription',
-		 _tabname: 'Hr_FamilyInfo',
-		 _fileuploadbuttontext: 'Upload files',
-		 _modelid: 'File_upload_for_FamilyDeath_Document',
-		 _modeltext: 'File upload for FamilyDeath Document',
-		 _fileinputname: 'inpfilefamilydeathfiledescription',
-		 _containeruploadpreview: 'familydeathfiledescriptionuploadpreview',
-		 _containerdeletebuttontext: '@KAF.MsgContainer._Common._btnDelete',
-		 _ismultiple: true,
-		 _fileobject: fileobject
-
-		 _familydeathfiledescriptionupld.loadpreloaddata(fileobject, $("#familydeathfiledescriptionuploadpreview"), '@KAF.MsgContainer._Common._btnDelete', 'familydeathfiledescription');
-
 });
 
 </script>

@@ -842,44 +842,44 @@ namespace KAFWebAdmin.Controllers.HR
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
 
-					//START OF NO CHANGE REGION
-					 string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-					 input.strValue6 = userid;
-					 input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-					 //Int64 ret = 0;
-					 List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
-					 objFileList = input.cor_foldercontentsList.Where(p=> p.strValue1 == "deleted" || p.strValue1 == "added").ToList();
-					 input.cor_foldercontentsList = objFileList;
-					 List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
-					 //END OF NO CHANGE REGION
-					 // CHANGE ThiS LINE TO MAKE A SAVE
-					 //retArray = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().Update_WithFiles(input).ToList();
-					 
-					 //START OF NO CHANGE REGION
-					  if (retArray != null && retArray.Count > 0)
-					 {
-						 ret = 0;
-						 KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
-						 if (objFileList != null && objFileList.Count > 0)
-						 {
-						 List<cor_foldercontentsEntity> objFileDeleteList = new List<cor_foldercontentsEntity>();
-						 List<cor_foldercontentsEntity> objFileAddList = new List<cor_foldercontentsEntity>();
-						 objFileDeleteList = objFileList.Where(p => p.strValue1 == "deleted").ToList();
-						 objFileAddList = objFileList.Where(p => p.strValue1 == "added").ToList();
-						 foreach (cor_foldercontentsEntity file in objFileAddList)
-						 {
-						    byte[] imageBytes = Convert.FromBase64String(file.comment);
-						    objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
-						 }
+                    //START OF NO CHANGE REGION
+                    //string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
+                    //input.strValue6 = userid;
+                    //input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
+                    ////Int64 ret = 0;
+                    //List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
+                    //objFileList = input.cor_foldercontentsList.Where(p=> p.strValue1 == "deleted" || p.strValue1 == "added").ToList();
+                    //input.cor_foldercontentsList = objFileList;
+                    //List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
+                    //END OF NO CHANGE REGION
+                    // CHANGE ThiS LINE TO MAKE A SAVE
+                    ret = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().Update(input);
+
+                    //START OF NO CHANGE REGION
+      //              if (retArray != null && retArray.Count > 0)
+					 //{
+						// ret = 0;
+						// KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
+						// if (objFileList != null && objFileList.Count > 0)
+						// {
+						// List<cor_foldercontentsEntity> objFileDeleteList = new List<cor_foldercontentsEntity>();
+						// List<cor_foldercontentsEntity> objFileAddList = new List<cor_foldercontentsEntity>();
+						// objFileDeleteList = objFileList.Where(p => p.strValue1 == "deleted").ToList();
+						// objFileAddList = objFileList.Where(p => p.strValue1 == "added").ToList();
+						// foreach (cor_foldercontentsEntity file in objFileAddList)
+						// {
+						//    byte[] imageBytes = Convert.FromBase64String(file.comment);
+						//    objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
+						// }
 						 
 						 
-						 foreach (cor_foldercontentsEntity file in objFileDeleteList)
-						 {
-						 objFTP.DeleteFileFTP(userid + "/Upload/", file.filename, file.extension);
-						 }
-						 }
-					 ret = 1;
-					 }
+						// foreach (cor_foldercontentsEntity file in objFileDeleteList)
+						// {
+						// objFTP.DeleteFileFTP(userid + "/Upload/", file.filename, file.extension);
+						// }
+						// }
+					 //ret = 1;
+					 //}
 					 //END OF NO CHANGE REGION
 					 
                  
