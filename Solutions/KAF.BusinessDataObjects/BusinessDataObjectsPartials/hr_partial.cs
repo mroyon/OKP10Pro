@@ -52,6 +52,9 @@ namespace KAF.BusinessDataObjects
         public string strgender { get; set; }
 
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
+        public hr_familypassportinfoEntity hr_familypassportinfo { get; set; }
+        public hr_familycivilidinfoEntity hr_familycivilidinfo { get; set; }
+        public hr_familyresidentvisaEntity hr_familyresidentvisa { get; set; }
     }
 
 

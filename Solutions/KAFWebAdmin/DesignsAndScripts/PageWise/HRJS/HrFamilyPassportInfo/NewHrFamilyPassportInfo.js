@@ -22,13 +22,13 @@ $(document).ready(function () {
             jQuery.validator.unobtrusive.parse();
             jQuery.validator.unobtrusive.parse(form);
 
-			 var kaffileUploader = $('#id').kaffileUploader();
-			 var fileobjects_tbl_familypassportfiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_familypassportfiledescription');
-			 var fileobjects = fileobjects_tbl_familypassportfiledescription;
+			 //var kaffileUploader = $('#id').kaffileUploader();
+			 //var fileobjects_tbl_familypassportfiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_familypassportfiledescription');
+			 //var fileobjects = fileobjects_tbl_familypassportfiledescription;
 
-			  $.each(fileobjects, function (key, valueObj) {
-					  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
-			   });
+			 // $.each(fileobjects, function (key, valueObj) {
+				//	  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+			 //  });
 
 
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
 							 remarks: $('#remarks').val(),
 							 forreview: $('#forreview').val(),
 							 iscurrent: $('#iscurrent').val(),
-							 cor_foldercontentsList: fileobjects
+							 //cor_foldercontentsList: fileobjects
 
                 });
 

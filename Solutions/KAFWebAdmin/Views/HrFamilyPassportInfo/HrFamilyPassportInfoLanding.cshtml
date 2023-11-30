@@ -1,30 +1,137 @@
-﻿
+﻿@model KAF.BusinessDataObjects.hr_familypassportinfoEntity
 @{
     ViewBag.Title = "Family Passport";
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
     PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
 }
+<style>
+    .basicDetails {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 
+    /*legend {
+        background-color: #000;
+        color: #fff;
+        padding: 3px 6px;
+    }*/
+
+    /*input {
+        margin: 0.4rem;
+    }*/
+    fieldset.scheduler-border {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+
+    legend.scheduler-border {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-primary list-panel" id="list-panel">
-            <div class="panel-heading list-panel-heading">
-                @{
-                    KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Basic Details
+                </div>
+                <div class="panel-body">
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Start Time</legend>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  required" })
+                                    @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @class = "required form-control" } })
+                                    @Html.ValidationMessageFor(model => model.militarynokw, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                    if (objSecPanel.checkButtonPermission("HrFamilyPassportInfo/HrFamilyPassportInfoNew"))
-                    {
-                        <button type="submit" class="btn btn-primary btn-md"  id="btnNewHrFamilyPassportInfo">
-                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
-                        </button>
-                    }
-                }
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="btn-toolbar align-center">
+                                        <button type="submit" id="btnLandingSearch" class="btn btn-primary btn-md btnLandingSearch">
+                                            <i class="fa fa-search"> </i>
+                                            @KAF.MsgContainer._Common._btnSearch
+                                        </button>
+
+                                        <button type="submit" id="btnClearLandingSearch" class="btn btn-danger btn-md btnClearLandingSearch">
+                                            <i class="fa fa-close"> </i> Clear
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <hr />
+                <div class="basicDetails">
+                    @Html.HiddenFor(model => model.hrbasicid)
+                    @*@Html.EditorFor(model => model.hrbasicid, new { htmlAttributes = new { @class = "hidden form-control" } })*@
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Military No (BD)", htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.militarynobd, new { htmlAttributes = new { @readonly = "readonly", @class = " form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.civilid, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.civilid, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.passportno, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.passportno, new { htmlAttributes = new { @readonly = "readonly", @class = " form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "labelNormal " })
+                                @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @readonly = "readonly", @class = " form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="btn-toolbar align-center">
+                                    @{
+                                        KAF.CustomHelper.HelperClasses.clsSecurityPanel objSecPanel = new KAF.CustomHelper.HelperClasses.clsSecurityPanel();
+
+                                        if (objSecPanel.checkButtonPermission("HrFamilyPassportInfo/HrFamilyPassportInfoNew"))
+                                        {
+                                            <button type="submit" class="btn btn-primary btn-md" id="btnNewHrFamilyPassportInfo">
+                                                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                                            </button>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="panel-body">
                 <table id="HrFamilyPassportInfoDt" class="table table-striped table-bordered" style="width:100%;">
                     <thead>
                         <tr>
-							 <th>@KAF.MsgContainer._hr_familypassportinfo.familypassportno</th>                            <th style="width:250px;"></th>
+                            <th>@KAF.MsgContainer._hr_familypassportinfo.familypassportno</th>
+                            <th style="width:250px;"></th>
                         </tr>
                     </thead>
                 </table>
@@ -56,7 +163,7 @@
 
 @section Scripts {
     <script src="~/ckeditor/ckeditor.js"></script>
-    <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyPassportInfo/LandingHrFamilyPassportInfo.js" ></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyPassportInfo/LandingHrFamilyPassportInfo.js"></script>
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyPassportInfo/NewHrFamilyPassportInfo.js"></script>
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyPassportInfo/EditHrFamilyPassportInfo.js"></script>
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyPassportInfo/DetailHrFamilyPassportInfo.js"></script>

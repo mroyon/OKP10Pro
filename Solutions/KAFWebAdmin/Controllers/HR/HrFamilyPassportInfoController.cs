@@ -236,9 +236,9 @@ namespace KAFWebAdmin.Controllers.HR
             try
             {
                 ModelState.Clear();
-                hr_familypassportinfoEntity model = new hr_familypassportinfoEntity();
-				model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
-                return PartialView("_HrFamilyPassportInfoNew", model);
+    //            hr_familypassportinfoEntity model = new hr_familypassportinfoEntity();
+				//model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
+                return PartialView("_HrFamilyPassportInfoNew", input);
             }
             catch (Exception ex)
             {
@@ -265,58 +265,58 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 Int64 ret = 0;
                 SecurityCapsule sec = new SecurityCapsule();
-/*				 ModelState.Remove("familypassportid");
-				 ModelState.Remove("hrfamilyid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("familypassportno");
-				 ModelState.Remove("familypassportissuedate");
-				 ModelState.Remove("familypassportexpirydate");
-				 ModelState.Remove("familypassportissuecountryid");
-				 ModelState.Remove("isfamilyfamilypassport");
-				 ModelState.Remove("familypassportfiledescription");
-				 ModelState.Remove("familypassportfilepath");
-				 ModelState.Remove("familypassportfilename");
-				 ModelState.Remove("familypassportfiletype");
-				 ModelState.Remove("familypassportextension");
-				 ModelState.Remove("familypassportfileid");
-				 ModelState.Remove("remarks");
-				 ModelState.Remove("forreview");
-				 ModelState.Remove("iscurrent");
-*/               
+                ModelState.Remove("familypassportid");
+                ModelState.Remove("hrfamilyid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("familypassportno");
+                ModelState.Remove("familypassportissuedate");
+                ModelState.Remove("familypassportexpirydate");
+                ModelState.Remove("familypassportissuecountryid");
+                ModelState.Remove("isfamilyfamilypassport");
+                ModelState.Remove("familypassportfiledescription");
+                ModelState.Remove("familypassportfilepath");
+                ModelState.Remove("familypassportfilename");
+                ModelState.Remove("familypassportfiletype");
+                ModelState.Remove("familypassportextension");
+                ModelState.Remove("familypassportfileid");
+                ModelState.Remove("remarks");
+                ModelState.Remove("forreview");
+                ModelState.Remove("iscurrent");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
                     //RN: OPEN THIS LINE IF HR INVOLDED
                     //input.hrbasicid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrbasicid", input.strAdditionalPrimaryKey));
-                    
-					//START OF NO CHANGE REGION
-					 string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-					 input.strValue6 = userid;
-					 input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-					 //Int64 ret = 0;
-					 List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
-					 objFileList = input.cor_foldercontentsList;
-					 List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
-					 //END OF NO CHANGE REGION
-					 // CHANGE ThiS LINE TO MAKE A SAVE
-					 //retArray = KAF.FacadeCreatorObjects.hr_familypassportinfoFCC.GetFacadeCreate().Add_WithFiles(input).ToList();
-					 
-					 //START OF NO CHANGE REGION
-					  if (retArray != null && retArray.Count > 0)
-					 {
-						 ret = 0;
-						 KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
-						 if (objFileList != null && objFileList.Count > 0)
-						 {
-							 foreach (cor_foldercontentsEntity file in objFileList)
-							 {
-								 byte[] imageBytes = Convert.FromBase64String(file.comment);
-								 objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
-							 }
-						 }
-					 ret = 1;
-					 }
+
+                    //START OF NO CHANGE REGION
+                    //string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
+                    //input.strValue6 = userid;
+                    //input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
+                    ////Int64 ret = 0;
+                    //List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
+                    //objFileList = input.cor_foldercontentsList;
+                    //List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
+                    //END OF NO CHANGE REGION
+                    // CHANGE ThiS LINE TO MAKE A SAVE
+                    ret = KAF.FacadeCreatorObjects.hr_familypassportinfoFCC.GetFacadeCreate().Add(input);
+
+                    //START OF NO CHANGE REGION
+      //              if (retArray != null && retArray.Count > 0)
+					 //{
+						// ret = 0;
+						// KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
+						// if (objFileList != null && objFileList.Count > 0)
+						// {
+						//	 foreach (cor_foldercontentsEntity file in objFileList)
+						//	 {
+						//		 byte[] imageBytes = Convert.FromBase64String(file.comment);
+						//		 objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
+						//	 }
+						// }
+					 //ret = 1;
+					 //}
 					 //END OF NO CHANGE REGION
 					 
                     if (ret > 0)
@@ -707,7 +707,50 @@ namespace KAFWebAdmin.Controllers.HR
             }
         }
         #endregion
-        
+
+        [SecurityFillerAttribute]
+        public async Task<ActionResult> GetAllHrBasicProfileData(long? militaryNo)
+        {
+            JsonResult result = new JsonResult();
+            SecurityCapsule sec = new SecurityCapsule();
+            sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
+            hr_svcinfoEntity objhr_svcinfo = new hr_svcinfoEntity();
+            objhr_svcinfo.militarynokw = militaryNo;
+
+            try
+            {
+                var data = KAF.FacadeCreatorObjects.hr_svcinfoFCC.GetFacadeCreate().GetAll_Ext(objhr_svcinfo).ToList();
+                if (data != null && data.Count > 0)
+                {
+                    if (sec.okpid != null && sec.okpid != data.FirstOrDefault().okpid)
+                    {
+                        return Json(new { data = data, status = KAF.MsgContainer._Status._statusFailed, title = KAF.MsgContainer._Status._titleGenericError, redirectUrl = "", responsetext = "Warning! Unauthorized search for Military No: " + militaryNo });
+                    }
+                    long totalRecords = data.FirstOrDefault().RETURN_KEY;
+
+                    var tut = (from t in data
+                               select new
+                               {
+                                   t.hrbasicid,
+                                   t.militarynokw,
+                                   t.militarynobd,
+                                   t.civilid,
+                                   t.passportno,
+                                   t.fullname
+                               }).ToList();
+
+                    result = this.Json(new { status = KAF.MsgContainer._Status._statusSuccess, recordsTotal = totalRecords, recordsFiltered = totalRecords, data = tut, responsetext = "" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    result = this.Json(new { status = KAF.MsgContainer._Status._statusFailed, recordsTotal = 0, recordsFiltered = 0, data = "", responsetext = "Data not found" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }
 

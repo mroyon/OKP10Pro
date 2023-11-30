@@ -213,21 +213,85 @@ namespace KAF.DataAccessObjects
         {
             long returnCode = -99;
             const string SP = "hr_familyinfo_Ins";
-			
-			using (DbCommand cmd =  Database.GetStoredProcCommand(SP))
+
+            DbConnection connection = Database.CreateConnection();
+            connection.Open();
+            DbTransaction transaction = connection.BeginTransaction();
+            try
             {
-                FillParameters(hr_familyinfo, cmd,Database);
-                FillSequrityParameters(hr_familyinfo.BaseSecurityParam, cmd, Database);
-				AddOutputParameter(cmd);
-				try
+                using (DbCommand cmd = Database.GetStoredProcCommand(SP))
                 {
-                  	returnCode =Database.ExecuteNonQuery(cmd);
+                    FillParameters(hr_familyinfo, cmd, Database);
+                    FillSequrityParameters(hr_familyinfo.BaseSecurityParam, cmd, Database);
+                    AddOutputParameter(cmd);
+                    try
+                    {
+                        returnCode = Database.ExecuteNonQuery(cmd, transaction);
+                        returnCode = (Int64)(cmd.Parameters["@RETURN_KEY"].Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw GetDataAccessException(ex, SourceOfException("Ihr_familyinfoDataAccess.Addhr_familyinfo"));
+                    }
+                    cmd.Dispose();
                 }
-                catch (Exception ex)
+
+                if (returnCode > 0)
                 {
-                    throw GetDataAccessException(ex, SourceOfException("Ihr_familyinfoDataAccess.Addhr_familyinfo"));
+                    //Passport
+                    if (hr_familyinfo.hr_familypassportinfo != null)
+                    {
+                        hr_familyinfo.hr_familypassportinfo.hrfamilyid = returnCode;
+
+                        string sp_passport = "hr_familypassportinfo_Ins";
+                        long returnCode_passport = -99;
+                        using (DbCommand cmd = Database.GetStoredProcCommand(sp_passport))
+                        {
+                            hr_familypassportinfoDataAccessObjects.FillParameters(hr_familyinfo.hr_familypassportinfo, cmd, Database);
+                            FillSequrityParameters(hr_familyinfo.BaseSecurityParam, cmd, Database);
+                            AddOutputParameter(cmd);
+                            returnCode_passport = Database.ExecuteNonQuery(cmd, transaction);
+                            if (returnCode_passport < 0)
+                            {
+                                throw new ArgumentException("Error in transaction.");
+                            }
+                            cmd.Dispose();
+                        }
+                    }
+
+                    //CivilId
+                    if (hr_familyinfo.hr_familycivilidinfo != null)
+                    {
+                        hr_familyinfo.hr_familycivilidinfo.hrfamilyid = returnCode;
+                        string sp_civilid = "hr_familycivilidinfo_Ins";
+                        long returnCode_civilid = -99;
+                        using (DbCommand cmd = Database.GetStoredProcCommand(sp_civilid))
+                        {
+                            hr_familycivilidinfoDataAccessObjects.FillParameters(hr_familyinfo.hr_familycivilidinfo, cmd, Database);
+                            FillSequrityParameters(hr_familyinfo.BaseSecurityParam, cmd, Database);
+                            AddOutputParameter(cmd);
+                            returnCode_civilid = Database.ExecuteNonQuery(cmd, transaction);
+                            if (returnCode_civilid < 0)
+                            {
+                                throw new ArgumentException("Error in transaction.");
+                            }
+                            cmd.Dispose();
+                        }
+                    }
                 }
-                cmd.Dispose();
+
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw GetDataAccessException(ex, SourceOfException("Ihr_familyinfoDataAccess.Save_hr_familyinfo"));
+            }
+            finally
+            {
+                transaction.Dispose();
+                connection.Close();
+                connection = null;
             }
             return returnCode;
         }

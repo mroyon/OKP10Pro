@@ -568,7 +568,51 @@ namespace KAFWebAdmin.Controllers.HR
 				 ModelState.Remove("separetiondocdate");
 				 ModelState.Remove("remarks");
 				 ModelState.Remove("forreview");
-              
+
+                //passport
+
+                ModelState.Remove("hr_familypassportinfo.familypassportid");
+                ModelState.Remove("hr_familypassportinfo.hrfamilyid");
+                ModelState.Remove("hr_familypassportinfo.hrbasicid");
+                ModelState.Remove("hr_familypassportinfo.familypassportno");
+                ModelState.Remove("hr_familypassportinfo.familypassportissuedate");
+                ModelState.Remove("hr_familypassportinfo.familypassportexpirydate");
+                ModelState.Remove("hr_familypassportinfo.familypassportissuecountryid");
+                ModelState.Remove("hr_familypassportinfo.isfamilyfamilypassport");
+                ModelState.Remove("hr_familypassportinfo.familypassportfiledescription");
+                ModelState.Remove("hr_familypassportinfo.familypassportfilepath");
+                ModelState.Remove("hr_familypassportinfo.familypassportfilename");
+                ModelState.Remove("hr_familypassportinfo.familypassportfiletype");
+                ModelState.Remove("hr_familypassportinfo.familypassportextension");
+                ModelState.Remove("hr_familypassportinfo.familypassportfileid");
+                ModelState.Remove("hr_familypassportinfo.remarks");
+                ModelState.Remove("hr_familypassportinfo.forreview");
+                ModelState.Remove("hr_familypassportinfo.iscurrent");
+
+                //Civil Id
+                ModelState.Remove("hr_familycivilidinfo.familycivilid");
+                ModelState.Remove("hr_familycivilidinfo.hrfamilyid");
+                ModelState.Remove("hr_familycivilidinfo.hrbasicid");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidno");
+                ModelState.Remove("hr_familycivilidinfo.serialno");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidissuedate");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidexpirydate");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfiledescription");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfilepath");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfilename");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfiletype");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidextension");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfileid");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfiledescription_2");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfilepath_2");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfilename_2");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfiletype_2");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidextension_2");
+                ModelState.Remove("hr_familycivilidinfo.familycivilidfileid_2");
+                ModelState.Remove("hr_familycivilidinfo.remarks");
+                ModelState.Remove("hr_familycivilidinfo.forreview");
+                ModelState.Remove("hr_familycivilidinfo.iscurrent");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];

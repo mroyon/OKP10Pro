@@ -32,82 +32,170 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familyfullname, htmlAttributes: new { @class = "labelNormal required " })
-                                @Html.EditorFor(model => model.familyfullname, new { htmlAttributes = new { @class = " form-control" } })
-                                @Html.ValidationMessageFor(model => model.familyfullname, "", new { @class = "text-danger" })
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Basic Information</legend>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.familyfullname, htmlAttributes: new { @class = "labelNormal required " })
+                                    @Html.EditorFor(model => model.familyfullname, new { htmlAttributes = new { @class = " form-control" } })
+                                    @Html.ValidationMessageFor(model => model.familyfullname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.relationshipid, htmlAttributes: new { @class = "labelNormal   required " })
+                                    @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_relationshipEntity[0].ToString(), selectid = "relationshipid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Relationship, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.relationshipid, htmlAttributes: new { @class = "labelNormal   required " })
-                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_relationshipEntity[0].ToString(), selectid = "relationshipid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Relationship, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.familycivilid, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.familycivilid, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.familycivilid, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.familynationalid, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.familynationalid, new { htmlAttributes = new { @class = " form-control" } })
+                                    @Html.ValidationMessageFor(model => model.familynationalid, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familycivilid, htmlAttributes: new { @class = "labelNormal  " })
-                                @Html.EditorFor(model => model.familycivilid, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.familycivilid, "", new { @class = "text-danger" })
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.familygenderid, htmlAttributes: new { @class = "labelNormal   required " })
+                                    @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_genderEntity[0].ToString(), selectid = "familygenderid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Gender, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.familyreligionid, htmlAttributes: new { @class = "labelNormal     " })
+                                    @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_religionEntity[0].ToString(), selectid = "familyreligionid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Religion, multiple = false, isReadOnly = false, IsRequired = false, isStatic = false });}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familynationalid, htmlAttributes: new { @class = "labelNormal  " })
-                                @Html.EditorFor(model => model.familynationalid, new { htmlAttributes = new { @class = " form-control" } })
-                                @Html.ValidationMessageFor(model => model.familynationalid, "", new { @class = "text-danger" })
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.familymaritalstatusid, htmlAttributes: new { @class = "labelNormal     " })
+                                    @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_maritalstatusEntity[0].ToString(), selectid = "familymaritalstatusid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_MaritalStatus, multiple = false, isReadOnly = false, IsRequired = false, isStatic = false });}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.familymobile1, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.familymobile1, new { htmlAttributes = new { @class = " form-control" } })
+                                    @Html.ValidationMessageFor(model => model.familymobile1, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familygenderid, htmlAttributes: new { @class = "labelNormal   required " })
-                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_genderEntity[0].ToString(), selectid = "familygenderid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Gender, multiple = false, isReadOnly = false, IsRequired = true, isStatic = false });}
+                    </fieldset>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Passport Information</legend>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familypassportinfo.familypassportno, htmlAttributes: new { @class = "labelNormal required " })
+                                    @Html.EditorFor(model => model.hr_familypassportinfo.familypassportno, new { htmlAttributes = new { @class = " form-control" } })
+                                    @Html.ValidationMessageFor(model => model.hr_familypassportinfo.familypassportno, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familyreligionid, htmlAttributes: new { @class = "labelNormal     " })
-                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_religionEntity[0].ToString(), selectid = "familyreligionid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Religion, multiple = false, isReadOnly = false, IsRequired = false, isStatic = false });}
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familypassportinfo.familypassportissuedate, htmlAttributes: new { @class = "labelNormal   " })
+                                    <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                        @Html.EditorFor(model => model.hr_familypassportinfo.familypassportissuedate, new { htmlAttributes = new { @Value = Model.hr_familypassportinfo != null && Model.hr_familypassportinfo.familypassportissuedate != null ? Convert.ToDateTime(Model.hr_familypassportinfo.familypassportissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.hr_familypassportinfo.familypassportissuedate, "", new { @class = "text-danger " })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familypassportinfo.familypassportexpirydate, htmlAttributes: new { @class = "labelNormal   " })
+                                    <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                        @Html.EditorFor(model => model.hr_familypassportinfo.familypassportexpirydate, new { htmlAttributes = new { @Value = Model.hr_familypassportinfo != null && Model.hr_familypassportinfo.familypassportexpirydate != null ? Convert.ToDateTime(Model.hr_familypassportinfo.familypassportexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.hr_familypassportinfo.familypassportexpirydate, "", new { @class = "text-danger " })
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familymaritalstatusid, htmlAttributes: new { @class = "labelNormal     " })
-                                @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_maritalstatusEntity[0].ToString(), selectid = "familymaritalstatusid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_MaritalStatus, multiple = false, isReadOnly = true, IsRequired = false, isStatic = false });}
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familypassportinfo.familypassportissuecountryid, htmlAttributes: new { @class = "labelNormal     " })
+                                    @*@{Html.RenderAction("LoadGen_CountrySearch", "Common", new { area = "", selectid = "familypassportissuecountryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Country, multiple = false, isReadOnly = false, IsRequired = false });}*@
+                                    @{Html.RenderAction("LoadCountrySearch", "Common", new { area = "", selectid = "familypassportissuecountryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Country, multiple = false, isReadOnly = false, IsRequired = true });}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familypassportinfo.isfamilyfamilypassport, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.hr_familypassportinfo.isfamilyfamilypassport, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.hr_familypassportinfo.isfamilyfamilypassport, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familymobile1, htmlAttributes: new { @class = "labelNormal  " })
-                                @Html.EditorFor(model => model.familymobile1, new { htmlAttributes = new { @class = " form-control" } })
-                                @Html.ValidationMessageFor(model => model.familymobile1, "", new { @class = "text-danger" })
+                    </fieldset>
+
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Civil Id Information</legend>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familycivilidinfo.familycivilidno, htmlAttributes: new { @class = "labelNormal required " })
+                                    @Html.EditorFor(model => model.hr_familycivilidinfo.familycivilidno, new { htmlAttributes = new { @class = " form-control" } })
+                                    @Html.ValidationMessageFor(model => model.hr_familycivilidinfo.familycivilidno, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familycivilidinfo.serialno, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.hr_familycivilidinfo.serialno, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.hr_familycivilidinfo.serialno, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
-                        @*<div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.familytelephone1, htmlAttributes: new { @class = "labelNormal  " })
-                                @Html.EditorFor(model => model.familytelephone1, new { htmlAttributes = new { @class = " form-control" } })
-                                @Html.ValidationMessageFor(model => model.familytelephone1, "", new { @class = "text-danger" })
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familycivilidinfo.familycivilidissuedate, htmlAttributes: new { @class = "labelNormal   " })
+                                    <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                        @Html.EditorFor(model => model.hr_familycivilidinfo.familycivilidissuedate, new { htmlAttributes = new { @Value = Model.hr_familycivilidinfo != null && Model.hr_familycivilidinfo.familycivilidissuedate != null ? Convert.ToDateTime(Model.hr_familycivilidinfo.familycivilidissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.hr_familycivilidinfo.familycivilidissuedate, "", new { @class = "text-danger " })
+                                </div>
                             </div>
-                        </div>*@
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
-                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = " form-control" } })
-                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.hr_familycivilidinfo.familycivilidexpirydate, htmlAttributes: new { @class = "labelNormal   " })
+                                    <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                        @Html.EditorFor(model => model.hr_familycivilidinfo.familycivilidexpirydate, new { htmlAttributes = new { @Value = Model.hr_familycivilidinfo != null && Model.hr_familycivilidinfo.familycivilidexpirydate != null ? Convert.ToDateTime(Model.hr_familycivilidinfo.familycivilidexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.hr_familycivilidinfo.familycivilidexpirydate, "", new { @class = "text-danger " })
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
+
                     <div class="btn-toolbar">
                         <button type="submit" id="btnSaveHrFamilyInfo" class="btn btn-primary btn-md btnSaveHrFamilyInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
                         <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
@@ -121,7 +209,7 @@
 
 <script>
 //filecontrol addons
- var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
+
 
 
 $('.footable').footable({
@@ -132,7 +220,7 @@ $('.footable').footable({
 
 
 
-$(document).ready(function () {
+@*$(document).ready(function () {
 	 $('#marriagefiledescriptionupld').kaffileUploader({
 		 _tableid: 'tbl_marriagefiledescription',
 		 _colname: 'marriagefiledescription',
@@ -176,7 +264,7 @@ $(document).ready(function () {
 		 _ismultiple: true,
 		 _fileobject: fileobject
 
-});
+});*@
 
 
  $j('.dateonly').datetimepicker(
