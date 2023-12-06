@@ -134,7 +134,7 @@
                             <th>@KAF.MsgContainer._hr_familyinfo.familyfullname</th>
                             <th>@KAF.MsgContainer._hr_familyinfo.relationshipid</th>
                             <th style="width:250px;"></th>
-                            <th style="width:180px;"></th>
+                            <th style="width:300px;"></th>
                         </tr>
                     </thead>
                 </table>
@@ -176,6 +176,12 @@
         </div>
     </div>
 </div>
+<div id="modal-container-HrFamilyResidentVisaNew" class="modal fade hidden-print" role="dialog">
+    <div class="modal-dialog" style="width:90%!important">
+        <div class="modal-content" id="mcHrFamilyResidentVisaNew">
+        </div>
+    </div>
+</div>
 @section Scripts {
     <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyInfo/LandingHrFamilyInfo.js"></script>
@@ -185,8 +191,12 @@
 
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyPassportInfo/NewHrFamilyPassportInfo.js"></script>
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyPassportInfo/EditHrFamilyPassportInfo.js"></script>
+
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyCivilIDInfo/NewHrFamilyCivilIDInfo.js"></script>
     <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyCivilIDInfo/EditHrFamilyCivilIDInfo.js"></script>
+
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyResidentVisa/NewHrFamilyResidentVisa.js"></script>
+    <script src="~/DesignsAndScripts/PageWise/HRJS/HrFamilyResidentVisa/EditHrFamilyResidentVisa.js"></script>
 
     <script>
         var addlink = '@ViewBag.addlink';

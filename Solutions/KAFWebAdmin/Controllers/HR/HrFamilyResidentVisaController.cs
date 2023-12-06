@@ -228,9 +228,26 @@ namespace KAFWebAdmin.Controllers.HR
             try
             {
                 ModelState.Clear();
-                hr_familyresidentvisaEntity model = new hr_familyresidentvisaEntity();
-				model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
-                return PartialView("_HrFamilyResidentVisaNew", model);
+                //            hr_familyresidentvisaEntity model = new hr_familyresidentvisaEntity();
+                //model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
+                hr_familypassportinfoEntity hr_familypassportinfo = KAF.FacadeCreatorObjects.hr_familypassportinfoFCC.GetFacadeCreate().GetAll(new hr_familypassportinfoEntity { hrfamilyid = input.hrfamilyid, iscurrent = true }).FirstOrDefault();
+                if (hr_familypassportinfo != null) input.familypassportid = hr_familypassportinfo.familypassportid;
+                if (!string.IsNullOrEmpty(input.strModelPrimaryKey))
+                {
+                    input.hrfamilyid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrfamilyid", input.strModelPrimaryKey));
+                    if (input.hrfamilyid.HasValue)
+                    {
+                        var _checkDataExist = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().GetAll(new hr_familyresidentvisaEntity { hrfamilyid = input.hrfamilyid}).OrderByDescending(p=> p.familyresidentid).FirstOrDefault();
+                        if (_checkDataExist != null)
+                        {
+                            _checkDataExist.strModelPrimaryKey = input.strModelPrimaryKey;
+                            _checkDataExist.familypassportid = input.familypassportid;
+                            _checkDataExist.militarynokw = input.militarynokw;
+                            return PartialView("~\\Views\\HrFamilyResidentVisa\\_HrFamilyResidentVisaEdit.cshtml", _checkDataExist);
+                        }
+                    }
+                }
+                return PartialView("_HrFamilyResidentVisaNew", input);
             }
             catch (Exception ex)
             {
@@ -257,22 +274,22 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 Int64 ret = 0;
                 SecurityCapsule sec = new SecurityCapsule();
-/*				 ModelState.Remove("familyresidentid");
-				 ModelState.Remove("hrfamilyid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("familypassportid");
-				 ModelState.Remove("residencynumber");
-				 ModelState.Remove("issuedate");
-				 ModelState.Remove("expirydate");
-				 ModelState.Remove("isfamilyvisa");
-				 ModelState.Remove("filedescription");
-				 ModelState.Remove("filepath");
-				 ModelState.Remove("filename");
-				 ModelState.Remove("filetype");
-				 ModelState.Remove("extension");
-				 ModelState.Remove("fileno");
-				 ModelState.Remove("remarks");
-*/               
+                ModelState.Remove("familyresidentid");
+                ModelState.Remove("hrfamilyid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("familypassportid");
+                ModelState.Remove("residencynumber");
+                ModelState.Remove("issuedate");
+                ModelState.Remove("expirydate");
+                ModelState.Remove("isfamilyvisa");
+                ModelState.Remove("filedescription");
+                ModelState.Remove("filepath");
+                ModelState.Remove("filename");
+                ModelState.Remove("filetype");
+                ModelState.Remove("extension");
+                ModelState.Remove("fileno");
+                ModelState.Remove("remarks");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
@@ -281,32 +298,32 @@ namespace KAFWebAdmin.Controllers.HR
                     //input.hrbasicid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrbasicid", input.strAdditionalPrimaryKey));
                     
 					//START OF NO CHANGE REGION
-					 string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-					 input.strValue6 = userid;
-					 input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
+					 //string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
+					 //input.strValue6 = userid;
+					 //input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
 					 //Int64 ret = 0;
-					 List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
-					 objFileList = input.cor_foldercontentsList;
+					 //List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
+					 //objFileList = input.cor_foldercontentsList;
 					 List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
-					 //END OF NO CHANGE REGION
-					 // CHANGE ThiS LINE TO MAKE A SAVE
-					 //retArray = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().Add_WithFiles(input).ToList();
-					 
-					 //START OF NO CHANGE REGION
-					  if (retArray != null && retArray.Count > 0)
-					 {
-						 ret = 0;
-						 KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
-						 if (objFileList != null && objFileList.Count > 0)
-						 {
-							 foreach (cor_foldercontentsEntity file in objFileList)
-							 {
-								 byte[] imageBytes = Convert.FromBase64String(file.comment);
-								 objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
-							 }
-						 }
-					 ret = 1;
-					 }
+                    //END OF NO CHANGE REGION
+                    // CHANGE ThiS LINE TO MAKE A SAVE
+                    //retArray = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().Add_WithFiles(input).ToList();
+                    ret = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().Add(input);
+                    //START OF NO CHANGE REGION
+      //              if (retArray != null && retArray.Count > 0)
+					 //{
+						// ret = 0;
+						// KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
+						// if (objFileList != null && objFileList.Count > 0)
+						// {
+						//	 foreach (cor_foldercontentsEntity file in objFileList)
+						//	 {
+						//		 byte[] imageBytes = Convert.FromBase64String(file.comment);
+						//		 objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
+						//	 }
+						// }
+					 //ret = 1;
+					 //}
 					 //END OF NO CHANGE REGION
 					 
                     if (ret > 0)
@@ -353,18 +370,18 @@ namespace KAFWebAdmin.Controllers.HR
             try
             {
                 sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
-                input.familyresidentid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("familyresidentid", input.strModelPrimaryKey).ToString());
+                input.hrfamilyid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrfamilyid", input.strModelPrimaryKey).ToString());
                 var model = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().GetAll(new hr_familyresidentvisaEntity { familyresidentid = input.familyresidentid }).SingleOrDefault();
                 model.strModelPrimaryKey = input.strModelPrimaryKey;
                 //PN: LOAD DATA FOR PRE-SELECT2 DROP DOWN
-					 List<hr_familyinfoEntity> listhr_familyinfo = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().GetAll(new hr_familyinfoEntity { hrfamilyid = model.hrfamilyid }).ToList();
-					 var objhr_familyinfo = (from t in listhr_familyinfo
-					 select new
-					 {
-								 Id = t.hrfamilyid ,
-								 Text = t.familynationalid 
-					  }).ToList();
-					 ViewBag.preloadedHr_FamilyInfo = JsonConvert.SerializeObject(objhr_familyinfo);
+					 //List<hr_familyinfoEntity> listhr_familyinfo = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().GetAll(new hr_familyinfoEntity { hrfamilyid = model.hrfamilyid }).ToList();
+					 //var objhr_familyinfo = (from t in listhr_familyinfo
+					 //select new
+					 //{
+						//		 Id = t.hrfamilyid ,
+						//		 Text = t.familynationalid 
+					 // }).ToList();
+					 //ViewBag.preloadedHr_FamilyInfo = JsonConvert.SerializeObject(objhr_familyinfo);
 
 					 //List<hr_basicprofileEntity> listhr_basicprofile = KAF.FacadeCreatorObjects.hr_basicprofileFCC.GetFacadeCreate().GetAll(new hr_basicprofileEntity { hrbasicid = model.hrbasicid }).ToList();
 					 //var objhr_basicprofile = (from t in listhr_basicprofile
@@ -375,18 +392,18 @@ namespace KAFWebAdmin.Controllers.HR
 					 // }).ToList();
 					 //ViewBag.preloadedHr_BasicProfile = JsonConvert.SerializeObject(objhr_basicprofile);
 
-					 List<hr_familypassportinfoEntity> listhr_familypassportinfo = KAF.FacadeCreatorObjects.hr_familypassportinfoFCC.GetFacadeCreate().GetAll(new hr_familypassportinfoEntity { familypassportid = model.familypassportid }).ToList();
-					 var objhr_familypassportinfo = (from t in listhr_familypassportinfo
-					 select new
-					 {
-								 Id = t.familypassportid ,
-								 Text = t.familypassportno 
-					  }).ToList();
-					 ViewBag.preloadedHr_FamilyPassportInfo = JsonConvert.SerializeObject(objhr_familypassportinfo);
+					 //List<hr_familypassportinfoEntity> listhr_familypassportinfo = KAF.FacadeCreatorObjects.hr_familypassportinfoFCC.GetFacadeCreate().GetAll(new hr_familypassportinfoEntity { familypassportid = model.familypassportid, iscurrent=true}).ToList();
+					 //var objhr_familypassportinfo = (from t in listhr_familypassportinfo
+					 //select new
+					 //{
+						//		 Id = t.familypassportid ,
+						//		 Text = t.familypassportno 
+					 // }).ToList();
+					 //ViewBag.preloadedHr_FamilyPassportInfo = JsonConvert.SerializeObject(objhr_familypassportinfo);
 
                 
                 
-					 string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
+					 //string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
 					 //model.strValue6 = userid;
 					 //model.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
 					 //model.cor_foldercontentsList = new List<cor_foldercontentsEntity>();
@@ -426,67 +443,68 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 SecurityCapsule sec = new SecurityCapsule();
                 Int64 ret = 0;
-                
+
                 //PN: KEEP THE REQUIRED LINE AND REMOVE REST
-/*				 ModelState.Remove("familyresidentid");
-				 ModelState.Remove("hrfamilyid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("familypassportid");
-				 ModelState.Remove("residencynumber");
-				 ModelState.Remove("issuedate");
-				 ModelState.Remove("expirydate");
-				 ModelState.Remove("isfamilyvisa");
-				 ModelState.Remove("filedescription");
-				 ModelState.Remove("filepath");
-				 ModelState.Remove("filename");
-				 ModelState.Remove("filetype");
-				 ModelState.Remove("extension");
-				 ModelState.Remove("fileno");
-				 ModelState.Remove("remarks");
-*/               
+                ModelState.Remove("familyresidentid");
+                ModelState.Remove("hrfamilyid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("familypassportid");
+                ModelState.Remove("residencynumber");
+                ModelState.Remove("issuedate");
+                ModelState.Remove("expirydate");
+                ModelState.Remove("isfamilyvisa");
+                ModelState.Remove("filedescription");
+                ModelState.Remove("filepath");
+                ModelState.Remove("filename");
+                ModelState.Remove("filetype");
+                ModelState.Remove("extension");
+                ModelState.Remove("fileno");
+                ModelState.Remove("remarks");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
 
-					//START OF NO CHANGE REGION
-					 string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
-					 input.strValue6 = userid;
-					 input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
-					 //Int64 ret = 0;
-					 List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
-					 objFileList = input.cor_foldercontentsList.Where(p=> p.strValue1 == "deleted" || p.strValue1 == "added").ToList();
-					 input.cor_foldercontentsList = objFileList;
-					 List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
-					 //END OF NO CHANGE REGION
-					 // CHANGE ThiS LINE TO MAKE A SAVE
-					 //retArray = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().Update_WithFiles(input).ToList();
-					 
-					 //START OF NO CHANGE REGION
-					  if (retArray != null && retArray.Count > 0)
-					 {
-						 ret = 0;
-						 KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
-						 if (objFileList != null && objFileList.Count > 0)
-						 {
-						 List<cor_foldercontentsEntity> objFileDeleteList = new List<cor_foldercontentsEntity>();
-						 List<cor_foldercontentsEntity> objFileAddList = new List<cor_foldercontentsEntity>();
-						 objFileDeleteList = objFileList.Where(p => p.strValue1 == "deleted").ToList();
-						 objFileAddList = objFileList.Where(p => p.strValue1 == "added").ToList();
-						 foreach (cor_foldercontentsEntity file in objFileAddList)
-						 {
-						    byte[] imageBytes = Convert.FromBase64String(file.comment);
-						    objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
-						 }
+                    //START OF NO CHANGE REGION
+                    //string userid = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).userid.GetValueOrDefault().ToString() : "";
+                    //input.strValue6 = userid;
+                    //input.strValue5 = Session["selectedprofile"] != null ? ((hr_basicprofileEntity)Session["selectedprofile"]).hr_folderobj.folderid.GetValueOrDefault().ToString() : "";
+                    ////Int64 ret = 0;
+                    //List<cor_foldercontentsEntity> objFileList = new List<cor_foldercontentsEntity>();
+                    //objFileList = input.cor_foldercontentsList.Where(p=> p.strValue1 == "deleted" || p.strValue1 == "added").ToList();
+                    //input.cor_foldercontentsList = objFileList;
+                    //List<KAFGenericComboEntity> retArray = new List<KAFGenericComboEntity>();
+                    //END OF NO CHANGE REGION
+                    // CHANGE ThiS LINE TO MAKE A SAVE
+                    //retArray = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().Update_WithFiles(input).ToList();
+                    ret = KAF.FacadeCreatorObjects.hr_familyresidentvisaFCC.GetFacadeCreate().Update(input);
+
+                    //START OF NO CHANGE REGION
+      //              if (retArray != null && retArray.Count > 0)
+					 //{
+						// ret = 0;
+						// KAF.AppConfiguration.Configuration.FileHandler objFTP = new KAF.AppConfiguration.Configuration.FileHandler();
+						// if (objFileList != null && objFileList.Count > 0)
+						// {
+						// List<cor_foldercontentsEntity> objFileDeleteList = new List<cor_foldercontentsEntity>();
+						// List<cor_foldercontentsEntity> objFileAddList = new List<cor_foldercontentsEntity>();
+						// objFileDeleteList = objFileList.Where(p => p.strValue1 == "deleted").ToList();
+						// objFileAddList = objFileList.Where(p => p.strValue1 == "added").ToList();
+						// foreach (cor_foldercontentsEntity file in objFileAddList)
+						// {
+						//    byte[] imageBytes = Convert.FromBase64String(file.comment);
+						//    objFTP.UploadFileFTP(imageBytes, userid + "/Upload/", file.filename, file.extension);
+						// }
 						 
 						 
-						 foreach (cor_foldercontentsEntity file in objFileDeleteList)
-						 {
-						 objFTP.DeleteFileFTP(userid + "/Upload/", file.filename, file.extension);
-						 }
-						 }
-					 ret = 1;
-					 }
+						// foreach (cor_foldercontentsEntity file in objFileDeleteList)
+						// {
+						// objFTP.DeleteFileFTP(userid + "/Upload/", file.filename, file.extension);
+						// }
+						// }
+					 //ret = 1;
+					 //}
 					 //END OF NO CHANGE REGION
 					 
                  

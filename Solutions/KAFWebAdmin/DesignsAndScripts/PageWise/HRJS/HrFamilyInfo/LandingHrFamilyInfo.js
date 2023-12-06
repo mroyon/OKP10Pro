@@ -504,5 +504,38 @@ function HrFamilyCivilIDInfoNew(val) {
         });
     }
 }
+function HrFamilyResidentVisaNew(val) {
+    try {
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "HrFamilyInfoEdit",
+            currenturl: window.location.href,
+            strModelPrimaryKey: val,
+            militarynokw: $('#militarynokw').val()
+        });
 
-
+        $.ajax({
+            url: baseurl + "HrFamilyResidentVisa/HrFamilyResidentVisaNew",
+            type: 'POST',
+            data: input,
+            success: function (response) {
+                $('#mcHrFamilyResidentVisaNew').html('');
+                $('#mcHrFamilyResidentVisaNew').html(response);
+                $('#modal-container-HrFamilyResidentVisaNew').modal({ backdrop: 'static', keyboard: false });
+            }
+        });
+    } catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e.message,
+            type: 'red'
+        });
+    }
+}

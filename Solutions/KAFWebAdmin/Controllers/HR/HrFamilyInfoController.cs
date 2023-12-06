@@ -172,7 +172,7 @@ namespace KAFWebAdmin.Controllers.HR
                                    "HrFamilyInfo/HrFamilyInfoDetail", "HrFamilyInfoDetail"),
                                    
 								   ex_nvarchar2 = objSecPanel.genButtonPanelExtra(t.hrfamilyid.GetValueOrDefault(-99), "hrfamilyid", this.HttpContext.User.Identity as ClaimsIdentity,
-                                   "HrFamilyPassportInfo/HrFamilyPassportInfoNew|HrFamilyPassportInfoNew|Passport,HrFamilyCivilIDInfo/HrFamilyCivilIDInfoNew|HrFamilyCivilIDInfoNew|Civil ID")
+                                   "HrFamilyPassportInfo/HrFamilyPassportInfoNew|HrFamilyPassportInfoNew|Passport,HrFamilyCivilIDInfo/HrFamilyCivilIDInfoNew|HrFamilyCivilIDInfoNew|Civil ID,HrFamilyResidentVisa/HrFamilyResidentVisaNew|HrFamilyResidentVisaNew|Resident Visa")
 
                                }).ToList();
 
