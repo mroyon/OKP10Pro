@@ -7,7 +7,7 @@
         }
     </style>
 
-@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_FamilyCivilIDInfoNew", @class = "form-horizontal" }))
+@using (Ajax.BeginForm("", "", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "", LoadingElementId = "divProgressBar" }, new { @id = "frmHr_FamilyCivilIDInfoNew", @class = "form-horizontal", @enctype = "multipart/form-data" }))
 {
     HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
     HtmlHelper.ClientValidationEnabled = true;
@@ -68,10 +68,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input class="custom-file-label" id="fileInput" type="file" multiple>
+                                    <label class="custom-file-label" for="fileInput" multiple>Choose Civil Id Front Part</label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input class="custom-file-label" id="fileInput2" type="file" multiple>
+                                    <label class="custom-file-label" for="fileInput2" multiple>Choose Civil Id Back Part</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="btn-toolbar">
                         <button type="submit" id="btnSaveHrFamilyCivilIDInfo" class="btn btn-primary btn-md btnSaveHrFamilyCivilIDInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
                         <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>

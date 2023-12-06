@@ -519,7 +519,6 @@ namespace KAFWebAdmin.Controllers.HR
                         input.civilidextension = fileExtension;
                         input.civilidfiledescription = "";
                     }
-
                     if (input.file2 != null && input.file2.ContentLength > 0)
                     {
                         string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
@@ -546,6 +545,7 @@ namespace KAFWebAdmin.Controllers.HR
                         input.civilidextension_2 = fileExtension;
                         input.civilidfiledescription_2 = "";
                     }
+
                     ret = KAF.FacadeCreatorObjects.hr_civilidinfoFCC.GetFacadeCreate().Update(input);
                  
                     if (ret > 0)

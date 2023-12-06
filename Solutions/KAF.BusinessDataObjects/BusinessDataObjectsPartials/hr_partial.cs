@@ -506,4 +506,9 @@ namespace KAF.BusinessDataObjects
         public List<cor_foldercontentsEntity> cor_foldercontentsList { get; set; }
         public HttpPostedFileBase formfile { get; set; }
     }
+    public partial class hr_familycivilidinfoEntity
+    {
+        public HttpPostedFileBase formfile1 { get; set; }
+        public HttpPostedFileBase formfile2 { get; set; }
+    }
 }
