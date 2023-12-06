@@ -22,13 +22,13 @@ $(document).ready(function () {
             jQuery.validator.unobtrusive.parse();
             jQuery.validator.unobtrusive.parse(form);
 
-			 var kaffileUploader = $('#id').kaffileUploader();
-			 var fileobjects_tbl_familypassportfiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_familypassportfiledescription');
-			 var fileobjects = fileobjects_tbl_familypassportfiledescription;
+			 //var kaffileUploader = $('#id').kaffileUploader();
+			 //var fileobjects_tbl_familypassportfiledescription = $('#id').kaffileUploader.GetFilesForActions('tbl_familypassportfiledescription');
+			 //var fileobjects = fileobjects_tbl_familypassportfiledescription;
 
-			  $.each(fileobjects, function (key, valueObj) {
-					  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
-			   });
+			 // $.each(fileobjects, function (key, valueObj) {
+				//	  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+			 //  });
 
 
 
@@ -58,9 +58,9 @@ $(document).ready(function () {
 							 familypassportextension: $('#familypassportextension').val(),
 							 familypassportfileid: $('#familypassportfileid').val(),
 							 remarks: $('#remarks').val(),
-							 forreview: $('#forreview').val(),
-							 iscurrent: $('#iscurrent').val(),
-							 cor_foldercontentsList: fileobjects
+                    forreview: true,
+							 iscurrent: true,
+							 //cor_foldercontentsList: fileobjects
 
 
                 });
@@ -78,9 +78,10 @@ $(document).ready(function () {
                                     inforamtionDialog(data.title, data.responsetext, _getCookieForLanguage("_btnOK")).then(function (answer) {
                                         if (answer == "true") {
                                            //window.location.href =  baseurl + "HrFamilyPassportInfo/HrFamilyPassportInfo";
-                                            $('#mcHrFamilyPassportInfoEdit').html('');
-                                            $('#modal-container-HrFamilyPassportInfoEdit').modal('hide');
-                                            GetAllDataHrFamilyPassportInfo();
+                                            $('#mcHrFamilyPassportInfoNew').html('');
+                                            $('#modal-container-HrFamilyPassportInfoNew').modal('hide');
+                                            //GetAllDataHrFamilyPassportInfo();
+                                            GetAllDataHrFamilyInfo($('#hrbasicid').val())
                                         }
 
                                     });
@@ -113,6 +114,9 @@ $(document).ready(function () {
             event.preventDefault();
             $('#mcHrFamilyPassportInfoEdit').html('');
             $('#modal-container-HrFamilyPassportInfoEdit').modal('hide');
+
+            $('#mcHrFamilyPassportInfoNew').html('');
+            $('#modal-container-HrFamilyPassportInfoNew').modal('hide');
         } catch (e) {
             $.alert({
                 title: _getCookieForLanguage("_informationTitle"),

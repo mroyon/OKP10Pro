@@ -50,8 +50,8 @@ $(document).ready(function () {
 							 familycivilidextension: $('#familycivilidextension').val(),
 							 familycivilidfileid: $('#familycivilidfileid').val(),
 							 remarks: $('#remarks').val(),
-							 forreview: $('#forreview').val(),
-							 iscurrent: $('#iscurrent').val(),
+                    forreview: true,
+                    iscurrent: true,
 
 
                 });
@@ -71,7 +71,11 @@ $(document).ready(function () {
                                            //window.location.href =  baseurl + "HrFamilyCivilIDInfo/HrFamilyCivilIDInfo";
                                             $('#mcHrFamilyCivilIDInfoEdit').html('');
                                             $('#modal-container-HrFamilyCivilIDInfoEdit').modal('hide');
-                                            GetAllDataHrFamilyCivilIDInfo();
+                                            //GetAllDataHrFamilyCivilIDInfo();
+
+                                            $('#mcHrFamilyCivilIDInfoNew').html('');
+                                            $('#modal-container-HrFamilyCivilIDInfoNew').modal('hide');
+                                            GetAllDataHrFamilyInfo($('#hrbasicid').val())
                                         }
 
                                     });
@@ -104,6 +108,8 @@ $(document).ready(function () {
             event.preventDefault();
             $('#mcHrFamilyCivilIDInfoEdit').html('');
             $('#modal-container-HrFamilyCivilIDInfoEdit').modal('hide');
+            $('#mcHrFamilyCivilIDInfoNew').html('');
+            $('#modal-container-HrFamilyCivilIDInfoNew').modal('hide');
         } catch (e) {
             $.alert({
                 title: _getCookieForLanguage("_informationTitle"),

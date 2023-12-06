@@ -166,11 +166,14 @@ namespace KAFWebAdmin.Controllers.HR
 									 t.separetiondocdate,
 									 t.remarks,
 									 t.forreview,
-                                   
                                    ex_nvarchar1 = objSecPanel.genButtonPanel(t.hrfamilyid.GetValueOrDefault(-99), "hrfamilyid", this.HttpContext.User.Identity as ClaimsIdentity,
-                                   "HrFamilyInfo/HrFamilyInfoEdit", "HrFamilyInfoEdit", 
+                                   "HrFamilyInfo/HrFamilyInfoEdit", "HrFamilyInfoEdit",
                                    "HrFamilyInfo/HrFamilyInfoDelete", "HrFamilyInfoDelete",
-                                   "HrFamilyInfo/HrFamilyInfoDetail", "HrFamilyInfoDetail")
+                                   "HrFamilyInfo/HrFamilyInfoDetail", "HrFamilyInfoDetail"),
+                                   
+								   ex_nvarchar2 = objSecPanel.genButtonPanelExtra(t.hrfamilyid.GetValueOrDefault(-99), "hrfamilyid", this.HttpContext.User.Identity as ClaimsIdentity,
+                                   "HrFamilyPassportInfo/HrFamilyPassportInfoNew|HrFamilyPassportInfoNew|Passport,HrFamilyCivilIDInfo/HrFamilyCivilIDInfoNew|HrFamilyCivilIDInfoNew|Civil ID")
+
                                }).ToList();
 
                     result = this.Json(new { draw = requestModel.Draw, recordsTotal = totalRecords, recordsFiltered = totalRecords, data = tut }, JsonRequestBehavior.AllowGet);

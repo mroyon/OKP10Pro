@@ -15,7 +15,7 @@
     
     <div class="panel panel-primary list-panel" id="list-panel">
         <div class="panel-heading list-panel-heading">
-            @KAF.MsgContainer._hr_familypassportinfo.hr_familypassportinfoUpdate
+            @KAF.MsgContainer._hr_familypassportinfo.familypassportinfoUpdate
         </div>
         
         <div class="panel-body">
@@ -24,151 +24,78 @@
                     <div class="row">
                         @Html.HiddenFor(m => m.familypassportid)
                         @Html.HiddenFor(m => m.strModelPrimaryKey)
+                        @Html.HiddenFor(m => m.hrfamilyid)
                     </div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.hrfamilyid,  htmlAttributes: new { @class = "labelNormal   required " })
-								 @{Html.RenderAction("LoadHr_FamilyInfoSearch", "Common", new { area = "", selectid = "hrfamilyid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_FamilyInfo, multiple = false, isReadOnly = false, IsRequired = true });}
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.hrbasicid,  htmlAttributes: new { @class = "labelNormal   required " })
-								 @{Html.RenderAction("LoadHr_BasicProfileSearch", "Common", new { area = "", selectid = "hrbasicid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_BasicProfile, multiple = false, isReadOnly = false, IsRequired = true });}
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportno, htmlAttributes: new { @class = "labelNormal required " })
-								 @Html.EditorFor(model => model.familypassportno, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familypassportno, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.familypassportissuedate, htmlAttributes: new { @class = "labelNormal   " }) 
-							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
-							 @Html.EditorFor(model => model.familypassportissuedate, new {  htmlAttributes = new {  @Value = Model.familypassportissuedate != null ? Convert.ToDateTime(Model.familypassportissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
-														 </div>
-							 @Html.ValidationMessageFor(m => m.familypassportissuedate, "", new { @class = "text-danger " })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.familypassportexpirydate, htmlAttributes: new { @class = "labelNormal   " }) 
-							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
-							 @Html.EditorFor(model => model.familypassportexpirydate, new {  htmlAttributes = new {  @Value = Model.familypassportexpirydate != null ? Convert.ToDateTime(Model.familypassportexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
-														 </div>
-							 @Html.ValidationMessageFor(m => m.familypassportexpirydate, "", new { @class = "text-danger " })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportissuecountryid,  htmlAttributes: new { @class = "labelNormal     " })
-								 @{Html.RenderAction("LoadGen_CountrySearch", "Common", new { area = "", selectid = "familypassportissuecountryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Country, multiple = false, isReadOnly = false, IsRequired = false });}
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.isfamilyfamilypassport, htmlAttributes: new { @class = "labelNormal  " })
-							 @Html.EditorFor(model => model.isfamilyfamilypassport, new { htmlAttributes = new {  @class = "form-control" } })
-							 @Html.ValidationMessageFor(model => model.isfamilyfamilypassport, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportfiledescription, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familypassportfiledescription, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familypassportfiledescription, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportfilepath, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familypassportfilepath, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familypassportfilepath, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-
-					 <div class="row">
-						 <div class="col-md-12">
-							 <div class="form-group">
-								 <div id="familypassportfiledescription"></div>
-							</div>
-						</div>
-					</div>
-
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportfilename, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familypassportfilename, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familypassportfilename, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportfiletype, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familypassportfiletype, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familypassportfiletype, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportextension, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familypassportextension, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familypassportextension, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familypassportfileid, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familypassportfileid, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familypassportfileid, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.forreview, htmlAttributes: new { @class = "labelNormal  " })
-							 @Html.EditorFor(model => model.forreview, new { htmlAttributes = new {  @class = "form-control" } })
-							 @Html.ValidationMessageFor(model => model.forreview, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.iscurrent, htmlAttributes: new { @class = "labelNormal  " })
-							 @Html.EditorFor(model => model.iscurrent, new { htmlAttributes = new {  @class = "form-control" } })
-							 @Html.ValidationMessageFor(model => model.iscurrent, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @readonly = "readonly", @class = "militarynokw form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.familypassportno, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.familypassportno, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.familypassportno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.familypassportissuedate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.familypassportissuedate, new { htmlAttributes = new { @Value = Model.familypassportissuedate != null ? Convert.ToDateTime(Model.familypassportissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.familypassportissuedate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.familypassportexpirydate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.familypassportexpirydate, new { htmlAttributes = new { @Value = Model.familypassportexpirydate != null ? Convert.ToDateTime(Model.familypassportexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.familypassportexpirydate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.familypassportissuecountryid, htmlAttributes: new { @class = "labelNormal     " })
+                                @{Html.RenderAction("LoadCountrySearch", "Common", new { area = "", selectid = "familypassportissuecountryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Country, multiple = false, isReadOnly = false, IsRequired = true });}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.isfamilyfamilypassport, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.isfamilyfamilypassport, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.isfamilyfamilypassport, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div id="familypassportfiledescription"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="btn-toolbar">
                         <button type="submit" id="btnUpdateHrFamilyPassportInfo" class="btn btn-primary btn-md btnUpdateHrFamilyPassportInfo"><i class="fa fa-edit"> </i> @KAF.MsgContainer._Common._btnUpdate</button>
                         <button type="submit" id="btnModalCloseEdit" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,7 +105,7 @@
 
 <script>
 //filecontrol addons
- var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
+ ////var fileobject = @Html.Raw(Json.Encode(Model.cor_foldercontentsList));
 
 
 $('.footable').footable({
@@ -190,7 +117,7 @@ $('.footable').footable({
 
 
 $(document).ready(function () {
-	 var _familypassportfiledescriptionupld = $('#familypassportfiledescriptionupld').kaffileUploader({
+	 @*var _familypassportfiledescriptionupld = $('#familypassportfiledescriptionupld').kaffileUploader({
 		 _tableid: 'tbl_familypassportfiledescription', 
 		 _colname: 'familypassportfiledescription',
 		 _tabname: 'Hr_FamilyPassportInfo',
@@ -203,7 +130,7 @@ $(document).ready(function () {
 		 _ismultiple: true,
 		 _fileobject: fileobject
 
-		 _familypassportfiledescriptionupld.loadpreloaddata(fileobject, $("#familypassportfiledescriptionuploadpreview"), '@KAF.MsgContainer._Common._btnDelete', 'familypassportfiledescription');
+		 _familypassportfiledescriptionupld.loadpreloaddata(fileobject, $("#familypassportfiledescriptionuploadpreview"), '@KAF.MsgContainer._Common._btnDelete', 'familypassportfiledescription');*@
 
 });
 

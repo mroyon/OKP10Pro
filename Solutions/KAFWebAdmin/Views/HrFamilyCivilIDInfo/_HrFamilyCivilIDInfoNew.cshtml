@@ -15,7 +15,7 @@
     
     <div class="panel panel-primary list-panel" id="list-panel">
         <div class="panel-heading list-panel-heading">
-            @KAF.MsgContainer._hr_familycivilidinfo.hr_familycivilidinfoCreate
+            @KAF.MsgContainer._hr_familycivilidinfo.familycivilidinfoCreate
         </div>
         
         <div class="panel-body">
@@ -23,178 +23,51 @@
                 <div class="form-horizontal container">
                     <div class="row">
                         @Html.HiddenFor(m => m.familycivilid)
+                        @Html.HiddenFor(m => m.hrfamilyid)
+                        @Html.HiddenFor(m => m.hrbasicid)
                     </div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.hrfamilyid,  htmlAttributes: new { @class = "labelNormal   required " })
-								 @{Html.RenderAction("LoadHr_FamilyInfoSearch", "Common", new { area = "", selectid = "hrfamilyid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_FamilyInfo, multiple = false, isReadOnly = false, IsRequired = true });}
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.hrbasicid,  htmlAttributes: new { @class = "labelNormal   required " })
-								 @{Html.RenderAction("LoadHr_BasicProfileSearch", "Common", new { area = "", selectid = "hrbasicid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_BasicProfile, multiple = false, isReadOnly = false, IsRequired = true });}
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidno, htmlAttributes: new { @class = "labelNormal required " })
-								 @Html.EditorFor(model => model.familycivilidno, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidno, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.serialno, htmlAttributes: new { @class = "labelNormal  " })
-							 @Html.EditorFor(model => model.serialno, new { htmlAttributes = new {  @class = "form-control" } })
-							 @Html.ValidationMessageFor(model => model.serialno, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.familycivilidissuedate, htmlAttributes: new { @class = "labelNormal   " }) 
-							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
-							 @Html.EditorFor(model => model.familycivilidissuedate, new {  htmlAttributes = new {  @Value = Model.familycivilidissuedate != null ? Convert.ToDateTime(Model.familycivilidissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
-														 </div>
-							 @Html.ValidationMessageFor(m => m.familycivilidissuedate, "", new { @class = "text-danger " })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.familycivilidexpirydate, htmlAttributes: new { @class = "labelNormal   " }) 
-							 <div class='input-group date dateonly' id='' style="width: 100 %; ">
-							 @Html.EditorFor(model => model.familycivilidexpirydate, new {  htmlAttributes = new {  @Value = Model.familycivilidexpirydate != null ? Convert.ToDateTime(Model.familycivilidexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
-														 </div>
-							 @Html.ValidationMessageFor(m => m.familycivilidexpirydate, "", new { @class = "text-danger " })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfiledescription, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfiledescription, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfiledescription, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfilepath, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfilepath, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfilepath, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfilename, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfilename, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfilename, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfiletype, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfiletype, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfiletype, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidextension, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidextension, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidextension, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfileid, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfileid, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfileid, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfiledescription_2, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfiledescription_2, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfiledescription_2, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfilepath_2, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfilepath_2, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfilepath_2, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfilename_2, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfilename_2, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfilename_2, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfiletype_2, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfiletype_2, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfiletype_2, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidextension_2, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidextension_2, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidextension_2, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.familycivilidfileid_2, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.familycivilidfileid_2, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.familycivilidfileid_2, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "labelNormal  " })
-								 @Html.EditorFor(model => model.remarks, new { htmlAttributes = new {   @class = " form-control" } })
-								 @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.forreview, htmlAttributes: new { @class = "labelNormal  " })
-							 @Html.EditorFor(model => model.forreview, new { htmlAttributes = new {  @class = "form-control" } })
-							 @Html.ValidationMessageFor(model => model.forreview, "", new { @class = "text-danger" })
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-							 @Html.LabelFor(model => model.iscurrent, htmlAttributes: new { @class = "labelNormal  " })
-							 @Html.EditorFor(model => model.iscurrent, new { htmlAttributes = new {  @class = "form-control" } })
-							 @Html.ValidationMessageFor(model => model.iscurrent, "", new { @class = "text-danger" })
-							</div>
-						</div>
-					</div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.familycivilidno, htmlAttributes: new { @class = "labelNormal required " })
+                                @Html.EditorFor(model => model.familycivilidno, new { htmlAttributes = new { @class = " form-control" } })
+                                @Html.ValidationMessageFor(model => model.familycivilidno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.serialno, htmlAttributes: new { @class = "labelNormal  " })
+                                @Html.EditorFor(model => model.serialno, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.serialno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.familycivilidissuedate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.familycivilidissuedate, new { htmlAttributes = new { @Value = Model.familycivilidissuedate != null ? Convert.ToDateTime(Model.familycivilidissuedate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.familycivilidissuedate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.familycivilidexpirydate, htmlAttributes: new { @class = "labelNormal   " })
+                                <div class='input-group date dateonly' id='' style="width: 100 %; ">
+                                    @Html.EditorFor(model => model.familycivilidexpirydate, new { htmlAttributes = new { @Value = Model.familycivilidexpirydate != null ? Convert.ToDateTime(Model.familycivilidexpirydate).ToString("dd-MM-yyyy") : null, @class = "form-control", @type = "text" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.familycivilidexpirydate, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                    </div>
                     <div class="btn-toolbar">
                         <button type="submit" id="btnSaveHrFamilyCivilIDInfo" class="btn btn-primary btn-md btnSaveHrFamilyCivilIDInfo"><i class="fa fa-save"> </i> @KAF.MsgContainer._Common._btnSave</button>
                         <button type="submit" id="btnModalCloseNew" class="btn btn-danger btn-md cancel"><i class="fa fa-arrow-circle-left"> </i> @KAF.MsgContainer._Common._btnCancel</button>

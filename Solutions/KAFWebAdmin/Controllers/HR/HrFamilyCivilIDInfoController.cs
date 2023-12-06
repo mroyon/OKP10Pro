@@ -257,7 +257,22 @@ namespace KAFWebAdmin.Controllers.HR
             {
                 ModelState.Clear();
                 hr_familycivilidinfoEntity model = new hr_familycivilidinfoEntity();
-                return PartialView("_HrFamilyCivilIDInfoNew", model);
+                if (!string.IsNullOrEmpty(input.strModelPrimaryKey))
+                {
+                    input.hrfamilyid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrfamilyid", input.strModelPrimaryKey));
+                    if (input.hrfamilyid.HasValue)
+                    {
+                        var _checkDataExist = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().GetAll(new hr_familycivilidinfoEntity { hrfamilyid = input.hrfamilyid, iscurrent = true }).FirstOrDefault();
+                        if (_checkDataExist != null)
+                        {
+                            _checkDataExist.strModelPrimaryKey = input.strModelPrimaryKey;
+                            _checkDataExist.militarynokw = input.militarynokw;
+                            return PartialView("~\\Views\\HrFamilyCivilIDInfo\\_HrFamilyCivilIDInfoEdit.cshtml", _checkDataExist);
+                        }
+                    }
+                }
+
+                return PartialView("_HrFamilyCivilIDInfoNew", input);
             }
             catch (Exception ex)
             {
@@ -284,29 +299,29 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 Int64 ret = 0;
                 SecurityCapsule sec = new SecurityCapsule();
-/*				 ModelState.Remove("familycivilid");
-				 ModelState.Remove("hrfamilyid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("familycivilidno");
-				 ModelState.Remove("serialno");
-				 ModelState.Remove("familycivilidissuedate");
-				 ModelState.Remove("familycivilidexpirydate");
-				 ModelState.Remove("familycivilidfiledescription");
-				 ModelState.Remove("familycivilidfilepath");
-				 ModelState.Remove("familycivilidfilename");
-				 ModelState.Remove("familycivilidfiletype");
-				 ModelState.Remove("familycivilidextension");
-				 ModelState.Remove("familycivilidfileid");
-				 ModelState.Remove("familycivilidfiledescription_2");
-				 ModelState.Remove("familycivilidfilepath_2");
-				 ModelState.Remove("familycivilidfilename_2");
-				 ModelState.Remove("familycivilidfiletype_2");
-				 ModelState.Remove("familycivilidextension_2");
-				 ModelState.Remove("familycivilidfileid_2");
-				 ModelState.Remove("remarks");
-				 ModelState.Remove("forreview");
-				 ModelState.Remove("iscurrent");
-*/               
+                ModelState.Remove("familycivilid");
+                ModelState.Remove("hrfamilyid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("familycivilidno");
+                ModelState.Remove("serialno");
+                ModelState.Remove("familycivilidissuedate");
+                ModelState.Remove("familycivilidexpirydate");
+                ModelState.Remove("familycivilidfiledescription");
+                ModelState.Remove("familycivilidfilepath");
+                ModelState.Remove("familycivilidfilename");
+                ModelState.Remove("familycivilidfiletype");
+                ModelState.Remove("familycivilidextension");
+                ModelState.Remove("familycivilidfileid");
+                ModelState.Remove("familycivilidfiledescription_2");
+                ModelState.Remove("familycivilidfilepath_2");
+                ModelState.Remove("familycivilidfilename_2");
+                ModelState.Remove("familycivilidfiletype_2");
+                ModelState.Remove("familycivilidextension_2");
+                ModelState.Remove("familycivilidfileid_2");
+                ModelState.Remove("remarks");
+                ModelState.Remove("forreview");
+                ModelState.Remove("iscurrent");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
@@ -412,31 +427,31 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 SecurityCapsule sec = new SecurityCapsule();
                 Int64 ret = 0;
-                
+
                 //PN: KEEP THE REQUIRED LINE AND REMOVE REST
-/*				 ModelState.Remove("familycivilid");
-				 ModelState.Remove("hrfamilyid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("familycivilidno");
-				 ModelState.Remove("serialno");
-				 ModelState.Remove("familycivilidissuedate");
-				 ModelState.Remove("familycivilidexpirydate");
-				 ModelState.Remove("familycivilidfiledescription");
-				 ModelState.Remove("familycivilidfilepath");
-				 ModelState.Remove("familycivilidfilename");
-				 ModelState.Remove("familycivilidfiletype");
-				 ModelState.Remove("familycivilidextension");
-				 ModelState.Remove("familycivilidfileid");
-				 ModelState.Remove("familycivilidfiledescription_2");
-				 ModelState.Remove("familycivilidfilepath_2");
-				 ModelState.Remove("familycivilidfilename_2");
-				 ModelState.Remove("familycivilidfiletype_2");
-				 ModelState.Remove("familycivilidextension_2");
-				 ModelState.Remove("familycivilidfileid_2");
-				 ModelState.Remove("remarks");
-				 ModelState.Remove("forreview");
-				 ModelState.Remove("iscurrent");
-*/               
+                ModelState.Remove("familycivilid");
+                ModelState.Remove("hrfamilyid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("familycivilidno");
+                ModelState.Remove("serialno");
+                ModelState.Remove("familycivilidissuedate");
+                ModelState.Remove("familycivilidexpirydate");
+                ModelState.Remove("familycivilidfiledescription");
+                ModelState.Remove("familycivilidfilepath");
+                ModelState.Remove("familycivilidfilename");
+                ModelState.Remove("familycivilidfiletype");
+                ModelState.Remove("familycivilidextension");
+                ModelState.Remove("familycivilidfileid");
+                ModelState.Remove("familycivilidfiledescription_2");
+                ModelState.Remove("familycivilidfilepath_2");
+                ModelState.Remove("familycivilidfilename_2");
+                ModelState.Remove("familycivilidfiletype_2");
+                ModelState.Remove("familycivilidextension_2");
+                ModelState.Remove("familycivilidfileid_2");
+                ModelState.Remove("remarks");
+                ModelState.Remove("forreview");
+                ModelState.Remove("iscurrent");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];

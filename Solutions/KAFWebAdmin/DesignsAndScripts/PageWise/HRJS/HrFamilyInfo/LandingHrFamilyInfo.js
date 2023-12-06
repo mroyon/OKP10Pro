@@ -281,8 +281,13 @@ function GetAllDataHrFamilyInfo(hrbasicid) {
             },
             "columns": [
             
-				 { "data": "familynationalid", "searchable": true, "sortable": true, "orderable": true },                {
+                { "data": "familyfullname", "searchable": true, "sortable": true, "orderable": true },                 { "data": "relationshipid", "searchable": true, "sortable": true, "orderable": true },                 {
                     "data": "ex_nvarchar1",
+                    "render": function (data, type, full, meta) {
+                        return data;
+                    }
+                },                {
+                    "data": "ex_nvarchar2",
                     "render": function (data, type, full, meta) {
                         return data;
                     }
@@ -421,6 +426,77 @@ function HrFamilyInfoDetail(val) {
         });
     }
     catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e.message,
+            type: 'red'
+        });
+    }
+}
+
+function HrFamilyPassportInfoNew(val) {
+    try {
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "HrFamilyInfoEdit",
+            currenturl: window.location.href,
+            strModelPrimaryKey: val,
+            militarynokw: $('#militarynokw').val()
+        });
+
+        $.ajax({
+            url: baseurl + "HrFamilyPassportInfo/HrFamilyPassportInfoNew",
+            type: 'POST',
+            data: input,
+            success: function (response) {
+                $('#mcHrFamilyPassportInfoNew').html('');
+                $('#mcHrFamilyPassportInfoNew').html(response);
+                $('#modal-container-HrFamilyPassportInfoNew').modal({ backdrop: 'static', keyboard: false });
+            }
+        });
+    } catch (e) {
+        $.alert({
+            title: _getCookieForLanguage("_informationTitle"),
+            content: e.message,
+            type: 'red'
+        });
+    }
+}
+function HrFamilyCivilIDInfoNew(val) {
+    try {
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+        var input = AddAntiForgeryToken({
+            token: $(".txtUserSTK").val(),
+            userinfo: $(".txtServerUtilObj").val(),
+            useripaddress: $(".txtuserip").val(),
+            sessionid: $(".txtUserSes").val(),
+            methodname: "HrFamilyInfoEdit",
+            currenturl: window.location.href,
+            strModelPrimaryKey: val,
+            militarynokw: $('#militarynokw').val()
+        });
+
+        $.ajax({
+            url: baseurl + "HrFamilyCivilIDInfo/HrFamilyCivilIDInfoNew",
+            type: 'POST',
+            data: input,
+            success: function (response) {
+                $('#mcHrFamilyCivilIDInfoNew').html('');
+                $('#mcHrFamilyCivilIDInfoNew').html(response);
+                $('#modal-container-HrFamilyCivilIDInfoNew').modal({ backdrop: 'static', keyboard: false });
+            }
+        });
+    } catch (e) {
         $.alert({
             title: _getCookieForLanguage("_informationTitle"),
             content: e.message,
