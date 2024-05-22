@@ -397,3 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /Solutions/KAFWebAdmin/Uploads/ResidentVisaDocuments
+/Solutions/KAFWebAdmin/Web.config
+/Solutions/KAFWebAPIServices/Web.config

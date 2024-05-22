@@ -101,8 +101,10 @@
     <Compile Include="BusinessDataObjectsPartials\HR\hr_attachmentinfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_civilidinfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_demanddetlpassportEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_familycivilidinfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_familyinfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_familypassportinfoEntity.cs" />
+    <Compile Include="BusinessDataObjectsPartials\HR\hr_familyresidentvisaEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_hospitaladmissioninfoEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_newdemanddetlEntity.cs" />
     <Compile Include="BusinessDataObjectsPartials\HR\hr_newdemandEntity.cs" />

@@ -279,5 +279,55 @@ namespace KAF.CustomHelper.HelperClasses
         }
 
         public clsPrivateKeys objClsPrivate = new clsPrivateKeys();
+
+        public string genButtonPanelExtra(long menuId, string menuName, ClaimsIdentity claimsIdentity, string ActionViewNameDynamic = "")
+        {
+            clsPrivateKeys objClsPrivate = new clsPrivateKeys();
+            string strValue = string.Empty;
+            string strJson = string.Empty;
+            try
+            {
+
+                if (claimsIdentity != null)
+                {
+                    List<Owin_ProcessGetFormActionistEntity_Ext> itemList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Owin_ProcessGetFormActionistEntity_Ext>>(HttpContext.Current.Session["jsonList"].ToString());
+                    if (itemList != null && itemList.Count > 0)
+                    {
+                        strValue += "<div class='btn-toolbar pull-right' role='toolbar'>";
+                        if (!String.IsNullOrEmpty(ActionViewNameDynamic))
+                        {
+                            string[] _actionviewNames = ActionViewNameDynamic.Trim(',').Split(',');
+                            if (_actionviewNames.Length > 0)
+                            {
+                                // "Passport/Passportview|PassportviewJsMethod|Add Passport"
+                                foreach (var _actionviewname in _actionviewNames)
+                                {
+                                    if (!String.IsNullOrEmpty(_actionviewname))
+                                    {
+                                        var _btnpr = _actionviewname.Split('|');
+                                        if (_btnpr.Length > 0)
+                                        {
+                                            if (itemList.Exists(p => p.ActionName.Contains(_btnpr[0].ToString())))
+                                            {
+                                                strValue += "<button class='btn btn-primary btn-md' onclick ='" + _btnpr[1].ToString() + "(&quot;" + objClsPrivate.BuildUrlMVCOnlyParams(menuName, menuId.ToString()) + "&quot;)'> <i class='fa fa-edit'> </i> " + _btnpr[2].ToString() + "</button> ";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        strValue += "</div>";
+                    }
+                }
+                else
+                    throw new Exception("Login required");
+            }
+            catch (Exception ex)
+            {
+                strValue = ex.Message;
+            }
+            return strValue;
+        }
+
     }
 }

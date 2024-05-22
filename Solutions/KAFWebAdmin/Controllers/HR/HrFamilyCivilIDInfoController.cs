@@ -20,7 +20,8 @@ using KAF.CustomFilters.Filters;
 using KAF.MVC.Common;
 using KAF.BusinessDataObjects.BusinessDataObjectsPartials;		
 using KAF.CustomHelper;
-    
+using System.IO;
+
 namespace KAFWebAdmin.Controllers.HR
 {
     public class HrFamilyCivilIDInfoController : BaseController
@@ -257,7 +258,29 @@ namespace KAFWebAdmin.Controllers.HR
             {
                 ModelState.Clear();
                 hr_familycivilidinfoEntity model = new hr_familycivilidinfoEntity();
-                return PartialView("_HrFamilyCivilIDInfoNew", model);
+                if (!string.IsNullOrEmpty(input.strModelPrimaryKey))
+                {
+                    input.hrfamilyid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrfamilyid", input.strModelPrimaryKey));
+                    if (input.hrfamilyid.HasValue)
+                    {
+                        var _checkDataExist = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().GetAll(new hr_familycivilidinfoEntity { hrfamilyid = input.hrfamilyid, iscurrent = true }).FirstOrDefault();
+                        if (_checkDataExist != null)
+                        {
+                            _checkDataExist.strModelPrimaryKey = input.strModelPrimaryKey;
+                            _checkDataExist.militarynokw = input.militarynokw;
+
+                            _checkDataExist.familycivilidfilename = _checkDataExist.familycivilidfilename + _checkDataExist.familycivilidextension;
+                            _checkDataExist.familycivilidfilename_2 = _checkDataExist.familycivilidfilename_2 + _checkDataExist.familycivilidextension_2;
+
+                            _checkDataExist.familycivilidfilepath = _checkDataExist.familycivilidfilepath + _checkDataExist.familycivilidfilename;
+                            _checkDataExist.familycivilidfilepath_2 = _checkDataExist.familycivilidfilepath_2 + _checkDataExist.familycivilidfilename_2;
+
+                            return PartialView("~\\Views\\HrFamilyCivilIDInfo\\_HrFamilyCivilIDInfoEdit.cshtml", _checkDataExist);
+                        }
+                    }
+                }
+
+                return PartialView("_HrFamilyCivilIDInfoNew", input);
             }
             catch (Exception ex)
             {
@@ -284,37 +307,90 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 Int64 ret = 0;
                 SecurityCapsule sec = new SecurityCapsule();
-/*				 ModelState.Remove("familycivilid");
-				 ModelState.Remove("hrfamilyid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("familycivilidno");
-				 ModelState.Remove("serialno");
-				 ModelState.Remove("familycivilidissuedate");
-				 ModelState.Remove("familycivilidexpirydate");
-				 ModelState.Remove("familycivilidfiledescription");
-				 ModelState.Remove("familycivilidfilepath");
-				 ModelState.Remove("familycivilidfilename");
-				 ModelState.Remove("familycivilidfiletype");
-				 ModelState.Remove("familycivilidextension");
-				 ModelState.Remove("familycivilidfileid");
-				 ModelState.Remove("familycivilidfiledescription_2");
-				 ModelState.Remove("familycivilidfilepath_2");
-				 ModelState.Remove("familycivilidfilename_2");
-				 ModelState.Remove("familycivilidfiletype_2");
-				 ModelState.Remove("familycivilidextension_2");
-				 ModelState.Remove("familycivilidfileid_2");
-				 ModelState.Remove("remarks");
-				 ModelState.Remove("forreview");
-				 ModelState.Remove("iscurrent");
-*/               
+                ModelState.Remove("familycivilid");
+                ModelState.Remove("hrfamilyid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("familycivilidno");
+                ModelState.Remove("serialno");
+                ModelState.Remove("familycivilidissuedate");
+                ModelState.Remove("familycivilidexpirydate");
+                ModelState.Remove("familycivilidfiledescription");
+                ModelState.Remove("familycivilidfilepath");
+                ModelState.Remove("familycivilidfilename");
+                ModelState.Remove("familycivilidfiletype");
+                ModelState.Remove("familycivilidextension");
+                ModelState.Remove("familycivilidfileid");
+                ModelState.Remove("familycivilidfiledescription_2");
+                ModelState.Remove("familycivilidfilepath_2");
+                ModelState.Remove("familycivilidfilename_2");
+                ModelState.Remove("familycivilidfiletype_2");
+                ModelState.Remove("familycivilidextension_2");
+                ModelState.Remove("familycivilidfileid_2");
+                ModelState.Remove("remarks");
+                ModelState.Remove("forreview");
+                ModelState.Remove("iscurrent");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
                     //RN: OPEN THIS LINE IF HR INVOLDED
                     //input.hrbasicid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrbasicid", input.strAdditionalPrimaryKey));
-                    
-					 ret = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().Add(input);
+                    if (input.formfile1 != null && input.formfile1.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        int iFileSize = input.formfile1.ContentLength;
+                        string contenttype = input.formfile1.ContentType;
+                        string filefullName = input.formfile1.FileName;
+
+                        Guid fileid = Guid.NewGuid();
+
+                        string fileName = fileid.ToString();
+                        //string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.formfile1.SaveAs(filepath + fileName + fileExtension);
+
+                        input.familycivilidfilepath = fileUploadDir;
+                        input.familycivilidfilename = fileName;
+                        input.familycivilidfiletype = contenttype;
+                        input.familycivilidextension = fileExtension;
+                        input.familycivilidfiledescription = "";
+
+                        input.familycivilidfileid = fileid;
+                    }
+
+                    if (input.formfile2 != null && input.formfile2.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+                        int iFileSize = input.formfile2.ContentLength;
+                        string contenttype = input.formfile2.ContentType;
+                        string filefullName = input.formfile2.FileName;
+
+                        Guid fileid = Guid.NewGuid();
+
+                        string fileName = fileid.ToString();
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.formfile2.SaveAs(filepath + fileName + fileExtension);
+
+                        input.familycivilidfilepath_2 = fileUploadDir;
+                        input.familycivilidfilename_2 = fileName;
+                        input.familycivilidfiletype_2 = contenttype;
+                        input.familycivilidextension_2 = fileExtension;
+                        input.familycivilidfiledescription_2 = "";
+
+                        input.familycivilidfileid_2 = fileid;
+                    }
+                    ret = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().Add(input);
                     if (ret > 0)
                     {
                         ModelState.Clear();
@@ -363,14 +439,14 @@ namespace KAFWebAdmin.Controllers.HR
                 var model = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().GetAll(new hr_familycivilidinfoEntity { familycivilid = input.familycivilid }).SingleOrDefault();
                 model.strModelPrimaryKey = input.strModelPrimaryKey;
                 //PN: LOAD DATA FOR PRE-SELECT2 DROP DOWN
-					 List<hr_familyinfoEntity> listhr_familyinfo = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().GetAll(new hr_familyinfoEntity { hrfamilyid = model.hrfamilyid }).ToList();
-					 var objhr_familyinfo = (from t in listhr_familyinfo
-					 select new
-					 {
-								 Id = t.hrfamilyid ,
-								 Text = t.familynationalid 
-					  }).ToList();
-					 ViewBag.preloadedHr_FamilyInfo = JsonConvert.SerializeObject(objhr_familyinfo);
+					 //List<hr_familyinfoEntity> listhr_familyinfo = KAF.FacadeCreatorObjects.hr_familyinfoFCC.GetFacadeCreate().GetAll(new hr_familyinfoEntity { hrfamilyid = model.hrfamilyid }).ToList();
+					 //var objhr_familyinfo = (from t in listhr_familyinfo
+					 //select new
+					 //{
+						//		 Id = t.hrfamilyid ,
+						//		 Text = t.familynationalid 
+					 // }).ToList();
+					 //ViewBag.preloadedHr_FamilyInfo = JsonConvert.SerializeObject(objhr_familyinfo);
 
 					 //List<hr_basicprofileEntity> listhr_basicprofile = KAF.FacadeCreatorObjects.hr_basicprofileFCC.GetFacadeCreate().GetAll(new hr_basicprofileEntity { hrbasicid = model.hrbasicid }).ToList();
 					 //var objhr_basicprofile = (from t in listhr_basicprofile
@@ -412,37 +488,94 @@ namespace KAFWebAdmin.Controllers.HR
                 string str = string.Empty;
                 SecurityCapsule sec = new SecurityCapsule();
                 Int64 ret = 0;
-                
+
                 //PN: KEEP THE REQUIRED LINE AND REMOVE REST
-/*				 ModelState.Remove("familycivilid");
-				 ModelState.Remove("hrfamilyid");
-				 ModelState.Remove("hrbasicid");
-				 ModelState.Remove("familycivilidno");
-				 ModelState.Remove("serialno");
-				 ModelState.Remove("familycivilidissuedate");
-				 ModelState.Remove("familycivilidexpirydate");
-				 ModelState.Remove("familycivilidfiledescription");
-				 ModelState.Remove("familycivilidfilepath");
-				 ModelState.Remove("familycivilidfilename");
-				 ModelState.Remove("familycivilidfiletype");
-				 ModelState.Remove("familycivilidextension");
-				 ModelState.Remove("familycivilidfileid");
-				 ModelState.Remove("familycivilidfiledescription_2");
-				 ModelState.Remove("familycivilidfilepath_2");
-				 ModelState.Remove("familycivilidfilename_2");
-				 ModelState.Remove("familycivilidfiletype_2");
-				 ModelState.Remove("familycivilidextension_2");
-				 ModelState.Remove("familycivilidfileid_2");
-				 ModelState.Remove("remarks");
-				 ModelState.Remove("forreview");
-				 ModelState.Remove("iscurrent");
-*/               
+                ModelState.Remove("familycivilid");
+                ModelState.Remove("hrfamilyid");
+                ModelState.Remove("hrbasicid");
+                ModelState.Remove("familycivilidno");
+                ModelState.Remove("serialno");
+                ModelState.Remove("familycivilidissuedate");
+                ModelState.Remove("familycivilidexpirydate");
+                ModelState.Remove("familycivilidfiledescription");
+                ModelState.Remove("familycivilidfilepath");
+                ModelState.Remove("familycivilidfilename");
+                ModelState.Remove("familycivilidfiletype");
+                ModelState.Remove("familycivilidextension");
+                ModelState.Remove("familycivilidfileid");
+                ModelState.Remove("familycivilidfiledescription_2");
+                ModelState.Remove("familycivilidfilepath_2");
+                ModelState.Remove("familycivilidfilename_2");
+                ModelState.Remove("familycivilidfiletype_2");
+                ModelState.Remove("familycivilidextension_2");
+                ModelState.Remove("familycivilidfileid_2");
+                ModelState.Remove("remarks");
+                ModelState.Remove("forreview");
+                ModelState.Remove("iscurrent");
+
                 if (input != null && ModelState.IsValid == true)
                 {
                     sec = (SecurityCapsule)Request.RequestContext.HttpContext.Items["CurrentSec"];
                     input.BaseSecurityParam = sec;
 
-					 ret = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().Update(input);
+                    input.hrfamilyid = long.Parse(objClsPrivate.GetUrlParamValMVCOnlyParam("hrfamilyid", input.strModelPrimaryKey).ToString());
+                    var model = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().GetAll(new hr_familycivilidinfoEntity { hrfamilyid = input.hrfamilyid, iscurrent = true }).SingleOrDefault();
+
+                    if (input.formfile1 != null && input.formfile1.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+
+                        if (System.IO.File.Exists(filepath + model.familycivilidfileid + model.familycivilidextension)) System.IO.File.Delete(filepath + model.familycivilidfileid + model.familycivilidextension);
+
+                        int iFileSize = input.formfile1.ContentLength;
+                        string contenttype = input.formfile1.ContentType;
+                        string filefullName = input.formfile1.FileName;
+                        //string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileName = input.familycivilidfileid.HasValue ? input.familycivilidfileid.ToString() : Guid.NewGuid().ToString();
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.formfile1.SaveAs(filepath + fileName + fileExtension);
+
+                        input.familycivilidfilepath = fileUploadDir;
+                        input.familycivilidfilename = fileName;
+                        input.familycivilidfiletype = contenttype;
+                        input.familycivilidextension = fileExtension;
+                        input.familycivilidfiledescription = "";
+                    }
+                    if (input.formfile2 != null && input.formfile2.ContentLength > 0)
+                    {
+                        string fileUploadDir = System.Configuration.ConfigurationManager.AppSettings["OtherDocumentFolder"].ToString();// KAF.CustomHelper.HelperClasses.clsUtil.GetFolderDirectory(Convert.ToInt64(strfoldertype)) + "/" + strfoldername + "/";
+                        if (fileUploadDir[fileUploadDir.Length - 1] != '/')
+                            fileUploadDir = fileUploadDir + "/";
+
+                        string filepath = Server.MapPath("~" + fileUploadDir);
+                        if (System.IO.File.Exists(filepath + model.familycivilidfileid + model.familycivilidextension)) System.IO.File.Delete(filepath + model.familycivilidfileid + model.familycivilidextension);
+
+                        int iFileSize = input.formfile2.ContentLength;
+                        string contenttype = input.formfile2.ContentType;
+                        string filefullName = input.formfile2.FileName;
+                        //string fileName = System.IO.Path.GetFileNameWithoutExtension(filefullName);
+                        string fileName = input.familycivilidfileid_2.HasValue ? input.familycivilidfileid_2.ToString() : Guid.NewGuid().ToString();  //input.familycivilidfileid_2.ToString();
+                        string fileExtension = System.IO.Path.GetExtension(filefullName).ToLower();
+
+                        if (!Directory.Exists(filepath))
+                            Directory.CreateDirectory(filepath);
+                        input.formfile2.SaveAs(filepath + fileName + fileExtension);
+
+                        input.familycivilidfilepath_2 = fileUploadDir;
+                        input.familycivilidfilename_2 = fileName;
+                        input.familycivilidfiletype_2 = contenttype;
+                        input.familycivilidextension_2 = fileExtension;
+                        input.familycivilidfiledescription_2 = "";
+                    }
+
+                    ret = KAF.FacadeCreatorObjects.hr_familycivilidinfoFCC.GetFacadeCreate().Update(input);
                  
                     if (ret > 0)
                     {

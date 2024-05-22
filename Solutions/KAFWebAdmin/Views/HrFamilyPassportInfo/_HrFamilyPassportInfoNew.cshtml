@@ -33,22 +33,6 @@
                                 @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @readonly = "readonly", @class = "militarynokw form-control" } })
                             </div>
                         </div>
-                    </div>
-                    @*<div class="row ">
-             <div class="col-md-6">
-                 <div class="form-group">
-                     @Html.LabelFor(model => model.hrfamilyid,  htmlAttributes: new { @class = "labelNormal   required " })
-                     @{Html.RenderAction("LoadHr_FamilyInfoSearch", "Common", new { area = "", selectid = "hrfamilyid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_FamilyInfo, multiple = false, isReadOnly = false, IsRequired = true });}
-                </div>
-            </div>
-        </div>*@
-                    <div class="row ">
-                        @*<div class="col-md-6">
-                 <div class="form-group">
-                     @Html.LabelFor(model => model.hrbasicid,  htmlAttributes: new { @class = "labelNormal   required " })
-                     @{Html.RenderAction("LoadHr_BasicProfileSearch", "Common", new { area = "", selectid = "hrbasicid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preHr_BasicProfile, multiple = false, isReadOnly = false, IsRequired = true });}
-                </div>
-            </div>*@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.familypassportno, htmlAttributes: new { @class = "labelNormal required " })
@@ -56,6 +40,9 @@
                                 @Html.ValidationMessageFor(model => model.familypassportno, "", new { @class = "text-danger" })
                             </div>
                         </div>
+                    </div>
+                    <div class="row ">
+                        
                     </div>
                     <div class="row ">
                         <div class="col-md-6">
@@ -83,11 +70,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
+                    @*<div class="row ">
                         <div class="col-md-6">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.familypassportissuecountryid, htmlAttributes: new { @class = "labelNormal     " })
-                                @*@{Html.RenderAction("LoadGen_CountrySearch", "Common", new { area = "", selectid = "familypassportissuecountryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preGen_Country, multiple = false, isReadOnly = false, IsRequired = false });}*@
                                 @{Html.RenderAction("LoadCountrySearch", "Common", new { area = "", selectid = "familypassportissuecountryid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Country, multiple = false, isReadOnly = false, IsRequired = true });}
                             </div>
                         </div>
@@ -98,7 +84,7 @@
                                 @Html.ValidationMessageFor(model => model.isfamilyfamilypassport, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -106,24 +92,6 @@
                             </div>
                         </div>
                     </div>
-                    @*<div class="row ">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.forreview, htmlAttributes: new { @class = "labelNormal  " })
-                                @Html.EditorFor(model => model.forreview, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.forreview, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.iscurrent, htmlAttributes: new { @class = "labelNormal  " })
-                                @Html.EditorFor(model => model.iscurrent, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.iscurrent, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                    </div>*@
                     <div class="row ">
                         <div class="col-md-6">
                             <div class="form-group">

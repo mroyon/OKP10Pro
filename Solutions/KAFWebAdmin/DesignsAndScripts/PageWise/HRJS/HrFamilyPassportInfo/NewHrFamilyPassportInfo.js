@@ -59,8 +59,8 @@ $(document).ready(function () {
 							 familypassportextension: $('#familypassportextension').val(),
 							 familypassportfileid: $('#familypassportfileid').val(),
 							 remarks: $('#remarks').val(),
-							 forreview: $('#forreview').val(),
-							 iscurrent: $('#iscurrent').val(),
+                    forreview: true,
+							 iscurrent: true,
 							 //cor_foldercontentsList: fileobjects
 
                 });
@@ -80,7 +80,8 @@ $(document).ready(function () {
                                            //window.location.href =  baseurl + "HrFamilyPassportInfo/HrFamilyPassportInfo";
                                             $('#mcHrFamilyPassportInfoNew').html('');
                                             $('#modal-container-HrFamilyPassportInfoNew').modal('hide');
-                                            GetAllDataHrFamilyPassportInfo();
+                                            GetAllDataHrFamilyInfo($('#hrbasicid').val())
+                                            //GetAllDataHrFamilyPassportInfo();
                                         }
                                         else
                                         {

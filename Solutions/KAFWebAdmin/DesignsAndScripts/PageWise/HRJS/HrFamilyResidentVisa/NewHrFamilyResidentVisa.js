@@ -22,13 +22,13 @@ $(document).ready(function () {
             jQuery.validator.unobtrusive.parse();
             jQuery.validator.unobtrusive.parse(form);
 
-			 var kaffileUploader = $('#id').kaffileUploader();
-			 var fileobjects_tbl_filedescription = $('#id').kaffileUploader.GetFilesForActions('tbl_filedescription');
-			 var fileobjects = fileobjects_tbl_filedescription;
+			 //var kaffileUploader = $('#id').kaffileUploader();
+			 //var fileobjects_tbl_filedescription = $('#id').kaffileUploader.GetFilesForActions('tbl_filedescription');
+			 //var fileobjects = fileobjects_tbl_filedescription;
 
-			  $.each(fileobjects, function (key, valueObj) {
-					  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
-			   });
+			 // $.each(fileobjects, function (key, valueObj) {
+				//	  valueObj.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+			 //  });
 
 
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
 							 extension: $('#extension').val(),
 							 fileno: $('#fileno').val(),
 							 remarks: $('#remarks').val(),
-							 cor_foldercontentsList: fileobjects
+							 //cor_foldercontentsList: fileobjects
 
                 });
 
@@ -78,13 +78,15 @@ $(document).ready(function () {
                                            //window.location.href =  baseurl + "HrFamilyResidentVisa/HrFamilyResidentVisa";
                                             $('#mcHrFamilyResidentVisaNew').html('');
                                             $('#modal-container-HrFamilyResidentVisaNew').modal('hide');
-                                            GetAllDataHrFamilyResidentVisa();
+                                            GetAllDataHrFamilyInfo($('#hrbasicid').val())
+                                            //GetAllDataHrFamilyResidentVisa();
                                         }
                                         else
                                         {
                                             $('#mcHrFamilyResidentVisaNew').html('');
                                             $('#modal-container-HrFamilyResidentVisaNew').modal('hide');
-                                            GetAllDataHrFamilyResidentVisa();
+                                            GetAllDataHrFamilyInfo($('#hrbasicid').val())
+                                            //GetAllDataHrFamilyResidentVisa();
                                         }
                                     });
                                 }
