@@ -193,6 +193,9 @@ $(document).ready(function () {
                     methodname: "Create User",
                     currenturl: window.location.href,
 
+                    mobilepin: $('#mobilepin').val(),
+
+
                     masteruserid: $("#masteruserid").val(),
                     userid: $("#userid").val(),
                     username: $("#username").val(),

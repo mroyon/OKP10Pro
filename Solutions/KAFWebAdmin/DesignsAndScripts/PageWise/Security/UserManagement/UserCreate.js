@@ -194,6 +194,9 @@ $(document).ready(function () {
                     mobilenumber: $('#mobilenumber').val(),
                     passwordquestion: $('#passwordquestion').val(),
                     passwordanswer: $('#passwordanswer').val(),
+
+                    mobilepin: $('#mobilepin').val(),
+
                     roleid: roleval,
                     locked: 1,
                     approved: 1,

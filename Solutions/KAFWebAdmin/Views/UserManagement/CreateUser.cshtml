@@ -93,7 +93,7 @@
                                     <div class="form-group">
                                         @Html.Label("OKP Name", htmlAttributes: new { @class = "labelNormal" })
                                         @{Html.RenderAction("LoadComboBox", "DataCache", new { EntityName = KAF.CustomHelper.HelperClasses.clsDataCache.gen_okpEntity[0].ToString(), selectid = "okpid", minimumInputLength = 0, delay = 250, preloaded = ViewBag.preloadedGen_Okp, multiple = false, isReadOnly = false, IsRequired = false });}
-                                         <div class="help-block with-errors">
+                                        <div class="help-block with-errors">
                                             @Html.ValidationMessage("okpid", "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -135,6 +135,20 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.Label("Military ID", htmlAttributes: new { @class = "labelNormal required" })
+
+                                        @Html.EditorFor(model => model.mobilepin, new { htmlAttributes = new { @type = "number", @class = "form-control" } })
+                                        <div class="help-block with-errors">
+                                            @Html.ValidationMessageFor(model => model.mobilepin, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <div class="row">
                                 <div class="col-md-6">

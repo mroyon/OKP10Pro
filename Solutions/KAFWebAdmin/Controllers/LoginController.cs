@@ -132,6 +132,7 @@ namespace KAFWebAdmin.Controllers
             try
             {
                 ModelState.Remove("emailaddress");
+                ModelState.Remove("mobilepin");
                 ModelState.Remove("username");
                 ModelState.Remove("password");
                 ModelState.Remove("passwordsalt");
@@ -224,8 +225,10 @@ namespace KAFWebAdmin.Controllers
                 ModelState.Remove("passwordkey");
                 ModelState.Remove("passwordvector");
                 ModelState.Remove("loweredusername");
+                ModelState.Remove("mobilepin");
                 ModelState.Remove("locked");
                 ModelState.Remove("approved");
+
                 if (this.ModelState.IsValid)
                 {
                     string[] linkUser = new string[] { "token", input.token };
@@ -305,6 +308,7 @@ namespace KAFWebAdmin.Controllers
                 ModelState.Remove("isanonymous");
                 ModelState.Remove("masprivatekey");
                 ModelState.Remove("maspublickey");
+                ModelState.Remove("mobilepin");
 
                 if (this.ModelState.IsValid)
                 {
@@ -387,6 +391,8 @@ namespace KAFWebAdmin.Controllers
                 ModelState.Remove("masteruserid");
                 ModelState.Remove("masprivatekey");
                 ModelState.Remove("maspublickey");
+                ModelState.Remove("mobilepin");
+
                 if (this.ModelState.IsValid)
                 {
                     Request.GetOwinContext().Authentication.SignOut(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ApplicationCookie);
@@ -606,6 +612,9 @@ namespace KAFWebAdmin.Controllers
                 ModelState.Remove("loweredusername");
                 ModelState.Remove("locked");
                 ModelState.Remove("approved");
+                ModelState.Remove("mobilepin");
+
+
                 if (this.ModelState.IsValid)
                 {
                     string culture = input.password;

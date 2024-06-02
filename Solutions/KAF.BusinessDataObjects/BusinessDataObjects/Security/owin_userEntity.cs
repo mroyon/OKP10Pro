@@ -212,6 +212,7 @@ namespace KAF.BusinessDataObjects
         }
 
         [DataMember]
+        [Required(ErrorMessage = "Military ID is rquired.")]
         public string mobilepin
         {
             get { return _mobilepin; }
