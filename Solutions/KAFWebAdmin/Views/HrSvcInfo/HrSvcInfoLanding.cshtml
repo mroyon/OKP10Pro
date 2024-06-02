@@ -1,11 +1,13 @@
 ﻿@model KAF.BusinessDataObjects.hr_svcinfoEntity
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = KAF.MsgContainer._hr_svcinfo.svcinfoList;
-                Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
-                PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+    ViewBag.Title = KAF.MsgContainer._hr_svcinfo.svcinfoList;
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+    PageData["baseUrl"] = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+
+    string s = ViewBag.Role;
 }
 
 <div class="row">
@@ -17,64 +19,101 @@
 
                     if (objSecPanel.checkButtonPermission("HrSvcInfo/HrSvcInfoNew"))
                     {
-                        <button type="submit" class="btn btn-primary btn-md" id="btnNewHrSvcInfo">
-                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
-                        </button>
+
+                            if (!string.IsNullOrEmpty(s) && s.Contains("Officers"))
+                            {
+
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-primary btn-md" id="btnNewHrSvcInfo">
+                                    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> @KAF.MsgContainer._CommonHtml.add
+                                </button>
+                            }
                     }
                 }
             </div>
             <div class="panel-body">
 
-                <div class="row ">
-                    <div class="col-md-6">
+                @{
+                    if (!string.IsNullOrEmpty(s) && s.Contains("Officers"))
+                    {
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                    <input class="militarynokwT searchtext form-control text-box single-line" readonly data-val="true" data-val-number="The field militarynokw must be a number." id="militarynokw" name="militarynokw" type="number" value="@ViewBag.militaryid">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row ">
+                            <div class="col-md-6">
 
-                        <div class="form-group">
-                            @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
-                            @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @class = "militarynokwT searchtext form-control" } })
-                            @Html.ValidationMessageFor(model => model.militarynokw, "", new { @class = "text-danger" })
-                        </div>
+                                <div class="form-group">
+                                    @Html.Label("Military No (KW)", htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.militarynokw, new { htmlAttributes = new { @class = "militarynokwT searchtext form-control" } })
+                                    @Html.ValidationMessageFor(model => model.militarynokw, "", new { @class = "text-danger" })
+                                </div>
 
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @Html.Label("Military No (BD)", htmlAttributes: new { @class = "labelNormal  " })
-                            @Html.EditorFor(model => model.militarynobd, new { htmlAttributes = new { @class = " militarynobdT searchtext form-control" } })
-                            @Html.ValidationMessageFor(model => model.militarynobd, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.Label("Military No (BD)", htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.militarynobd, new { htmlAttributes = new { @class = " militarynobdT searchtext form-control" } })
+                                    @Html.ValidationMessageFor(model => model.militarynobd, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.civilid, htmlAttributes: new { @class = "labelNormal  " })
-                            @Html.EditorFor(model => model.civilid, new { htmlAttributes = new { @class = "civilidT searchtext form-control" } })
-                            @Html.ValidationMessageFor(model => model.civilid, "", new { @class = "text-danger" })
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.civilid, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.civilid, new { htmlAttributes = new { @class = "civilidT searchtext form-control" } })
+                                    @Html.ValidationMessageFor(model => model.civilid, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.passportno, htmlAttributes: new { @class = "labelNormal  " })
+                                    @Html.EditorFor(model => model.passportno, new { htmlAttributes = new { @class = "passportnoT searchtext form-control" } })
+                                    @Html.ValidationMessageFor(model => model.passportno, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.passportno, htmlAttributes: new { @class = "labelNormal  " })
-                            @Html.EditorFor(model => model.passportno, new { htmlAttributes = new { @class = "passportnoT searchtext form-control" } })
-                            @Html.ValidationMessageFor(model => model.passportno, "", new { @class = "text-danger" })
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "labelNormal " })
+                                    @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "fullnameT searchtext form-control" } })
+                                    @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "labelNormal " })
-                            @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "fullnameT searchtext form-control" } })
-                            @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
+
+
+
+
+
                 <div class="row ">
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="btn-toolbar align-center">
-                                <button type="submit" id="btnLandingSearch" class="btn btn-primary btn-md btnLandingSearch"><i class="fa fa-search"> </i> @KAF.MsgContainer._Common._btnSearch</button>
-                                <button type="button" id="btnClear" class="btn btn-primary btn-md btnClear"><i class="fa fa-close"> </i> @KAF.MsgContainer._Common._btnClear</button>
-
+                                @{
+                                    if (!string.IsNullOrEmpty(s) && s.Contains("Officers"))
+                                    {
+                                        <button type="submit" id="btnLandingSearch" class="btn btn-primary btn-md btnLandingSearch"><i class="fa fa-search"> </i> @KAF.MsgContainer._Common._btnSearch</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" id="btnLandingSearch" class="btn btn-primary btn-md btnLandingSearch"><i class="fa fa-search"> </i> @KAF.MsgContainer._Common._btnSearch</button>
+                                        <button type="button" id="btnClear" class="btn btn-primary btn-md btnClear"><i class="fa fa-close"> </i> @KAF.MsgContainer._Common._btnClear</button>
+                                    }
+                                }
                             </div>
                         </div>
                     </div>

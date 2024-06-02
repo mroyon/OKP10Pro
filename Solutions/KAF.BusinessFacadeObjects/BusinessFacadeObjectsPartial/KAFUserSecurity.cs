@@ -718,5 +718,23 @@ namespace KAF.BusinessFacadeObjects.BusinessFacadeObjectsPartial
             }
         }
 
+
+
+        IList<owin_roleEntity> IKAFUserSecurity.GetRoleByUser(owin_userEntity owin_user)
+        {
+            try
+            {
+                return DataAccessFactory.CreateKAFUserSecurityDataAccess().GetRoleByUser(owin_user);
+            }
+            catch (DataException ex)
+            {
+                throw GetFacadeException(ex, SourceOfException("IKAFUserSecurity.GetRoleByUser"));
+            }
+            catch (Exception exx)
+            {
+                throw exx;
+            }
+        }
+
     }
 }

@@ -17,8 +17,14 @@ namespace KAF.BusinessDataObjects.BusinessDataObjectsPartials
     [DataContract(Name = "KAF_GetUserInfoByCredentialEntity", Namespace = "http://www.KAF.com/types")]
     public class KAF_GetUserInfoByCredentialEntity : BaseEntity
     {
+        protected string _mobilepin = String.Empty;
+        [DataMember]
+        public string mobilepin
+        {
+            get { return _mobilepin; }
+            set { _mobilepin = value; }
+        }
 
-      
         protected long? _masteruserid;
         [DataMember]
         public long? masteruserid
@@ -285,6 +291,10 @@ namespace KAF.BusinessDataObjects.BusinessDataObjectsPartials
                 if (!reader.IsDBNull(reader.GetOrdinal("UserProfilePhoto"))) _userprofilephoto = reader.GetString(reader.GetOrdinal("UserProfilePhoto"));
 
                 if (!reader.IsDBNull(reader.GetOrdinal("IsAnonymous"))) _istwosetepauthenable = reader.GetBoolean(reader.GetOrdinal("IsAnonymous"));
+
+
+
+                if (!reader.IsDBNull(reader.GetOrdinal("MobilePIN"))) _mobilepin = reader.GetString(reader.GetOrdinal("MobilePIN"));
 
             }
         }

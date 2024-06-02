@@ -1748,6 +1748,36 @@ namespace KAF.DataAccessObjects.DataAccessObjectsPartial
             return itemList;
         }
 
+
+
+        IList<owin_roleEntity> IKAFUserSecurityDataAccess.GetRoleByUser(owin_userEntity owin_user)
+        {
+            try
+            {
+                const string SP = "Owin_GetUserRoleByUser";
+                using (DbCommand cmd = Database.GetStoredProcCommand(SP))
+                {
+                    Database.AddInParameter(cmd, "@UserId", DbType.Guid, owin_user.userid);
+
+                    IList<owin_roleEntity> itemList = new List<owin_roleEntity>();
+                    using (IDataReader reader = Database.ExecuteReader(cmd))
+                    {
+                        while (reader.Read())
+                        {
+                            itemList.Add(new owin_roleEntity(reader));
+                        }
+                        reader.Close();
+                    }
+                    cmd.Dispose();
+                    return itemList;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw GetDataAccessException(ex, SourceOfException("IKAFUserSecurityDataAccess.GetRoleByUser"));
+            }
+        }
+
     }
 
 }

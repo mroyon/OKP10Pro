@@ -123,5 +123,10 @@ namespace KAF.IBusinessFacadeObjects.IBusinessFacadeObjectsPartial
         IList<rptm_allreportinfoEntity> LoadReportMenu(long MasterUserID);
 
 
+
+        [OperationContract]
+        IList<owin_roleEntity> GetRoleByUser(owin_userEntity objEntity);
+
+
     }
 }

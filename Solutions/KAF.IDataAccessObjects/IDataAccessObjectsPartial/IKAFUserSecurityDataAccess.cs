@@ -79,5 +79,8 @@ namespace KAF.IDataAccessObjects.IDataAccessObjectsPartial
         long SetReportRolePermission(owin_reportroletemplateEntity objEntity);
 
         IList<rptm_allreportinfoEntity> LoadReportMenu(long MasterUserID);
+
+
+        IList<owin_roleEntity> GetRoleByUser(owin_userEntity objEntity);
     }
 }

@@ -503,20 +503,28 @@ namespace KAFWebAdmin.Controllers
                 claims.Add(new Claim(ClaimTypes.Surname, objUser.userprofilephoto));
                 claims.Add(new Claim(ClaimTypes.Upn, Session.SessionID));
 
+
+                claims.Add(new Claim(type: "militaryid", value: objUser.mobilepin));
+
                 //var json = objClsPrivate.GetMenuWritten(itemList, DomainUrl.GetDomainUrl());
                 var json = objClsPrivate.GetMenuWritten(itemList, DomainUrl.GetDomainUrl());
                 Session.Add("json", json);
                 Session.Add("jsonList", Newtonsoft.Json.JsonConvert.SerializeObject(itemList, Newtonsoft.Json.Formatting.None));
 
+                var userRoleList = KAF.FacadeCreatorObjects.FacadeCreatorObjectsPartial.FCCKAFUserSecurity.GetFacadeCreate().GetRoleByUser(new owin_userEntity()
+                {
+                    userid = objUser.userid
+                });
+
                 //claims.Add(new Claim(ClaimTypes.NameIdentifier, Newtonsoft.Json.JsonConvert.SerializeObject(itemList, Newtonsoft.Json.Formatting.None)));
 
-                var roles = new[] { "admin", "citizin", "worker" };
                 var groups = new[] { "User" };
 
-                foreach (var item in roles)
+                foreach (var item in userRoleList)
                 {
-                    claims.Add(new Claim(clsIdentity.RolesClaimType.Replace("{}", domURL), item));
+                    claims.Add(new Claim(clsIdentity.RolesClaimType.Replace("{}", domURL), item.rolename));
                 }
+                
                 foreach (var item in groups)
                 {
                     claims.Add(new Claim(clsIdentity.GroupClaimType.Replace("{}", domURL), item));
