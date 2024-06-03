@@ -43,6 +43,15 @@ namespace KAFWebAdmin.Controllers.HR
         [ExceptionFilterAttribute]
         public async Task<ActionResult> HrPassportInfo()
         {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                // Get specific claim types
+                var role = claimsIdentity.FindFirst(p => p.Type == "http://http://localhost:2005//CuttingEdge.Security.Role").Value;
+                var militaryid = claimsIdentity.FindFirst(p => p.Type == "militaryid").Value;
+                ViewBag.Role = role;
+                ViewBag.militaryid = militaryid;
+            }
             return View("HrPassportInfoLanding");
         }
 
